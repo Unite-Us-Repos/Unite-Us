@@ -7,6 +7,7 @@
 #Track github actions
 !.github/**
 !/.gitignore
+!/post-deploy.sh
 
 # Track only theme folder and its contents
 !/wp-content/themes/uniteus-sage/**
