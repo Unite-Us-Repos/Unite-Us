@@ -3,8 +3,8 @@ env:
   WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPENGINE_SFTP_PASSWORD }}
   THEME_NAME: uniteus-sage
   DEVELOP_WPE_INSTALL_NAME: uniteustaildev
-  STAGING_WPE_INSTALL_NAME: 
-  MASTER_WPE_INSTALL_NAME: 
+  STAGING_WPE_INSTALL_NAME: uniteustailstg
+  MASTER_WPE_INSTALL_NAME: uniteustailwin
 
 on:
   push:
