@@ -1,0 +1,239 @@
+{
+  "__generated__": "⚠️ This file is generated. Do not edit.",
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "color": {
+      "custom": false,
+      "customGradient": false,
+      "customDuotone": false,
+      "defaultDuotone": false,
+      "defaultGradients": false,
+      "defaultPalette": false,
+      "duotone": [],
+      "palette": [
+        {
+          "name": "Inherit",
+          "slug": "inherit",
+          "color": "inherit"
+        },
+        {
+          "name": "Current",
+          "slug": "current",
+          "color": "currentcolor"
+        },
+        {
+          "name": "Transparent",
+          "slug": "transparent",
+          "color": "transparent"
+        },
+        {
+          "name": "Black",
+          "slug": "black",
+          "color": "#000"
+        },
+        {
+          "name": "White",
+          "slug": "white",
+          "color": "#fff"
+        },
+        {
+          "name": "Primary",
+          "slug": "primary",
+          "color": "orange"
+        },
+        {
+          "name": "Secondary",
+          "slug": "secondary",
+          "color": "#2874af"
+        },
+        {
+          "name": "Brand",
+          "slug": "brand",
+          "color": "#2c405a"
+        },
+        {
+          "name": "Action",
+          "slug": "action",
+          "color": "#2874af"
+        },
+        {
+          "name": "Dark-blue",
+          "slug": "dark-blue",
+          "color": "#182a44"
+        },
+        {
+          "name": "Action-dark",
+          "slug": "action-dark",
+          "color": "#105890"
+        },
+        {
+          "name": "Action-light-blue",
+          "slug": "action-light-blue",
+          "color": "#52b4ff"
+        },
+        {
+          "name": "Action-lighter-blue",
+          "slug": "action-lighter-blue",
+          "color": "#3b8bca"
+        },
+        {
+          "name": "Dark",
+          "slug": "dark",
+          "color": "#182a44"
+        },
+        {
+          "name": "Redish",
+          "slug": "redish",
+          "color": "#ff4f4f"
+        },
+        {
+          "name": "Light",
+          "slug": "light",
+          "color": "#eef5fc"
+        },
+        {
+          "name": "Light-gradient",
+          "slug": "light-gradient",
+          "color": "#eef5fc"
+        },
+        {
+          "name": "Light-gray",
+          "slug": "light-gray",
+          "color": "#f9fafb"
+        },
+        {
+          "name": "Morado",
+          "slug": "morado",
+          "color": "#712f79"
+        },
+        {
+          "name": "Verde",
+          "slug": "verde",
+          "color": "#117e15"
+        },
+        {
+          "name": "Rojo",
+          "slug": "rojo",
+          "color": "#cf2a2a"
+        }
+      ]
+    },
+    "custom": {
+      "spacing": {},
+      "typography": {
+        "font-size": {},
+        "line-height": {}
+      }
+    },
+    "spacing": {
+      "padding": true,
+      "units": [
+        "px",
+        "%",
+        "em",
+        "rem",
+        "vw",
+        "vh"
+      ]
+    },
+    "typography": {
+      "customFontSize": false,
+      "dropCap": false,
+      "fontFamilies": [
+        {
+          "name": "Proxima Nova",
+          "slug": "sans",
+          "fontFamily": "Proxima Nova,ui-sans-serif,system-ui"
+        },
+        {
+          "name": "Proxima Nova",
+          "slug": "display",
+          "fontFamily": "Proxima Nova"
+        },
+        {
+          "name": "Proxima Nova",
+          "slug": "body",
+          "fontFamily": "Proxima Nova"
+        },
+        {
+          "name": "Space Mono",
+          "slug": "space",
+          "fontFamily": "Space Mono,monospace"
+        },
+        {
+          "name": "Syne",
+          "slug": "syne",
+          "fontFamily": "Syne,sans-serif"
+        }
+      ],
+      "fontSizes": [
+        {
+          "name": "xs",
+          "slug": "xs",
+          "size": "0.75rem"
+        },
+        {
+          "name": "sm",
+          "slug": "sm",
+          "size": "0.875rem"
+        },
+        {
+          "name": "base",
+          "slug": "base",
+          "size": "1rem"
+        },
+        {
+          "name": "lg",
+          "slug": "lg",
+          "size": "1.125rem"
+        },
+        {
+          "name": "xl",
+          "slug": "xl",
+          "size": "1.25rem"
+        },
+        {
+          "name": "2xl",
+          "slug": "2xl",
+          "size": "1.5rem"
+        },
+        {
+          "name": "3xl",
+          "slug": "3xl",
+          "size": "1.875rem"
+        },
+        {
+          "name": "4xl",
+          "slug": "4xl",
+          "size": "2.25rem"
+        },
+        {
+          "name": "5xl",
+          "slug": "5xl",
+          "size": "3rem"
+        },
+        {
+          "name": "6xl",
+          "slug": "6xl",
+          "size": "3.75rem"
+        },
+        {
+          "name": "7xl",
+          "slug": "7xl",
+          "size": "4.5rem"
+        },
+        {
+          "name": "8xl",
+          "slug": "8xl",
+          "size": "6rem"
+        },
+        {
+          "name": "9xl",
+          "slug": "9xl",
+          "size": "8rem"
+        }
+      ]
+    }
+  }
+}

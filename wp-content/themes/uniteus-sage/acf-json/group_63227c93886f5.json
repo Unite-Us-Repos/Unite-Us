@@ -1,0 +1,267 @@
+{
+    "key": "group_63227c93886f5",
+    "title": "Journey Template",
+    "fields": [
+        {
+            "key": "field_6322856de792e",
+            "label": "Hero",
+            "name": "hero",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_62b4b5fde5b5e",
+                "field_62b5809883c5a"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_63227cbda88d5",
+            "label": "Sections",
+            "name": "sections",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_repeater_stylised_button": 1,
+            "collapsed": "field_63227d12a88d6",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Section",
+            "sub_fields": [
+                {
+                    "key": "field_63227d12a88d6",
+                    "label": "Section Title",
+                    "name": "section_title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_632361a451829",
+                    "label": "Add Section Description",
+                    "name": "add_section_description",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
+                    "key": "field_632287990fd00",
+                    "label": "Section Description",
+                    "name": "section_description",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_632361a451829",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                },
+                {
+                    "key": "field_63227d20a88d7",
+                    "label": "Sub Sections",
+                    "name": "sub_sections",
+                    "type": "flexible_content",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_flexible_advanced": 1,
+                    "acfe_flexible_stylised_button": 1,
+                    "acfe_flexible_layouts_templates": 0,
+                    "acfe_flexible_layouts_placeholder": 0,
+                    "acfe_flexible_layouts_thumbnails": 0,
+                    "acfe_flexible_layouts_settings": 0,
+                    "acfe_flexible_async": [],
+                    "acfe_flexible_add_actions": [
+                        "title",
+                        "toggle",
+                        "copy"
+                    ],
+                    "acfe_flexible_remove_button": [],
+                    "acfe_flexible_layouts_state": "collapse",
+                    "acfe_flexible_modal_edit": {
+                        "acfe_flexible_modal_edit_enabled": "0",
+                        "acfe_flexible_modal_edit_size": "large"
+                    },
+                    "acfe_flexible_modal": {
+                        "acfe_flexible_modal_enabled": "0",
+                        "acfe_flexible_modal_title": false,
+                        "acfe_flexible_modal_size": "full",
+                        "acfe_flexible_modal_col": "4",
+                        "acfe_flexible_modal_categories": false
+                    },
+                    "layouts": {
+                        "layout_63227d36a7750": {
+                            "key": "layout_63227d36a7750",
+                            "name": "basic_content",
+                            "label": "Basic Content",
+                            "display": "row",
+                            "sub_fields": [
+                                {
+                                    "key": "field_63227e07a88d9",
+                                    "label": "Sub Heading",
+                                    "name": "sub_heading",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_63227d3da88d8",
+                                    "label": "Content",
+                                    "name": "content",
+                                    "type": "wysiwyg",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "tabs": "all",
+                                    "toolbar": "full",
+                                    "media_upload": 1,
+                                    "delay": 0
+                                },
+                                {
+                                    "key": "field_6323a4271ade2",
+                                    "label": "Doc Widgets",
+                                    "name": "doc_widgets",
+                                    "type": "clone",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "clone": [
+                                        "field_6323a5d5dbe77"
+                                    ],
+                                    "display": "seamless",
+                                    "layout": "block",
+                                    "prefix_label": 0,
+                                    "prefix_name": 0
+                                }
+                            ],
+                            "min": "",
+                            "max": "",
+                            "acfe_flexible_render_template": false,
+                            "acfe_flexible_render_style": false,
+                            "acfe_flexible_render_script": false,
+                            "acfe_flexible_thumbnail": false,
+                            "acfe_flexible_settings": false,
+                            "acfe_flexible_settings_size": "medium",
+                            "acfe_flexible_modal_edit_size": false,
+                            "acfe_flexible_category": false
+                        }
+                    },
+                    "button_label": "Add Sub Section",
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_hide_empty_message": false,
+                    "acfe_flexible_empty_message": "",
+                    "acfe_flexible_layouts_previews": false
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-journey.blade.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1663280956
+}

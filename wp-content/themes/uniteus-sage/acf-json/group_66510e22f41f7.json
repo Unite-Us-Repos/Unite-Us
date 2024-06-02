@@ -1,0 +1,58 @@
+{
+    "key": "group_66510e22f41f7",
+    "title": "Blog Author",
+    "fields": [
+        {
+            "key": "field_66510e236c5af",
+            "label": "Author Name",
+            "name": "author_name",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Insert the name of the author for this article which should be displayed in the blog post.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "acfe_textarea_code": 0,
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "category:blog"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1716952075
+}

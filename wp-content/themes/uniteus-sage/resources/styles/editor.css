@@ -1,0 +1,132 @@
+.doc-button {
+  padding: 16px 20px;
+  display: inline-block;
+  line-height: 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: solid 1px #2874af;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  text-decoration: none;
+  color: #2874af;
+}
+.doc-button.download {
+  padding-right: 26px;
+  background-image: url("../../resources/icons/arrow-down-tray.svg");
+  background-position: center right 20px;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  padding-right: 52px;
+}
+.button {
+  border-radius: 0.375rem;
+  display: inline-flex;
+  font-size: 1rem;
+  font-weight: 500;
+  justify-content: center;
+  line-height: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  text-decoration-line: none;
+  border:solid 1px #2874af;
+}
+
+.button-solid {
+  color: #fff;
+  background: #2874af;
+}
+
+.button-hollow {
+  color: #2874af;
+  background: transparent;
+  border-color: #2874af;
+}
+/* Ordered Numbered Circles */
+ol {
+  counter-reset: list-number-inner
+}
+ol.ol-circles {
+  list-style: none !important;
+  padding-left: 0;
+}
+ol.ol-circles li {
+  position:relative;
+  padding-left:70px;
+  min-height:60px;
+  margin:20px 0;
+}
+ol.ol-circles li::before{
+  background:#2C405A;
+  color:#FFF;
+  font-weight:400;
+  font-size: 1.5rem;
+  border:solid 4px #2874AF;
+  counter-increment: list-number-inner;
+  content: counter(list-number-inner);
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left:0;
+}
+ol.ol-circles ol li {
+  list-style-type:none;
+}
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+ul:not(.list-none) {
+  margin-left: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+ul:not(.list-none) .li {
+  margin-bottom: 0.75rem;
+}
+ul:not(.list-none) li:last-child {
+  margin-bottom: 0;
+}
+ul:not(.list-none):not(.list-checkmarks):not(.list-circle-checkmark):not(.list-box) li::before {
+  content: "•";
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em !important;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #52b4ff;
+}
+ul.list-circle-checkmark,
+ul.list-checkmarks {
+  margin-left: 0 !important;
+}
+ul.list-checkmarks li {
+  background-image: url("../images/bullet-checkmark.svg");
+  background-position: top 5px left;
+  background-repeat: no-repeat;
+  padding-left: 1.25rem;
+}
+ul.list-circle-checkmark li {
+  background-image: url("../images/bullet-circle-checkmark.svg");
+  background-position: top 5px left;
+  background-repeat: no-repeat;
+  padding-left: 1.25rem;
+}
+ul.list-box {
+  padding: 1.5rem 1rem 1.5rem 2.5rem;
+  border-radius: 6px;
+  list-style: disc;
+  background-color: #e3ebf3;
+  margin-left: 0;
+}
+ul.list-box.list-checkmarks {
+  list-style: none !important;
+  padding: 1.5rem !important;
+}
+ul.list-box.list-checkmarks ul,
+ul ul {
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}

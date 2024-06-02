@@ -1,0 +1,166 @@
+{
+    "key": "group_6375340a56e71",
+    "title": "Header\/Footer Code",
+    "fields": [
+        {
+            "key": "field_63753515cb83f",
+            "label": "Header Code Repeater",
+            "name": "header_code_repeater",
+            "type": "repeater",
+            "instructions": "Paste javascript such as google tracking, facebook pixel, etc.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_repeater_stylised_button": 1,
+            "acfe_field_group_condition": 0,
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Code",
+            "sub_fields": [
+                {
+                    "key": "field_6375364c6249b",
+                    "label": "Notes",
+                    "name": "notes",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "acfe_field_group_condition": 0
+                },
+                {
+                    "key": "field_637534197dd33",
+                    "label": "Header Code",
+                    "name": "header_code",
+                    "type": "acfe_code_editor",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "mode": "text\/html",
+                    "lines": 1,
+                    "indent_unit": 4,
+                    "maxlength": "",
+                    "rows": 8,
+                    "max_rows": "",
+                    "return_entities": 0,
+                    "acfe_field_group_condition": 0
+                }
+            ]
+        },
+        {
+            "key": "field_637535c43c79e",
+            "label": "Footer Code Repeater",
+            "name": "footer_code_repeater",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_repeater_stylised_button": 1,
+            "acfe_field_group_condition": 0,
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Code",
+            "sub_fields": [
+                {
+                    "key": "field_637536d4f07f6",
+                    "label": "Notes",
+                    "name": "notes",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "acfe_field_group_condition": 0
+                },
+                {
+                    "key": "field_637535c43c79f",
+                    "label": "Footer Code",
+                    "name": "footer_code",
+                    "type": "acfe_code_editor",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "mode": "text\/html",
+                    "lines": 1,
+                    "indent_unit": 4,
+                    "maxlength": "",
+                    "rows": 8,
+                    "max_rows": "",
+                    "return_entities": 0,
+                    "acfe_field_group_condition": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "global-options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1668626174
+}
