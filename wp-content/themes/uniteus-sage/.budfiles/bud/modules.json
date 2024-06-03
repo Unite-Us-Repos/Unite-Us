@@ -1,0 +1,84 @@
+{
+  "chunks": {
+    "byName": {
+      "app": 143,
+      "editor": 189,
+      "runtime": 666,
+      "time": 651,
+      "vendor/app": 329,
+      "vendor/null": 642
+    },
+    "bySource": {
+      "0 ./node_modules/babel-loader/lib/index.js??ruleSet[1].rules[1].oneOf[0].use[0]!./resources/scripts/app.js ../../node_modules/iframe-resizer/js/iframeResizer.js": 642,
+      "0 ./node_modules/babel-loader/lib/index.js??ruleSet[1].rules[1].oneOf[0].use[0]!./resources/scripts/app.js ../../node_modules/simple-parallax-js/dist/simpleParallax.js": 642,
+      "0 ./node_modules/babel-loader/lib/index.js??ruleSet[1].rules[1].oneOf[0].use[0]!./resources/scripts/app.js ./countdown.js": 490,
+      "0 ./node_modules/babel-loader/lib/index.js??ruleSet[1].rules[1].oneOf[0].use[0]!./resources/scripts/app.js ./job-filters.js": 690,
+      "0 ./node_modules/babel-loader/lib/index.js??ruleSet[1].rules[1].oneOf[0].use[0]!./resources/scripts/app.js ./kh-filters.js": 509,
+      "0 app": 666,
+      "0 editor": 666,
+      "0 time": 666,
+      "1 app": 329,
+      "1 editor": 189,
+      "1 time": 651,
+      "2 app": 143
+    },
+    "usedIds": [
+      143,
+      189,
+      329,
+      509,
+      642,
+      651,
+      666,
+      690
+    ]
+  },
+  "modules": {
+    "byIdentifier": {
+      "./node_modules/@alpinejs/collapse/dist/module.esm.js": 764,
+      "./node_modules/@alpinejs/intersect/dist/module.esm.js": 394,
+      "./node_modules/@roots/sage/lib/cjs/client/domReady.js": 329,
+      "./node_modules/@roots/sage/lib/cjs/client/index.js": 194,
+      "./node_modules/alpinejs/dist/module.esm.js": 306,
+      "./node_modules/babel-loader/lib/index.js??ruleSet[1].rules[1].oneOf[0].use[0]!./resources/scripts/app.js": 683,
+      "./node_modules/babel-loader/lib/index.js??ruleSet[1].rules[1].oneOf[0].use[0]!./resources/scripts/countdown.js": 490,
+      "./node_modules/babel-loader/lib/index.js??ruleSet[1].rules[1].oneOf[0].use[0]!./resources/scripts/editor.js|d6421ec9472236a33a8da65f3762c43d": 982,
+      "./node_modules/babel-loader/lib/index.js??ruleSet[1].rules[1].oneOf[0].use[0]!./resources/scripts/job-filters.js": 690,
+      "./node_modules/babel-loader/lib/index.js??ruleSet[1].rules[1].oneOf[0].use[0]!./resources/scripts/kh-filters.js": 509,
+      "./node_modules/babel-loader/lib/index.js??ruleSet[1].rules[1].oneOf[0].use[0]!./resources/scripts/time.js": 600,
+      "./node_modules/dayjs/dayjs.min.js": 484,
+      "./node_modules/dayjs/plugin/timezone.js": 387,
+      "./node_modules/dayjs/plugin/utc.js": 178,
+      "./node_modules/iframe-resizer/js/iframeResizer.js": 702,
+      "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./node_modules/@roots/bud-postcss/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[2]!./resources/styles/app.css": 132,
+      "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./node_modules/@roots/bud-postcss/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[2]!./resources/styles/editor.css": 479,
+      "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[2]!./resources/styles/app.css": 402,
+      "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[2]!./resources/styles/editor.css": 821,
+      "./node_modules/simple-parallax-js/dist/simpleParallax.js": 43,
+      "./node_modules/simple-parallax-js/dist/simpleParallax.min.js": 102,
+      "./node_modules/tippy.js/esm/index.all.js|a49bdd8a1640693b8ba37cc7c4754b5c": 104,
+      "./node_modules/vanilla-lazyload/dist/lazyload.min.js": 732,
+      "javascript/esm|./node_modules/swiper/swiper-bundle.esm.js|39e4fb904e2617bff46b442c3cd29b66": 250
+    },
+    "usedIds": [
+      43,
+      132,
+      178,
+      194,
+      250,
+      306,
+      329,
+      387,
+      394,
+      479,
+      484,
+      509,
+      600,
+      683,
+      690,
+      732,
+      764,
+      982
+    ]
+  }
+}
