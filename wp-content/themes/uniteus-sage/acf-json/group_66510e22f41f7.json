@@ -7,7 +7,7 @@
             "label": "Author Name",
             "name": "author_name",
             "aria-label": "",
-            "type": "text",
+            "type": "textarea",
             "instructions": "Insert the name of the author for this article which should be displayed in the blog post.",
             "required": 0,
             "conditional_logic": 0,
@@ -17,10 +17,11 @@
                 "id": ""
             },
             "default_value": "",
+            "acfe_textarea_code": 0,
             "maxlength": "",
+            "rows": 4,
             "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "new_lines": ""
         }
     ],
     "location": [
@@ -53,5 +54,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1716588135
+    "modified": 1716952075
 }

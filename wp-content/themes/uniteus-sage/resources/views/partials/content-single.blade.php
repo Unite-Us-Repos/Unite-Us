@@ -10,6 +10,27 @@ foreach ($podcast_links as $field_name => $link ) {
   }
 }
 $author_name = get_field('author_name', $post->ID); // Fetch the author name from ACF
+
+// Schema Markup Variables for Webinar Posts
+$page_title = get_the_title();
+$meta_description = get_post_meta($post->ID, '_yoast_wpseo_metadesc', true);
+$page_url = get_permalink();
+$preview_image = get_the_post_thumbnail_url($post->ID, 'full');
+$publish_date = get_the_date('c', $post->ID);
+
+// Construct the JSON-LD schema for Webinar Posts
+$schema_markup = [
+  "@context" => "https://schema.org",
+  "@type" => ["VideoObject", "LearningResource"],
+  "name" => $page_title,
+  "description" => $meta_description,
+  "learningResourceType" => "Concept Overview",
+  "educationalLevel" => "High school (US)",
+  "contentUrl" => $page_url,
+  "thumbnailUrl" => [$preview_image],
+  "uploadDate" => $publish_date
+];
+
 @endphp
 
 <article @php (post_class()) @endphp="@php (post_class()) @endphp">
@@ -81,65 +102,44 @@ $author_name = get_field('author_name', $post->ID); // Fetch the author name fro
         @php the_content() @endphp
       @endif
 
-
-                @php
-                function set_flex_basis($columns) {
-
-                  if (!$columns) {
-                    return false;
-                  }
-                  if ($columns == 'auto') {
-                    return 'sm:flex-1';
-                  }
-
-                  if ($columns == '12') {
-                    return 'sm:basis-full';
-                  }
-
-                  return 'sm:basis-' . "$columns/12";
-                }
-                  @endphp
-
+      @php
+        function set_flex_basis($columns) {
+          if (!$columns) {
+            return false;
+          }
+          if ($columns == 'auto') {
+            return 'sm:flex-1';
+          }
+          if ($columns == '12') {
+            return 'sm:basis-full';
+          }
+          return 'sm:basis-' . "$columns/12";
+        }
+      @endphp
 
       @isset ($columns)
-
       <div class="@isset($section_settings['fullscreen']) fullscreen @endisset">
         @foreach ($columns as $index => $widget)
-
           @isset ($widget['acf_fc_layout'])
-
-                @php
-
+            @php
               $layout_col = $widget['acfe_layout_col'];
-
               $flex_basis = set_flex_basis($layout_col);
-
-              @endphp
-
-              @if ($widget['acfe_layout_col'] && $index === 0)
-                <div class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-between gap-6 sm:gap-0 sm:-mx-3">
-              @endif
-
-              @if ($widget['acfe_layout_col'])
-                <div class="@if ($widget['acfe_layout_col']) {{ $flex_basis }} @endif sm:p-3">
-                  @includeIf('widgets.' . str_replace('_', '-', $widget["acf_fc_layout"]))
-                </div>
-              @endif
-
-              @if ($widget['acfe_layout_col'] && $index+1 === count($columns))
-                </div>
-              @endif
-
-            @endisset
+            @endphp
+            @if ($widget['acfe_layout_col'] && $index === 0)
+              <div class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-between gap-6 sm:gap-0 sm:-mx-3">
+            @endif
+            @if ($widget['acfe_layout_col'])
+              <div class="@if ($widget['acfe_layout_col']) {{ $flex_basis }} @endif sm:p-3">
+                @includeIf('widgets.' . str_replace('_', '-', $widget["acf_fc_layout"]))
+              </div>
+            @endif
+            @if ($widget['acfe_layout_col'] && $index+1 === count($columns))
+              </div>
+            @endif
+          @endisset
         @endforeach
       </div>
-    @endisset
-
-
-
-
-
-
+      @endisset
     </div>
   </div>
 
@@ -164,21 +164,14 @@ $author_name = get_field('author_name', $post->ID); // Fetch the author name fro
 </article>
 
 <section class="component-section -mt-10">
-
-
   <div class="relative">
-
     <div class="component-inner-section relative z-10">
       <div class="relative z-10 lg:grid-cols-2 flex justify-center">
         <div>
           <div class="text-brand text-2xl sm:text-4xl relative font-semibold z-10 mb-10">Recommended for You</div>
         </div>
-
       </div>
-
-
       <div class="mx-auto grid gap-6 sm:gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
-
         @foreach ($recommended_press as $index => $post)
         @php
         $type = App\View\Composers\Post::getType($post['ID']);
@@ -205,7 +198,6 @@ $author_name = get_field('author_name', $post->ID); // Fetch the author name fro
                   </span>
                 </a>
               </p>
-
               <h3 class="mb-1 rfy-title">
                 @if ($post['permalink'])
                 <a
@@ -217,7 +209,6 @@ $author_name = get_field('author_name', $post->ID); // Fetch the author name fro
               </h3>
               {{ $post['date'] }}
             </div>
-
             <div class="bg-light hover:bg-blue-200">
               @if ($post['permalink'])
               <a
@@ -235,5 +226,11 @@ $author_name = get_field('author_name', $post->ID); // Fetch the author name fro
       </div>
     </div>
   </div>
-
 </section>
+
+{{-- Output the schema markup if it exists --}}
+@if ($schema_markup)
+  <script type="application/ld+json">
+    {!! json_encode($schema_markup, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+  </script>
+@endif
