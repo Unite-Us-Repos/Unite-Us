@@ -16,7 +16,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "<script type=\"application\/ld+json\">\r\n    {\r\n      \"@context\": \"https:\/\/schema.org\",\r\n      \"@type\": \"ProfilePage\",\r\n      \"dateCreated\": \"{{Publish Date}}}\",\r\n      \"dateModified\": \"{{Date Modified}}\",\r\n      \"mainEntity\": {\r\n        \"@type\": \"Person\",\r\n        \"name\": \"{{First Name}} + {{Middle Name}} + {{Last Name}}\",\r\n        \"description\": \"{{Body Content}}\",\r\n        \"image\": \"{{Preview Image}}\",\r\n        \"sameAs\": [\r\n          \"{{Page URL}}\",\r\n          \"{{Linkedin URL}}\"\r\n        ]\r\n      }\r\n    }\r\n    <\/script>",
+            "default_value": "<!-- Schema.org Validation -->\r\n<script type=\"application\/ld+json\">\r\n{\r\n  \"@context\": \"https:\/\/schema.org\",\r\n  \"@type\": \"ProfilePage\",\r\n  \"dateCreated\": \"{{Publish Date}}\",\r\n  \"dateModified\": \"{{Date Modified}}\",\r\n  \"mainEntity\": {\r\n    \"@type\": \"Person\",\r\n    \"name\": \"{{First Name}} {{Middle Name}} {{Last Name}}\",\r\n    \"description\": \"{{Description}}\",\r\n    \"image\": \"{{Image}}\",\r\n    \"sameAs\": [{{Social Media URLs}}]\r\n  }\r\n}\r\n<\/script>\r\n<!-- End of Schema.org Validation -->",
             "placeholder": "",
             "mode": "text\/html",
             "lines": 1,
@@ -52,5 +52,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1717545789
+    "modified": 1717601522
 }
