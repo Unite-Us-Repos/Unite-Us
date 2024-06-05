@@ -25,6 +25,60 @@
   }
 
 @endphp
+
+@php
+  // Fetch necessary fields
+  $publishDate = get_the_date('c');
+  $modifiedDate = get_the_modified_date('c');
+  $firstName = get_field('first_name');
+  $middleName = get_field('middle_name');
+  $lastName = get_field('last_name');
+  $description = get_field('bio');
+  $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
+  $pageURL = get_permalink();
+  $socialMediaLinks = get_field('social_media_link');
+
+  // Prepare social media URLs
+  $socialMediaUrls = [];
+  if ($socialMediaLinks) {
+      foreach ($socialMediaLinks as $link) {
+          if (isset($link['url'])) {
+              $socialMediaUrls[] = '"' . $link['url'] . '"';
+          }
+      }
+  }
+  $socialMediaUrlsString = implode(', ', $socialMediaUrls);
+
+  // Get schema markup from ACF
+  $schemaMarkup = get_field('schema_markup');
+
+  // Replace placeholders in the schema markup
+  $schemaMarkup = str_replace([
+    '{{Publish Date}}', 
+    '{{Date Modified}}', 
+    '{{First Name}}', 
+    '{{Middle Name}}', 
+    '{{Last Name}}', 
+    '{{Description}}', 
+    '{{Image}}', 
+    '{{Page URL}}', 
+    '{{Social Media URLs}}'
+  ], [
+    $publishDate, 
+    $modifiedDate, 
+    $firstName, 
+    $middleName, 
+    $lastName, 
+    strip_tags($description), 
+    $image, 
+    $pageURL, 
+    $socialMediaUrlsString
+  ], $schemaMarkup);
+@endphp
+
+<!-- Insert the schema markup -->
+{!! $schemaMarkup !!}
+
 <section class="bg-white relative component-section">
   <div class="relative w-full">
     <div class="component-inner-section">
