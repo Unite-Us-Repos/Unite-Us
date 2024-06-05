@@ -60,7 +60,7 @@ $small_font = $section['small_font'] ?? false;
           </div>
         @endif
         <h1 class="mb-0 text-4xl tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif
-        @if ($small_font) width-40 text-5xl font-semibold small-font @else font-extrabold md:text-5xl lg:text-6xl @endif">
+        @if ($small_font) width-35 text-5xl font-semibold small-font @else font-extrabold md:text-5xl lg:text-6xl @endif">
           {!! $job_title !!}
         </h1>
       </div>

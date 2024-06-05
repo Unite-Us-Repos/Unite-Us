@@ -588,6 +588,13 @@ body .map-wrap {
     rgba(255, 255, 255, 1) 20%
   );
 }
+.bg-light-gradient {
+  background: rgb(238, 245, 252);
+  background: linear-gradient(
+    rgba(238, 245, 252, 1) 50%,
+    rgba(255, 255, 255, 1) 80%
+  );
+}
 .bg-dark-gradient {
   background: #2c405a;
   background: linear-gradient(180deg, #182a44 30%, #2c405a 90%);
@@ -1547,6 +1554,9 @@ select.gt_selector {
 }
 .width-30 {
   max-width: 30rem;
+}
+.width-35 {
+  max-width: 35rem;
 }
 .width-40 {
   max-width: 40rem;

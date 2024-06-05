@@ -1,0 +1,56 @@
+{
+    "key": "group_665faaa042970",
+    "title": "Team Schema",
+    "fields": [
+        {
+            "key": "field_665faaa045430",
+            "label": "Schema Markup",
+            "name": "schema_markup",
+            "aria-label": "",
+            "type": "acfe_code_editor",
+            "instructions": "Insert the schema here for this webinar.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<script type=\"application\/ld+json\">\r\n    {\r\n      \"@context\": \"https:\/\/schema.org\",\r\n      \"@type\": \"ProfilePage\",\r\n      \"dateCreated\": \"{{Publish Date}}}\",\r\n      \"dateModified\": \"{{Date Modified}}\",\r\n      \"mainEntity\": {\r\n        \"@type\": \"Person\",\r\n        \"name\": \"{{First Name}} + {{Middle Name}} + {{Last Name}}\",\r\n        \"description\": \"{{Body Content}}\",\r\n        \"image\": \"{{Preview Image}}\",\r\n        \"sameAs\": [\r\n          \"{{Page URL}}\",\r\n          \"{{Linkedin URL}}\"\r\n        ]\r\n      }\r\n    }\r\n    <\/script>",
+            "placeholder": "",
+            "mode": "text\/html",
+            "lines": 1,
+            "indent_unit": 4,
+            "maxlength": "",
+            "rows": 4,
+            "max_rows": "",
+            "return_format": []
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "team"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1717545789
+}

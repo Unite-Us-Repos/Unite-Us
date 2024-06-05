@@ -2,6 +2,24 @@
 $global_alerts = get_field('alerts', 'options');
 $global_alerts['section_classes'] = '!p-0 padding-collapse ';
 @endphp
+<!-- Schema.org Validation -->
+<script type="application/ld+json">
+  {!! json_encode([
+      "@context" => "https://schema.org/",
+      "@type" => "WebPage",
+      "name" => get_the_title(),
+      "speakable" => [
+          "@type" => "SpeakableSpecification",
+          "xpath" => [
+              "/html/head/title",
+              "/html/head/meta[@name='description']/@content"
+          ]
+      ],
+      "url" => get_permalink()
+  ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+</script>
+<!-- End of Schema.org Validation -->
+
 <div class="z-50" x-data="{ 'showSearchModal': false }" @keydown.escape="showSearchModal = false">
   @if (isset($global_alerts['description']) && !empty($global_alerts['description']))
     @includeIf('components.alerts.fullscreen', $global_alerts)

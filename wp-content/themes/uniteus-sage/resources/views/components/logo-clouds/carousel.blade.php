@@ -134,6 +134,7 @@
                   class="object-contain w-48 h-10 mx-auto mix-blend-multiply @if ('default' == $style) max-h-12 @else max-h-16 @endif"
                   src="{{ $logo['image']['sizes']['medium'] }}"
                   alt="{{ $logo['image']['alt'] }}"
+                  aria-label="{{ $logo['image']['alt'] }}"
                 />
 
               @endif
