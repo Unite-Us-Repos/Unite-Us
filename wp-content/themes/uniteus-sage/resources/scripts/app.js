@@ -217,3 +217,83 @@ window.Components = {}, window.Components.listbox = function(e) {
       }
   }
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+    var cards = document.querySelectorAll('.service-icon-card.expandable');
+
+    function collapseAllCards() {
+      cards.forEach(function(card) {
+        var chevronIcon = card.querySelector('.chevron-icon');
+        var expandedDescription = card.querySelector('.expanded-description');
+        var bgImage = card.querySelector('img');
+        var evenHeight = card.querySelector('.even-height');
+        var textBlock = card.querySelector('.text-block');
+
+        if (chevronIcon) {
+          chevronIcon.classList.remove('expanded');
+        }
+        
+        if (expandedDescription) {
+          expandedDescription.classList.remove('expanded');
+        }
+        
+        if (bgImage) {
+          bgImage.classList.remove('expanded');
+        }
+        if (evenHeight) {
+          evenHeight.classList.remove('expanded');
+        }
+        if (textBlock) {
+          textBlock.classList.remove('expanded');
+        }
+      });
+    }
+
+    cards.forEach(function(card) {
+      card.onclick = function(event) {
+        console.log('yes');
+        
+        // Stop the event from propagating to the document click event
+        event.stopPropagation();
+        
+        // Check if the clicked card is already expanded
+        var isExpanded = card.querySelector('.expanded-description').classList.contains('expanded');
+        
+        // Collapse all other cards
+        collapseAllCards();
+        
+        // If the clicked card was not expanded, expand it
+        if (!isExpanded) {
+          var chevronIcon = card.querySelector('.chevron-icon');
+          var expandedDescription = card.querySelector('.expanded-description');
+          var bgImage = card.querySelector('img');
+          var evenHeight = card.querySelector('.even-height');
+          var textBlock = card.querySelector('.text-block');
+
+          if (chevronIcon) {
+            chevronIcon.classList.add('expanded');
+          }
+          
+          if (expandedDescription) {
+            expandedDescription.classList.add('expanded');
+          }
+          
+          if (bgImage) {
+            bgImage.classList.add('expanded');
+          }
+
+          if (evenHeight) {
+            evenHeight.classList.add('expanded');
+          }
+          if (textBlock) {
+            textBlock.classList.add('expanded');
+          }
+        }
+      };
+    });
+    
+    // Collapse all cards when clicking outside
+    document.addEventListener('click', function() {
+      collapseAllCards();
+    });
+  });

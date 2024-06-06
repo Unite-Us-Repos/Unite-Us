@@ -541,8 +541,8 @@ body .map-wrap {
 }
 
 .acf-icon-white {
-  filter: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(5310%)
-    hue-rotate(306deg) brightness(112%) contrast(102%);
+  filter: brightness(0) saturate(100%) invert(35%) sepia(98%) saturate(380%) 
+  hue-rotate(162deg) brightness(95%) contrast(94%)
 }
 
 .acf-icon-violet {
@@ -1569,6 +1569,10 @@ select.gt_selector {
   top: 2rem;
   right: 2rem;
 }
+.chevron-icon {
+  top: 2rem;
+  right: 2rem;
+}
 
 .group:hover .group-hover\:bg-action-light {
   --tw-bg-opacity: 1;
@@ -1579,9 +1583,11 @@ select.gt_selector {
   --tw-bg-opacity: 1;
   background-color: rgb(40 116 175 / var(--tw-bg-opacity));
 }
+.group:hover .text-lg.w-full a {
+  color: #FFFFFF;
+}
 .group:hover .group-hover\:bg-action-light .service-icon {
-  filter: brightness(0) saturate(100%) invert(13%) sepia(97%) saturate(4307%) hue-rotate(174deg) brightness(92%) contrast(102%);
-
+  filter: none;
 }
 .hero-divider {
   margin-top: -1rem;
@@ -1598,8 +1604,53 @@ select.gt_selector {
     padding-top: 6rem;
     padding-bottom: 7rem;
   }
+  .even-height {
+    min-height: 23rem;
+  }
 }
 
 .d-block {
   display: block;
+}
+
+.expanded-link {
+  align-items: center;
+  text-decoration: none;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+.expanded-link:hover, .expanded-link:active {
+  color: #FFFFFF;
+}
+
+.service-card-squared {
+  min-height: 320px;
+}
+
+.expanded-description {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.chevron-icon {
+  transition: transform 0.3s ease;
+}
+
+.expanded.chevron-icon {
+  transform: rotate(180deg);
+}
+
+.expanded.expanded-description {
+  max-height: 500px; /* or any max height that will accommodate the expanded content */
+}
+
+img.expanded  {
+  opacity: 0.2; /* same as group-hover */
+}
+.even-height.expanded {
+      background-color: rgb(40 116 175 / var(--tw-bg-opacity));
+}
+.text-block.expanded {
+      color: #FFF
 }
