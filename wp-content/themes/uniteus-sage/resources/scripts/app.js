@@ -217,7 +217,6 @@ window.Components = {}, window.Components.listbox = function(e) {
       }
   }
 };
-
 document.addEventListener('DOMContentLoaded', function() {
     var cards = document.querySelectorAll('.service-icon-card.expandable');
 
@@ -296,4 +295,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function() {
       collapseAllCards();
     });
-  });
+});

@@ -44,7 +44,7 @@ $s_settings = [
         @foreach ($cards as $index => $card)
         <div class="sm:basis-6/12 @if ($columns) lg:basis-{{ $columns }} @else lg:basis-2/6 @endif">
         @if ($card["link"])
-        <a class="no-underline" href="{{ $card['link'] }}" alt="{{ strip_tags($card['title']) }}">
+        <a class="no-underline" href="{{ $card['link'] }}" alt="{{ strip_tags($card['title']) }}" aria-labelledby"{{ strip_tags($card['title']) }}">
         @endif
 
           <div

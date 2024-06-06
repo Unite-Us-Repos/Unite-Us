@@ -126,6 +126,7 @@
                   href="{{ $logo['link']}}"
                   class="@if ('ligh-gradient' == $background['color']) bg-[#FBFDFE] @else bg-{{ $background['color'] }} @endif"
                   target="_blank"
+                  aria-label="{{ $logo['image']['alt'] }}"
                 >
               @endif
               @if ($logo['image'])
@@ -134,7 +135,6 @@
                   class="object-contain w-48 h-10 mx-auto mix-blend-multiply @if ('default' == $style) max-h-12 @else max-h-16 @endif"
                   src="{{ $logo['image']['sizes']['medium'] }}"
                   alt="{{ $logo['image']['alt'] }}"
-                  aria-label="{{ $logo['image']['alt'] }}"
                 />
 
               @endif
