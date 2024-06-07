@@ -191,7 +191,7 @@ use Illuminate\Support\Str;
                           {!! $card['expanded_description'] !!}
                           <br/>
                           @if (!empty($card['text_link']))
-                          <a href="{{ $card['text_link']['url'] }}?source={{ $card_title_slug }}" class="flex expanded-link mt-4 get-in-touch" data-title-slug="{{ $card_title_slug }}">
+                          <a href="{{ $card['text_link']['url'] }}?Managed_Care_Form_Submission={{ $card_title_slug }}" class="flex expanded-link mt-4 get-in-touch" data-title-slug="{{ $card_title_slug }}">
                             {{ $card['text_link']['title'] }} &nbsp;<svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.375 1.20837L12.5 5.33337M12.5 5.33337L8.375 9.45838M12.5 5.33337L1.5 5.33337" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                           </a>
                         @endif

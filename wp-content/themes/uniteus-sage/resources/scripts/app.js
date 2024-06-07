@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     cards.forEach(function(card) {
       card.onclick = function(event) {
-        console.log('yes');
+        //console.log('yes');
         
         // Stop the event from propagating to the document click event
         event.stopPropagation();
