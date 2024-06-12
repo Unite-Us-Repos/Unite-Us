@@ -39,8 +39,7 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0,
-                    "selected": 0
+                    "no_preference": 0
                 },
                 {
                     "key": "field_65b2b19e8e407",
@@ -264,8 +263,7 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0,
-                    "selected": 0
+                    "no_preference": 0
                 },
                 {
                     "key": "field_65b40ae168798",
@@ -295,7 +293,7 @@
                     "display": "palette",
                     "color_picker": 1,
                     "absolute": 0,
-                    "input": 0,
+                    "input": 1,
                     "allow_null": 0,
                     "theme_colors": 1,
                     "colors": [],
@@ -362,8 +360,7 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0,
-                    "selected": 0
+                    "no_preference": 0
                 },
                 {
                     "key": "field_65b42eaf79fed",
@@ -427,5 +424,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1718158405
+    "modified": 1718220027
 }
