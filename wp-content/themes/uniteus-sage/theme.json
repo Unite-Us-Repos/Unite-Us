@@ -108,6 +108,11 @@
           "color": "#712f79"
         },
         {
+          "name": "Electric Purple",
+          "slug": "electri-purple",
+          "color": "#9643FF"
+        },
+        {
           "name": "Verde",
           "slug": "verde",
           "color": "#117e15"

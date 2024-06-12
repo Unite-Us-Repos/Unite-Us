@@ -27,7 +27,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
     <div class="text-center mb-6">
       @if ($section['subtitle'])
         @if ($section['subtitle_display_as_pill'])
-          <span class="@if ($background['color'] == 'dark') bg-brand text-action-light-blue @else text-action bg-light  mix-blend-multiply @endif text-sm py-1 px-4 inline-block mb-6 rounded-full">
+          <span class="@if ($background['color'] == 'dark') bg-white bg-opacity-10 text-action-light-blue @else text-action bg-light  mix-blend-multiply @endif text-sm py-1 px-4 inline-block mb-6 rounded-full">
         @else
           <span class="block text-base mb-8 font-semibold uppercase tracking-wider text-action">
         @endif
@@ -108,7 +108,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
               @endif
 
               <div class="relative pointer-events-none z-10 w-full p-5 pb-0">
-                <div class="hidden md:block absolute pointer-events-none inset-0 z-10 border-b-[15px] border-action-dark transition ease-in-out delay-250 group-hover:opacity-0 group-hover:z-0"></div>
+                <div class="hidden md:block absolute pointer-events-none inset-0 z-10 border-b-[15px] border-action transition ease-in-out delay-250 group-hover:opacity-0 group-hover:z-0"></div>
                 <div class="absolute pointer-events-none inset-0 bg-gradient-service md:opacity-0 group-hover:opacity-100"></div>
                 @if ($link)
                 <a class="no-underline" href="{{ $link }}" @if ($card['is_blank']) target="_blank" @endif>

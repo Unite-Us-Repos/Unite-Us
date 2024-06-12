@@ -488,6 +488,11 @@ body .map-wrap {
   @apply text-white bg-action;
 }
 
+.button-solid_purple {
+  @apply text-white bg-electric-purple border-electric-purple hover:text-white;
+
+}
+
 .button-solid-white {
   @apply text-action bg-white border-white hover:text-white drop-shadow-sm;
 }
@@ -541,8 +546,8 @@ body .map-wrap {
 }
 
 .acf-icon-white {
-  filter: brightness(0) saturate(100%) invert(35%) sepia(98%) saturate(380%) 
-  hue-rotate(162deg) brightness(95%) contrast(94%)
+  /* filter: brightness(0) saturate(100%) invert(35%) sepia(98%) saturate(380%) 
+  hue-rotate(162deg) brightness(95%) contrast(94%) */
 }
 
 .acf-icon-violet {
@@ -1265,11 +1270,11 @@ ul.list-box {
 }
 
 .bg-gradient-service {
-  background: rgb(16, 88, 144);
+  background: rgb(33, 108, 255);
   background: linear-gradient(
     180deg,
     rgba(16, 88, 144, 0) 0%,
-    rgba(40, 116, 175, 1) 100%
+    rgba(33, 108, 255, 1) 100%
   );
   transition: all 0.25s linear;
 }

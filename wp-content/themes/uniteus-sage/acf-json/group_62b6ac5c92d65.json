@@ -6,7 +6,8 @@
             "key": "field_62b6ac6532837",
             "label": "Icon",
             "name": "icon",
-            "type": "icon-picker",
+            "aria-label": "",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -15,7 +16,11 @@
                 "class": "",
                 "id": ""
             },
-            "initial_value": ""
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -36,12 +41,12 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "acfe_display_title": "",
     "acfe_autosync": [
         "json"
     ],
     "acfe_form": 0,
+    "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1663875457
+    "modified": 1718163343
 }

@@ -176,7 +176,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
               <div class="absolute inset-0 z-0  @if ($blog_card_style == 'light') bg-light @else bg-brand @endif"></div>
                     <div
                       @click.prevent="window.location.href='{{ get_permalink($card->ID) }}'"
-                      class="relative z-10 flex flex-col group sm:grid sm:grid-cols-12 rounded-xl overflow-hidden border-b border-action cursor-pointer" style="border-bottom-width: 12px;">
+                      class="relative z-10 flex flex-col group sm:grid sm:grid-cols-12 rounded-xl overflow-hidden border-b border-electric-purple cursor-pointer" style="border-bottom-width: 12px;">
                       <div class="relative sm:col-span-4">
                         @if ($thumb)
                           <img class="h-full w-auto object-cover lazy" data-src="{{ $thumb }}" alt="" />
