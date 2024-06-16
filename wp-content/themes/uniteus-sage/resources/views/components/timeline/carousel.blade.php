@@ -14,7 +14,7 @@
 .date-tab.swiper-pagination-bullet-active {
   color: #105890;
   font-weight: 800;
-  border-bottom: solid 3px #216CFF;
+  border-bottom: solid 3px #2874AF;
   position:relative;
 }
 .date-tab.swiper-pagination-bullet-active::after {
@@ -24,7 +24,7 @@
   height: 0;
   border-style: solid;
   border-width: 0 12px 10px 12px;
-  border-color: transparent transparent #216CFF transparent;
+  border-color: transparent transparent #2874af transparent;
   bottom: 0;
   left: 50%;
   margin-left: -12px;

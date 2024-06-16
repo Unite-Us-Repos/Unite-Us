@@ -4,11 +4,11 @@
   line-height: 24px;
   font-size: 1rem;
   font-weight: 500;
-  border: solid 1px #216CFF;
+  border: solid 1px #2874af;
   border-radius: 6px;
   margin-bottom: 24px;
   text-decoration: none;
-  color: #216CFF;
+  color: #2874af;
 }
 .doc-button.download {
   padding-right: 26px;
@@ -27,18 +27,18 @@
   line-height: 1.5rem;
   padding: 0.75rem 1.25rem;
   text-decoration-line: none;
-  border:solid 1px #216CFF;
+  border:solid 1px #2874af;
 }
 
 .button-solid {
   color: #fff;
-  background: #216CFF;
+  background: #2874af;
 }
 
 .button-hollow {
-  color: #216CFF;
+  color: #2874af;
   background: transparent;
-  border-color: #216CFF;
+  border-color: #2874af;
 }
 /* Ordered Numbered Circles */
 ol {
@@ -59,7 +59,7 @@ ol.ol-circles li::before{
   color:#FFF;
   font-weight:400;
   font-size: 1.5rem;
-  border:solid 4px #216CFF;
+  border:solid 4px #2874AF;
   counter-increment: list-number-inner;
   content: counter(list-number-inner);
   width:56px;
