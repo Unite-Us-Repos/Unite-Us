@@ -210,7 +210,7 @@ use Illuminate\Support\Str;
               <div class="bg-white text-brand 
               @if ($background['color'] != 'light-gradient') shadow-lg @endif
               @if ($card['bg_image']) group-hover:bg-{{ $icon_color_class }} @else group-hover:bg-{{ $icon_color_class }} @endif 
-              group-hover:text-white transition-all hover:shadow-lg border border-light group-hover:border-action relative flex items-start rounded-lg overflow-hidden group h-full">
+              group-hover:text-white transition-all hover:shadow-lg border border-light group-hover:border-{{ $icon_color_class }} relative flex items-start rounded-lg overflow-hidden group h-full">
     
                 @if ($card['bg_image'])
                   <div style="z-index: 1;" class="absolute inset-0">

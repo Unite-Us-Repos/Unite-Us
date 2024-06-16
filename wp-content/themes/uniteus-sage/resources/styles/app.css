@@ -480,6 +480,9 @@ body .map-wrap {
   @apply w-full sm:w-auto inline-flex justify-center no-underline px-5 py-3 border border-action text-base font-medium rounded-md;
 }
 
+.button:hover {
+  opacity: 0.9;
+}
 .button.share {
   @apply py-2;
 }
@@ -515,6 +518,7 @@ body .map-wrap {
 .button-solid:hover {
   @apply text-white bg-action-dark border-action-dark no-underline;
 }
+
 .bg-light-gradient .button-hollow,
 .bg-light .button-hollow {
   @apply text-action border-action;
@@ -730,9 +734,9 @@ body .map-wrap {
 }
 .wp-pagenavi .current {
   padding: 1rem;
-  border-top: 2px solid #216CFF;
+  border-top: 2px solid #2874af;
   margin-top: -1.5px;
-  color: #216CFF;
+  color: #2874af;
   @apply hidden sm:inline-block;
 }
 .wp-pagenavi .extend {
@@ -996,7 +1000,7 @@ ol.ol-circles li::before {
   color: #fff;
   font-weight: 400;
   font-size: 1.5rem;
-  border: solid 4px #216CFF;
+  border: solid 4px #2874af;
   counter-increment: list-number-inner;
   content: counter(list-number-inner);
   width: 56px;
@@ -1028,7 +1032,7 @@ ol.ol-circles-sm li::before {
   background: #e3ebf3;
   border: 4px solid #e3ebf3;
   border-radius: 50%;
-  color: #216CFF;
+  color: #2874af;
   content: counter(list-number-inner);
   counter-increment: list-number-inner;
   display: inline-flex;
@@ -1422,7 +1426,7 @@ img.alignleft {
 }
 /* addtoany social share */
 .a2a_button_linkedin {
-  background: #216CFF;
+  background: #2874af;
   border-radius: 2px;
 }
 .a2a_button_linkedin:hover {
@@ -1503,7 +1507,7 @@ select.gt_selector {
 }
 
 .ajax-filters.search-filters input[type="submit"] {
-  background: #216CFF;
+  background: #2874af;
   color: white;
   padding: 22px 48px;
 

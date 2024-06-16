@@ -195,6 +195,7 @@ module.exports = {
       'light-gray': '#F9FAFB',
       purple: '#825EB8',
       'electric-purple': '#9643FF',
+      'electric-purple-dark': '#823cd9',
       morado: '#712F79',
       violet: '#9D53FC',
       orchid: '#AA67FF',
