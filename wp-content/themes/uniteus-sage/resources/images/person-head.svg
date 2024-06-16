@@ -5,12 +5,12 @@
   <path d="M24.9649 28.2784H12.0369C11.6457 28.2784 11.3301 27.9627 11.3301 27.5716V22.178C11.3301 19.9684 13.1279 18.1706 15.3375 18.1706H21.678C23.8876 18.1706 25.6854 19.9684 25.6854 22.178V27.5716C25.6786 27.9627 25.356 28.2784 24.9649 28.2784Z" fill="white"/>
   <defs>
   <linearGradient id="paint0_linear_10977_43740" x1="-0.40719" y1="314.266" x2="37" y2="314.266" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#2874AF"/>
+  <stop stop-color="#216CFF"/>
   <stop offset="0.515625" stop-color="#82C9BD"/>
   <stop offset="1" stop-color="#F07012"/>
   </linearGradient>
   <linearGradient id="paint1_linear_10977_43740" x1="2.36341" y1="270.932" x2="34.2899" y2="270.932" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#2874AF"/>
+  <stop stop-color="#216CFF"/>
   <stop offset="0.515625" stop-color="#82C9BD"/>
   <stop offset="1" stop-color="#F07012"/>
   </linearGradient>

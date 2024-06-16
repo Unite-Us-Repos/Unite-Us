@@ -494,7 +494,7 @@ body .map-wrap {
 }
 
 .button-solid-white {
-  @apply text-action bg-white border-white hover:text-white drop-shadow-sm;
+  @apply text-blue-600 bg-white border-white hover:text-white drop-shadow-sm;
 }
 
 .button-solid-redish {
@@ -541,8 +541,7 @@ body .map-wrap {
 }
 
 .acf-icon-action {
-  filter: brightness(0) saturate(100%) invert(35%) sepia(98%) saturate(380%)
-    hue-rotate(162deg) brightness(95%) contrast(94%);
+  filter: brightness(0) saturate(100%) invert(30%) sepia(100%) saturate(2600%) hue-rotate(199deg) brightness(95%) contrast(105%);
 }
 
 .acf-icon-white {
@@ -555,11 +554,11 @@ body .map-wrap {
     hue-rotate(241deg) brightness(95%) contrast(108%);
 }
 
-.button-hollow:hover .acf-icon-action,
-.service-icon-card:hover .service-icon {
+.button-hollow:hover .acf-icon-action {
   filter: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(5310%)
     hue-rotate(306deg) brightness(112%) contrast(102%);
 }
+
 
 /* Backgrounds */
 .products-gradient {
@@ -731,9 +730,9 @@ body .map-wrap {
 }
 .wp-pagenavi .current {
   padding: 1rem;
-  border-top: 2px solid #2874af;
+  border-top: 2px solid #216CFF;
   margin-top: -1.5px;
-  color: #2874af;
+  color: #216CFF;
   @apply hidden sm:inline-block;
 }
 .wp-pagenavi .extend {
@@ -997,7 +996,7 @@ ol.ol-circles li::before {
   color: #fff;
   font-weight: 400;
   font-size: 1.5rem;
-  border: solid 4px #2874af;
+  border: solid 4px #216CFF;
   counter-increment: list-number-inner;
   content: counter(list-number-inner);
   width: 56px;
@@ -1029,7 +1028,7 @@ ol.ol-circles-sm li::before {
   background: #e3ebf3;
   border: 4px solid #e3ebf3;
   border-radius: 50%;
-  color: #2874af;
+  color: #216CFF;
   content: counter(list-number-inner);
   counter-increment: list-number-inner;
   display: inline-flex;
@@ -1423,7 +1422,7 @@ img.alignleft {
 }
 /* addtoany social share */
 .a2a_button_linkedin {
-  background: #2874af;
+  background: #216CFF;
   border-radius: 2px;
 }
 .a2a_button_linkedin:hover {
@@ -1504,7 +1503,7 @@ select.gt_selector {
 }
 
 .ajax-filters.search-filters input[type="submit"] {
-  background: #2874af;
+  background: #216CFF;
   color: white;
   padding: 22px 48px;
 
@@ -1658,4 +1657,18 @@ img.expanded  {
 }
 .text-block.expanded {
       color: #FFF
+}
+
+.bg-electric-purple-overlay {
+  background-image: url("../images/electric-purple-overlay.png");
+  background-position: top left;
+  background-size: cover;
+}
+
+.max-width-10 {
+  max-width: 10rem;
+}
+
+.text-center {
+  text-align: center;
 }

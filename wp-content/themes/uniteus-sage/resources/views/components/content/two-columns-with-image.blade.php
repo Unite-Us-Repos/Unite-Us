@@ -34,14 +34,15 @@ $image_overaly = @asset('/images/network-mask-1.png');
 
       <div class="flex flex-col items-start @if ('accordion' == $type) lg:col-span-4 @else lg:col-span-{{ $columns[0] }} @endif @if ('center' == $vertical_alignment) justify-center @endif @if (('image' == $type) OR ('embed' == $type)) order-2 @endif text-lg @if ('image' == $type) @if ('text_image' == $layout) lg:order-1 @else lg:order-2 @endif @endif">
         @if ($section['subtitle'])
-          @if ($section['subtitle_display_as_pill'])
-          <div class="text-electric-purple bg-light mix-blend-multiply text-sm py-1 px-4 inline-block mb-6 rounded-full">
-          @else
-          <div class="subtitle mb-6">
-          @endif
-            {{ $section['subtitle'] }}
-          </div>
+        @if ($section['subtitle_display_as_pill'])
+        <div class="@if($section['purple_text']) text-electric-purple @else text-action @endif bg-light mix-blend-multiply text-sm py-1 px-4 inline-block mb-6 rounded-full">
+        @else
+        <div class="subtitle mb-6">
         @endif
+        {{ $section['subtitle'] }}
+        </div>
+        @endif
+
         @isset ($section['logo']['sizes'])
           <img class="mb-6 max-w-[224px] h-auto" src="{{ $section['logo']['sizes']['medium'] }}" alt="{{ $section['logo']['alt'] }}" />
         @endisset
@@ -185,7 +186,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
                       </div>
                       <div class="sm:col-span-8 p-6">
                         @if ($category)
-                          <span class="mb-6 inline-block px-3 py-0.5 bg-action text-white rounded-xl text-sm">{{ $category }}</span>
+                          <span class="mb-6 inline-block px-3 py-0.5 bg-electric-purple text-white rounded-xl text-sm">{{ $category }}</span>
                         @endif
                         <h3 class="@if ($blog_card_style == 'light') text-brand @else text-white @endif mb-3 font-semibold">{!! $card->post_title !!}</h3>
 
@@ -196,7 +197,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
                         @endif
 
                         @if ($blog_card_content == 'title_more')
-                        <a class="card-link @if ($blog_card_style == 'light') text-action group-hover:text-action-light @else text-action-light-blue group-hover:text-action @endif font-semibold no-underline flex flex-row items-center gap-3" href="{{ get_permalink($card->ID) }}">
+                        <a class="card-link @if ($blog_card_style == 'light') text-electric-purple group-hover:text-action-light @else text-action-light-blue group-hover:text-action @endif font-semibold no-underline flex flex-row items-center gap-3" href="{{ get_permalink($card->ID) }}">
                             <span>Learn More</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11" fill="none">
                               <path d="M8.66016 1.09241L12.7852 5.21741M12.7852 5.21741L8.66016 9.34241M12.7852 5.21741L1.78516 5.21741" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

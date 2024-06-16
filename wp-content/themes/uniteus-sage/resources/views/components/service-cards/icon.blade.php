@@ -20,7 +20,7 @@ use Illuminate\Support\Str;
       <div class="text-center mb-7">
         @if ($section['subtitle'])
           @if ($section['subtitle_display_as_pill'])
-            <span class="@if ($background['color'] == 'dark') bg-brand text-action-light-blue @else text-action @if ($background['color'] == 'light-gradient') bg-white @else bg-light mix-blend-multiply @endif @endif text-sm py-1 px-4 inline-block mb-6 rounded-full">
+            <span class="@if ($background['color'] == 'dark') bg-brand text-action-light-blue @else @if($section['purple_text']) text-electric-purple @else text-action @endif @if ($background['color'] == 'light-gradient') bg-white @else bg-light mix-blend-multiply @endif @endif text-sm py-1 px-4 inline-block mb-6 rounded-full">
           @else
             <span class="block text-base mb-8 font-semibold uppercase tracking-wider text-action">
           @endif
@@ -105,15 +105,14 @@ use Illuminate\Support\Str;
         <div class="relative sm:basis-6/12 p-3 @if ($columns) lg:basis-{{ $columns }} @else lg:basis-2/6 @endif">
           
           @if (($background['color'] == 'dark') && $loop->first)
-          <div class="absolute h-1/2 bg-dark bottom-0 left-0 right-0 -ml-12 -mr-12 lg:hidden"></div>
+            <div class="absolute h-1/2 bg-dark bottom-0 left-0 right-0 -ml-12 -mr-12 lg:hidden"></div>
           @endif
           @if ((($section['id'] != 'service-cards-privacy') && $loop->last) && ($section['id'] != 'care-coordination-care-team') )
-          <div class="absolute h-1/2 left-0 right-0 bottom-0 bg-white lg:hidden" style="margin: 0 -300px -1px;"></div>
+            <div class="absolute h-1/2 left-0 right-0 bottom-0 bg-white lg:hidden" style="margin: 0 -300px -1px;"></div>
           @endif
           @if ($section['id'] == 'care-coordination-care-team')
             <div class="absolute h-1/2 left-0 right-0 bottom-0 bg-white hidden" style="margin: 0 -300px -1px;"></div>
           @endif
-
           @if (!empty($card['expandable_tile']))
             
             <div class="service-icon-card group expandable" data-card-id="card-{{ $index }}">
@@ -167,11 +166,11 @@ use Illuminate\Support\Str;
                       @if (!empty($card["icon"]))
                       <span class="mb-5 bg-light 
                         @if ($icon_color_class == 'violet') 
-                          group-hover:bg-orchid 
+                          group-hover:bg-electric-purple 
                         @elseif ($icon_color_class == 'white') 
-                          group-hover:bg-action-light 
+                          group-hover:bg-white
                         @else 
-                          group-hover:bg-action-dark 
+                          group-hover:bg-action-dark-blue
                         @endif 
                         w-10 h-10 p-2 flex justify-center items-center rounded-full">
                           <img class="lazy h-full w-full acf-icon-{{ $icon_color_class }} service-icon" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
@@ -211,7 +210,7 @@ use Illuminate\Support\Str;
               <div class="bg-white text-brand 
               @if ($background['color'] != 'light-gradient') shadow-lg @endif
               @if ($card['bg_image']) group-hover:bg-{{ $icon_color_class }} @else group-hover:bg-{{ $icon_color_class }} @endif 
-              group-hover:text-white transition-all hover:shadow-lg border border-light relative flex items-start rounded-lg overflow-hidden group h-full">
+              group-hover:text-white transition-all hover:shadow-lg border border-light group-hover:border-action relative flex items-start rounded-lg overflow-hidden group h-full">
     
                 @if ($card['bg_image'])
                   <div style="z-index: 1;" class="absolute inset-0">
@@ -259,14 +258,7 @@ use Illuminate\Support\Str;
                     @isset ($card["icon"])
                       @if (!empty($card["icon"]))
                       <span class="mb-5 bg-light 
-                        @if ($icon_color_class == 'violet') 
-                          group-hover:bg-orchid 
-                        @elseif ($icon_color_class == 'white') 
-                          group-hover:bg-action-light 
-                        @else 
-                          group-hover:bg-action-dark 
-                        @endif 
-                        w-10 h-10 p-2 flex justify-center items-center rounded-full">
+                         group-hover:bg-white w-10 h-10 p-2 flex justify-center items-center rounded-full">
                           <img class="lazy h-full w-full acf-icon-{{ $icon_color_class }} service-icon" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
                       </span>
                       @endif

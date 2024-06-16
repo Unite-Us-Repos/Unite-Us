@@ -24,7 +24,7 @@ $manual = false;
     <div class="component-inner-section relative @if ($posts) pb-14 @endif">
       <div class="absolute flex-col justify-center z-20 left-12 mb-16 -bottom-72 lg:-bottom-56 xl:left-12 hidden md:flex">
         <svg width="28" height="146" viewBox="0 0 28 146" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M25.9512 132.309L13.9756 144.285M13.9756 144.285L1.99995 132.309M13.9756 144.285L13.9756 1.57643" stroke="#2874AF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M25.9512 132.309L13.9756 144.285M13.9756 144.285L1.99995 132.309M13.9756 144.285L13.9756 1.57643" stroke="#216CFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <div class="flex flex-col items-center lg:flex-none lg:grid lg:grid-cols-2">

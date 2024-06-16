@@ -142,7 +142,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
         @endphp
         <div class="swiper-slide" style="height: auto;">
           <div class="service-icon-cards h-full group">
-            <div class="bg-white @if ($background['color'] != 'light-gradient') shadow-lg @endif text-brand @if ($card['bg_image']) group-hover:bg-action-dark @else group-hover:bg-action @endif group-hover:text-white transition-all hover:shadow-lg relative flex items-start rounded-lg overflow-hidden group h-full">
+            <div class="bg-white @if ($background['color'] != 'light-gradient') shadow-lg @endif text-brand @if ($card['bg_image']) group-hover:bg-action-dark @else group-hover:bg-electric-purple @endif group-hover:text-white transition-all hover:shadow-lg relative flex items-start rounded-lg overflow-hidden group h-full">
 
               @if ($card['bg_image'])
                 <div style="z-index: 1;" class="absolute inset-0">
@@ -176,8 +176,16 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                 <div class="relative">
                   @isset ($card["icon"])
                     @if (!empty($card["icon"]))
-                      <span class="mb-5 block bg-light group-hover:bg-action-dark w-10 h-10 p-2 flex justify-center items-center rounded-full">
-                        <img class="lazy h-full w-full acf-icon-action service-icon" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
+                      <span class="mb-5 block bg-light
+                       @if ($icon_color_class == 'violet') 
+                          group-hover:bg-white 
+                        @elseif ($icon_color_class == 'white') 
+                          group-hover:bg-white
+                        @else 
+                          group-hover:bg-action
+                        @endif 
+                      w-10 h-10 p-2 flex justify-center items-center rounded-full">
+                        <img class="lazy h-full w-full acf-icon-{{ $icon_color_class}} service-icon" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
                       </span>
                     @endif
                   @endisset

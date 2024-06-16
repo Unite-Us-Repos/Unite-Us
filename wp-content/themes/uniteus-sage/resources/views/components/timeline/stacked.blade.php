@@ -244,7 +244,7 @@
       margin-left: -4px;
       margin-bottom: -16px;
       border-radius: 50%;
-      background: #2874AF;
+      background: #0B1538;
     }
   }
 

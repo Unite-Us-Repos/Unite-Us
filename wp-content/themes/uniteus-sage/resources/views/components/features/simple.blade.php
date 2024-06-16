@@ -4,7 +4,7 @@ $columns = $columns['value'];
 @endphp
 <style>
 .text-action.svg path {
-  fill: #2874AF !important;
+  fill: #216CFF !important;
 }
 .text-action.svg svg {
   width: 24px !important;

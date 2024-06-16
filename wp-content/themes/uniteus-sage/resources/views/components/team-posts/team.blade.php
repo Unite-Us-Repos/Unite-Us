@@ -55,8 +55,8 @@ $bg_color = isset($acf['components'][$index]['posts']['background']['color']) ? 
               @endif
               <div class="text-center mt-6">
                 <div class="mb-0">
-                  <h3 class="font-bold text-brand text-lg sm:text-xl mb-0">{{ $full_name }}</h3>
-                  <p class="text-action text-sm sm:text-base">{{ $member['position'] }}</p>
+                  <h3 class="font-bold text-blue-600 text-lg sm:text-xl mb-0">{{ $full_name }}</h3>
+                  <p class="text-gray-500 max-width-10 mx-auto text-sm sm:text-base">{{ $member['position'] }}</p>
                 </div>
               </div>
             </div>

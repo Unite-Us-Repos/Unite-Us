@@ -53,7 +53,7 @@ $columns = $columns['label'];
                             class="h-8 w-8"
                             src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg?v=2"
                             alt=""
-                            style="filter: invert(0.4) sepia(1) saturate(20) hue-rotate(176.4deg) brightness(0.70);"
+                            style="filter: invert(43%) sepia(71%) saturate(4510%) hue-rotate(205deg) brightness(104%) contrast(105%);"
                             />
                         </span>
                       @endif

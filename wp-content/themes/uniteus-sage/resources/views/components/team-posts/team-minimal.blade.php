@@ -48,10 +48,10 @@ $clickable = false;
           @endif
             <div>
               <div class="flex mt-6 gap-3 items-start max-w-xs">
-                <img src="/wp-content/themes/uniteus-sage/resources/images/user-circle.svg" alt="">
+                <img src="/wp-content/themes/uniteus-sage/resources/images/person-icon.svg" alt="">
                 <div class="mb-0">
-                  <h3 class="font-medium text-brand text-lg leading-[1.5] mb-1.5">{{ $full_name }}</h3>
-                  <p class="text-action font-medium leading-[1.5] text-lg">{{ $member['position'] }}</p>
+                  <h3 class="font-medium text-gray-900 text-lg leading-[1.5] mb-1.5">{{ $full_name }}</h3>
+                  <p class="text-gray-500 font-medium leading-[1.5] text-lg">{{ $member['position'] }}</p>
                 </div>
               </div>
             </div>

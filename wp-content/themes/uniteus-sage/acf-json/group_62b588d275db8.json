@@ -145,7 +145,7 @@
                         "7_5": "\/wp-content\/uploads\/2023\/12\/7_5.png"
                     },
                     "default_value": "6_6",
-                    "image_size": "medium",
+                    "image_size": "thumbnail",
                     "width": "",
                     "height": "",
                     "border": 4,
@@ -153,7 +153,7 @@
                     "allow_null": 0,
                     "multiple": 0,
                     "max": "",
-                    "layout": "vertical",
+                    "layout": "horizontal",
                     "min": ""
                 },
                 {
@@ -1752,5 +1752,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1717187152
+    "modified": 1718504858
 }
