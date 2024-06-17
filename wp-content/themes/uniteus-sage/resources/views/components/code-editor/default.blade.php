@@ -29,7 +29,7 @@ svg#us-map path.tippy-active {
   stroke: #fff;
   stroke-width: 2px;
   stroke-linejoin: round;
-  fill: #3B8BCA;
+  fill: #226cff;
   cursor: pointer;
   outline: none !important;
 }
