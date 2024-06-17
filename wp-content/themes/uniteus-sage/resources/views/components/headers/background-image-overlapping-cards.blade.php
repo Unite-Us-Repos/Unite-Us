@@ -34,7 +34,7 @@ $small_font = $section['small_font'] ?? false;
   </div>
 
   @if ($background['overlay'])
-    <div class="absolute inset-0 opacity-75 bg-electric-purple-overlay"></div>
+    <div class="absolute inset-0 bg-brand opacity-75 bg-electric-purple-overlay"></div>
   @endif
 
   <div class="relative w-full">
