@@ -6,6 +6,7 @@
             "key": "field_634992b3724df",
             "label": "Presenter Posts",
             "name": "presenter_posts",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -15,15 +16,18 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_field_group_condition": 0,
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_634992b373f91",
                     "label": "General",
                     "name": "",
+                    "aria-label": "",
                     "type": "tab",
                     "instructions": "",
                     "required": 0,
@@ -41,6 +45,7 @@
                     "key": "field_634992b373f9a",
                     "label": "Info",
                     "name": "info",
+                    "aria-label": "",
                     "type": "clone",
                     "instructions": "",
                     "required": 0,
@@ -67,6 +72,7 @@
                     "key": "field_634992b373fa1",
                     "label": "Presenters",
                     "name": "",
+                    "aria-label": "",
                     "type": "tab",
                     "instructions": "",
                     "required": 0,
@@ -78,13 +84,13 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0,
-                    "acfe_field_group_condition": 0
+                    "no_preference": 0
                 },
                 {
                     "key": "field_634992b373fb6",
                     "label": "Display Style",
                     "name": "style",
+                    "aria-label": "",
                     "type": "acfe_image_selector",
                     "instructions": "",
                     "required": 0,
@@ -108,12 +114,13 @@
                     "multiple": 0,
                     "max": "",
                     "layout": "horizontal",
-                    "acfe_field_group_condition": 0
+                    "min": ""
                 },
                 {
                     "key": "field_634992b373fc3",
-                    "label": "Team Member Selection",
+                    "label": "Presenter Selection",
                     "name": "selection",
+                    "aria-label": "",
                     "type": "radio",
                     "instructions": "",
                     "required": 0,
@@ -127,18 +134,18 @@
                         "manual": "Manual",
                         "by_category": "By Category"
                     },
+                    "default_value": "",
+                    "return_format": "value",
                     "allow_null": 0,
                     "other_choice": 0,
-                    "default_value": "",
                     "layout": "vertical",
-                    "return_format": "value",
-                    "acfe_field_group_condition": 0,
                     "save_other_choice": 0
                 },
                 {
                     "key": "field_634992b373fc9",
-                    "label": "Team Category",
+                    "label": "Presenter Category",
                     "name": "category",
+                    "aria-label": "",
                     "type": "acfe_taxonomy_terms",
                     "instructions": "Only members in these categories will show.",
                     "required": 0,
@@ -159,7 +166,9 @@
                     "taxonomy": [
                         "presenter_category"
                     ],
-                    "allow_terms": "",
+                    "allow_terms": [
+                        "all_presenter_category"
+                    ],
                     "allow_level": "",
                     "field_type": "checkbox",
                     "min": "",
@@ -170,7 +179,6 @@
                     "toggle": 0,
                     "save_terms": 0,
                     "load_terms": 0,
-                    "acfe_field_group_condition": 0,
                     "choices": [],
                     "ui": 0,
                     "multiple": 0,
@@ -183,8 +191,9 @@
                 },
                 {
                     "key": "field_634992b373fd0",
-                    "label": "Team Members",
+                    "label": "Presenters",
                     "name": "posts",
+                    "aria-label": "",
                     "type": "relationship",
                     "instructions": "Select team members by clicking on each name. You may quickly search for a member by typing in their name. Or filter members by category (taxonomy).",
                     "required": 0,
@@ -205,28 +214,31 @@
                     "post_type": [
                         "presenter"
                     ],
+                    "post_status": "",
                     "taxonomy": "",
                     "filters": [
                         "search",
                         "taxonomy"
                     ],
-                    "elements": [
-                        "featured_image"
-                    ],
-                    "min": "",
-                    "max": "",
                     "return_format": "id",
                     "acfe_add_post": 0,
                     "acfe_edit_post": 0,
                     "acfe_bidirectional": {
                         "acfe_bidirectional_enabled": "0"
                     },
-                    "acfe_field_group_condition": 0
+                    "min": "",
+                    "max": "",
+                    "elements": [
+                        "featured_image"
+                    ],
+                    "bidirectional": 0,
+                    "bidirectional_target": []
                 },
                 {
                     "key": "field_634992b373fd9",
                     "label": "Background",
                     "name": "",
+                    "aria-label": "",
                     "type": "tab",
                     "instructions": "",
                     "required": 0,
@@ -244,6 +256,7 @@
                     "key": "field_634992b373fe0",
                     "label": "Background",
                     "name": "background",
+                    "aria-label": "",
                     "type": "clone",
                     "instructions": "",
                     "required": 0,
@@ -266,10 +279,7 @@
                     "acfe_clone_modal_button": "",
                     "acfe_clone_modal_size": "large"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         }
     ],
     "location": [
@@ -297,5 +307,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1665766414
+    "modified": 1718686717
 }
