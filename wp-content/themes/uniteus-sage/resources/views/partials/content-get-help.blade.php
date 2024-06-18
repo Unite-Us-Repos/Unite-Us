@@ -32,7 +32,7 @@ $states = array_merge($states);
     window.location=link;
   }
 </script>
-<section class="component-section bg-brand" style="background: linear-gradient(180deg, #182A44 0%, #2C405A 100%), linear-gradient(0deg, rgba(24, 42, 68, 0.75) 0%, rgba(24, 42, 68, 0.75) 100%), lightgray 50% / cover no-repeat;">
+<section class="component-section bg-brand" style="background: linear-gradient(180deg, #0b1538 0%, #2C405A 100%), linear-gradient(0deg, rgba(24, 42, 68, 0.75) 0%, rgba(24, 42, 68, 0.75) 100%), lightgray 50% / cover no-repeat;">
   <div class="component-inner-section py-14 lg:py-40">
       <h1 class="mb-3 text-center text-white">
         Get Help
