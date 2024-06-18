@@ -461,6 +461,32 @@ function register_cpt_presenter()
         'rewrite' => array( 'slug' => 'presenter-category' ),
         )
     );
+    $labels = array(
+        'name' => _x('Presenters Groups', 'taxonomy general name'),
+        'singular_name' => _x('Group', 'taxonomy singular name'),
+        'search_items' =>  __('Search Groups'),
+        'all_items' => __('All Groups'),
+        'parent_item' => __('Parent Group'),
+        'parent_item_colon' => __('Parent Group:'),
+        'edit_item' => __('Edit Group'),
+        'update_item' => __('Update Group'),
+        'add_new_item' => __('Add New Group'),
+        'new_item_name' => __('New Group'),
+        'menu_name' => __('Groups'),
+      );
+
+    // Now register the taxonomy
+    register_taxonomy(
+        'presenter_groups', array('presenter'), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_in_rest' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => array( 'slug' => 'group' ),
+        )
+    );
 }
 
 add_action( 'init', 'cameronjonesweb_unregister_tags' );
