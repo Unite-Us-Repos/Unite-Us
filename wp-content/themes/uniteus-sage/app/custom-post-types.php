@@ -431,7 +431,8 @@ function register_cpt_presenter()
             'show_in_rest'  => false,
             'taxonomies'    => array(''),
             'menu_icon'     => 'dashicons-groups',
-            'has_archive'   => false
+            'has_archive'   => false,
+            'exclude_from_search'   => true
         )
     );
 
@@ -540,3 +541,20 @@ function getGhExcerpt($str, $title="", $startPos=0, $maxLength=150) {
 
       return $excerpt;
   }
+
+  function add_category_taxonomy_to_pages() {
+    register_taxonomy_for_object_type('category', 'page');
+}
+add_action('init', 'add_category_taxonomy_to_pages');
+
+function add_category_metabox_to_pages() {
+    add_meta_box('categorydiv', __('Categories'), 'post_categories_meta_box', 'page', 'side', 'default', array('taxonomy' => 'category'));
+}
+add_action('add_meta_boxes', 'add_category_metabox_to_pages');
+
+if (has_term('', 'category')) {
+    echo '<div class="page-categories">';
+    echo '<h2>Categories:</h2>';
+    echo get_the_term_list(get_the_ID(), 'category', '<ul><li>', '</li><li>', '</li></ul>');
+    echo '</div>';
+}
