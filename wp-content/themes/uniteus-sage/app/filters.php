@@ -1121,11 +1121,31 @@ add_filter('script_loader_tag',
     }, 10
 );
 
+// add_filter(
+//     'oembed_fetch_url',
+//     function ($provider, $url, $args) {
+//         if (!strstr($url, 'vimeo.com')) {
+//             return $html;
+//         }
+
+//         if (strpos($url, 'background')) {
+//             $provider = add_query_arg('background', 1, $provider);
+//         }
+//         /*
+//         $provider = add_query_arg('title', 0, $provider);
+//         $provider = add_query_arg('byline', 0, $provider);
+//         $provider = add_query_arg('badge', 0, $provider);
+//         $provider = add_query_arg('controls', 1, $provider);
+//         */
+
+//         return $provider;
+//     }, 10, 3
+// );
 add_filter(
     'oembed_fetch_url',
     function ($provider, $url, $args) {
         if (!strstr($url, 'vimeo.com')) {
-            return $html;
+            return $provider;
         }
 
         if (strpos($url, 'background')) {
