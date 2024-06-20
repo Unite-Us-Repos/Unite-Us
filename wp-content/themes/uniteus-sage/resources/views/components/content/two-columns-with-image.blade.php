@@ -250,7 +250,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
           @endif
         @else
           @isset ($featured_image['sizes'])
-            <img class="lazy mb-6 lg:mb-0 rounded-lg w-full @if ($set_max_width_height) h-full object-contain max-w-lg mx-auto @else max-w-md mx-auto lg:max-w-3xl @endif" data-src="@if (strpos($featured_image['url'], '.gif')) {{ $featured_image['url'] }} @else {{ $featured_image['sizes']['medium_large'] }} @endif" alt="{{ $featured_image['alt'] }}" />
+            <img class="lazy mb-6 lg:mb-0 rounded-lg w-full max-h-[400px] @if ($set_max_width_height) h-full object-contain max-w-lg mx-auto @else max-w-md mx-auto lg:max-w-3xl @endif" data-src="@if (strpos($featured_image['url'], '.gif')) {{ $featured_image['url'] }} @else {{ $featured_image['sizes']['medium_large'] }} @endif" alt="{{ $featured_image['alt'] }}" />
           @endisset
         @endif
       @endif
