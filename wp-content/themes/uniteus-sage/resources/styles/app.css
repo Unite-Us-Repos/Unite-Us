@@ -541,8 +541,7 @@ body .map-wrap {
 }
 
 .acf-icon-white {
-  filter: brightness(0) saturate(100%) invert(35%) sepia(98%) saturate(380%) 
-  hue-rotate(162deg) brightness(95%) contrast(94%)
+  filter: brightness(0) invert(1);
 }
 
 .acf-icon-violet {
