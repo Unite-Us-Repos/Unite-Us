@@ -218,7 +218,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
         @endisset
 
       </div>
-      <div class="flex flex-col @if ('accordion' == $type) lg:col-span-7 lg:col-end-13 @else lg:col-span-{{ $columns[1] }} @endif @if ('center' == $vertical_alignment) justify-center @endif relative @if ('image' == $type) @if ('text_image' == $layout) lg:order-2 @else  lg:order-1 @endif @endif">
+      <div class="flex flex-col max-h-[600px] @if ('accordion' == $type) lg:col-span-7 lg:col-end-13 @else lg:col-span-{{ $columns[1] }} @endif @if ('center' == $vertical_alignment) justify-center @endif relative @if ('image' == $type) @if ('text_image' == $layout) lg:order-2 @else  lg:order-1 @endif @endif">
 
       @if ('image' == $type)
         @if ($mask_image)
@@ -250,7 +250,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
           @endif
         @else
           @isset ($featured_image['sizes'])
-            <img class="lazy mb-6 lg:mb-0 rounded-lg w-full max-h-[400px] @if ($set_max_width_height) h-full object-contain max-w-lg mx-auto @else max-w-md mx-auto lg:max-w-3xl @endif" data-src="@if (strpos($featured_image['url'], '.gif')) {{ $featured_image['url'] }} @else {{ $featured_image['sizes']['medium_large'] }} @endif" alt="{{ $featured_image['alt'] }}" />
+            <img class="lazy mb-6 lg:mb-0 rounded-lg w-full @if ($set_max_width_height) h-full object-contain max-w-lg mx-auto @else max-w-md mx-auto lg:max-w-3xl @endif" data-src="@if (strpos($featured_image['url'], '.gif')) {{ $featured_image['url'] }} @else {{ $featured_image['sizes']['medium_large'] }} @endif" alt="{{ $featured_image['alt'] }}" />
           @endisset
         @endif
       @endif
