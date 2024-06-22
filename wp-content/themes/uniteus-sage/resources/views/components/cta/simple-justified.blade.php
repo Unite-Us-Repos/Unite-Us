@@ -7,7 +7,7 @@
         alt="{{ $background['image']['alt'] }}">
     @endif
   </div>
-  <div class="component-inner-section @if ('dark' == $background['color']) is-dark-bg text-white @endif">
+  <div class="relative component-inner-section @if ('dark' == $background['color']) is-dark-bg text-white @endif">
     <div class="md:grid md:grid-cols-12 gap-10">
       <div class="md:col-span-5">
       @if ($section['title'])
