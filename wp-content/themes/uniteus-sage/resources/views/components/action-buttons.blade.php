@@ -81,7 +81,7 @@
         }
 
         // Generate unique class names
-        $button_class = 'button-' . $index;
+        $button_class = 'button-id-' . $index;
         $button_hover_class = 'button-hover-' . $index;
       @endphp
         <div class="@if ('text' != $button_layout) inline-flex @endif">
