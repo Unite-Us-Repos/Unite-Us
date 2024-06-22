@@ -146,6 +146,9 @@ add_action(
     'admin_head',
     function () {
         echo '<style>
+            .acf-svg-icon-picker__popup-holder {
+                z-index: 999999999;
+            }   
             ul#icons-list {
                 margin-top: 1rem;
             }
@@ -154,14 +157,14 @@ add_action(
                 text-align: center;
             }
 
-            .acf-icon-picker__svg,
-            .acf-icon-picker__popup-svg {
+            .acf-svg-icon-picker__svg,
+            .acf-svg-icon-picker__popup-svg {
                 background: #ebebeb;
                 border-radius: 50%;
                 padding: 2rem;
             }
 
-            .acf-icon-picker__svg {
+            .acf-svg-icon-picker__svg {
                 padding: 0;
                 width: 60px;
                 height: 60px;

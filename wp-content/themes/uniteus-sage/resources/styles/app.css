@@ -1690,3 +1690,7 @@ img.expanded  {
 .text-center {
   text-align: center;
 }
+
+.acf-svg-icon-picker__popup-holder {
+  z-index: 999999999;
+}

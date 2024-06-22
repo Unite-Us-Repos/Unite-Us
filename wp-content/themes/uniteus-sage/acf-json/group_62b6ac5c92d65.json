@@ -16,7 +16,6 @@
                 "class": "",
                 "id": ""
             },
-            "required_message": "",
             "initial_value": ""
         }
     ],
@@ -45,5 +44,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1719088870
+    "modified": 1719089980
 }
