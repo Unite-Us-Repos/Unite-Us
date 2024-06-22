@@ -169,7 +169,12 @@ add_action(
                 width: 60px;
                 height: 60px;
             }
-
+            .acf-svg-icon-picker__svg--span {
+                background-color: #f4f4f4;
+                top: 5px;
+                left: 5px;
+                position: relative;
+            }
             /* Image Selector */
             .acfe-image-selector .image {
                 background-color: #ebebeb;
