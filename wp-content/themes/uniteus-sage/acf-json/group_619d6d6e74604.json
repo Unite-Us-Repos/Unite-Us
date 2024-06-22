@@ -187,6 +187,27 @@
                     "append": ""
                 },
                 {
+                    "key": "field_666a697fb6a5e",
+                    "label": "Purple Text",
+                    "name": "purple_text",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Display a smaller size of font with a lighter weight for the heading.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1,
+                    "style": ""
+                },
+                {
                     "key": "field_6651371606832",
                     "label": "Case Type",
                     "name": "case_type",
@@ -230,7 +251,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "40",
+                        "width": "20",
                         "class": "",
                         "id": ""
                     },
@@ -304,5 +325,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1716601271
+    "modified": 1718249989
 }

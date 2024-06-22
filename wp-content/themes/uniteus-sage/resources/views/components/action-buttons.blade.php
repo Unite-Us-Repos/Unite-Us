@@ -28,7 +28,7 @@
      $mt = false;
     }
 
-  @endphp
+@endphp
   <div class="flex flex-wrap flex-col w-full sm:flex-row gap-6 @if ('text' == $button_layout) mt-5 @elseif ('simple-justified' == $style && !$mt) mt-9 sm:mt-10 @elseif ($mt) {{ $mt }} @else mt-9 sm:mt-10 @endif button-layout-{{ $button_layout }} {{ $layout }} md:{{ $justify }}">
     @foreach ($buttons as $index => $button)
       @php
@@ -50,23 +50,42 @@
           $styles = '';
         }
 
+        // Define styles for each button
+        $button_styles = '';
         if (isset($button['background_color']['color'])) {
-          $styles .= ' background-color: ' . $button['background_color']['color'] . '; ';
+          $button_styles .= ' background-color: ' . $button['background_color']['color'] . '; ';
 
           if ('button-hollow' == $button['style']) {
-            $styles .= ' border-color: ' . $button['text_color']['color'] . '; ';
+            $button_styles .= ' border-color: ' . $button['text_color']['color'] . '; ';
           } else {
-            $styles .= ' border-color: ' . $button['background_color']['color'] . '; ';
+            $button_styles .= ' border-color: ' . $button['background_color']['color'] . '; ';
           }
         }
 
         if (isset($button['text_color']['color'])) {
-          $styles .= ' color: ' . $button['text_color']['color'] . '!important; ';
+          $button_styles .= ' color: ' . $button['text_color']['color'] . '!important; ';
         }
 
+        // Define hover styles for each button
+        $button_hover_styles = '';
+        if (isset($button['background_color_hover']['color'])) {
+          $button_hover_styles .= 'background-color: ' . $button['background_color_hover']['color'] . '; ';
+          if ('button-hollow' == $button['style']) {
+            $button_hover_styles .= 'border-color: ' . $button['background_color_hover']['color'] . '; color: white !important;';
+          } else {
+            $button_hover_styles .= 'border-color: ' . $button['background_color_hover']['color'] . ';';
+          }
+        }
+        if (isset($button['text_color_hover']['color'])) {
+          $button_hover_styles .= 'color: ' . $button['text_color_hover']['color'] . '!important; ';
+        }
+
+        // Generate unique class names
+        $button_class = 'button-id-' . $index;
+        $button_hover_class = 'button-hover-' . $index;
       @endphp
         <div class="@if ('text' != $button_layout) inline-flex @endif">
-          <a href="{{ $link }}" {!! $click_action !!} class="button action-button {{ $classes }} @isset ($button['icon']) flex items-center gap-3 @endif {{ $button['style'] }}" style="text-decoration:none !important;@if ('text' == $button_layout) padding: 0.75rem 0; @endif {{ $styles }} " @if ($button['is_blank']) target=="_blank" @endif>
+          <a href="{{ $link }}" {!! $click_action !!} class="button action-button {{ $classes }} {{ $button_class }} @isset ($button['icon']) flex items-center gap-3 @endif {{ $button['style'] }}" style="text-decoration:none !important;@if ('text' == $button_layout) padding: 0.75rem 0; @endif" @if ($button['is_blank']) target="_blank" @endif>
             {{ $button["name"]}}
             @if ($show_arrow)
             <span aria-hidden="true"> &rarr;</span>
@@ -79,6 +98,14 @@
             @endisset
           </a>
         </div>
+        <style>
+          .{{ $button_class }} {
+            {!! $button_styles !!}
+          }
+          .{{ $button_class }}:hover {
+            {!! $button_hover_styles !!}
+          }
+        </style>
 
     @endforeach
   </div>

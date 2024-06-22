@@ -81,7 +81,7 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
         </nav>
         <div class="hidden lg:flex items-center justify-end lg:flex-1 lg:w-0">
           <a href="https://app.uniteus.io/" class="whitespace-nowrap text-base font-medium text-brand hover:text-brand"> Log In </a>
-          <a href="/demo/" class="button button-solid mx-6">Demo</a>
+          <a href="/demo/" class="button button-solid-purple mx-6">Demo</a>
           <!-- Trigger for Modal -->
           <button type="button" @click="showSearchModal = true" class="rounded-lg flex items-center justify-center">
             <span class="sr-only">Search site</span>

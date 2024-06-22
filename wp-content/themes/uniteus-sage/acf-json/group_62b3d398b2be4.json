@@ -47,6 +47,7 @@
             "max": 10,
             "layout": "row",
             "button_label": "Add Button",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_62b3d3e65f24f",
@@ -95,16 +96,18 @@
                         "button-solid": "Solid Button",
                         "button-hollow": "Hollow Button",
                         "button-solid-white": "Solid Button (white)",
-                        "button-hollow-white": "Hollow Button (white)"
+                        "button-hollow-white": "Hollow Button (white)",
+                        "button-solid-purple": "Solid Button (electric purple)",
+                        "button-hollow-purple": "Hollow Button (electric purple)"
                     },
                     "default_value": "button-solid",
-                    "allow_null": 0,
+                    "return_format": "value",
                     "multiple": 0,
                     "max": "",
-                    "ui": 0,
-                    "return_format": "value",
                     "prepend": "",
                     "append": "",
+                    "allow_null": 0,
+                    "ui": 0,
                     "ajax": 0,
                     "placeholder": "",
                     "allow_custom": 0,
@@ -297,9 +300,62 @@
                     "colors": [],
                     "button_label": "Select Color",
                     "parent_repeater": "field_62b3d3b25f24e"
+                },
+                {
+                    "key": "field_66761ca669d4e",
+                    "label": "Background Color on Hover",
+                    "name": "background_color_hover",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "color_label",
+                    "display": "palette",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 1,
+                    "colors": [],
+                    "button_label": "Select Color",
+                    "parent_repeater": "field_62b3d3b25f24e"
+                },
+                {
+                    "key": "field_66761cb269d4f",
+                    "label": "Text Color on Hover",
+                    "name": "text_color_hover",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "color_label",
+                    "display": "palette",
+                    "color_picker": 1,
+                    "absolute": 0,
+                    "input": 1,
+                    "allow_null": 1,
+                    "theme_colors": 1,
+                    "colors": [],
+                    "button_label": "Select Color",
+                    "parent_repeater": "field_62b3d3b25f24e"
                 }
-            ],
-            "rows_per_page": 20
+            ]
         }
     ],
     "location": [
@@ -327,5 +383,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1713458853
+    "modified": 1719016701
 }

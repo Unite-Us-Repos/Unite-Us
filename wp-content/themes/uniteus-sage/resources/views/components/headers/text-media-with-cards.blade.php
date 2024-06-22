@@ -21,7 +21,7 @@ $manual = false;
     <div class="component-inner-section relative">
       <div class="absolute flex-col justify-center z-20 left-12 -mb-1 -bottom-72 log:mb-0 lg:-bottom-48 xl:left-12 hidden md:flex">
         <svg width="28" height="146" viewBox="0 0 28 146" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M25.9512 132.309L13.9756 144.285M13.9756 144.285L1.99995 132.309M13.9756 144.285L13.9756 1.57643" stroke="#2874AF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M25.9512 132.309L13.9756 144.285M13.9756 144.285L1.99995 132.309M13.9756 144.285L13.9756 1.57643" stroke="#216cff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <div class="flex flex-col lg:flex-none lg:grid lg:grid-cols-2">

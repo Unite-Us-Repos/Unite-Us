@@ -39,7 +39,7 @@ if (!isset($widget['background_color'])) {
               @if ('lined-list' == $widget['display_as'])
               <span class="inline-flex @if ($display_h) mr-4 @else -mt-6 @endif @if ($display_list) w-12 h-12 @else w-16 h-16 @endif items-center justify-center rounded-full border-4 border-action bg-action p-3 shadow-lg">
               @else
-              <span class="inline-flex @if ($display_h) mr-4 @else -mt-6 @endif @if ($display_list) w-12 h-12 @else w-16 h-16 @endif items-center justify-center rounded-full border-4 border-action bg-brand p-3 shadow-lg">
+              <span class="inline-flex @if ($display_h) mr-4 @else -mt-6 @endif @if ($display_list) w-12 h-12 @else w-16 h-16 @endif items-center justify-center rounded-full border-4 border-action bg-action p-2 shadow-lg">
               @endif
                 <img class="h-8 w-8" src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
               </span>

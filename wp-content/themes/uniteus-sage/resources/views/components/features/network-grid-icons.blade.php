@@ -59,7 +59,7 @@ $current_state = do_shortcode('[current_state]');
             @endphp
             <div class=" md:basis-6/12 @if ($columns) lg:basis-{{ $columns }} @else sm:basis-2/6 @endif pt-6">
 
-              <div class="relative h-full px-5">
+              <div class="relative h-full test px-5">
                   <div class="h-16 flex justify-start items-center">
                     @isset ($card["icon"])
                       @if (!empty($card["icon"]))

@@ -143,7 +143,7 @@ h3.doc-subheading {
 }
 
 a {
-  @apply text-action underline hover:text-action-dark;
+  @apply text-action underline hover:text-action-dark hover:transition-all;
 }
 
 p {
@@ -356,7 +356,7 @@ body .map-wrap {
   font-weight: 600;
   padding: 12px 24px;
   margin: auto;
-  background-color: #3b8bca;
+  background-color: #226cff;
   color: white;
   border-radius: 4px 4px 4px 4px;
   -moz-border-radius: 4px 4px 4px 4px;
@@ -378,7 +378,7 @@ body .map-wrap {
   font-size: 38px;
   line-height: 48px;
   text-align: center;
-  color: #2405A;
+  color: #216CFF;
 }
 
 .state-name img {
@@ -478,6 +478,7 @@ body .map-wrap {
 
 .button {
   @apply w-full sm:w-auto inline-flex justify-center no-underline px-5 py-3 border border-action text-base font-medium rounded-md;
+  transition: all 0.2s ease-in-out;
 }
 
 .button.share {
@@ -485,19 +486,31 @@ body .map-wrap {
 }
 
 .button-solid {
-  @apply text-white bg-action;
+  @apply text-white bg-action border-action 
+  hover:border-action-hover hover:bg-action-hover hover:text-white;
 }
-
+.button-solid-purple {
+  @apply text-white bg-electric-purple border-electric-purple 
+  hover:bg-electric-purple-hover hover:border-electric-purple-hover hover:text-white;
+}
 .button-solid-white {
-  @apply text-action bg-white border-white hover:text-white drop-shadow-sm;
+  @apply text-blue-600 bg-white border-white hover:text-action drop-shadow-sm;
 }
-
 .button-solid-redish {
   @apply text-white bg-redish border-redish hover:text-white drop-shadow-sm;
 }
 
 .button-hollow {
-  @apply text-action bg-transparent border-action;
+  @apply text-action bg-transparent border-action
+  hover:!text-white hover:bg-action hover:border-action ;
+}
+.button-hollow-purple {
+  @apply text-electric-purple bg-transparent border-electric-purple 
+  hover:bg-electric-purple hover:border-electric-purple hover:text-white;
+}
+.button-hollow-purple img {
+  filter: brightness(0) saturate(100%) invert(50%) sepia(64%) saturate(5014%)
+  hue-rotate(241deg) brightness(95%) contrast(108%);
 }
 .button-hollow-white,
 .is-dark-bg .button-hollow {
@@ -506,27 +519,31 @@ body .map-wrap {
 .button-hollow-redish {
   @apply text-redish bg-transparent border-redish;
 }
-.button-solid-white:hover,
-.button-solid:hover {
-  @apply text-white bg-action-dark border-action-dark no-underline;
-}
 .bg-light-gradient .button-hollow,
 .bg-light .button-hollow {
   @apply text-action border-action;
 }
-.button-hollow:hover,
-.button-hollow-white:hover {
-  @apply bg-action-dark border-action-dark !text-white;
+.bg-light-gradient .button-hollow-purple,
+.bg-light .button-hollow-purple {
+  @apply text-electric-purple border-electric-purple;
 }
-
+.button-hollow-white:hover {
+  @apply bg-action border-action !text-white;
+}
+.button-hollow-purple:hover {
+  @apply bg-electric-purple border-electric-purple !text-white;
+}
+.button svg path, 
+.button img {
+  fill: #fff;
+  opacity: 0.25;
+}
 .button-text {
   text-underline-offset: 3px;
 
   @apply text-action text-lg font-semibold px-0 py-6 bg-transparent border-none underline decoration-2 hover:text-action-dark;
 }
-.button-purple {
-  @apply border-purple bg-purple;
-}
+
 .footer-section ul {
   margin-bottom: 0;
 }
@@ -536,23 +553,20 @@ body .map-wrap {
 }
 
 .acf-icon-action {
-  filter: brightness(0) saturate(100%) invert(35%) sepia(98%) saturate(380%)
-    hue-rotate(162deg) brightness(95%) contrast(94%);
+  filter: brightness(0) saturate(100%) invert(30%) sepia(100%) saturate(2600%) hue-rotate(199deg) brightness(95%) contrast(105%);
 }
 
-.acf-icon-white {
-  filter: brightness(0) invert(1);
-}
-
-.acf-icon-violet {
+.acf-icon-electric-purple {
   filter: brightness(0) saturate(100%) invert(50%) sepia(64%) saturate(5014%)
     hue-rotate(241deg) brightness(95%) contrast(108%);
 }
 
-.button-hollow:hover .acf-icon-action,
-.service-icon-card:hover .service-icon {
+.button-hollow:hover .acf-icon-action {
   filter: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(5310%)
     hue-rotate(306deg) brightness(112%) contrast(102%);
+}
+.button-hollow-purple:hover img {
+  filter: brightness(0) invert(1);
 }
 
 /* Backgrounds */
@@ -725,9 +739,9 @@ body .map-wrap {
 }
 .wp-pagenavi .current {
   padding: 1rem;
-  border-top: 2px solid #2874af;
+  border-top: 2px solid #216cff;
   margin-top: -1.5px;
-  color: #2874af;
+  color: #216cff;
   @apply hidden sm:inline-block;
 }
 .wp-pagenavi .extend {
@@ -772,7 +786,8 @@ body .map-wrap {
 .ajax-filters .searchandfilter .sf-input-text {
   width: 100%;
 }
-.ajax-filters button svg {
+.ajax-filters button svg,
+.ajax-filters button svg path {
   @apply fill-action;
 }
 .ajax-filters [name="_sf_search[]"] {
@@ -991,7 +1006,7 @@ ol.ol-circles li::before {
   color: #fff;
   font-weight: 400;
   font-size: 1.5rem;
-  border: solid 4px #2874af;
+  border: solid 4px #216cff;
   counter-increment: list-number-inner;
   content: counter(list-number-inner);
   width: 56px;
@@ -1023,7 +1038,7 @@ ol.ol-circles-sm li::before {
   background: #e3ebf3;
   border: 4px solid #e3ebf3;
   border-radius: 50%;
-  color: #2874af;
+  color: #216cff;
   content: counter(list-number-inner);
   counter-increment: list-number-inner;
   display: inline-flex;
@@ -1264,11 +1279,11 @@ ul.list-box {
 }
 
 .bg-gradient-service {
-  background: rgb(16, 88, 144);
+  background: rgb(33, 108, 255);
   background: linear-gradient(
     180deg,
     rgba(16, 88, 144, 0) 0%,
-    rgba(40, 116, 175, 1) 100%
+    rgba(33, 108, 255, 1) 100%
   );
   transition: all 0.25s linear;
 }
@@ -1417,7 +1432,7 @@ img.alignleft {
 }
 /* addtoany social share */
 .a2a_button_linkedin {
-  background: #2874af;
+  background: #216cff;
   border-radius: 2px;
 }
 .a2a_button_linkedin:hover {
@@ -1498,7 +1513,7 @@ select.gt_selector {
 }
 
 .ajax-filters.search-filters input[type="submit"] {
-  background: #2874af;
+  background-color: #216CFF;
   color: white;
   padding: 22px 48px;
 
@@ -1588,6 +1603,14 @@ select.gt_selector {
 .group:hover .group-hover\:bg-action-light .service-icon {
   filter: none;
 }
+.group:hover .group-hover\:border-action  {
+  border-color: #216cff;
+
+}
+.group:hover .path-hover {
+  fill: #216cff;
+}
+
 .hero-divider {
   margin-top: -1rem;
   left: 0;
@@ -1648,8 +1671,22 @@ img.expanded  {
   opacity: 0.2; /* same as group-hover */
 }
 .even-height.expanded {
-      background-color: rgb(40 116 175 / var(--tw-bg-opacity));
+      background-color: #0074fc;
 }
 .text-block.expanded {
       color: #FFF
+}
+
+.bg-electric-purple-overlay {
+  background-image: url("../images/electric-purple-overlay.png");
+  background-position: top left;
+  background-size: cover;
+}
+
+.max-width-10 {
+  max-width: 10rem;
+}
+
+.text-center {
+  text-align: center;
 }

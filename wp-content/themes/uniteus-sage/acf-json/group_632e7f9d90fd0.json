@@ -165,7 +165,7 @@
                     },
                     "choices": {
                         "action": "Action Blue",
-                        "violet": "Violet",
+                        "electric-purple": "Electric Purple",
                         "white": "White"
                     },
                     "default_value": "action",
@@ -745,5 +745,9 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
+<<<<<<< HEAD
     "modified": 1718907163
+=======
+    "modified": 1719030688
+>>>>>>> develop
 }
