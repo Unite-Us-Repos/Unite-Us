@@ -7,7 +7,7 @@
             "label": "Icon",
             "name": "icon",
             "aria-label": "",
-            "type": "icon-picker",
+            "type": "svg_icon_picker",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,6 +16,7 @@
                 "class": "",
                 "id": ""
             },
+            "required_message": "",
             "initial_value": ""
         }
     ],
@@ -44,5 +45,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1719070564
+    "modified": 1719088870
 }

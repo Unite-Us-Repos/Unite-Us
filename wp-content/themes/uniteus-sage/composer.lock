@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68e18612cad1bb6ae24f48c0cc4ec8df",
+    "content-hash": "0b0b5e925d4f963181a4f6afe1f394f3",
     "packages": [
         {
             "name": "brick/math",
@@ -2114,6 +2114,58 @@
             "time": "2019-01-28T09:46:14+00:00"
         },
         {
+            "name": "smithfield-studio/acf-svg-icon-picker",
+            "version": "3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smithfield-studio/acf-svg-icon-picker.git",
+                "reference": "c2f4de9199786465059ba740e7da12d9ff6d2b5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smithfield-studio/acf-svg-icon-picker/zipball/c2f4de9199786465059ba740e7da12d9ff6d2b5e",
+                "reference": "c2f4de9199786465059ba740e7da12d9ff6d2b5e",
+                "shasum": ""
+            },
+            "require-dev": {
+                "10up/phpcs-composer": "^3.0",
+                "phpcompatibility/php-compatibility": "^9",
+                "wp-coding-standards/wpcs": "^3.1"
+            },
+            "type": "wordpress-plugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Sheppard"
+                },
+                {
+                    "name": "Erik van der Bas",
+                    "email": "erik@basedonline.nl",
+                    "homepage": "https://basedonline.nl"
+                },
+                {
+                    "name": "houke"
+                }
+            ],
+            "description": "Add ACF field for selecting SVG icons.",
+            "keywords": [
+                "acf",
+                "field",
+                "icon",
+                "picker",
+                "svg",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/smithfield-studio/acf-svg-icon-picker/issues",
+                "source": "https://github.com/smithfield-studio/acf-svg-icon-picker"
+            },
+            "time": "2024-06-06T08:54:55+00:00"
+        },
+        {
             "name": "symfony/console",
             "version": "v5.4.31",
             "source": {
@@ -4216,5 +4268,5 @@
         "php": "^7.4|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.6.0"
 }
