@@ -1671,7 +1671,7 @@ img.expanded  {
   opacity: 0.2; /* same as group-hover */
 }
 .even-height.expanded {
-      background-color: rgb(40 116 175 / var(--tw-bg-opacity));
+      background-color: #0074fc;
 }
 .text-block.expanded {
       color: #FFF
