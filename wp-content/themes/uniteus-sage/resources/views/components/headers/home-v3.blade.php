@@ -36,7 +36,7 @@
             style="right: -80px;
     width: 140px;
     bottom: 33%;" />
-        <img class="absolute hidden lg:block lazy" data-src="@asset('/images/herov3-grad-bar.png')" alt=""
+        <img class="absolute hidden lg:block lazy" data-src="@asset('/images/herov3-grad-bar-purple.png')" alt=""
             style="right: -225px;
     width: 160px;
     bottom: 13%;" />
