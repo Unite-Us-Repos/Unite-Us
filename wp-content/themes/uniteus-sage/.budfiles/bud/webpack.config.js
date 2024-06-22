@@ -346,6 +346,13 @@ module.exports = {
       }
     },
     {
+      "name": "WordPressExternalsWebpackPlugin",
+      "stage": null,
+      "externals": {
+        "type": "window"
+      }
+    },
+    {
       "options": {
         "emitHtml": false,
         "publicPath": ""
@@ -357,11 +364,13 @@ module.exports = {
       "name": "entrypoints.json"
     },
     {
-      "name": "WordPressExternalsWebpackPlugin",
-      "stage": null,
-      "externals": {
-        "type": "window"
-      }
+      "plugin": {
+        "name": "WordPressDependenciesWebpackPlugin",
+        "stage": null
+      },
+      "manifest": {},
+      "usedDependencies": {},
+      "fileName": "wordpress.json"
     },
     {
       "plugin": {
@@ -370,15 +379,6 @@ module.exports = {
       "file": "entrypoints.json",
       "entrypointsName": "entrypoints.json",
       "wordpressName": "wordpress.json"
-    },
-    {
-      "plugin": {
-        "name": "WordPressDependenciesWebpackPlugin",
-        "stage": null
-      },
-      "manifest": {},
-      "usedDependencies": {},
-      "fileName": "wordpress.json"
     }
   ],
   "entry": {
