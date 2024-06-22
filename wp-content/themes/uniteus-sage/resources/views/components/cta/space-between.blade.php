@@ -11,7 +11,7 @@
     <div class="flex flex-col md:flex-row md:justify-between gap-10">
       <div class="">
       @if ($section['title'])
-        <h2 class="text-center md:text-left mb-0">
+        <h2 class="text-center md:text-left mb-0 @if($background['image']) text-white @endif">
           {!! $section['title'] !!}
         </h2>
       @endif

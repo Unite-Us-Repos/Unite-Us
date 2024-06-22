@@ -11,7 +11,7 @@
     <div class="md:grid md:grid-cols-12 gap-10">
       <div class="md:col-span-5">
       @if ($section['title'])
-        <h2 class="text-center md:text-left md:mb-0">
+        <h2 class="text-center md:text-left md:mb-0 @if($background['image']) text-white @endif">
           {!! $section['title'] !!}
         </h2>
       @endif
