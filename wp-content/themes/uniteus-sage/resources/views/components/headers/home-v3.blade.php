@@ -22,17 +22,17 @@
             style="right: 8%;
       width: 208px;
       top: 7%" />
-        <img class="absolute lazy" data-src="@asset('/images/herov3-heart-home.png')" alt=""
+        <img class="absolute lazy" data-src="@asset('/images/herov3-heart-home-pink.png')" alt=""
             style="right: 0;
       width: 230px;
       bottom: 0" />
     </div>
     <div class="absolute bg-homev3 inset-0 bg-brand z-10 hidden md:block" style="width: 50%;">
-        <img class="absolute lazy" data-src="@asset('/images/herov3-food.png')" alt=""
+        <img class="absolute lazy" data-src="@asset('/images/herov3-food-green.png')" alt=""
             style="right: -130px;
     width: 230px;
     top: 0" />
-        <img class="absolute lazy" data-src="@asset('/images/herov3-profile-chart.png')" alt=""
+        <img class="absolute lazy" data-src="@asset('/images/herov3-profile-chart-blue.png')" alt=""
             style="right: -80px;
     width: 140px;
     bottom: 33%;" />
