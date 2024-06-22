@@ -184,7 +184,7 @@ module.exports = {
       brand: '#0B1538',
       action: '#216CFF',
       'dark-blue' : '#0B1538',
-      'action-dark' : '#105890',
+      'action-dark' : '#1A53C6',
       'action-light-blue' : '#52b4ff',
       'action-lighter-blue' : '#3B8BCA',
       'action-hover' : '#1A53C6',

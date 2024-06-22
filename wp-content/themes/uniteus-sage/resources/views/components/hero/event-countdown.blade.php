@@ -123,7 +123,7 @@ $show_additinal_information = false;
   <rect x="204.017" y="39.2111" width="12.6225" height="6.01332" fill="#F07012"/>
   <defs>
     <linearGradient id="paint0_linear_17696_48579" x1="0" y1="42.2178" x2="99.7045" y2="42.2178" gradientUnits="userSpaceOnUse">
-      <stop offset="0.09375" stop-color="#2874AF"/>
+      <stop offset="0.09375" stop-color="#216cff"/>
       <stop offset="0.385417" stop-color="#82C9BD"/>
       <stop offset="0.697917" stop-color="#EAA1F2"/>
       <stop offset="1" stop-color="#F07012"/>

@@ -165,7 +165,7 @@ use Illuminate\Support\Str;
                     @isset ($card["icon"])
                       @if (!empty($card["icon"]))
                       <span class="mb-5 bg-light 
-                        @if ($icon_color_class == 'violet') 
+                        @if ($icon_color_class == 'purple') 
                           group-hover:bg-electric-purple 
                         @elseif ($icon_color_class == 'white') 
                           group-hover:bg-white

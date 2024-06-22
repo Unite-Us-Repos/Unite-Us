@@ -177,7 +177,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                   @isset ($card["icon"])
                     @if (!empty($card["icon"]))
                       <span class="mb-5 block bg-light
-                       @if ($icon_color_class == 'violet') 
+                       @if ($icon_color_class == 'purple') 
                           group-hover:bg-white 
                         @elseif ($icon_color_class == 'white') 
                           group-hover:bg-white

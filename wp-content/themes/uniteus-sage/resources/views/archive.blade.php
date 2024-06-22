@@ -8,7 +8,9 @@ if ('press' == $post_type) {
 @endphp
 @section('content')
   <section class="bg-brand relative component-section">
+    <div class="absolute inset-0 opacity-75 bg-electric-purple-overlay"></div>
     <div class="relative w-full">
+      
       <div class="component-inner-section">
         <div class="relative max-w-3xl">
           <div class="mb-6">

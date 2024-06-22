@@ -185,7 +185,7 @@ if ($is_heading) {
                 @else
                   <span class="p-6 block">
                   <svg xmlns="http://www.w3.org/2000/svg" width="13" height="11" viewBox="0 0 13 11" fill="none">
-                    <path d="M7.875 1.5105L12 5.6355M12 5.6355L7.875 9.7605M12 5.6355L1 5.6355" stroke="#2874AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7.875 1.5105L12 5.6355M12 5.6355L7.875 9.7605M12 5.6355L1 5.6355" stroke="#216cff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                   </span>
                 @endif
