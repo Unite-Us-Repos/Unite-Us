@@ -1,4 +1,4 @@
-<section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="component-section {{ $section_classes }}">
+<section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="relative component-section {{ $section_classes }}">
   <div class="absolute inset-0">
     @if ($background['image'])
       <img fetchpriority="high" class="w-full h-full object-cover @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif" src="{{ $background['image']['sizes']['medium'] }}"
