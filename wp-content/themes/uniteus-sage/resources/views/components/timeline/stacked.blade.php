@@ -47,7 +47,7 @@
       <span>{{ $card['order'] }}</span>
     </div>
  @endforeach
- <div id="vertical-divider" class="absolute h-full sm:z-40 top-0  w-2 left-1/2 transform -translate-x-1/2" style="background: url(@asset('/images/timeline-vdashes.png')) repeat-y top center; height:0;"></div>
+ <div id="vertical-divider" class="absolute h-full sm:z-40 top-0  w-2 left-1/2 transform -translate-x-1/2" style="background: url(@asset('/images/timeline-vdashes-new-blue.png')) repeat-y top center; height:0;"></div>
 @foreach ($timeline as $index => $card)
   <div
     class="relative z-10 bg-white grid sm:grid-cols-2 gap-10 sm:gap-20 p-9 sm:py-10 sm:px-0 w-full"
@@ -89,13 +89,13 @@
       </div>
     </div>
 
-    <div class="hidden absolute z-10 @if ($loop->first) h-1/2 bottom-0 @else @if ($loop->last) h-1/2 top-0 @else inset-0 @endif @endif w-2 left-1/2 transform -translate-x-1/2" style="background: url(@asset('/images/timeline-vdashes.png')) repeat-y top center;"></div>
+    <div class="hidden absolute z-10 @if ($loop->first) h-1/2 bottom-0 @else @if ($loop->last) h-1/2 top-0 @else inset-0 @endif @endif w-2 left-1/2 transform -translate-x-1/2" style="background: url(@asset('/images/timeline-vdashes-new-blue.png')) repeat-y top center;"></div>
 
     <div class="absolute h-full sm:max-h-[376px] left-0 right-0 sm:left-10 sm:right-10 lg:left-20 lg:right-20 bg-light rounded-xl top-1/2 transofrm -translate-y-1/2" @isset ($card['background']['image']['sizes']) style="background: url({{ $card['background']['image']['sizes']['medium_large'] }}?v=2) no-repeat center center; background-size: cover;" @endisset></div>
   </div>
 @endforeach
 
-<div id="vertical-divider2" class="absolute opacity-50  sm:block sm:z-20   inset-0  w-2 left-1/2 transform -translate-x-1/2" style="background: url(@asset('/images/timeline-vdashes.png')) repeat-y top center;"></div>
+<div id="vertical-divider2" class="absolute opacity-50  sm:block sm:z-20   inset-0  w-2 left-1/2 transform -translate-x-1/2" style="background: url(@asset('/images/timeline-vdashes-new-blue.png')) repeat-y top center;"></div>
 
       </div>
 
