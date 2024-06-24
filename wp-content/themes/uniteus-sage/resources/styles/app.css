@@ -555,6 +555,10 @@ body .map-wrap {
 .acf-icon-action {
   filter: brightness(0) saturate(100%) invert(30%) sepia(100%) saturate(2600%) hue-rotate(199deg) brightness(95%) contrast(105%);
 }
+.acf-icon-white {
+  filter: brightness(0) invert(1);
+  opacity: 1!important;
+}
 
 .acf-icon-electric-purple {
   filter: brightness(0) saturate(100%) invert(50%) sepia(64%) saturate(5014%)
