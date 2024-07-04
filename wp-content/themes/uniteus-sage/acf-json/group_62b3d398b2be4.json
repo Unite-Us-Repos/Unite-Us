@@ -213,7 +213,7 @@
                     "label": "Icon",
                     "name": "icon",
                     "aria-label": "",
-                    "type": "icon-picker",
+                    "type": "svg_icon_picker",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -383,5 +383,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1719016701
+    "modified": 1720069343
 }

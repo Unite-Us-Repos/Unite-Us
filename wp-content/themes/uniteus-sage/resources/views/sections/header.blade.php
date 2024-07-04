@@ -21,19 +21,39 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
 </script>
 <!-- End of Schema.org Validation -->
 
-<div class="relative">
-  <div id="globalAlert" class="alert-section">
-    @if (isset($global_alerts['description']) && !empty($global_alerts['description']))
-      @includeIf('components.alerts.fullscreen', $global_alerts)
-    @endif
-  </div>
-  
-  <!-- Placeholder to prevent content shift -->
-  <div id="navPlaceholder" style="height: 0;"></div>
+<style>
+  [x-cloak] {
+    display: none !important;
+  }
+</style>
 
-  <div id="nav" class="relative z-50 top-nav bg-white">
+<div class="z-50" x-data="{ showSearchModal: false, showMobileMenu: false, isSticky: false, alertHeight: 0 }" x-init="
+    alertHeight = $refs.alert ? $refs.alert.offsetHeight : 0;
+    window.addEventListener('scroll', () => {
+        isSticky = window.scrollY > alertHeight;
+    });
+    $watch('isSticky', value => {
+        if (value) {
+            $refs.nav.classList.add('fixed', 'top-0', 'left-0', 'w-full', 'z-50', 'shadow-md');
+            $refs.placeholder.style.height = $refs.nav.offsetHeight + 'px';
+        } else {
+            $refs.nav.classList.remove('fixed', 'top-0', 'left-0', 'w-full', 'z-50', 'shadow-md');
+            $refs.placeholder.style.height = '0px';
+        }
+    });
+">
+  @if (isset($global_alerts['description']) && !empty($global_alerts['description']))
+    <div x-ref="alert">
+      @includeIf('components.alerts.fullscreen', $global_alerts)
+    </div>
+  @endif
+
+  <!-- Placeholder to prevent content shift -->
+  <div x-ref="placeholder" style="height: 0;"></div>
+
+  <div id="nav" x-ref="nav" class="top-nav bg-white">
     <div class="mx-auto">
-      <div class="bg-white flex relative justify-between items-center max-w-7xl mx-auto px-8 lg:justify-start">
+      <div class="flex relative justify-between items-center max-w-7xl mx-auto px-8 lg:justify-start">
         <div class="flex justify-start py-4 lg:w-0 lg:flex-1">
           <a href="/">
             <span class="sr-only">Main menu</span>
@@ -41,15 +61,17 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
           </a>
         </div>
         <div class="-mr-2 -my-2 flex items-center gap-3 lg:hidden">
-            <!-- Trigger for Modal -->
-            <button type="button" onclick="toggleSearchModal(true)" class="rounded-lg flex items-center justify-center">
-              <span class="sr-only">Search site</span>
-              <img src="@asset('images/nav-search.svg')" alt="" width="20" height="20" />
-            </button>
+          <!-- Trigger for Search Modal -->
+          <button type="button" @click="showSearchModal = true" class="rounded-lg flex items-center justify-center">
+            <span class="sr-only">Search site</span>
+            <img src="@asset('images/nav-search.svg')" alt="" width="20" height="20" />
+          </button>
 
+          <!-- Trigger for Mobile Menu -->
           <button type="button"
             class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-action"
-            onclick="toggleMenu()" aria-expanded="false">
+            @click="showMobileMenu = !showMobileMenu" aria-expanded="false"
+            :aria-expanded="showMobileMenu.toString()">
             <span class="sr-only">Open menu</span>
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -65,7 +87,7 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
               <span>{{ $menu['title'] }}</span>
               <img class="ml-2" src="@asset('images/nav-chevron-down.svg')" alt="" width="20" height="20" />
             </a>
-            <div class="absolute hidden group-focus:block group-hover:block z-20 left-1/2 transform -translate-x-1/2 mt-0 px-2 w-screen max-w-xs sm:px-0">
+            <div class="absolute hidden group-focus:block group-hover:block z-50 left-1/2 transform -translate-x-1/2 mt-0 px-2 w-screen max-w-xs sm:px-0">
               <div class="rounded-lg !shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                   @foreach ($menu['children'] as $child)
@@ -85,20 +107,20 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
         <div class="hidden lg:flex items-center justify-end lg:flex-1 lg:w-0">
           <a href="https://app.uniteus.io/" class="whitespace-nowrap text-base font-medium text-brand hover:text-brand"> Log In </a>
           <a href="/demo/" class="button button-solid-purple mx-6">Demo</a>
-          <!-- Trigger for Modal -->
-          <button type="button" onclick="toggleSearchModal(true)" class="rounded-lg flex items-center justify-center">
+          <!-- Trigger for Search Modal -->
+          <button type="button" @click="showSearchModal = true" class="rounded-lg flex items-center justify-center">
             <span class="sr-only">Search site</span>
             <img src="@asset('images/nav-search.svg')" alt="" width="20" height="20" />
           </button>
         </div>
 
-        <!-- Move the mobile menu inside this div -->
-        <div id="mobileMenu" class="absolute z-50 inset-x-0 p-2 transition transform origin-top-right lg:hidden" style="top: 0; display: none;">
+        <!-- Mobile Menu -->
+        <div x-show="showMobileMenu" class="absolute z-50 inset-x-0 p-2 transition transform origin-top-right lg:hidden" style="top:0;">
           <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
             <div class="pt-5 px-5">
               <div class="flex items-center justify-between">
                   <img fetchpriority="high" src="@asset('images/unite-us-logo.svg')" alt="Unite Us" width="192" height="48" />
-                  <button type="button" class="bg-white rounded-md inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" onclick="toggleMenu()">
+                  <button type="button" class="bg-white rounded-md inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" @click="showMobileMenu = false">
                     <span class="sr-only">Close menu</span>
                     <img src="@asset('images/nav-close.svg')" alt="" width="24" height="24" />
                   </button>
@@ -107,14 +129,14 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
                 <ul class="list-none">
                   @foreach ($mainMenuItems as $menu)
                     @if ($menu['children'])
-                    <li class="relative py-2">
-                      <button type="button" class="text-left w-full" onclick="toggleSubmenu(this)">
+                    <li class="relative py-2" x-data="{ isOpen: false }">
+                      <button type="button" class="text-left w-full" @click="isOpen = !isOpen">
                         <div class="flex items-center justify-between">
                           <span class="text-base font-medium text-brand">{{ $menu['title'] }}</span>
                           <img src="@asset('images/nav-chevron-down.svg')" alt="" width="20" height="20" />
                         </div>
                       </button>
-                      <div class="relative overflow-hidden transition-all max-h-0 duration-700">
+                      <div class="relative overflow-hidden transition-all max-h-0 duration-700" x-ref="container" x-bind:style="isOpen ? 'max-height: ' + $refs.container.scrollHeight + 'px' : ''">
                         <div class="overflow-hidden">
                           <div class="relative grid gap-6 rounded-lg bg-light mb-2 mt-6 px-5 py-6 sm:gap-8 sm:p-8">
                           @foreach ($menu['children'] as $child)
@@ -151,53 +173,16 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
     </div>
   </div>
 
+  <!-- Search Modal -->
+  <div x-show="showSearchModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50" @click.away="showSearchModal = false">
+    <div class="bg-white rounded-lg p-8 relative">
+      <button type="button" @click="showSearchModal = false" class="absolute top-2 right-2">
+        <span class="sr-only">Close search</span>
+        <img src="@asset('images/nav-close.svg')" alt="Close" width="24" height="24" />
+      </button>
+      <input type="text" placeholder="Search..." class="w-full p-2 border border-gray-300 rounded" />
+    </div>
+  </div>
+
   @include('partials.content-search-modal')
 </div>
-
-<script>
-window.addEventListener('load', function() {
-  const nav = document.getElementById('nav');
-  const placeholder = document.getElementById('navPlaceholder');
-  const alert = document.getElementById('globalAlert');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  function handleScroll() {
-    const alertHeight = alert ? alert.offsetHeight : 0;
-    const navHeight = nav.offsetHeight;
-
-    if (window.scrollY > alertHeight) {
-      nav.classList.remove('relative');
-      nav.classList.add('fixed', 'top-0', 'left-0', 'w-full', 'z-50', 'shadow-md'); // Add shadow class here
-      placeholder.style.height = `${navHeight}px`;
-    } else {
-      nav.classList.add('relative');
-      nav.classList.remove('fixed', 'top-0', 'left-0', 'w-full', 'shadow-md'); // Remove shadow class here
-      placeholder.style.height = '0px';
-    }
-  }
-
-  window.addEventListener('scroll', handleScroll);
-  handleScroll(); // Ensure the function runs initially to set the correct state
-});
-
-function toggleMenu() {
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
-    mobileMenu.style.display = 'block';
-  } else {
-    mobileMenu.style.display = 'none';
-  }
-}
-
-function toggleSearchModal(show) {
-  const searchModal = document.getElementById('searchModal');
-  searchModal.style.display = show ? 'block' : 'none';
-}
-
-function toggleSubmenu(button) {
-  const submenu = button.nextElementSibling;
-  const maxHeight = submenu.style.maxHeight;
-
-  submenu.style.maxHeight = maxHeight && maxHeight !== '0px' ? '0px' : `${submenu.scrollHeight}px`;
-}
-</script>
