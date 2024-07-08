@@ -2,7 +2,6 @@
 $global_alerts = get_field('alerts', 'options');
 $global_alerts['section_classes'] = '!p-0 padding-collapse ';
 @endphp
-
 <!-- Schema.org Validation -->
 <script type="application/ld+json">
   {!! json_encode([
@@ -171,18 +170,6 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
 
       </div>
     </div>
+    @include('partials.content-search-modal')
   </div>
-
-  <!-- Search Modal -->
-  <div x-show="showSearchModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50" @click.away="showSearchModal = false">
-    <div class="bg-white rounded-lg p-8 relative">
-      <button type="button" @click="showSearchModal = false" class="absolute top-2 right-2">
-        <span class="sr-only">Close search</span>
-        <img src="@asset('images/nav-close.svg')" alt="Close" width="24" height="24" />
-      </button>
-      <input type="text" placeholder="Search..." class="w-full p-2 border border-gray-300 rounded" />
-    </div>
-  </div>
-
-  @include('partials.content-search-modal')
 </div>

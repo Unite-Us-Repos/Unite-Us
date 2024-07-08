@@ -6,22 +6,27 @@ if (!is_array($display)) {
 @endphp
 @if (in_array($post->ID, $display) or empty($display))
 <style>
-.alert .action-button {
+.alert .action-link {
   padding: 8px 17px;
   font-weight: 500;
   width: 100%;
+  text-decoration: underline;
 }
-.alert .button-hollow-white:hover {
-  background: #fff;
+.alert .action-link:hover {
   color: #2c405a !important;
-  border: solid 1px #fff !important;
+}
+.alert .arrow-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-left: 5px;
 }
 </style>
 <section x-data="{hideAlert: localStorage.getItem('hideUuGlobalAlert') === '{{ $unique_id }}' }" x-bind:class="{'hidden' : hideAlert == true }" class="relative component-section alert !p-0" style="@isset ($text_color) color: {{ $text_color }}; @endisset @isset($background_color) background: {{ $background_color }}; @endisset">
   <div class="component-inner-section !p-0">
-    <div type="{{ $style }}" class="py-4 px-6 md:px-8">
-      <div class="flex flex-col sm:flex-row gap-3">
-        <div class="w-full flex md:items-center gap-4">
+    <div type="{{ $style }}" class="flex justify-between py-2 px-6 md:px-8">
+      <div class="flex flex-col sm:flex-row gap-3 items-center">
+        <div class="flex md:items-center gap-4">
           <div class="flex flex-shrink-0 pt-1">
 
             @if ('custom' == $style)
@@ -74,16 +79,24 @@ if (!is_array($display)) {
             </div>
 
             <div class="flex-shrink-0">
-              @include('components.action-buttons', ['isAlert' => true, 'buttons' => $buttons, 'style' => 'simple-justified', 'mt' => 'mt-0'])
+              @if (isset($global_alerts['link_text']) && $global_alerts['link_text'])
+                @php
+                  $link = $global_alerts['link_text']['url'];
+                  $text = $global_alerts['link_text']['title'];
+                @endphp
+                <a href="{{ $link }}" class="button-text flex justify-center items-center !text-white !pt-0 !pb-0">
+                  {{ $text }} <img src="/wp-content/themes/uniteus-sage/resources/icons/acf/arrow-right.svg" class="arrow-icon" alt="Arrow Icon" />
+                </a>
+              @endif
             </div>
-
+          </div>
             <div class="flex-shrink-0 flex items-center absolute top-0 right-0 mt-4 mr-4 sm:m-0 sm:relative">
               <svg @click="localStorage.setItem('hideUuGlobalAlert', '{{ $unique_id }}'); hideAlert = true" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
                 <path d="M6.5 18L18.5 6M6.5 6L18.5 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
 
-      </div>
+      
     </div>
   </div>
 </section>

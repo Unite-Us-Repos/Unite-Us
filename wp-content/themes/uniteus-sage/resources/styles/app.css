@@ -1330,6 +1330,13 @@ ul.list-box {
 
 .alert a {
   @apply font-bold;
+  font-size: 1rem;
+}
+.alert .arrow-icon {
+  transition: all 0.25s linear;
+}
+.alert a:hover .arrow-icon {
+  margin-left: 10px;
 }
 
 /* ABOUT US HERO*/
