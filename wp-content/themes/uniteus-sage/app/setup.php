@@ -24,6 +24,7 @@ add_action('wp_enqueue_scripts', function () {
         bundle('time')->enqueue();
     }
 }, 100);
+
 /**
  * Register the theme assets with the block editor.
  *
@@ -205,3 +206,23 @@ add_action('wp_head', function () {
 });
 
 add_editor_style('resources/styles/editor.css');
+
+/**
+ * Custom Noindex Override for Yoast SEO
+ */
+function custom_noindex_override() {
+    error_log('custom_noindex_override function loaded'); // Log to confirm function is loaded
+    if (is_page()) {
+        $noindex = get_field('set_as_noindex');
+        if ($noindex) {
+            error_log('Noindex is active'); // Log to confirm condition is met
+            // Overriding the Yoast SEO robots meta tag
+            add_filter('wpseo_robots', function() {
+                return 'noindex, nofollow';
+            });
+            // Outputting the noindex meta tag
+           // echo '<meta name="robots" content="noindex, nofollow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">';
+        }
+    }
+}
+add_action('wp', 'App\\custom_noindex_override');

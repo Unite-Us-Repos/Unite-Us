@@ -58,7 +58,6 @@ collect(['setup', 'filters', 'custom-post-types', 'class-bootstrap-nav-walker', 
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
-                /* translators: %s is replaced with the relative file path */
                 sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file)
             );
         }
@@ -77,3 +76,4 @@ collect(['setup', 'filters', 'custom-post-types', 'class-bootstrap-nav-walker', 
 */
 
 add_theme_support('sage');
+

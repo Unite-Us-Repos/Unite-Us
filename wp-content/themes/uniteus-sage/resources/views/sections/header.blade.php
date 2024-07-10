@@ -167,7 +167,6 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
             </div>
           </div>
         </div>
-
       </div>
     </div>
     @include('partials.content-search-modal')

@@ -17,12 +17,12 @@
                 "id": ""
             },
             "acfe_repeater_stylised_button": 1,
-            "acfe_field_group_condition": 0,
             "collapsed": "",
             "min": 0,
             "max": 0,
             "layout": "row",
             "button_label": "Add Form",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_63926ad8d918f",
@@ -41,8 +41,8 @@
                     "placement": "top",
                     "endpoint": 0,
                     "no_preference": 0,
-                    "acfe_field_group_condition": 0,
-                    "parent_repeater": "field_636d277a5c5b3"
+                    "parent_repeater": "field_636d277a5c5b3",
+                    "selected": 0
                 },
                 {
                     "key": "field_6393be3514797",
@@ -64,7 +64,6 @@
                     "style": "",
                     "ui_on_text": "",
                     "ui_off_text": "",
-                    "acfe_field_group_condition": 0,
                     "parent_repeater": "field_636d277a5c5b3"
                 },
                 {
@@ -86,7 +85,6 @@
                     "prepend": "",
                     "append": "",
                     "maxlength": "",
-                    "acfe_field_group_condition": 0,
                     "parent_repeater": "field_636d277a5c5b3"
                 },
                 {
@@ -108,7 +106,6 @@
                     "placeholder": "Get Help",
                     "prepend": "",
                     "append": "",
-                    "acfe_field_group_condition": 0,
                     "parent_repeater": "field_636d277a5c5b3"
                 },
                 {
@@ -134,8 +131,8 @@
                     "rows": 8,
                     "max_rows": "",
                     "return_entities": 0,
-                    "acfe_field_group_condition": 0,
-                    "parent_repeater": "field_636d277a5c5b3"
+                    "parent_repeater": "field_636d277a5c5b3",
+                    "return_format": []
                 },
                 {
                     "key": "field_636c11324ceac",
@@ -157,8 +154,8 @@
                     "max": 0,
                     "collapsed": "",
                     "button_label": "Add Location",
-                    "acfe_field_group_condition": 0,
                     "rows_per_page": 20,
+                    "parent_repeater": "field_636d277a5c5b3",
                     "sub_fields": [
                         {
                             "key": "field_636c102f64539",
@@ -179,11 +176,9 @@
                             "prepend": "",
                             "append": "",
                             "maxlength": "",
-                            "acfe_field_group_condition": 0,
                             "parent_repeater": "field_636c11324ceac"
                         }
-                    ],
-                    "parent_repeater": "field_636d277a5c5b3"
+                    ]
                 },
                 {
                     "key": "field_63926aa9d918e",
@@ -202,8 +197,8 @@
                     "placement": "top",
                     "endpoint": 0,
                     "no_preference": 0,
-                    "acfe_field_group_condition": 0,
-                    "parent_repeater": "field_636d277a5c5b3"
+                    "parent_repeater": "field_636d277a5c5b3",
+                    "selected": 0
                 },
                 {
                     "key": "field_63926a11c829d",
@@ -236,7 +231,6 @@
                     "acfe_wysiwyg_transparent": 0,
                     "acfe_wysiwyg_merge_toolbar": 0,
                     "acfe_wysiwyg_custom_toolbar": 0,
-                    "acfe_field_group_condition": 0,
                     "acfe_wysiwyg_auto_init": 0,
                     "acfe_wysiwyg_min_height": 300,
                     "acfe_wysiwyg_toolbar_buttons": [],
@@ -273,14 +267,12 @@
                     "acfe_wysiwyg_transparent": 0,
                     "acfe_wysiwyg_merge_toolbar": 0,
                     "acfe_wysiwyg_custom_toolbar": 0,
-                    "acfe_field_group_condition": 0,
                     "acfe_wysiwyg_auto_init": 0,
                     "acfe_wysiwyg_min_height": 300,
                     "acfe_wysiwyg_toolbar_buttons": [],
                     "parent_repeater": "field_636d277a5c5b3"
                 }
-            ],
-            "rows_per_page": 20
+            ]
         },
         {
             "key": "field_636d5108a2b6b",
@@ -313,7 +305,6 @@
             "acfe_wysiwyg_transparent": 0,
             "acfe_wysiwyg_merge_toolbar": 0,
             "acfe_wysiwyg_custom_toolbar": 0,
-            "acfe_field_group_condition": 0,
             "acfe_wysiwyg_auto_init": 0,
             "acfe_wysiwyg_min_height": 300,
             "acfe_wysiwyg_toolbar_buttons": []
@@ -349,7 +340,6 @@
             "acfe_wysiwyg_transparent": 0,
             "acfe_wysiwyg_merge_toolbar": 0,
             "acfe_wysiwyg_custom_toolbar": 0,
-            "acfe_field_group_condition": 0,
             "acfe_wysiwyg_auto_init": 0,
             "acfe_wysiwyg_min_height": 300,
             "acfe_wysiwyg_toolbar_buttons": []
@@ -383,5 +373,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1673032941
+    "modified": 1720575982
 }
