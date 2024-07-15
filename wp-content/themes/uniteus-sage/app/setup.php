@@ -220,9 +220,7 @@ function custom_noindex_override() {
             add_filter('wpseo_robots', function() {
                 return 'noindex, nofollow';
             });
-            // Outputting the noindex meta tag
-           // echo '<meta name="robots" content="noindex, nofollow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">';
-        }
+         }
     }
 }
 add_action('wp', 'App\\custom_noindex_override');
