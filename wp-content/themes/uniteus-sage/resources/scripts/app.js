@@ -296,3 +296,21 @@ document.addEventListener('DOMContentLoaded', function() {
       collapseAllCards();
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+
+  utmParams.forEach(param => {
+      const value = urlParams.get(param);
+      if (value) {
+          sessionStorage.setItem(param, value);
+      }
+  });
+
+  // For debugging: log the stored UTM parameters
+  console.log('Stored UTM Parameters:');
+  utmParams.forEach(param => {
+      console.log(`${param}: `, sessionStorage.getItem(param));
+  });
+});
