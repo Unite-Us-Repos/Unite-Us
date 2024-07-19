@@ -297,6 +297,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+// log the stored UTM parameters
 document.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
   const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
