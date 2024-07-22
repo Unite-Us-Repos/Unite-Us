@@ -4,7 +4,7 @@ if (!isset($layout)) {
   $layout = '';
 }
 $has_podcast_links = false;
-foreach ($podcast_links as $field_name => $link ) {
+foreach ($podcast_links as $field_name => $link) {
   if (!empty($link)) {
     $has_podcast_links = true;
   }
@@ -36,19 +36,15 @@ $page_url = get_permalink();
 $preview_image = get_the_post_thumbnail_url($post->ID, 'full');
 $publish_date = get_the_date('c', $post->ID);
 
-// Construct the JSON-LD schema for Webinar Posts
-$schema_markup = [
-  "@context" => "https://schema.org",
-  "@type" => ["VideoObject", "LearningResource"],
-  "name" => $page_title,
-  "description" => $meta_description,
-  "learningResourceType" => "Concept Overview",
-  "educationalLevel" => "High school (US)",
-  "contentUrl" => $video_url,
-  "embedUrl" => $page_url,
-  "thumbnailUrl" => [$preview_image],
-  "uploadDate" => $publish_date
-];
+// Retrieve user-provided schema markup from ACF
+$acf_schema_markup = get_field('schema_markup', $post->ID);
+
+// Replace variables in user-provided schema markup
+$schema_markup = str_replace(
+  ['{{PageTitle}}', '{{MetDescription}}', '{{VideoURL}}', '{{PageURL}}', '{{PreviewImage}}', '{{PublishDate}}'],
+  [$page_title, $meta_description, $video_url, $page_url, $preview_image, $publish_date],
+  $acf_schema_markup
+);
 @endphp
 
 <article @php (post_class()) @endphp="@php (post_class()) @endphp">
@@ -115,10 +111,6 @@ $schema_markup = [
           @endforeach
         </ul>
       @endif
-
-      {{-- @if ('default' == $layout)
-        @php the_content() @endphp
-      @endif --}}
 
       @if ('default' == $layout)
         {!! $content !!}
@@ -213,34 +205,7 @@ $schema_markup = [
           @endisset
           <div class="flex-1 bg-white flex flex-col justify-between">
             <div class="flex-1 px-6 pt-7 pb-10">
-              <p class="leading-normal text-sm font-medium text-action mb-2">
-                <a href="/{{ $catSlug }}/">
-                  <span class="inline-block bg-light font-medium rounded-full px-[15px] py-1 pill-span">
-                    {{ $type }}
-                  </span>
-                </a>
-              </p>
-              <h3 class="mb-1 rfy-title">
-                @if ($post['permalink'])
-                <a
-                  class="no-underline text-brand"
-                  href="{{ $post['permalink'] }}"
-                  aria-label="{{ htmlentities($post['post_title']) }}"
-                  >{!! $post['post_title'] !!}</a>
-                @endif
-              </h3>
-              {{ $post['date'] }}
-            </div>
-            <div class="bg-light hover:bg-blue-200">
-              @if ($post['permalink'])
-              <a
-                class="rfy-read-more no-underline text-action font-semibold p-6 block"
-                href="{{ $post['permalink'] }}"
-                aria-label="Read More - {{ htmlentities($post['post_title']) }}"
-                >Read More<span class="sr-only"> - {!! $post['post_title'] !!}</span><span aria-hidden="true" class="ml-1">&rarr;</span></a>
-              @else
-              <span class="p-6 block">&nbsp;</span>
-              @endif
+              <p class="leading-normal text-sm font-medium
             </div>
           </div>
         </div>
@@ -250,9 +215,9 @@ $schema_markup = [
   </div>
 </section>
 
-{{-- Output the schema markup if it exists --}}
+{{-- Output the user-provided schema markup if it exists --}}
 @if ($schema_markup)
   <script type="application/ld+json">
-    {!! json_encode($schema_markup, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+    {!! $schema_markup !!}
   </script>
 @endif
