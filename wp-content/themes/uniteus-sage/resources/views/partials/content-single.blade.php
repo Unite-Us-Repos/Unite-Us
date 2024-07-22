@@ -11,6 +11,24 @@ foreach ($podcast_links as $field_name => $link ) {
 }
 $author_name = get_field('author_name', $post->ID); // Fetch the author name from ACF
 
+// Function to extract iframe src
+function extract_iframe_src($content) {
+  if (preg_match('/<iframe[^>]+src="([^"]+)"[^>]*><\/iframe>/', $content, $match)) {
+    return $match[1];
+  }
+  return '';
+}
+
+// Capture the content output
+ob_start();
+if ('default' == $layout) {
+  the_content();
+}
+$content = ob_get_clean();
+
+// Extract video URL from the content
+$video_url = extract_iframe_src($content);
+
 // Schema Markup Variables for Webinar Posts
 $page_title = get_the_title();
 $meta_description = get_post_meta($post->ID, '_yoast_wpseo_metadesc', true);
@@ -26,11 +44,11 @@ $schema_markup = [
   "description" => $meta_description,
   "learningResourceType" => "Concept Overview",
   "educationalLevel" => "High school (US)",
-  "contentUrl" => $page_url,
+  "contentUrl" => $video_url,
+  "embedUrl" => $page_url,
   "thumbnailUrl" => [$preview_image],
   "uploadDate" => $publish_date
 ];
-
 @endphp
 
 <article @php (post_class()) @endphp="@php (post_class()) @endphp">
@@ -98,8 +116,12 @@ $schema_markup = [
         </ul>
       @endif
 
-      @if ('default' == $layout)
+      {{-- @if ('default' == $layout)
         @php the_content() @endphp
+      @endif --}}
+
+      @if ('default' == $layout)
+        {!! $content !!}
       @endif
 
       @php
