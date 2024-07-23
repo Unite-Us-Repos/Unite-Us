@@ -1708,3 +1708,7 @@ img.expanded  {
 .acf-svg-icon-picker__popup-holder {
   z-index: 999999999;
 }
+
+nav.breadcrumbs ol{
+  list-style-type: none;
+ }

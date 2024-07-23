@@ -205,7 +205,34 @@ $schema_markup = str_replace(
           @endisset
           <div class="flex-1 bg-white flex flex-col justify-between">
             <div class="flex-1 px-6 pt-7 pb-10">
-              <p class="leading-normal text-sm font-medium
+              <p class="leading-normal text-sm font-medium text-action mb-2">
+                <a href="/{{ $catSlug }}/">
+                  <span class="inline-block bg-light font-medium rounded-full px-[15px] py-1 pill-span">
+                    {{ $type }}
+                  </span>
+                </a>
+              </p>
+              <h3 class="mb-1 rfy-title">
+                @if ($post['permalink'])
+                <a
+                  class="no-underline text-brand"
+                  href="{{ $post['permalink'] }}"
+                  aria-label="{{ htmlentities($post['post_title']) }}"
+                  >{!! $post['post_title'] !!}</a>
+                @endif
+              </h3>
+              {{ $post['date'] }}
+            </div>
+            <div class="bg-light hover:bg-blue-200">
+              @if ($post['permalink'])
+              <a
+                class="rfy-read-more no-underline text-action font-semibold p-6 block"
+                href="{{ $post['permalink'] }}"
+                aria-label="Read More - {{ htmlentities($post['post_title']) }}"
+                >Read More<span class="sr-only"> - {!! $post['post_title'] !!}</span><span aria-hidden="true" class="ml-1">&rarr;</span></a>
+              @else
+              <span class="p-6 block">&nbsp;</span>
+              @endif
             </div>
           </div>
         </div>
