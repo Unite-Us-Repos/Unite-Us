@@ -253,7 +253,7 @@ Time Left to RSVP
 	   @if (('address' == $event_info['title_display']) OR ('address-starting-time' == $event_info['title_display']))
 
 <div class="uppercase font-semibold mb-3" style="color: #216CFF;">
-            About the Event
+            About the Eventsss
           </div>
 
           @if ($event_info['address'])

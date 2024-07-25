@@ -93,7 +93,7 @@ $section_settings = $acf["components"][$index]['layout_settings']['section_setti
 
           <h3 class="mb-6 text-2xl">Have Questions?</h3>
           <div class="text-base">
-            <p><span class="block sm:inline">Please email</span> Please email <a class="text-action-light-blue" href="mailto:support@nowpow.com">support@nowpow.com</a> with any remaining support needs and a team member will be in touch.</p>
+            <p>Please email <a class="text-action-light-blue" href="mailto:support@nowpow.com">support@nowpow.com</a> with any remaining support needs and a team member will be in touch.</p>
           </div>
         </div>
 
