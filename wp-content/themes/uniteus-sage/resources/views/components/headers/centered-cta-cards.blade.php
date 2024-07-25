@@ -75,17 +75,13 @@ $section_settings = $acf["components"][$index]['layout_settings']['section_setti
       <div class="text-center flex-1 flex flex-col justify-between pt-4">
         <div class="flex-1 px-6 py-10">
 
-          <h3 class="mb-6 text-2xl sm:text-3xl">Looking for the <span class="inline-block">NowPow platform</span>?</h3>
+          <h3 class="mb-6 text-2xl sm:text-3xl">Join the Unite Us Platform</h3>
           <div class="text-lg sm:text-xl">
-            <p>Bookmark <a href="https://app.nowpow.com">app.nowpow.com</a> for quick access to log into the NowPow platform. You can also click on the button below to get to the NowPow sign in page:</p>
-            <p><a href="https://app.nowpow.com" class="button  flex items-center gap-3  button-solid" style="font-weight:400 !important;text-decoration:none !important;">
-            Sign In
-
-            <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M18.5 10C18.5 14.4183 14.9183 18 10.5 18C6.08172 18 2.5 14.4183 2.5 10C2.5 5.58172 6.08172 2 10.5 2C14.9183 2 18.5 5.58172 18.5 10ZM12.5 7C12.5 8.10457 11.6046 9 10.5 9C9.39543 9 8.5 8.10457 8.5 7C8.5 5.89543 9.39543 5 10.5 5C11.6046 5 12.5 5.89543 12.5 7ZM10.4999 11C8.48239 11 6.74394 12.195 5.95374 13.9157C7.05403 15.192 8.68265 16 10.5 16C12.3173 16 13.9459 15.1921 15.0462 13.9158C14.256 12.195 12.5175 11 10.4999 11Z" fill="#3B8BCA"/>
-</svg>
-
-                                  </a></p>
+            <p>All users are invited to migrate to the Unite Us platform to continue positively serving their communities. <a href="/how-it-works">Learn more about how it works.</a></p>
+            <p>Reach out to your organization’s NowPow administrator or contact Unite Us to discuss next steps.</p>
+            <p><a href="/contact" class="button  flex items-center gap-3 button-hollow" style="font-weight:400 !important;text-decoration:none !important;">
+              Contact Unite Us
+            </a></p>
           </div>
         </div>
       </div>
@@ -95,16 +91,16 @@ $section_settings = $acf["components"][$index]['layout_settings']['section_setti
       <div class="text-center text-white flex-1 flex flex-col justify-between pt-4">
         <div class="flex-1 px-6 py-10">
 
-          <h3 class="mb-6 text-2xl">Need support with the <span class="inline-block">NowPow platform</span>?</h3>
+          <h3 class="mb-6 text-2xl">Have Questions?</h3>
           <div class="text-base">
-            <p><span class="block sm:inline">Please email</span> <a class="text-action-light-blue" href="mailto:support@nowpow.com">support@nowpow.com</a> with any login issues or other product support and a team member will be in touch.</p>
+            <p><span class="block sm:inline">Please email</span> Please email <a class="text-action-light-blue" href="mailto:support@nowpow.com">support@nowpow.com</a> with any remaining support needs and a team member will be in touch.</p>
           </div>
         </div>
 
       </div>
     </div>
 
-    <div class="col-span-8 pt-6 flex items-center justify-center text-center sm:justify-start sm:text-left">
+    {{-- <div class="col-span-8 pt-6 flex items-center justify-center text-center sm:justify-start sm:text-left">
       <div class="text-xl">
         <p>Interested in learning more about Unite Us or how to get started?</p>
       </div>
@@ -114,7 +110,7 @@ $section_settings = $acf["components"][$index]['layout_settings']['section_setti
       <div class="text-lg">
         <p><span class="block sm:inline">You can connect with the </span>Unite Us team <a href="https://uniteus.com/contact/" title="Go to contact page">here</a>.</p>
       </div>
-    </div>
+    </div> --}}
 
   </div>
 </div>
