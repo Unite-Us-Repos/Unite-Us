@@ -39,7 +39,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_632e7f9d9b1e3",
@@ -111,7 +112,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_632e7f9d9b1d0",
@@ -216,6 +218,35 @@
                     "allow_custom": 0,
                     "search_placeholder": "",
                     "min": ""
+                },
+                {
+                    "key": "field_66a9914048dba",
+                    "label": "Alternate Look",
+                    "name": "alternate",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "This will make the icons invert colors and display the icon next to the text column.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_632e7f9d9b1d0",
+                                "operator": "==",
+                                "value": "icon"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1,
+                    "style": ""
                 },
                 {
                     "key": "field_632e7f9d9b1ff",
@@ -688,7 +719,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_6539a6e0c4546",
@@ -745,5 +777,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1719070599
+    "modified": 1722468046
 }

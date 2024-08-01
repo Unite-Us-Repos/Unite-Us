@@ -8,13 +8,14 @@ use Illuminate\Support\Str;
       'fullscreen' => '',
   ];
   $section_settings = isset($acf["components"][$index]['layout_settings']['section_settings']) ? $acf["components"][$index]['layout_settings']['section_settings'] : $s_settings;
+  $alternate = !empty($alternate) ? 'icon-cards-alternate' : '';
   @endphp
   
   @if ($background['has_divider'])
     @includeIf('dividers.waves')
   @endif
   
-  <section @isset($section['id']) id="{{ $section['id'] }}" @endisset class="relative @if ($background['color'] == 'dark') text-white @endif component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+  <section @isset($section['id']) id="{{ $section['id'] }}" @endisset class="relative @if ($background['color'] == 'dark') text-white @endif component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif {{ $alternate }}">
     @if ('center' == $section["alignment"])
     <div class="component-inner-section">
       <div class="text-center mb-7">
@@ -210,7 +211,9 @@ use Illuminate\Support\Str;
               <div class="bg-white text-brand 
               @if ($background['color'] != 'light-gradient') shadow-lg @endif
               @if ($card['bg_image']) group-hover:bg-{{ $icon_color_class }} @else group-hover:bg-{{ $icon_color_class }} @endif 
-              group-hover:text-white transition-all hover:shadow-lg border border-light group-hover:border-{{ $icon_color_class }} relative flex items-start rounded-lg overflow-hidden group h-full">
+              group-hover:text-white transition-all hover:shadow-lg border border-light group-hover:border-{{ $icon_color_class }} relative flex items-start rounded-lg overflow-hidden group h-full
+              @if ($alternate) border-2 border-action @endif
+              ">
     
                 @if ($card['bg_image'])
                   <div style="z-index: 1;" class="absolute inset-0">
@@ -236,12 +239,19 @@ use Illuminate\Support\Str;
                   </div>
                 @endif
                 @if ($link)
-                <span class="absolute arrow-icon">
-                  <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.9215 1.38279H18.9632C18.9632 1.10653 18.8534 0.841573 18.6581 0.646223C18.4627 0.450872 18.1978 0.341125 17.9215 0.341125V1.38279ZM16.8798 13.8828C16.8798 14.1591 16.9896 14.424 17.1849 14.6194C17.3803 14.8147 17.6452 14.9245 17.9215 14.9245C18.1978 14.9245 18.4627 14.8147 18.6581 14.6194C18.8534 14.424 18.9632 14.1591 18.9632 13.8828H16.8798ZM5.42148 0.341125C5.14521 0.341125 4.88026 0.450872 4.68491 0.646223C4.48956 0.841573 4.37982 1.10653 4.37982 1.38279C4.37982 1.65906 4.48956 1.92401 4.68491 2.11936C4.88026 2.31471 5.14521 2.42446 5.42148 2.42446V0.341125ZM0.518356 17.313C0.418867 17.4091 0.33951 17.524 0.284918 17.6511C0.230325 17.7782 0.201589 17.9149 0.200387 18.0532C0.199185 18.1915 0.225541 18.3287 0.277917 18.4567C0.330293 18.5847 0.40764 18.701 0.505445 18.7988C0.60325 18.8966 0.719554 18.974 0.847571 19.0264C0.975588 19.0787 1.11275 19.1051 1.25107 19.1039C1.38938 19.1027 1.52607 19.0739 1.65315 19.0194C1.78024 18.9648 1.89518 18.8854 1.99127 18.7859L0.518356 17.313ZM16.8798 1.38279V13.8828H18.9632V1.38279H16.8798ZM17.9215 0.341125H5.42148V2.42446H17.9215V0.341125ZM17.185 0.646334L0.518356 17.313L1.99127 18.7859L18.6579 2.11925L17.185 0.646334Z" fill="#C7D8E8"/>
-                  </svg>
-                </span>
+                  <span class="absolute arrow-icon">
+                    @if (!$alternate)
+                      <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.9215 1.38279H18.9632C18.9632 1.10653 18.8534 0.841573 18.6581 0.646223C18.4627 0.450872 18.1978 0.341125 17.9215 0.341125V1.38279ZM16.8798 13.8828C16.8798 14.1591 16.9896 14.424 17.1849 14.6194C17.3803 14.8147 17.6452 14.9245 17.9215 14.9245C18.1978 14.9245 18.4627 14.8147 18.6581 14.6194C18.8534 14.424 18.9632 14.1591 18.9632 13.8828H16.8798ZM5.42148 0.341125C5.14521 0.341125 4.88026 0.450872 4.68491 0.646223C4.48956 0.841573 4.37982 1.10653 4.37982 1.38279C4.37982 1.65906 4.48956 1.92401 4.68491 2.11936C4.88026 2.31471 5.14521 2.42446 5.42148 2.42446V0.341125ZM0.518356 17.313C0.418867 17.4091 0.33951 17.524 0.284918 17.6511C0.230325 17.7782 0.201589 17.9149 0.200387 18.0532C0.199185 18.1915 0.225541 18.3287 0.277917 18.4567C0.330293 18.5847 0.40764 18.701 0.505445 18.7988C0.60325 18.8966 0.719554 18.974 0.847571 19.0264C0.975588 19.0787 1.11275 19.1051 1.25107 19.1039C1.38938 19.1027 1.52607 19.0739 1.65315 19.0194C1.78024 18.9648 1.89518 18.8854 1.99127 18.7859L0.518356 17.313ZM16.8798 1.38279V13.8828H18.9632V1.38279H16.8798ZM17.9215 0.341125H5.42148V2.42446H17.9215V0.341125ZM17.185 0.646334L0.518356 17.313L1.99127 18.7859L18.6579 2.11925L17.185 0.646334Z" fill="#C7D8E8"/>
+                      </svg>
+                    @else
+                      <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.9215 1.38279H18.9632C18.9632 1.10653 18.8534 0.841573 18.6581 0.646223C18.4627 0.450872 18.1978 0.341125 17.9215 0.341125V1.38279ZM16.8798 13.8828C16.8798 14.1591 16.9896 14.424 17.1849 14.6194C17.3803 14.8147 17.6452 14.9245 17.9215 14.9245C18.1978 14.9245 18.4627 14.8147 18.6581 14.6194C18.8534 14.424 18.9632 14.1591 18.9632 13.8828H16.8798ZM5.42148 0.341125C5.14521 0.341125 4.88026 0.450872 4.68491 0.646223C4.48956 0.841573 4.37982 1.10653 4.37982 1.38279C4.37982 1.65906 4.48956 1.92401 4.68491 2.11936C4.88026 2.31471 5.14521 2.42446 5.42148 2.42446V0.341125ZM0.518356 17.313C0.418867 17.4091 0.33951 17.524 0.284918 17.6511C0.230325 17.7782 0.201589 17.9149 0.200387 18.0532C0.199185 18.1915 0.225541 18.3287 0.277917 18.4567C0.330293 18.5847 0.40764 18.701 0.505445 18.7988C0.60325 18.8966 0.719554 18.974 0.847571 19.0264C0.975588 19.0787 1.11275 19.1051 1.25107 19.1039C1.38938 19.1027 1.52607 19.0739 1.65315 19.0194C1.78024 18.9648 1.89518 18.8854 1.99127 18.7859L0.518356 17.313ZM16.8798 1.38279V13.8828H18.9632V1.38279H16.8798ZM17.9215 0.341125H5.42148V2.42446H17.9215V0.341125ZM17.185 0.646334L0.518356 17.313L1.99127 18.7859L18.6579 2.11925L17.185 0.646334Z" fill="#216cff"/>
+                      </svg>
+                    @endif
+                  </span>
                 @endif
+
                 @if (!empty($card['expandable_tile']) && !empty($card['expanded_description']))
                   <span class="absolute chevron-icon">
                     <svg width="27" height="15" viewBox="0 0 27 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -254,28 +264,35 @@ use Illuminate\Support\Str;
                   @if ($link)
                   <a class=" inset-0 text-brand group-hover:text-white no-underline" href="{{ $link }}" @if ($card['is_blank']) target="_blank" @endif>
                   @endif
-                  <div class="relative">
-                    @isset ($card["icon"])
+                  <div class="relative @if ($alternate) flex gap-3 @endif">
+                    <div>
+                      @isset ($card["icon"])
                       @if (!empty($card["icon"]))
-                      <span class="mb-5 bg-light 
-                         group-hover:bg-white w-10 h-10 p-2 flex justify-center items-center rounded-full">
-                          <img class="lazy h-full w-full acf-icon-{{ $icon_color_class }} service-icon" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
-                      </span>
+                        <span class="mb-5 @if ($alternate) bg-{{ $icon_color_class }} @else bg-light @endif 
+                          group-hover:bg-white w-10 h-10 p-2 flex justify-center items-center rounded-full">
+                          <img class="lazy h-full w-full 
+                            @if ($alternate) acf-icon-white @else acf-icon-{{ $icon_color_class }} @endif 
+                            service-icon group-hover:group-hover-icon" 
+                            data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
+                        </span>
                       @endif
-                    @endisset
-                    @if ($card['title'])
-                    <h3 class="text-xl font-semibold mb-4">{!! $card['title'] !!}</h3>
-                    @endif
-                    @if ($card['description'])
-                      <div class="text-lg w-full">
-                          {!! $card['description'] !!}
-                      </div>
-                    @endif
-                    @if (!empty($card['expandable_tile']) && !empty($card['expanded_description']))
-                      <div class="text-lg w-full expanded-description mt-4">
-                          {!! $card['expanded_description'] !!}
-                      </div>
-                    @endif
+                      @endisset
+                    </div>
+                    <div>
+                      @if ($card['title'])
+                      <h3 class="@if ($alternate) text-action text-xxl group-hover:text-white font-bold @else text-xl font-semibold @endif  mb-4">{!! $card['title'] !!}</h3>
+                      @endif
+                      @if ($card['description'])
+                        <div class="@if ($alternate) text-md @else text-lg @endif w-full">
+                            {!! $card['description'] !!}
+                        </div>
+                      @endif
+                      @if (!empty($card['expandable_tile']) && !empty($card['expanded_description']))
+                        <div class="text-lg w-full expanded-description mt-4">
+                            {!! $card['expanded_description'] !!}
+                        </div>
+                      @endif
+                    </div>
                   </div>
                   @if ($link)
                   </a>

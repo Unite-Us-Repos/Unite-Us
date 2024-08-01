@@ -39,7 +39,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_62b588d2938f5",
@@ -84,7 +85,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_62b588d2938ea",
@@ -227,7 +229,8 @@
                         "code_editor": "Code Editor",
                         "form": "Form",
                         "accordion": "Accordion",
-                        "video": "Video"
+                        "video": "Video",
+                        "list": "List Items with Icons"
                     },
                     "default_value": "wysiwyg",
                     "return_format": "value",
@@ -360,9 +363,9 @@
                     },
                     "message": "",
                     "default_value": 0,
-                    "ui": 0,
                     "ui_on_text": "",
                     "ui_off_text": "",
+                    "ui": 1,
                     "style": ""
                 },
                 {
@@ -788,6 +791,149 @@
                     ]
                 },
                 {
+                    "key": "field_66aa43517868b",
+                    "label": "List Items with Icons",
+                    "name": "list_items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_63754039ee531",
+                                "operator": "==",
+                                "value": "list"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_repeater_stylised_button": 1,
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Add List Item",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_66aa6b89dd7b3",
+                            "label": "SVG Picker or Custom Icon Upload",
+                            "name": "svg_picker_or_custom_icon_upload",
+                            "aria-label": "",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "SVG Icon Picker": "SVG Icon Picker",
+                                "Custom": "Custom"
+                            },
+                            "default_value": "",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "layout": "vertical",
+                            "save_other_choice": 0,
+                            "parent_repeater": "field_66aa43517868b"
+                        },
+                        {
+                            "key": "field_66aa51c27868c",
+                            "label": "Icon",
+                            "name": "icon",
+                            "aria-label": "",
+                            "type": "svg_icon_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_66aa6b89dd7b3",
+                                        "operator": "==",
+                                        "value": "SVG Icon Picker"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "initial_value": "",
+                            "parent_repeater": "field_66aa43517868b"
+                        },
+                        {
+                            "key": "field_66aa51e97868e",
+                            "label": "Icon Custom Upload",
+                            "name": "icon_custom_upload",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_66aa6b89dd7b3",
+                                        "operator": "==",
+                                        "value": "Custom"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "uploader": "",
+                            "return_format": "array",
+                            "library": "all",
+                            "upload_folder": "",
+                            "acfe_thumbnail": 0,
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium",
+                            "parent_repeater": "field_66aa43517868b"
+                        },
+                        {
+                            "key": "field_66aa51d17868d",
+                            "label": "List Item",
+                            "name": "list_item",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "acfe_textarea_code": 0,
+                            "maxlength": "",
+                            "rows": 3,
+                            "placeholder": "",
+                            "new_lines": "",
+                            "parent_repeater": "field_66aa43517868b"
+                        }
+                    ]
+                },
+                {
                     "key": "field_65a2d2f6adf1a",
                     "label": "Button Placement",
                     "name": "button_placement",
@@ -862,7 +1008,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_62c51f9e066c1",
@@ -915,7 +1062,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_642b82b4b9c68",
@@ -1645,7 +1793,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_64aed88811020",
@@ -1752,5 +1901,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1718504858
+    "modified": 1722444829
 }
