@@ -153,6 +153,7 @@ module.exports = {
     'sm:flex-1',
     'min-h-[475px]',
     'sm:min-h-[600px]',
+    'lg:max-h-[600px]',
     'w-5/6',
     'sm:w-4/6',
     'text-action-dark',

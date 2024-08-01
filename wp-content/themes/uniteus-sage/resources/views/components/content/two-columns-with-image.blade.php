@@ -219,7 +219,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
         @endisset
 
       </div>
-      <div class="flex flex-col max-h-[600px] @if ('accordion' == $type) lg:col-span-7 lg:col-end-13 @else lg:col-span-{{ $columns[1] }} @endif @if ('center' == $vertical_alignment) justify-center @endif relative @if ('image' == $type) @if ('text_image' == $layout) lg:order-2 @else  lg:order-1 @endif @endif">
+      <div class="flex flex-col lg:max-h-[600px] @if ('accordion' == $type) lg:col-span-7 lg:col-end-13 @else lg:col-span-{{ $columns[1] }} @endif @if ('center' == $vertical_alignment) justify-center @endif relative @if ('image' == $type) @if ('text_image' == $layout) lg:order-2 @else  lg:order-1 @endif @endif">
 
       @if ('image' == $type)
         @if ($mask_image)
