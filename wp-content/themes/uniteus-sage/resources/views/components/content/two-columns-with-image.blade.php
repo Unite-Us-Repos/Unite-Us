@@ -326,6 +326,41 @@ $image_overaly = @asset('/images/network-mask-1.png');
           </div>
 
         @endif
+        
+        @if ('list' == $type)
+        
+     
+        @if (!empty($list_items))
+        <div class="list-items-with-icons flex flex-wrap mt-5 mb-3">
+            @foreach ($list_items as $item)
+                <div class="item basis-full lg:basis-1/2 flex gap-2 p-4">
+                    
+                    @if (isset($item['svg_picker_or_custom_icon_upload']))
+                    <div class="basis-1/5 flex justify-start lg:justify-end align-middle">
+                        @if ($item['svg_picker_or_custom_icon_upload'] == 'SVG Icon Picker' && !empty($item['icon']))
+                            <span class="icon w-10 h-10 p-2 flex justify-center items-center rounded-full mb-5 bg-light ">
+                              <img class="lazy h-full w-full" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $item['icon'] }}.svg" alt="" />
+                            </span>
+                        @elseif ($item['svg_picker_or_custom_icon_upload'] == 'Custom' && !empty($item['icon_custom_upload']))
+                          <span class="icon w-10 h-10 flex justify-center items-center rounded-full mb-5 bg-light ">
+                            <img src="{{ $item['icon_custom_upload']['url'] }}" alt="{{ $item['icon_custom_upload']['alt'] }}" class="custom-icon w-10 h-10">
+                          </span>
+                        @endif
+                    </div>
+                    @endif
+
+                    <span class="text basis-4/5 font-semibold">
+                        {{ $item['list_item'] }}
+                    </span>
+                </div>
+            @endforeach
+        </div>
+    @endif
+    
+    
+      
+   
+        @endif
 
         @if ($buttons && ('widget_area' == $button_placement))
         <div class="mb-6 lg:m-0 w-full">

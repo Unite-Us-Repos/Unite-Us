@@ -346,13 +346,6 @@ module.exports = {
       }
     },
     {
-      "name": "WordPressExternalsWebpackPlugin",
-      "stage": null,
-      "externals": {
-        "type": "window"
-      }
-    },
-    {
       "options": {
         "emitHtml": false,
         "publicPath": ""
@@ -379,6 +372,13 @@ module.exports = {
       "file": "entrypoints.json",
       "entrypointsName": "entrypoints.json",
       "wordpressName": "wordpress.json"
+    },
+    {
+      "name": "WordPressExternalsWebpackPlugin",
+      "stage": null,
+      "externals": {
+        "type": "window"
+      }
     }
   ],
   "entry": {

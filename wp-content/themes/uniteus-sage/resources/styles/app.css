@@ -1711,4 +1711,21 @@ img.expanded  {
 
 nav.breadcrumbs ol{
   list-style-type: none;
- }
+}
+
+.icon-cards-alternate .service-icon-card:hover .acf-icon-white {
+  filter: brightness(0) saturate(100%) invert(30%) sepia(100%) saturate(2600%) hue-rotate(199deg) brightness(95%) contrast(105%);
+}
+
+
+.icon-cards-alternate .text-xxl {
+  font-size: 2.25rem;
+}
+
+.icon-cards-alternate .text-md {
+  font-size: 1rem;
+}
+
+.icon-cards-alternate .service-icon-card:hover .arrow-icon svg path {
+  fill: #FFFFFF;
+}
