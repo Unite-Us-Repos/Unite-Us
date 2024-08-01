@@ -333,7 +333,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
         @if (!empty($list_items))
         <div class="list-items-with-icons flex flex-wrap mt-5 mb-3">
             @foreach ($list_items as $item)
-                <div class="item basis-full lg:basis-1/2 flex gap-2 p-4">
+                <div class="item basis-full lg:basis-1/2 flex gap-2 p-2 lg:p-4 items-center">
                     
                     @if (isset($item['svg_picker_or_custom_icon_upload']))
                     <div class="basis-1/5 flex justify-start lg:justify-end align-middle">
@@ -342,7 +342,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
                               <img class="lazy h-full w-full" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $item['icon'] }}.svg" alt="" />
                             </span>
                         @elseif ($item['svg_picker_or_custom_icon_upload'] == 'Custom' && !empty($item['icon_custom_upload']))
-                          <span class="icon w-10 h-10 flex justify-center items-center rounded-full mb-5 bg-light ">
+                          <span class="icon w-10 h-10 flex justify-center items-center rounded-full bg-light ">
                             <img src="{{ $item['icon_custom_upload']['url'] }}" alt="{{ $item['icon_custom_upload']['alt'] }}" class="custom-icon w-10 h-10">
                           </span>
                         @endif

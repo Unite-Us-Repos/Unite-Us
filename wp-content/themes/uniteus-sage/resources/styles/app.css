@@ -1729,3 +1729,27 @@ nav.breadcrumbs ol{
 .icon-cards-alternate .service-icon-card:hover .arrow-icon svg path {
   fill: #FFFFFF;
 }
+
+.review-credit {
+  transition: all 0.3s ease-in-out;
+}
+.review-credit:hover .icon svg circle {
+  fill: #ff492c;
+}
+.review-credit a {
+  text-decoration: none;
+}
+.review-credit:hover .text-lg {
+  color: black;
+}
+
+@media only screen and (min-width: 768px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .desktop-only {
+    display: none;
+  }
+}

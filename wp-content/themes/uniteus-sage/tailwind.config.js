@@ -168,7 +168,8 @@ module.exports = {
     'bg-green-50',
     'bg-yellow-50',
     'bg-red-50',
-    'sm:w-auto'
+    'sm:w-auto',
+    'lg:p-4'
   ],
   theme: {
     fontFamily: {
