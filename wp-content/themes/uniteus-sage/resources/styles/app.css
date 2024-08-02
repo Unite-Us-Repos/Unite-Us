@@ -381,7 +381,7 @@ body .map-wrap {
   font-size: 38px;
   line-height: 48px;
   text-align: center;
-  color: #216CFF;
+  color: #216cff;
 }
 
 .state-name img {
@@ -505,7 +505,7 @@ body .map-wrap {
 
 .button-hollow {
   @apply text-action bg-transparent border-action
-  hover:!text-white hover:bg-action hover:border-action ;
+  hover:!text-white hover:bg-action hover:border-action;
 }
 .button-hollow-purple {
   @apply text-electric-purple bg-transparent border-electric-purple 
@@ -513,7 +513,7 @@ body .map-wrap {
 }
 .button-hollow-purple img {
   filter: brightness(0) saturate(100%) invert(50%) sepia(64%) saturate(5014%)
-  hue-rotate(241deg) brightness(95%) contrast(108%);
+    hue-rotate(241deg) brightness(95%) contrast(108%);
 }
 .button-hollow-white,
 .is-dark-bg .button-hollow {
@@ -536,7 +536,7 @@ body .map-wrap {
 .button-hollow-purple:hover {
   @apply bg-electric-purple border-electric-purple !text-white;
 }
-.button svg path, 
+.button svg path,
 .button img {
   fill: #fff;
   opacity: 0.25;
@@ -556,11 +556,12 @@ body .map-wrap {
 }
 
 .acf-icon-action {
-  filter: brightness(0) saturate(100%) invert(30%) sepia(100%) saturate(2600%) hue-rotate(199deg) brightness(95%) contrast(105%);
+  filter: brightness(0) saturate(100%) invert(30%) sepia(100%) saturate(2600%)
+    hue-rotate(199deg) brightness(95%) contrast(105%);
 }
 .acf-icon-white {
   filter: brightness(0) invert(1);
-  opacity: 1!important;
+  opacity: 1 !important;
 }
 
 .acf-icon-electric-purple {
@@ -1527,7 +1528,7 @@ select.gt_selector {
 }
 
 .ajax-filters.search-filters input[type="submit"] {
-  background-color: #216CFF;
+  background-color: #216cff;
   color: white;
   padding: 22px 48px;
 
@@ -1604,22 +1605,20 @@ select.gt_selector {
 
 .group:hover .group-hover\:bg-action-light {
   --tw-bg-opacity: 1;
-  background-color: #FFF;
-
+  background-color: #fff;
 }
 .group:hover .group-hover\:bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(40 116 175 / var(--tw-bg-opacity));
 }
 .group:hover .text-lg.w-full a {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .group:hover .group-hover\:bg-action-light .service-icon {
   filter: none;
 }
-.group:hover .group-hover\:border-action  {
+.group:hover .group-hover\:border-action {
   border-color: #216cff;
-
 }
 .group:hover .path-hover {
   fill: #216cff;
@@ -1636,7 +1635,7 @@ select.gt_selector {
   }
 }
 @media only screen and (min-width: 1200px) {
-  .extra-pt-pb  {
+  .extra-pt-pb {
     padding-top: 6rem;
     padding-bottom: 7rem;
   }
@@ -1653,10 +1652,11 @@ select.gt_selector {
   align-items: center;
   text-decoration: none;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
 }
-.expanded-link:hover, .expanded-link:active {
-  color: #FFFFFF;
+.expanded-link:hover,
+.expanded-link:active {
+  color: #ffffff;
 }
 
 .service-card-squared {
@@ -1681,14 +1681,14 @@ select.gt_selector {
   max-height: 500px; /* or any max height that will accommodate the expanded content */
 }
 
-img.expanded  {
+img.expanded {
   opacity: 0.2; /* same as group-hover */
 }
 .even-height.expanded {
-      background-color: #0074fc;
+  background-color: #0074fc;
 }
 .text-block.expanded {
-      color: #FFF
+  color: #fff;
 }
 
 .bg-electric-purple-overlay {
@@ -1709,14 +1709,14 @@ img.expanded  {
   z-index: 999999999;
 }
 
-nav.breadcrumbs ol{
+nav.breadcrumbs ol {
   list-style-type: none;
 }
 
 .icon-cards-alternate .service-icon-card:hover .acf-icon-white {
-  filter: brightness(0) saturate(100%) invert(30%) sepia(100%) saturate(2600%) hue-rotate(199deg) brightness(95%) contrast(105%);
+  filter: brightness(0) saturate(100%) invert(30%) sepia(100%) saturate(2600%)
+    hue-rotate(199deg) brightness(95%) contrast(105%);
 }
-
 
 .icon-cards-alternate .text-xxl {
   font-size: 2.25rem;
@@ -1727,7 +1727,7 @@ nav.breadcrumbs ol{
 }
 
 .icon-cards-alternate .service-icon-card:hover .arrow-icon svg path {
-  fill: #FFFFFF;
+  fill: #ffffff;
 }
 
 .review-credit {
@@ -1747,9 +1747,15 @@ nav.breadcrumbs ol{
   .mobile-only {
     display: none !important;
   }
+  .desktop-only {
+    display: block;
+  }
 }
 @media only screen and (max-width: 767px) {
+  .mobile-only {
+    display: block;
+  }
   .desktop-only {
-    display: none;
+    display: none !important;
   }
 }
