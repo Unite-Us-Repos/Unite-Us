@@ -1,3 +1,12 @@
+<!-- Include Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<!-- Include Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- Include Alpine.js for reactivity -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js" defer></script>
+
 @php
     use Illuminate\Support\Str;
 
@@ -16,28 +25,28 @@
 
         @if ($review_credit)
             <div class="review-credit mb-6 text-center">
-              <a href="https://www.g2.com/products/unite-us/" target="_blank">
-                <div class="wrapper mb-6 flex justify-center gap-2 items-center">
-                    <div class="icon w-5">
-                        @if ($review_credit['icon'])
-                            @php
-                                // Get the file path of the SVG
-                                $svg_file = get_attached_file($review_credit['icon']['ID']);
+                <a href="https://www.g2.com/products/unite-us/" target="_blank">
+                    <div class="wrapper mb-6 flex justify-center gap-2 items-center">
+                        <div class="icon w-5">
+                            @if ($review_credit['icon'])
+                                @php
+                                    // Get the file path of the SVG
+                                    $svg_file = get_attached_file($review_credit['icon']['ID']);
 
-                                // Check if the file exists and is readable
-                                if (file_exists($svg_file) && is_readable($svg_file)) {
-                                    // Get the SVG contents
-                                    $svg_content = file_get_contents($svg_file);
-                                    echo $svg_content;
-                                }
-                            @endphp
+                                    // Check if the file exists and is readable
+                                    if (file_exists($svg_file) && is_readable($svg_file)) {
+                                        // Get the SVG contents
+                                        $svg_content = file_get_contents($svg_file);
+                                        echo $svg_content;
+                                    }
+                                @endphp
+                            @endif
+                        </div>
+                        @if ($review_credit['text'])
+                            <div class="text-lg text-gray-400">{!! $review_credit['text'] !!}</div>
                         @endif
                     </div>
-                    @if ($review_credit['text'])
-                        <div class="text-lg text-gray-400">{!! $review_credit['text'] !!}</div>
-                    @endif
-                </div>
-              </a>
+                </a>
             </div>
         @endif
 
@@ -46,8 +55,8 @@
                 @if ($section['subtitle_display_as_pill'])
                     <span
                         class="@if ($section['purple_text']) text-electric-purple @else text-action @endif text-sm py-1 px-4 inline-block mb-6 rounded-full">
-                    @else
-                        <span class="block text-base mb-8 font-semibold uppercase tracking-wider text-action">
+                @else
+                    <span class="block text-base mb-8 font-semibold uppercase tracking-wider text-action">
                 @endif
                 {!! $section['subtitle'] !!}
                 </span>
@@ -63,73 +72,69 @@
         </div>
     </div>
 
-    <div class="relative component-inner-section z-10">
+    <div class="reviews relative component-inner-section z-10"
+        x-data="{ swiper: null }"
+        x-init="
+            if (window.innerWidth < 768) {
+                swiper = new Swiper($refs.container, {
+                    loop: {{ count($reviews) > 1 ? 'true' : 'false' }},
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                    autoHeight: true,
+                });
+            }
+        ">
         @if (isset($reviews) && is_array($reviews) && count($reviews) > 0)
-            <div class="flex flex-col flex-wrap justify-center sm:flex-row -mx-2 relative z-10">
-                @foreach ($reviews as $review)
-                    @php
-                        $review_date = $review['date'];
-                        $review_title = $review['review_title'];
-                        $review_content = $review['review'];
-                        $reviewer_name = $review['reviewer'];
-                        $reviewer_title = $review['reviewer_title'];
-                    @endphp
-                    <div class="relative sm:basis-6/12 p-3 lg:basis-2/6">
-                        <div class="group">
-
-                            <div class="relative z-10 w-full p-9 text-lg">
-                                <div class="stars-and-date flex justify-start items-center mb-5">
-                                    <svg width="19" height="18" viewBox="0 0 19 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.48705 1.71386C8.84185 0.621894 10.3867 0.621894 10.7415 1.71386L12.0092 5.6154C12.1678 6.10374 12.6229 6.43437 13.1364 6.43437H17.2387C18.3869 6.43437 18.8643 7.9036 17.9354 8.57847L14.6165 10.9898C14.2011 11.2916 14.0273 11.8265 14.186 12.3149L15.4537 16.2164C15.8085 17.3084 14.5587 18.2164 13.6298 17.5416L10.3109 15.1303C9.89552 14.8285 9.33302 14.8285 8.91761 15.1303L5.59876 17.5416C4.66988 18.2164 3.42008 17.3084 3.77488 16.2164L5.04257 12.3149C5.20124 11.8265 5.02741 11.2916 4.61201 10.9898L1.29316 8.57847C0.364278 7.9036 0.84166 6.43437 1.98982 6.43437H6.09214C6.60561 6.43437 7.06069 6.10374 7.21936 5.6154L8.48705 1.71386Z"
-                                            fill="#9643FF" />
-                                    </svg>
-                                    <svg width="19" height="18" viewBox="0 0 19 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.48705 1.71386C8.84185 0.621894 10.3867 0.621894 10.7415 1.71386L12.0092 5.6154C12.1678 6.10374 12.6229 6.43437 13.1364 6.43437H17.2387C18.3869 6.43437 18.8643 7.9036 17.9354 8.57847L14.6165 10.9898C14.2011 11.2916 14.0273 11.8265 14.186 12.3149L15.4537 16.2164C15.8085 17.3084 14.5587 18.2164 13.6298 17.5416L10.3109 15.1303C9.89552 14.8285 9.33302 14.8285 8.91761 15.1303L5.59876 17.5416C4.66988 18.2164 3.42008 17.3084 3.77488 16.2164L5.04257 12.3149C5.20124 11.8265 5.02741 11.2916 4.61201 10.9898L1.29316 8.57847C0.364278 7.9036 0.84166 6.43437 1.98982 6.43437H6.09214C6.60561 6.43437 7.06069 6.10374 7.21936 5.6154L8.48705 1.71386Z"
-                                            fill="#9643FF" />
-                                    </svg>
-                                    <svg width="19" height="18" viewBox="0 0 19 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.48705 1.71386C8.84185 0.621894 10.3867 0.621894 10.7415 1.71386L12.0092 5.6154C12.1678 6.10374 12.6229 6.43437 13.1364 6.43437H17.2387C18.3869 6.43437 18.8643 7.9036 17.9354 8.57847L14.6165 10.9898C14.2011 11.2916 14.0273 11.8265 14.186 12.3149L15.4537 16.2164C15.8085 17.3084 14.5587 18.2164 13.6298 17.5416L10.3109 15.1303C9.89552 14.8285 9.33302 14.8285 8.91761 15.1303L5.59876 17.5416C4.66988 18.2164 3.42008 17.3084 3.77488 16.2164L5.04257 12.3149C5.20124 11.8265 5.02741 11.2916 4.61201 10.9898L1.29316 8.57847C0.364278 7.9036 0.84166 6.43437 1.98982 6.43437H6.09214C6.60561 6.43437 7.06069 6.10374 7.21936 5.6154L8.48705 1.71386Z"
-                                            fill="#9643FF" />
-                                    </svg>
-                                    <svg width="19" height="18" viewBox="0 0 19 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.48705 1.71386C8.84185 0.621894 10.3867 0.621894 10.7415 1.71386L12.0092 5.6154C12.1678 6.10374 12.6229 6.43437 13.1364 6.43437H17.2387C18.3869 6.43437 18.8643 7.9036 17.9354 8.57847L14.6165 10.9898C14.2011 11.2916 14.0273 11.8265 14.186 12.3149L15.4537 16.2164C15.8085 17.3084 14.5587 18.2164 13.6298 17.5416L10.3109 15.1303C9.89552 14.8285 9.33302 14.8285 8.91761 15.1303L5.59876 17.5416C4.66988 18.2164 3.42008 17.3084 3.77488 16.2164L5.04257 12.3149C5.20124 11.8265 5.02741 11.2916 4.61201 10.9898L1.29316 8.57847C0.364278 7.9036 0.84166 6.43437 1.98982 6.43437H6.09214C6.60561 6.43437 7.06069 6.10374 7.21936 5.6154L8.48705 1.71386Z"
-                                            fill="#9643FF" />
-                                    </svg>
-                                    <svg width="19" height="18" viewBox="0 0 19 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.48705 1.71386C8.84185 0.621894 10.3867 0.621894 10.7415 1.71386L12.0092 5.6154C12.1678 6.10374 12.6229 6.43437 13.1364 6.43437H17.2387C18.3869 6.43437 18.8643 7.9036 17.9354 8.57847L14.6165 10.9898C14.2011 11.2916 14.0273 11.8265 14.186 12.3149L15.4537 16.2164C15.8085 17.3084 14.5587 18.2164 13.6298 17.5416L10.3109 15.1303C9.89552 14.8285 9.33302 14.8285 8.91761 15.1303L5.59876 17.5416C4.66988 18.2164 3.42008 17.3084 3.77488 16.2164L5.04257 12.3149C5.20124 11.8265 5.02741 11.2916 4.61201 10.9898L1.29316 8.57847C0.364278 7.9036 0.84166 6.43437 1.98982 6.43437H6.09214C6.60561 6.43437 7.06069 6.10374 7.21936 5.6154L8.48705 1.71386Z"
-                                            fill="#9643FF" />
-                                    </svg>
-                                    <span class="pl-2 text-gray-500 text-xs">{{ $review_date }}</span>
-                                </div>
-                                <div class="text-block relative">
-                                    @if ($review_title)
-                                        <h3 class="text-xl font-semibold mb-4">{!! $review_title !!}</h3>
-                                    @endif
-                                    @if ($review_content)
-                                        <div class="text-lg w-full mb-4">
-                                            {!! $review_content !!}
+            <!-- Swiper -->
+            <div class="swiper" x-ref="container">
+                <div class="swiper-wrapper">
+                    @foreach ($reviews as $review)
+                        @php
+                            $review_date = $review['date'];
+                            $review_title = $review['review_title'];
+                            $review_content = $review['review'];
+                            $reviewer_name = $review['reviewer'];
+                            $reviewer_title = $review['reviewer_title'];
+                        @endphp
+                        <div class="swiper-slide w-full md:w-1/3 p-3 custom-md-width">
+                            <div class="group relative">
+                                <div class="relative z-10 w-full p-9 text-lg">
+                                    <div class="stars-and-date flex justify-start items-center mb-5">
+                                        <!-- Star SVGs for a 5-star rating -->
+                                        @for ($i = 0; $i < 5; $i++)
+                                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M8.48705 1.71386C8.84185 0.621894 10.3867 0.621894 10.7415 1.71386L12.0092 5.6154C12.1678 6.10374 12.6229 6.43437 13.1364 6.43437H17.2387C18.3869 6.43437 18.8643 7.9036 17.9354 8.57847L14.6165 10.9898C14.2011 11.2916 14.0273 11.8265 14.186 12.3149L15.4537 16.2164C15.8085 17.3084 14.5587 18.2164 13.6298 17.5416L10.3109 15.1303C9.89552 14.8285 9.33302 14.8285 8.91761 15.1303L5.59876 17.5416C4.66988 18.2164 3.42008 17.3084 3.77488 16.2164L5.04257 12.3149C5.20124 11.8265 5.02741 11.2916 4.61201 10.9898L1.29316 8.57847C0.364278 7.9036 0.84166 6.43437 1.98982 6.43437H6.09214C6.60561 6.43437 7.06069 6.10374 7.21936 5.6154L8.48705 1.71386Z"
+                                                    fill="#9643FF" />
+                                            </svg>
+                                        @endfor
+                                        <span class="pl-2 text-gray-500 text-xs">{{ $review_date }}</span>
+                                    </div>
+                                    <div class="text-block relative">
+                                        @if ($review_title)
+                                            <h3 class="text-xl font-semibold mb-4">{!! $review_title !!}</h3>
+                                        @endif
+                                        @if ($review_content)
+                                            <div class="text-lg w-full mb-4">
+                                                {!! $review_content !!}
+                                            </div>
+                                        @endif
+                                        <div class="review-meta text-sm">
+                                            <span class="font-bold">{{ $reviewer_name }}</span><br /><span
+                                                class="text-gray-500 text-xs">{{ $reviewer_title }}</span>
                                         </div>
-                                    @endif
-                                    <div class="review-meta text-sm">
-                                        <span class="font-bold">{{ $reviewer_name }}</span><br /><span
-                                            class="text-gray-500 text-xs">{{ $reviewer_title }}</span>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
         @else
             <p>No reviews available.</p>

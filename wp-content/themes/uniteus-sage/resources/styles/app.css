@@ -1750,6 +1750,9 @@ nav.breadcrumbs ol {
   .desktop-only {
     display: block;
   }
+  .custom-md-width {
+    width: 33.333333% !important;
+  }
 }
 @media only screen and (max-width: 767px) {
   .mobile-only {
@@ -1757,5 +1760,40 @@ nav.breadcrumbs ol {
   }
   .desktop-only {
     display: none !important;
+  }
+}
+
+.reviews .swiper-pagination {
+  display: block !important;
+}
+.reviews .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  opacity: 1;
+  margin: 0 4px;
+  transition: background-color 0.3s ease;
+}
+
+.reviews .swiper-pagination-bullet-active {
+  border-color: #9643FF; /* Active color */
+  outline: 4px solid #9543ff43;
+}
+
+/* Ensure swiper-container is correctly constrained */
+.reviews .swiper-container {
+  max-width: 100%;
+  overflow: hidden; /* Prevent overflow */
+  margin: 0 auto;
+}
+
+.reviews .swiper-slide {
+  /* Ensure swiper-slide respects width on large screens */
+  width: 100% !important;
+}
+
+@media (min-width: 768px) {
+  .reviews .swiper-slide {
+    width: 33.3333% !important; /* Force 3 columns on desktop */
   }
 }
