@@ -1762,9 +1762,13 @@ nav.breadcrumbs ol {
     display: none !important;
   }
 }
+.reviews .swiper {
+  overflow: visible;;
+}
 
 .reviews .swiper-pagination {
   display: block !important;
+  bottom: -2rem !important;
 }
 .reviews .swiper-pagination-bullet {
   width: 10px;
