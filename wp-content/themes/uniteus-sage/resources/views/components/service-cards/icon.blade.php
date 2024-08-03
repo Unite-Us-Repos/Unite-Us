@@ -115,7 +115,6 @@ use Illuminate\Support\Str;
             <div class="absolute h-1/2 left-0 right-0 bottom-0 bg-white hidden" style="margin: 0 -300px -1px;"></div>
           @endif
           @if (!empty($card['expandable_tile']))
-            
             <div class="service-icon-card group expandable" data-card-id="card-{{ $index }}">
               <div class="even-height bg-white text-brand 
               @if ($background['color'] != 'light-gradient') shadow-lg @endif
@@ -259,12 +258,12 @@ use Illuminate\Support\Str;
                       </svg>                    
                   </span>
                 @endif
-                <div class="relative z-10 w-full p-9 text-lg lg:text-4xl">
+                <div class="test relative z-10 w-fulltext-lg lg:text-4xl">
                   <div classs="absolute inset-0 z-10 border-b-[15px] border-action-dark transition ease-in-out delay-250 group-hover:opacity-0 group-hover:z-0"></div>
                   @if ($link)
                   <a class=" inset-0 text-brand group-hover:text-white no-underline" href="{{ $link }}" @if ($card['is_blank']) target="_blank" @endif>
                   @endif
-                  <div class="relative @if ($alternate) flex gap-3 @endif">
+                  <div class="p-9 relative @if ($alternate) flex gap-3 @endif">
                     <div>
                       @isset ($card["icon"])
                       @if (!empty($card["icon"]))
