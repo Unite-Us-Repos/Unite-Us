@@ -1763,13 +1763,14 @@ nav.breadcrumbs ol {
   }
 }
 .reviews .swiper {
-  overflow: visible;;
+  overflow: visible;
 }
 
 .reviews .swiper-pagination {
   display: block !important;
   bottom: -2rem !important;
 }
+
 .reviews .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
@@ -1780,7 +1781,7 @@ nav.breadcrumbs ol {
 }
 
 .reviews .swiper-pagination-bullet-active {
-  border-color: #9643FF; /* Active color */
+  border-color: #9643FF;
   outline: 4px solid #9543ff43;
 }
 
@@ -1794,10 +1795,15 @@ nav.breadcrumbs ol {
 .reviews .swiper-slide {
   /* Ensure swiper-slide respects width on large screens */
   width: 100% !important;
+  /* Make sure slides are not stacked */
+  float: left;
 }
 
 @media (min-width: 768px) {
   .reviews .swiper-slide {
     width: 33.3333% !important; /* Force 3 columns on desktop */
+  }
+  .reviews .swiper-pagination {
+    display: none !important;
   }
 }

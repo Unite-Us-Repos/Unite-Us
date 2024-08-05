@@ -1,12 +1,3 @@
-<!-- Include Swiper CSS -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-<!-- Include Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-<!-- Include Alpine.js for reactivity -->
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js" defer></script>
-
 @php
     use Illuminate\Support\Str;
 
@@ -20,7 +11,7 @@
 @endphp
 
 <section @isset($section['id']) id="{{ $section['id'] }}" @endisset
-    class="relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+    class="reviews relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
     <div class="component-inner-section">
 
         @if ($review_credit)
@@ -72,25 +63,12 @@
         </div>
     </div>
 
-    <div class="reviews relative component-inner-section z-10"
-        x-data="{ swiper: null }"
-        x-init="
-            if (window.innerWidth < 768) {
-                swiper = new Swiper($refs.container, {
-                    loop: {{ count($reviews) > 1 ? 'true' : 'false' }},
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                    },
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                    autoHeight: true,
-                });
-            }
-        ">
+    <div class="relative component-inner-section z-10"
+        x-data="swiperComponent"
+        x-init="initSwiper">
         @if (isset($reviews) && is_array($reviews) && count($reviews) > 0)
             <!-- Swiper -->
-            <div class="swiper" x-ref="container">
+            <div class="swiper-container" x-ref="container">
                 <div class="swiper-wrapper">
                     @foreach ($reviews as $review)
                         @php
@@ -100,9 +78,9 @@
                             $reviewer_name = $review['reviewer'];
                             $reviewer_title = $review['reviewer_title'];
                         @endphp
-                        <div class="swiper-slide w-full md:w-1/3 p-3 custom-md-width">
-                            <div class="group relative">
-                                <div class="relative z-10 w-full p-9 text-lg">
+                        <div class="swiper-slide">
+                            <div class="group relative p-3">
+                                <div class="relative z-10 w-ful text-lg">
                                     <div class="stars-and-date flex justify-start items-center mb-5">
                                         <!-- Star SVGs for a 5-star rating -->
                                         @for ($i = 0; $i < 5; $i++)
@@ -134,6 +112,7 @@
                         </div>
                     @endforeach
                 </div>
+                <!-- Pagination dots -->
                 <div class="swiper-pagination"></div>
             </div>
         @else
@@ -141,3 +120,40 @@
         @endif
     </div>
 </section>
+
+<script>
+    function swiperComponent() {
+        return {
+            swiper: null,
+            initSwiper() {
+                const initSwiper = () => {
+                    if (window.innerWidth < 768) {
+                        if (!this.swiper) {
+                            this.swiper = new Swiper(this.$refs.container, {
+                                loop: false,
+                                pagination: {
+                                    el: '.swiper-pagination',
+                                    clickable: true,
+                                },
+                                slidesPerView: 1,
+                                spaceBetween: 10,
+                                autoHeight: true,
+                            });
+                        }
+                    } else {
+                        if (this.swiper) {
+                            this.swiper.destroy(true, true);
+                            this.swiper = null;
+                        }
+                    }
+                };
+
+                // Initialize swiper on page load
+                initSwiper();
+
+                // Re-initialize swiper on window resize
+                window.addEventListener('resize', initSwiper);
+            }
+        }
+    }
+</script>
