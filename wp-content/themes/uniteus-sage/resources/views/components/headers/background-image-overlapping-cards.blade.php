@@ -21,7 +21,7 @@ $small_font = $section['small_font'] ?? false;
 
 @endphp
 
-<section class="relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }}  @endif @if ($small_font) extra-pt-pb @else  lg:!py-24 @endif">
+<section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }}  @endif @if ($small_font) extra-pt-pb @else  lg:!py-24 @endif">
   <!-- Overlay -->
 
   <div class="absolute inset-0">
