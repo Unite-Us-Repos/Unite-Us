@@ -79,8 +79,8 @@
                             $reviewer_title = $review['reviewer_title'];
                         @endphp
                         <div class="swiper-slide">
-                            <div class="group relative p-3">
-                                <div class="relative z-10 w-ful text-lg">
+                            <div class="group relative p-4">
+                                <div class="relative z-10 w-ful p-5 text-lg">
                                     <div class="stars-and-date flex justify-start items-center mb-5">
                                         <!-- Star SVGs for a 5-star rating -->
                                         @for ($i = 0; $i < 5; $i++)
