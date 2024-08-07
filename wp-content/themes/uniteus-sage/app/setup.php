@@ -224,3 +224,6 @@ function custom_noindex_override() {
     }
 }
 add_action('wp', 'App\\custom_noindex_override');
+
+
+
