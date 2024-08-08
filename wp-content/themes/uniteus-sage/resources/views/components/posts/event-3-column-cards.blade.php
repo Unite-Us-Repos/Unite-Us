@@ -48,14 +48,14 @@ if ($is_heading) {
 
       <div>
         @if ($section['title'] || $section['description'])
-          <div class="">
+         
             @if ($section['title'])
               <h2>{{ $section['title'] }}</h2>
             @endif
             @if ($section['description'])
               {!! $section['description'] !!}
             @endif
-          </div>
+         
         @endif
       </div>
 
