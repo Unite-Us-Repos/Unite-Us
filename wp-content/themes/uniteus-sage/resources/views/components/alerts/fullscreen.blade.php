@@ -25,7 +25,7 @@ if (!is_array($display)) {
 <section x-data="{hideAlert: localStorage.getItem('hideUuGlobalAlert') === '{{ $unique_id }}' }" x-bind:class="{'hidden' : hideAlert == true }" class="relative component-section alert !p-0" style="@isset ($text_color) color: {{ $text_color }}; @endisset @isset($background_color) background: {{ $background_color }}; @endisset">
   <div class="component-inner-section !p-0">
     <div type="{{ $style }}" class="flex justify-between py-2 px-6 md:px-8">
-      <div class="flex flex-col sm:flex-row gap-3 items-center">
+      <div class="flex flex-col sm:flex-row gap-3 items-center lg:pr-4">
         <div class="flex md:items-center gap-4">
           <div class="flex flex-shrink-0 pt-1">
 
@@ -64,7 +64,7 @@ if (!is_array($display)) {
             @endif
 
           </div>
-          <div class="flex gap-4 flex-col sm:flex-row items-center justify-between w-full">
+          <div class="flex gap-4 flex-col sm:flex-row items-center justify-between lg:w-3/4">
 
             @if ($title)
             <h3 class="mb-0 text-lg font-bold">{!! $title !!}</h3>
