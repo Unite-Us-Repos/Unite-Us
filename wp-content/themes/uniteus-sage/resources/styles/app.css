@@ -110,10 +110,6 @@ h2 br,
   @apply hidden md:block;
 }
 
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
-  line-height: 1;
-}
-
 p {
   line-height: 1.5;
 }

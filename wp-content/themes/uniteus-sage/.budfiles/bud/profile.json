@@ -634,6 +634,112 @@
           }
         }
       },
+      "composer.json": {
+        "name": "composer.json",
+        "path": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/composer.json",
+        "module": {
+          "name": "roots/sage",
+          "type": "wordpress-theme",
+          "license": "MIT",
+          "description": "WordPress starter theme with a modern development workflow",
+          "homepage": "https://roots.io/sage/",
+          "authors": [
+            {
+              "name": "Ben Word",
+              "email": "ben@benword.com",
+              "homepage": "https://github.com/retlehs"
+            },
+            {
+              "name": "Scott Walkinshaw",
+              "email": "scott.walkinshaw@gmail.com",
+              "homepage": "https://github.com/swalkinshaw"
+            },
+            {
+              "name": "QWp6t",
+              "email": "hi@qwp6t.me",
+              "homepage": "https://github.com/qwp6t"
+            },
+            {
+              "name": "Brandon Nifong",
+              "email": "brandon@tendency.me",
+              "homepage": "https://github.com/log1x"
+            }
+          ],
+          "keywords": [
+            "wordpress"
+          ],
+          "support": {
+            "issues": "https://github.com/roots/sage/issues",
+            "forum": "https://discourse.roots.io/"
+          },
+          "autoload": {
+            "psr-4": {
+              "App\\": "app/"
+            }
+          },
+          "require": {
+            "php": "^7.4|^8.0",
+            "houke/acf-icon-picker": "^1.9",
+            "roots/acorn": "^2.1",
+            "smithfield-studio/acf-svg-icon-picker": "^3.1"
+          },
+          "require-dev": {
+            "squizlabs/php_codesniffer": "^3.6"
+          },
+          "suggest": {
+            "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0).",
+            "log1x/sage-svg": "A useful SVG directive for inlining SVG's within Blade views (^1.0)."
+          },
+          "config": {
+            "optimize-autoloader": true,
+            "preferred-install": "dist",
+            "sort-packages": true
+          },
+          "minimum-stability": "dev",
+          "prefer-stable": true,
+          "scripts": {
+            "lint": [
+              "phpcs --extensions=php --standard=PSR12 app"
+            ]
+          },
+          "extra": {
+            "acorn": {
+              "providers": [
+                "App\\Providers\\ThemeServiceProvider"
+              ]
+            }
+          }
+        }
+      },
+      "jsconfig.json": {
+        "name": "jsconfig.json",
+        "path": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/jsconfig.json",
+        "module": {
+          "compilerOptions": {
+            "allowSyntheticDefaultImports": true,
+            "jsx": "preserve",
+            "lib": [
+              "dom",
+              "dom.iterable",
+              "esnext"
+            ],
+            "module": "commonjs",
+            "moduleResolution": "node",
+            "paths": {
+              "@scripts/*": [
+                "./resources/scripts/*"
+              ],
+              "@styles/*": [
+                "./resources/styles/*"
+              ]
+            }
+          },
+          "exclude": [
+            "./public",
+            "./node_modules"
+          ]
+        }
+      },
       "theme.json": {
         "name": "theme.json",
         "path": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/theme.json",
@@ -881,112 +987,6 @@
             }
           }
         }
-      },
-      "composer.json": {
-        "name": "composer.json",
-        "path": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/composer.json",
-        "module": {
-          "name": "roots/sage",
-          "type": "wordpress-theme",
-          "license": "MIT",
-          "description": "WordPress starter theme with a modern development workflow",
-          "homepage": "https://roots.io/sage/",
-          "authors": [
-            {
-              "name": "Ben Word",
-              "email": "ben@benword.com",
-              "homepage": "https://github.com/retlehs"
-            },
-            {
-              "name": "Scott Walkinshaw",
-              "email": "scott.walkinshaw@gmail.com",
-              "homepage": "https://github.com/swalkinshaw"
-            },
-            {
-              "name": "QWp6t",
-              "email": "hi@qwp6t.me",
-              "homepage": "https://github.com/qwp6t"
-            },
-            {
-              "name": "Brandon Nifong",
-              "email": "brandon@tendency.me",
-              "homepage": "https://github.com/log1x"
-            }
-          ],
-          "keywords": [
-            "wordpress"
-          ],
-          "support": {
-            "issues": "https://github.com/roots/sage/issues",
-            "forum": "https://discourse.roots.io/"
-          },
-          "autoload": {
-            "psr-4": {
-              "App\\": "app/"
-            }
-          },
-          "require": {
-            "php": "^7.4|^8.0",
-            "houke/acf-icon-picker": "^1.9",
-            "roots/acorn": "^2.1",
-            "smithfield-studio/acf-svg-icon-picker": "^3.1"
-          },
-          "require-dev": {
-            "squizlabs/php_codesniffer": "^3.6"
-          },
-          "suggest": {
-            "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0).",
-            "log1x/sage-svg": "A useful SVG directive for inlining SVG's within Blade views (^1.0)."
-          },
-          "config": {
-            "optimize-autoloader": true,
-            "preferred-install": "dist",
-            "sort-packages": true
-          },
-          "minimum-stability": "dev",
-          "prefer-stable": true,
-          "scripts": {
-            "lint": [
-              "phpcs --extensions=php --standard=PSR12 app"
-            ]
-          },
-          "extra": {
-            "acorn": {
-              "providers": [
-                "App\\Providers\\ThemeServiceProvider"
-              ]
-            }
-          }
-        }
-      },
-      "jsconfig.json": {
-        "name": "jsconfig.json",
-        "path": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/jsconfig.json",
-        "module": {
-          "compilerOptions": {
-            "allowSyntheticDefaultImports": true,
-            "jsx": "preserve",
-            "lib": [
-              "dom",
-              "dom.iterable",
-              "esnext"
-            ],
-            "module": "commonjs",
-            "moduleResolution": "node",
-            "paths": {
-              "@scripts/*": [
-                "./resources/scripts/*"
-              ],
-              "@styles/*": [
-                "./resources/styles/*"
-              ]
-            }
-          },
-          "exclude": [
-            "./public",
-            "./node_modules"
-          ]
-        }
       }
     }
   },
@@ -1232,7 +1232,7 @@
       "npm_package_dependencies_glightbox": "^3.2.0",
       "npm_package_scripts_translate_mo": "wp i18n make-mo ./resources/lang ./resources/lang",
       "npm_execpath": "/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/lib/node_modules/yarn/bin/yarn.js",
-      "PATH": "/var/folders/l5/7qr9nzp92jj32s0c117qnptm0000gp/T/yarn--1723147958216-0.8970555412219192:/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/.bin:/Users/sabrina.matthews/.config/yarn/link/node_modules/.bin:/Users/sabrina.matthews/.yarn/bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin/node_modules/npm/bin/node-gyp-bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin",
+      "PATH": "/var/folders/l5/7qr9nzp92jj32s0c117qnptm0000gp/T/yarn--1723148084687-0.35340268923078133:/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/.bin:/Users/sabrina.matthews/.config/yarn/link/node_modules/.bin:/Users/sabrina.matthews/.yarn/bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin/node_modules/npm/bin/node-gyp-bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin",
       "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"build\"],\"original\":[\"build\"]}",
       "npm_package_dependencies_swiper": "^8.4.5",
       "_": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/.bin/bud",
@@ -1403,6 +1403,24 @@
         ]
       ]
     },
+    "@roots/sage": {
+      "name": "@roots/sage",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-preset-wordpress"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": [
+        [
+          "@roots/bud-preset-wordpress",
+          "5.7.7"
+        ]
+      ]
+    },
     "@roots/bud-tailwindcss": {
       "name": "@roots/bud-tailwindcss",
       "version": "5.7.7",
@@ -1422,39 +1440,6 @@
           "5.7.7"
         ]
       ]
-    },
-    "@roots/sage": {
-      "name": "@roots/sage",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension",
-        "peers": [
-          "@roots/bud-preset-wordpress"
-        ]
-      },
-      "resolvable": true,
-      "peerDependencies": {},
-      "requires": [
-        [
-          "@roots/bud-preset-wordpress",
-          "5.7.7"
-        ]
-      ]
-    },
-    "@roots/bud-postcss": {
-      "name": "@roots/bud-postcss",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension"
-      },
-      "resolvable": true,
-      "peerDependencies": {
-        "postcss": "^8.4.5",
-        "postcss-import": "^14.0.2",
-        "postcss-nested": "^5.0.6",
-        "postcss-preset-env": "^7.1.0"
-      },
-      "requires": []
     },
     "@roots/bud-preset-wordpress": {
       "name": "@roots/bud-preset-wordpress",
@@ -1511,6 +1496,21 @@
         ]
       ]
     },
+    "@roots/bud-postcss": {
+      "name": "@roots/bud-postcss",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "postcss": "^8.4.5",
+        "postcss-import": "^14.0.2",
+        "postcss-nested": "^5.0.6",
+        "postcss-preset-env": "^7.1.0"
+      },
+      "requires": []
+    },
     "@roots/bud-babel": {
       "name": "@roots/bud-babel",
       "version": "5.7.7",
@@ -1532,57 +1532,6 @@
     },
     "@roots/bud-entrypoints": {
       "name": "@roots/bud-entrypoints",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension"
-      },
-      "resolvable": true,
-      "peerDependencies": {},
-      "requires": []
-    },
-    "@roots/bud-react": {
-      "name": "@roots/bud-react",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension",
-        "peers": [
-          "@roots/bud-babel"
-        ]
-      },
-      "resolvable": true,
-      "peerDependencies": {
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2"
-      },
-      "requires": [
-        [
-          "@roots/bud-babel",
-          "5.7.7"
-        ]
-      ]
-    },
-    "@roots/bud-wordpress-externals": {
-      "name": "@roots/bud-wordpress-externals",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension"
-      },
-      "resolvable": true,
-      "peerDependencies": {},
-      "requires": []
-    },
-    "@roots/bud-wordpress-dependencies": {
-      "name": "@roots/bud-wordpress-dependencies",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension"
-      },
-      "resolvable": true,
-      "peerDependencies": {},
-      "requires": []
-    },
-    "@roots/bud-wordpress-manifests": {
-      "name": "@roots/bud-wordpress-manifests",
       "version": "5.7.7",
       "bud": {
         "type": "extension"
@@ -1618,6 +1567,57 @@
           "5.7.7"
         ]
       ]
+    },
+    "@roots/bud-react": {
+      "name": "@roots/bud-react",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-babel"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+      },
+      "requires": [
+        [
+          "@roots/bud-babel",
+          "5.7.7"
+        ]
+      ]
+    },
+    "@roots/bud-wordpress-externals": {
+      "name": "@roots/bud-wordpress-externals",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
+    },
+    "@roots/bud-wordpress-manifests": {
+      "name": "@roots/bud-wordpress-manifests",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
+    },
+    "@roots/bud-wordpress-dependencies": {
+      "name": "@roots/bud-wordpress-dependencies",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
     }
   },
   "adjacents": [
