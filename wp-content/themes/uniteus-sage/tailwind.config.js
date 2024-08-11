@@ -172,7 +172,11 @@ module.exports = {
     'bg-yellow-50',
     'bg-red-50',
     'sm:w-auto',
-    'lg:p-4'
+    'lg:p-4',
+    'lg:basis-[49.25%]',
+    'lg:basis-[49%]', 
+    'xl:basis-[49.25%',
+    'lg:items-end'
   ],
   theme: {
     fontFamily: {
@@ -203,6 +207,7 @@ module.exports = {
       light: '#eef5fc',
       'light-gradient': '#eef5fc',
       'light-gray': '#F9FAFB',
+      'medium-gray': '#808D9E',
       purple: '#825EB8',
       'electric-purple': '#9643FF',
       'electric-purple-dark': '#823cd9',
