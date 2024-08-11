@@ -215,21 +215,20 @@
                                 "class": "",
                                 "id": ""
                             },
+                            "acfe_permissions": "",
+                            "instruction_placement": "",
                             "hide_field": "",
                             "hide_label": "",
                             "hide_instructions": "",
                             "hide_required": "",
-                            "instruction_placement": "",
-                            "acfe_permissions": "",
                             "acfe_repeater_stylised_button": 1,
-                            "collapsed": "field_634067949e995",
+                            "layout": "block",
+                            "acfe_settings": "",
                             "min": 0,
                             "max": 0,
-                            "layout": "block",
+                            "collapsed": "field_652045f6479bf",
                             "button_label": "Add an Session",
-                            "acfe_settings": "",
                             "rows_per_page": 20,
-                            "parent_repeater": "field_652045f63f7b1",
                             "sub_fields": [
                                 {
                                     "key": "field_652045f64799a",
@@ -254,6 +253,66 @@
                                     "placement": "top",
                                     "endpoint": 0,
                                     "no_preference": 0,
+                                    "parent_repeater": "field_652045f642e9f",
+                                    "selected": 0
+                                },
+                                {
+                                    "key": "field_66b7d0d369911",
+                                    "label": "Breakout Session",
+                                    "name": "breakout_session",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "instruction_placement": "",
+                                    "hide_field": "",
+                                    "hide_label": "",
+                                    "hide_instructions": "",
+                                    "hide_required": "",
+                                    "message": "",
+                                    "default_value": 0,
+                                    "style": "",
+                                    "acfe_settings": "",
+                                    "acfe_validate": "",
+                                    "ui_on_text": "",
+                                    "ui_off_text": "",
+                                    "ui": 1,
+                                    "parent_repeater": "field_652045f642e9f"
+                                },
+                                {
+                                    "key": "field_66b7d706ccda9",
+                                    "label": "Topic",
+                                    "name": "topic",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "instruction_placement": "",
+                                    "hide_field": "",
+                                    "hide_label": "",
+                                    "hide_instructions": "",
+                                    "hide_required": "",
+                                    "default_value": "",
+                                    "acfe_settings": "",
+                                    "acfe_validate": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
                                     "parent_repeater": "field_652045f642e9f"
                                 },
                                 {
@@ -493,7 +552,8 @@
                                     "placement": "top",
                                     "endpoint": 0,
                                     "no_preference": 0,
-                                    "parent_repeater": "field_652045f642e9f"
+                                    "parent_repeater": "field_652045f642e9f",
+                                    "selected": 0
                                 },
                                 {
                                     "key": "field_652045f6479df",
@@ -809,7 +869,8 @@
                                     "placement": "top",
                                     "endpoint": 0,
                                     "no_preference": 0,
-                                    "parent_repeater": "field_652045f642e9f"
+                                    "parent_repeater": "field_652045f642e9f",
+                                    "selected": 0
                                 },
                                 {
                                     "key": "field_652045f6479fc",
@@ -837,7 +898,8 @@
                                     "acfe_validate": "",
                                     "parent_repeater": "field_652045f642e9f"
                                 }
-                            ]
+                            ],
+                            "parent_repeater": "field_652045f63f7b1"
                         }
                     ]
                 }
@@ -872,5 +934,5 @@
     "acfe_permissions": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1714501696
+    "modified": 1723324206
 }

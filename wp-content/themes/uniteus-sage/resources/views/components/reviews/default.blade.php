@@ -53,7 +53,7 @@
                 </span>
             @endif
             @if ($section['title'])
-                <h2 class="width-30 m-auto mb-6">{!! $section['title'] !!}</h2>
+                <h2 class="m-auto mb-6">{!! $section['title'] !!}</h2>
             @endif
             @if ($section['description'])
                 <div class="text-lg">

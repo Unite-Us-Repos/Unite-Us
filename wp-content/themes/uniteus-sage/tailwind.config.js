@@ -22,6 +22,9 @@ module.exports = {
     'ml-0.5',
     'h-4',
     'w-4',
+    'w-3/4',
+    'lg:w-3/4',
+    'lg:pr-4',
     'gap-y-6',
     'drop-shadow-md',
     '-mx-3',
@@ -169,7 +172,11 @@ module.exports = {
     'bg-yellow-50',
     'bg-red-50',
     'sm:w-auto',
-    'lg:p-4'
+    'lg:p-4',
+    'lg:basis-[49.25%]',
+    'lg:basis-[49%]', 
+    'xl:basis-[49.25%',
+    'lg:items-end'
   ],
   theme: {
     fontFamily: {
@@ -200,6 +207,7 @@ module.exports = {
       light: '#eef5fc',
       'light-gradient': '#eef5fc',
       'light-gray': '#F9FAFB',
+      'medium-gray': '#808D9E',
       purple: '#825EB8',
       'electric-purple': '#9643FF',
       'electric-purple-dark': '#823cd9',
