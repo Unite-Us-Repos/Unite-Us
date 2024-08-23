@@ -169,7 +169,7 @@ if ($is_heading) {
       </div>
     @endif
     </section>
-    @if (get_post_type() == '1c')
+    {{-- @if (get_post_type() == '1c')
       @includeIf('partials.content-page-event-speakers')
       @includeIf('partials.content-page-event-speakers-mobile')
-    @endif
+    @endif --}}
