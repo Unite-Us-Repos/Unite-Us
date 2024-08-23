@@ -1781,7 +1781,7 @@ nav.breadcrumbs ol {
 }
 
 .reviews .swiper-pagination-bullet-active {
-  border-color: #9643FF;
+  border-color: #9643ff;
   outline: 4px solid #9543ff43;
 }
 
@@ -1807,3 +1807,22 @@ nav.breadcrumbs ol {
     display: none !important;
   }
 }
+
+.page-template.contact .inset-0 img {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+.page-template.contact .bg-brand,
+.page-template.demo .bg-brand {
+  background-color: transparent;
+  background: linear-gradient(
+    115.81deg,
+    #eef5fc 27.03%,
+    rgba(255, 255, 255, 0) 113.67%
+  );
+}
+.page-template.contact .opacity-75,
+.page-template.demo .opacity-75 {
+  opacity: 100;
+}
+
