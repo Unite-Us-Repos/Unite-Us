@@ -87,13 +87,10 @@
     $show_additinal_information = false;
 @endphp
 
-
-
-
-
 @if ($background['has_divider'])
     @includeIf('dividers.waves')
 @endif
+
 <section class="component-section bg-light-gradient">
     <div class="component-inner-section">
 
@@ -149,14 +146,14 @@
                                             }
                                         @endphp
 
-                                        <div class="@if ($session['breakout_session']) breakout-session lg:basis-[49%] xl:basis-[49.25%] @else basis-full @endif"
-                                            x-ref="container{{ $index . $s_index }}"
-                                            :class="{ 'open': selected == {{ $index . $s_index }} }">
-                                            <div
-                                                class="relative social-card py-6 px-9 lg:p-10 bg-white rounded-lg shadow-lg">
+                                        <div class="@if ($session['breakout_session']) breakout-session lg:basis-[49%] xl:basis-[49.25%] @else basis-full @endif" x-ref="container{{ $tab_index . '_' . $s_index }}" :class="{ 'open': selected === '{{ $tab_index . '_' . $s_index }}' }">
+
+                                            <div class="relative social-card py-6 px-9 lg:p-10 bg-white rounded-lg shadow-lg">
                                                 
-                                                <button type="button" class="w-full"
-                                                    @if ($session['description']) @click="selected !== {{ $index . $s_index }} ? selected = {{ $index . $s_index }} : selected = null" @else style="background: none;cursor: default" @endif>
+                                                @if ($session['description'] || !empty($session['topic']) || $session['presenters'] || $session['video'])
+                                                    <button type="button" class="w-full"
+                                                        @click="selected !== '{{ $tab_index . '_' . $s_index }}' ? selected = '{{ $tab_index . '_' . $s_index }}' : selected = null">
+                                                @endif
 
                                                     @if ($session['breakout_session'])
                                                         <div
@@ -273,146 +270,49 @@
                                                             </div>
                                                         </div>
                                                     @endif
+
+                                                @if ($session['description'] || !empty($session['topic']) || $session['presenters'] || $session['video'])
+                                                    </button>
+                                                @endif
+
+                                                @if ($session['description'] || !empty($session['topic']) || $session['presenters'] || $session['video'])
                                                 
-                                                </button>
-
-                                                <div class="relative overflow-hidden transition-all max-h-0 duration-700"
-                                                    style="" x-ref="container{{ $index . $s_index }}"
-                                                    x-bind:style="selected == {{ $index . $s_index }} ? 'max-height: ' + $refs
-                                                        .container{{ $index . $s_index }}.scrollHeight + 'px' : ''">
+                                                    <div class="relative overflow-hidden transition-all max-h-0 duration-700" x-ref="container{{ $tab_index . '_' . $s_index }}" x-bind:style="selected === '{{ $tab_index . '_' . $s_index }}' ? 'max-height: ' + $refs.container{{ $tab_index . '_' . $s_index }}.scrollHeight + 'px' : ''">
                                                         @if ($session['breakout_session'])
-                                                        
-                                                        <div class="flex flex-col gap-4 lg:grid lg:grid-cols-12">
-
-                                                            <!-- Featured Image -->
                                                             
-                                                            @isset($session['featured_image']['sizes'])
-                                                            <div class="lg:col-span-12">
-                                                                <img class="mt-10 mx-auto"
-                                                                    src="{{ $session['featured_image']['sizes']['medium'] }}"
-                                                                    alt="" />
-                                                            </div>
-                                                            @endisset
-                                                        
-                                                            <!-- Topic -->
-                                                            <div class="lg:col-span-6 lg:order-2">
-                                                                @if (!empty($session['topic']))
-                                                                    <div class="topic">
-                                                                        <h3 class="mb-4 mt-5 uppercase font-bold text-blue-600 text-sm">
-                                                                            TOPIC
-                                                                        </h3>
-                                                                        <div class="text-action bg-light mix-blend-multiply text-sm py-1 px-4 inline-block mb-6 rounded-full">
-                                                                            {!! $session['topic'] !!}
-                                                                        </div>
-                                                                    </div>
-                                                                @endif
-                                                            </div>
-                                                        
-                                                            <!-- Presenters -->
-                                                            <div class="lg:col-span-6 lg:order-1">
-                                                                @if ($session['presenters'])
-                                                                    @foreach ($session['presenters'] as $group)
-                                                                        <h3 class="mb-4 @if ($loop->index === 0) mt-5 @else mt-10 @endif uppercase font-bold text-action text-sm">
-                                                                            {{ $group['group_title'] }}
-                                                                        </h3>
-                                                                        @if ($group['members'])
-                                                                            @foreach ($group['members'] as $m)
-                                                                                <div class="flex gap-3 mb-2">
-                                                                                    @if ($m['image'])
-                                                                                        <div class="shrink-0">
-                                                                                            <img class="rounded-full w-9 h-9 object-cover"
-                                                                                                src="{{ $m['image']['sizes']['thumbnail'] }}"
-                                                                                                alt="" />
-                                                                                        </div>
-                                                                                    @else
-                                                                                        @if ($m['name'])
-                                                                                            <div class="shrink-0">
-                                                                                                <img class="rounded-full w-9 h-9 object-cover"
-                                                                                                    src="@asset('/images/person-head.svg')" />
-                                                                                            </div>
-                                                                                        @endif
-                                                                                    @endif
-                                                                                    <div class="mb-4 text-sm">
-                                                                                        <span class="font-bold">{!! $m['name'] !!}</span>
-                                                                                        @if ($m['title'] && $m['name'])
-                                                                                            ,
-                                                                                        @endif
-                                                                                        <div class="text-sm">
-                                                                                            {!! $m['title'] !!}
-                                                                                        </div>
-                                                        
-                                                                                        @if ($m['social_media_link'] && $show_social)
-                                                                                            <div class="social-media-links mt-2 flex items-center gap-2">
-                                                                                                @foreach ($m['social_media_link'] as $link)
-                                                                                                    <a href="{{ $link['url'] }}"
-                                                                                                        target="_blank"
-                                                                                                        class="inline-block">
-                                                                                                        @isset($link['icon'])
-                                                                                                            @if (!empty($link['icon']))
-                                                                                                                <span
-                                                                                                                    class="inline-flex items-center justify-center rounded-md text-gray-400 shadow-lg">
-                                                                                                                    <img class="lazy h-4 w-4"
-                                                                                                                        data-src="/wp-content/themes/uniteus-sage/resources/icons/social/{{ $link['icon'] }}.svg"
-                                                                                                                        alt="" />
-                                                                                                                </span>
-                                                                                                            @endif
-                                                                                                        @endisset
-                                                                                                    </a>
-                                                                                                @endforeach
-                                                                                            </div>
-                                                                                        @endif
-                                                        
-                                                                                    </div>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        @endif
-                                                                    @endforeach
-                                                                @endif
-                                                            </div>
-                                                        
-                                                            <!-- Video and Description -->
-                                                            <div class="col-span-12 text-lg border-t border-blue-300 lg:mr-16 lg:mt-6 pt-6 lg:order-3">
-                                                                @if ($session['video'])
-                                                                    <div class="max-w-2xl mx-auto mb-6">
-                                                                        <div class="responsive-embed">
-                                                                            {!! $session['video'] !!}
-                                                                        </div>
-                                                                    </div>
-                                                                @endif
-                                                                {!! $session['description'] !!}
-                                                            </div>
-                                                        
-                                                        </div>
-                                                        
-                                                        
-                                                    @else
+                                                            <div class="flex flex-col gap-4 lg:grid lg:grid-cols-12">
 
-                                                        <div class="flex flex-col gap-8 lg:grid lg:grid-cols-12">
-
-                                                            <div class="lg:col-span-3">
+                                                                <!-- Featured Image -->
+                                                                
                                                                 @isset($session['featured_image']['sizes'])
-                                                                        <img class="mt-10 mx-auto"
-                                                                            src="{{ $session['featured_image']['sizes']['medium'] }}"
-                                                                            alt="" />
+                                                                <div class="lg:col-span-12">
+                                                                    <img class="mt-10 mx-auto"
+                                                                        src="{{ $session['featured_image']['sizes']['medium'] }}"
+                                                                        alt="" />
+                                                                </div>
                                                                 @endisset
-
-                                                                @if (!empty($session['topic']))
-                                                                        <div class="topic pb-4">
-                                                                            <h3
-                                                                                class="mb-4 mt-5 uppercase font-bold text-blue-600 text-sm">
-                                                                                TOPIC</h3>
-                                                                            <div
-                                                                                class=" text-action bg-light mix-blend-multiply text-sm py-1 px-4 inline-block mb-6 rounded-full">
+                                                            
+                                                                <!-- Topic -->
+                                                                <div class="lg:col-span-6 lg:order-2">
+                                                                    @if (!empty($session['topic']))
+                                                                        <div class="topic">
+                                                                            <h3 class="mb-4 mt-5 uppercase font-bold text-blue-600 text-sm">
+                                                                                TOPIC
+                                                                            </h3>
+                                                                            <div class="text-action bg-light mix-blend-multiply text-sm py-1 px-4 inline-block mb-6 rounded-full">
                                                                                 {!! $session['topic'] !!}
                                                                             </div>
                                                                         </div>
-                                                                @endif
-
-                                                                @if ($session['presenters'])
+                                                                    @endif
+                                                                </div>
+                                                            
+                                                                <!-- Presenters -->
+                                                                <div class="lg:col-span-6 lg:order-1">
+                                                                    @if ($session['presenters'])
                                                                         @foreach ($session['presenters'] as $group)
-                                                                            <h3
-                                                                                class="mb-4 @if ($loop->index === 0) mt-5  @else mt-10 @endif uppercase font-bold text-action text-sm">
-                                                                                {{ $group['group_title'] }}</h3>
+                                                                            <h3 class="mb-4 @if ($loop->index === 0) mt-5 @else mt-10 @endif uppercase font-bold text-action text-sm">
+                                                                                {{ $group['group_title'] }}
+                                                                            </h3>
                                                                             @if ($group['members'])
                                                                                 @foreach ($group['members'] as $m)
                                                                                     <div class="flex gap-3 mb-2">
@@ -431,18 +331,16 @@
                                                                                             @endif
                                                                                         @endif
                                                                                         <div class="mb-4 text-sm">
-                                                                                            <span
-                                                                                                class="font-bold">{!! $m['name'] !!}</span>
+                                                                                            <span class="font-bold">{!! $m['name'] !!}</span>
                                                                                             @if ($m['title'] && $m['name'])
                                                                                                 ,
                                                                                             @endif
                                                                                             <div class="text-sm">
                                                                                                 {!! $m['title'] !!}
                                                                                             </div>
-
+                                                            
                                                                                             @if ($m['social_media_link'] && $show_social)
-                                                                                                <div
-                                                                                                    class="social-media-links mt-2 flex items-center gap-2">
+                                                                                                <div class="social-media-links mt-2 flex items-center gap-2">
                                                                                                     @foreach ($m['social_media_link'] as $link)
                                                                                                         <a href="{{ $link['url'] }}"
                                                                                                             target="_blank"
@@ -461,19 +359,17 @@
                                                                                                     @endforeach
                                                                                                 </div>
                                                                                             @endif
-
-
-
+                                                            
                                                                                         </div>
                                                                                     </div>
                                                                                 @endforeach
                                                                             @endif
                                                                         @endforeach
-                                                                @endif
-
-                                                            </div>
-
-                                                            <div class="lg:col-span-9 text-lg border-t border-blue-300 lg:mr-16 lg:mt-6 pt-6">
+                                                                    @endif
+                                                                </div>
+                                                            
+                                                                <!-- Video and Description -->
+                                                                <div class="col-span-12 text-lg border-t border-blue-300 lg:mr-16 lg:mt-6 pt-6 lg:order-3">
                                                                     @if ($session['video'])
                                                                         <div class="max-w-2xl mx-auto mb-6">
                                                                             <div class="responsive-embed">
@@ -482,13 +378,115 @@
                                                                         </div>
                                                                     @endif
                                                                     {!! $session['description'] !!}
+                                                                </div>
+                                                            
+                                                            </div>
+                                                            
+                                                        @else
+
+                                                            <div class="flex flex-col gap-8 lg:grid lg:grid-cols-12">
+
+                                                                <div class="lg:col-span-3">
+                                                                    @isset($session['featured_image']['sizes'])
+                                                                            <img class="mt-10 mx-auto"
+                                                                                src="{{ $session['featured_image']['sizes']['medium'] }}"
+                                                                                alt="" />
+                                                                    @endisset
+
+                                                                    @if (!empty($session['topic']))
+                                                                            <div class="topic pb-4">
+                                                                                <h3
+                                                                                    class="mb-4 mt-5 uppercase font-bold text-blue-600 text-sm">
+                                                                                    TOPIC</h3>
+                                                                                <div
+                                                                                    class=" text-action bg-light mix-blend-multiply text-sm py-1 px-4 inline-block mb-6 rounded-full">
+                                                                                    {!! $session['topic'] !!}
+                                                                                </div>
+                                                                            </div>
+                                                                    @endif
+
+                                                                    @if ($session['presenters'])
+                                                                            @foreach ($session['presenters'] as $group)
+                                                                                <h3
+                                                                                    class="mb-4 @if ($loop->index === 0) mt-5  @else mt-10 @endif uppercase font-bold text-action text-sm">
+                                                                                    {{ $group['group_title'] }}</h3>
+                                                                                @if ($group['members'])
+                                                                                    @foreach ($group['members'] as $m)
+                                                                                        <div class="flex gap-3 mb-2">
+                                                                                            @if ($m['image'])
+                                                                                                <div class="shrink-0">
+                                                                                                    <img class="rounded-full w-9 h-9 object-cover"
+                                                                                                        src="{{ $m['image']['sizes']['thumbnail'] }}"
+                                                                                                        alt="" />
+                                                                                                </div>
+                                                                                            @else
+                                                                                                @if ($m['name'])
+                                                                                                    <div class="shrink-0">
+                                                                                                        <img class="rounded-full w-9 h-9 object-cover"
+                                                                                                            src="@asset('/images/person-head.svg')" />
+                                                                                                    </div>
+                                                                                                @endif
+                                                                                            @endif
+                                                                                            <div class="mb-4 text-sm">
+                                                                                                <span
+                                                                                                    class="font-bold">{!! $m['name'] !!}</span>
+                                                                                                @if ($m['title'] && $m['name'])
+                                                                                                    ,
+                                                                                                @endif
+                                                                                                <div class="text-sm">
+                                                                                                    {!! $m['title'] !!}
+                                                                                                </div>
+
+                                                                                                @if ($m['social_media_link'] && $show_social)
+                                                                                                    <div
+                                                                                                        class="social-media-links mt-2 flex items-center gap-2">
+                                                                                                        @foreach ($m['social_media_link'] as $link)
+                                                                                                            <a href="{{ $link['url'] }}"
+                                                                                                                target="_blank"
+                                                                                                                class="inline-block">
+                                                                                                                @isset($link['icon'])
+                                                                                                                    @if (!empty($link['icon']))
+                                                                                                                        <span
+                                                                                                                            class="inline-flex items-center justify-center rounded-md text-gray-400 shadow-lg">
+                                                                                                                            <img class="lazy h-4 w-4"
+                                                                                                                                data-src="/wp-content/themes/uniteus-sage/resources/icons/social/{{ $link['icon'] }}.svg"
+                                                                                                                                alt="" />
+                                                                                                                        </span>
+                                                                                                                    @endif
+                                                                                                                @endisset
+                                                                                                            </a>
+                                                                                                        @endforeach
+                                                                                                    </div>
+                                                                                                @endif
+
+
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    @endforeach
+                                                                                @endif
+                                                                            @endforeach
+                                                                    @endif
+
+                                                                </div>
+
+                                                                <div class="lg:col-span-9 text-lg border-t border-blue-300 lg:mr-16 lg:mt-6 pt-6">
+                                                                        @if ($session['video'])
+                                                                            <div class="max-w-2xl mx-auto mb-6">
+                                                                                <div class="responsive-embed">
+                                                                                    {!! $session['video'] !!}
+                                                                                </div>
+                                                                            </div>
+                                                                        @endif
+                                                                        {!! $session['description'] !!}
+                                                                </div>
+
                                                             </div>
 
-                                                        </div>
+                                                        @endif
+                                                    </div>  
 
-                                                    @endif
-                                                </div>
-
+                                                @endif
                                             </div>
                                         </div>
                                     @endif
@@ -502,6 +500,3 @@
     </div>
 </section>
 
-
-</div>
-</section>

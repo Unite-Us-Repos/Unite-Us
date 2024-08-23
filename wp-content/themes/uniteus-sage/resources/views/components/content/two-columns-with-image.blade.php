@@ -35,38 +35,37 @@ $image_overaly = @asset('/images/network-mask-1.png');
       <div class="flex flex-col items-start @if ('accordion' == $type) lg:col-span-4 @else lg:col-span-{{ $columns[0] }} @endif @if ('center' == $vertical_alignment) justify-center @endif @if (('image' == $type) OR ('embed' == $type)) order-2 @endif text-lg @if ('image' == $type) @if ('text_image' == $layout) lg:order-1 @else lg:order-2 @endif @endif">
         @if ($section['subtitle'])
         @if ($section['subtitle_display_as_pill'])
-        <div class="@if($section['purple_text']) text-electric-purple @else text-action @endif bg-light mix-blend-multiply text-sm py-1 px-4 inline-block mb-6 rounded-full">
+          <div class="@if($section['purple_text']) text-electric-purple @else text-action @endif bg-light mix-blend-multiply text-sm py-1 px-4 inline-block mb-6 rounded-full">
         @else
-        <div class="subtitle mb-6">
+          <div class="subtitle mb-6">
         @endif
-        {{ $section['subtitle'] }}
-        </div>
-        @endif
-
-        @isset ($section['logo']['sizes'])
-          <img class="mb-6 max-w-[224px] h-auto" src="{{ $section['logo']['sizes']['medium'] }}" alt="{{ $section['logo']['alt'] }}" />
-        @endisset
-        @if ($section['title'])
-        <h2 class="mb-6">{!! $section['title'] !!}</h2>
-        @endif
-
-        @if ($section['description'])
-        <div class="description">
-          {!! $section['description'] !!}
-        </div>
-        @endif
-
-        @if ($buttons && ('title_area' == $button_placement))
-        <div class="mb-6 lg:m-0 w-full">
-          @php
-            $data = [
-              'justify' => 'justify-start',
-            ];
-          @endphp
-          @include('components.action-buttons', $data)
+          {{ $section['subtitle'] }}
           </div>
         @endif
 
+          @isset ($section['logo']['sizes'])
+            <img class="mb-6 max-w-[224px] h-auto" src="{{ $section['logo']['sizes']['medium'] }}" alt="{{ $section['logo']['alt'] }}" />
+          @endisset
+          @if ($section['title'])
+          <h2 class="mb-6">{!! $section['title'] !!}</h2>
+          @endif
+
+          @if ($section['description'])
+          <div class="description">
+            {!! $section['description'] !!}
+          </div>
+          @endif
+
+          @if ($buttons && ('title_area' == $button_placement))
+          <div class="mb-6 lg:m-0 w-full">
+            @php
+              $data = [
+                'justify' => 'justify-start',
+              ];
+            @endphp
+            @include('components.action-buttons', $data)
+            </div>
+          @endif
 
         @isset ($extra_content)
           @if ('testimonial' == $extra_content)
@@ -218,198 +217,192 @@ $image_overaly = @asset('/images/network-mask-1.png');
 
         @endisset
 
-      </div>
-      <div class="flex flex-col lg:max-h-[600px] @if ('accordion' == $type) lg:col-span-7 lg:col-end-13 @else lg:col-span-{{ $columns[1] }} @endif @if ('center' == $vertical_alignment) justify-center @endif relative @if ('image' == $type) @if ('text_image' == $layout) lg:order-2 @else  lg:order-1 @endif @endif">
+        </div>
+        <div class="flex flex-col lg:max-h-[600px] @if ('accordion' == $type) lg:col-span-7 lg:col-end-13 @else lg:col-span-{{ $columns[1] }} @endif @if ('center' == $vertical_alignment) justify-center @endif relative @if ('image' == $type) @if ('text_image' == $layout) lg:order-2 @else  lg:order-1 @endif @endif">
 
-      @if ('image' == $type)
-        @if ($mask_image)
-          @if ($featured_image)
-            @if ($image_mask)
-              @php
-                $image_overaly = $image_mask;
-                @endphp
-            @endif
-            <div class="relative max-w-lg mx-auto mb-6 lg:mb-0">
-              <img class="lazy relative z-10" data-src="{{ $image_overaly }}?v=1" alt="" />
-              <div class="absolute inset-0 flex justify-center items-center"
-                style="
-                margin:10px;
-                width: 60%;
-                height: 70%;
-                margin-top: 17%;
-                margin-left: 20%;
-                @if (!$video) background: url({{ $featured_image['sizes']['medium_large'] }}) no-repeat center center;background-size: cover;
+          @if ('image' == $type)
+            @if ($mask_image)
+              @if ($featured_image)
+                @if ($image_mask)
+                  @php
+                    $image_overaly = $image_mask;
+                    @endphp
                 @endif
-                ">
-            @if ($video)
-              <video autoplay loop muted playsinline poster="{{ $featured_image['sizes']['medium_large'] }}" class="lazy object-cover mx-auto" style="aspect-ratio: 1/1.3;">
-                <source data-src="{{ $video }}" type="video/mp4" />Your browser does not support the video tag.
-              </video>
+                <div class="relative max-w-lg mx-auto mb-6 lg:mb-0">
+                  <img class="lazy relative z-10" data-src="{{ $image_overaly }}?v=1" alt="" />
+                  <div class="absolute inset-0 flex justify-center items-center"
+                    style="
+                    margin:10px;
+                    width: 60%;
+                    height: 70%;
+                    margin-top: 17%;
+                    margin-left: 20%;
+                    @if (!$video) background: url({{ $featured_image['sizes']['medium_large'] }}) no-repeat center center;background-size: cover;
+                    @endif
+                    ">
+                @if ($video)
+                  <video autoplay loop muted playsinline poster="{{ $featured_image['sizes']['medium_large'] }}" class="lazy object-cover mx-auto" style="aspect-ratio: 1/1.3;">
+                    <source data-src="{{ $video }}" type="video/mp4" />Your browser does not support the video tag.
+                  </video>
+                @endif
+              </div>
+                </div>
+              @endif
+            @else
+              @isset ($featured_image['sizes'])
+                <img class="lazy mb-6 lg:mb-0 rounded-lg w-full @if ($set_max_width_height) h-full object-contain max-w-lg mx-auto @else max-w-md mx-auto lg:max-w-3xl @endif" data-src="@if (strpos($featured_image['url'], '.gif')) {{ $featured_image['url'] }} @else {{ $featured_image['sizes']['medium_large'] }} @endif" alt="{{ $featured_image['alt'] }}" />
+              @endisset
             @endif
-          </div>
+          @endif
+
+          @if ('video' == $type)
+          @if ($video)
+            <video autoplay loop muted playsinline poster="{{ $featured_image['sizes']['medium_large'] }}" class="lazy object-cover mx-auto">
+              <source data-src="{{ $video }}" type="video/mp4" />Your browser does not support the video tag.
+            </video>
+            @endif
+          @endif
+
+          @if ('embed' == $type)
+            @isset ($embeds)
+              @if (!empty($embeds))
+                <div class="rounded-lg responsive-embed">
+                  {!! $embeds !!}
+                </div>
+              @endif
+            @endisset
+          @endif
+
+          @if ('code_editor' == $type)
+            @isset ($code_editor)
+              @if (!empty($code_editor))
+                <div>
+                  {!! $code_editor !!}
+                </div>
+              @endif
+            @endisset
+          @endif
+
+          @if ('wysiwyg' == $type)
+            @isset ($wysiwyg)
+              @if (!empty($wysiwyg))
+                <div class="text-lg">
+                  {!! $wysiwyg !!}
+                </div>
+              @endif
+            @endisset
+          @endif
+
+          @if ('accordion' == $type)
+            <div class="accordion accordion-vertical" x-data="{selected:9999}">
+              <ul class="list-none">
+                @isset ($accordion)
+                  @foreach ($accordion as $index => $card)
+                    <li class="relative social-card py-6 px-9 lg:p-10 mb-6 bg-white rounded-lg shadow-lg" x-ref="container{{ $index }}" :class="{ 'open':  selected == {{ $index }} }">
+
+                      <button type="button" class="w-full" @click="selected !== {{ $index }} ? selected = {{ $index }} : selected = null">
+                        @if ($card['pill'])
+                          <div class="rounded-full inline-block mb-4 px-3 py-1 bg-light text-action text-sm">
+                            {!! $card['pill'] !!}
+                          </div>
+                        @endif
+                        <h3 class="heading mb-0 text-xl font-semibold pr-6">
+                            {!! $card['title'] !!}
+                        </h3>
+                      </button>
+
+                      <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container{{ $index }}" x-bind:style="selected == {{ $index }} ? 'max-height: ' + $refs.container{{ $index }}.scrollHeight + 'px' : ''">
+                        <div class="text-lg border-t border-blue-300 mt-6 pt-6">
+                          {!! $card['description'] !!}
+                        </div>
+                      </div>
+
+                    </li>
+                  @endforeach
+                @endisset
+              </ul>
             </div>
           @endif
-        @else
-          @isset ($featured_image['sizes'])
-            <img class="lazy mb-6 lg:mb-0 rounded-lg w-full @if ($set_max_width_height) h-full object-contain max-w-lg mx-auto @else max-w-md mx-auto lg:max-w-3xl @endif" data-src="@if (strpos($featured_image['url'], '.gif')) {{ $featured_image['url'] }} @else {{ $featured_image['sizes']['medium_large'] }} @endif" alt="{{ $featured_image['alt'] }}" />
-          @endisset
-        @endif
-      @endif
-
-        @if ('video' == $type)
-         @if ($video)
-          <video autoplay loop muted playsinline poster="{{ $featured_image['sizes']['medium_large'] }}" class="lazy object-cover mx-auto">
-            <source data-src="{{ $video }}" type="video/mp4" />Your browser does not support the video tag.
-          </video>
-          @endif
-        @endif
-
-        @if ('embed' == $type)
-          @isset ($embeds)
-            @if (!empty($embeds))
-              <div class="rounded-lg responsive-embed">
-                {!! $embeds !!}
-              </div>
-            @endif
-          @endisset
-        @endif
-
-        @if ('code_editor' == $type)
-          @isset ($code_editor)
-            @if (!empty($code_editor))
-              <div>
-                {!! $code_editor !!}
-              </div>
-            @endif
-          @endisset
-        @endif
-
-        @if ('wysiwyg' == $type)
-          @isset ($wysiwyg)
-            @if (!empty($wysiwyg))
-              <div class="text-lg">
-                {!! $wysiwyg !!}
-              </div>
-            @endif
-          @endisset
-        @endif
-
-        @if ('accordion' == $type)
-
-          <div class="accordion accordion-vertical" x-data="{selected:9999}">
-            <ul class="list-none">
-              @isset ($accordion)
-                @foreach ($accordion as $index => $card)
-                  <li class="relative social-card py-6 px-9 lg:p-10 mb-6 bg-white rounded-lg shadow-lg" x-ref="container{{ $index }}" :class="{ 'open':  selected == {{ $index }} }">
-
-                    <button type="button" class="w-full" @click="selected !== {{ $index }} ? selected = {{ $index }} : selected = null">
-                      @if ($card['pill'])
-                        <div class="rounded-full inline-block mb-4 px-3 py-1 bg-light text-action text-sm">
-                          {!! $card['pill'] !!}
+          
+          @if ('list' == $type)
+          
+          @if (!empty($list_items))
+            <div class="list-items-with-icons flex flex-wrap mt-5 mb-3">
+                @foreach ($list_items as $item)
+                    <div class="item basis-full lg:basis-1/2 flex gap-2 p-2 lg:p-4 items-center">
+                        
+                        @if (isset($item['svg_picker_or_custom_icon_upload']))
+                        <div class="basis-1/5 flex justify-start lg:justify-end align-middle">
+                            @if ($item['svg_picker_or_custom_icon_upload'] == 'SVG Icon Picker' && !empty($item['icon']))
+                                <span class="icon w-10 h-10 p-2 flex justify-center items-center rounded-full mb-5 bg-light ">
+                                  <img class="lazy h-full w-full" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $item['icon'] }}.svg" alt="" />
+                                </span>
+                            @elseif ($item['svg_picker_or_custom_icon_upload'] == 'Custom' && !empty($item['icon_custom_upload']))
+                              <span class="icon w-10 h-10 flex justify-center items-center rounded-full bg-light ">
+                                <img src="{{ $item['icon_custom_upload']['url'] }}" alt="{{ $item['icon_custom_upload']['alt'] }}" class="custom-icon w-10 h-10">
+                              </span>
+                            @endif
                         </div>
-                      @endif
-                      <h3 class="heading mb-0 text-xl font-semibold pr-6">
-                          {!! $card['title'] !!}
-                      </h3>
-                    </button>
-
-                    <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container{{ $index }}" x-bind:style="selected == {{ $index }} ? 'max-height: ' + $refs.container{{ $index }}.scrollHeight + 'px' : ''">
-                      <div class="text-lg border-t border-blue-300 mt-6 pt-6">
-                        {!! $card['description'] !!}
-                      </div>
-                    </div>
-
-                  </li>
-                @endforeach
-              @endisset
-            </ul>
-          </div>
-
-        @endif
-        
-        @if ('list' == $type)
-        
-     
-        @if (!empty($list_items))
-        <div class="list-items-with-icons flex flex-wrap mt-5 mb-3">
-            @foreach ($list_items as $item)
-                <div class="item basis-full lg:basis-1/2 flex gap-2 p-2 lg:p-4 items-center">
-                    
-                    @if (isset($item['svg_picker_or_custom_icon_upload']))
-                    <div class="basis-1/5 flex justify-start lg:justify-end align-middle">
-                        @if ($item['svg_picker_or_custom_icon_upload'] == 'SVG Icon Picker' && !empty($item['icon']))
-                            <span class="icon w-10 h-10 p-2 flex justify-center items-center rounded-full mb-5 bg-light ">
-                              <img class="lazy h-full w-full" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $item['icon'] }}.svg" alt="" />
-                            </span>
-                        @elseif ($item['svg_picker_or_custom_icon_upload'] == 'Custom' && !empty($item['icon_custom_upload']))
-                          <span class="icon w-10 h-10 flex justify-center items-center rounded-full bg-light ">
-                            <img src="{{ $item['icon_custom_upload']['url'] }}" alt="{{ $item['icon_custom_upload']['alt'] }}" class="custom-icon w-10 h-10">
-                          </span>
                         @endif
+
+                        <span class="text basis-4/5 font-semibold">
+                            {{ $item['list_item'] }}
+                        </span>
                     </div>
-                    @endif
+                @endforeach
+            </div>
+          @endif
+    
+          @endif
 
-                    <span class="text basis-4/5 font-semibold">
-                        {{ $item['list_item'] }}
-                    </span>
-                </div>
-            @endforeach
+          @if ($buttons && ('widget_area' == $button_placement))
+          <div class="mb-6 lg:m-0 w-full">
+            @php
+              $data = [
+                'justify' => 'justify-start',
+              ];
+            @endphp
+            @include('components.action-buttons', $data)
+            </div>
+          @endif
+
         </div>
-    @endif
-    
-    
-      
-   
-        @endif
-
-        @if ($buttons && ('widget_area' == $button_placement))
-        <div class="mb-6 lg:m-0 w-full">
-          @php
-            $data = [
-              'justify' => 'justify-start',
-            ];
-          @endphp
-          @include('components.action-buttons', $data)
-          </div>
-        @endif
-
       </div>
-    </div>
 
   </div>
 </section>
 @if ('testimonials' == $extra_content)
-<section class="component-section padding-collapse-t -mb-4" style="background: url(/wp-content/uploads/2024/01/spider-webs.png) no-repeat center center;
-    background-size: cover;">
-  <div class="component-inner-section">
-                @if (count($testimonials['testimonials']))
-                <div class="flex flex-col lg:grid lg:grid-cols-2 gap-10 lg:gap-20">
-                  @foreach ($testimonials['testimonials'] as $testimonial)
+  <section class="component-section padding-collapse-t -mb-4" style="background: url(/wp-content/uploads/2024/01/spider-webs.png) no-repeat center center;
+      background-size: cover;">
+    <div class="component-inner-section">
+        @if (count($testimonials['testimonials']))
+        <div class="flex flex-col lg:grid lg:grid-cols-2 gap-10 lg:gap-20">
+          @foreach ($testimonials['testimonials'] as $testimonial)
 
-                      <blockquote class="!p-0 !border-none !not-italic @if ($loop->index == 0) lg:mt-44 @endif">
-                      <div class="flex items-start mt-6 gap-6">
-                          @isset ($testimonial['image']['sizes'])
-                            <img class="w-16 h-16 object-contain rounded-full" src="{{ $testimonial['image']['sizes']['thumbnail'] }}" alt="{{ $testimonial['image']['alt'] }}" />
-                          @endisset
+                        <blockquote class="!p-0 !border-none !not-italic @if ($loop->index == 0) lg:mt-44 @endif">
+                        <div class="flex items-start mt-6 gap-6">
+                            @isset ($testimonial['image']['sizes'])
+                              <img class="w-16 h-16 object-contain rounded-full" src="{{ $testimonial['image']['sizes']['thumbnail'] }}" alt="{{ $testimonial['image']['alt'] }}" />
+                            @endisset
 
-                          <div>
-                            <div class="text-lg text-brand mb-6">
-                              {!! $testimonial['quote'] !!}
-                            </div>
+                            <div>
+                              <div class="text-lg text-brand mb-6">
+                                {!! $testimonial['quote'] !!}
+                              </div>
 
 
 
-                          <div class="text-brand text-base"><span class="font-bold">{!! $testimonial['name'] !!}</span>@if ($testimonial['title']), <div class="text-action text-base font-semibold">{!! $testimonial['title'] !!}</div> @endif</div>
-                    </div>
-                        </div>
-                      </blockquote>
+                            <div class="text-brand text-base"><span class="font-bold">{!! $testimonial['name'] !!}</span>@if ($testimonial['title']), <div class="text-action text-base font-semibold">{!! $testimonial['title'] !!}</div> @endif</div>
+                      </div>
+                          </div>
+                        </blockquote>
 
-                  @endforeach
-                  </div>
-                @endif
-                    </div>
-                    </section>
-              @endif
+          @endforeach
+          </div>
+        @endif
+    </div>
+  </section>
+@endif
 @if ($background['divider_bottom'])
   @includeIf('dividers.waves-bottom')
 @endif

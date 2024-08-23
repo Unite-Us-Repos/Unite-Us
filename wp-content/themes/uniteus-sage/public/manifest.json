@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
   "app.css": "app.a6b386.css",
   "app.js": "app.397b80.js",
+=======
+  "app.css": "app.5007fa.css",
+  "app.js": "app.6c9a77.js",
+>>>>>>> staging
   "time.js": "time.8aa5e0.js",
   "editor.css": "editor.3e45fd.css",
   "editor.js": "editor.ecc938.js",
@@ -32,8 +37,11 @@
   "images/overlay-pattern-homev3.png": "images/overlay-pattern-homev3.png",
   "images/G2_Logo_Red.svg": "images/G2_Logo_Red.svg",
   "images/herov3-heart-home-pink.png": "images/herov3-heart-home-pink.png",
+  "images/herov3-heart-home.png": "images/herov3-heart-home.png",
   "images/herov3-food-green.png": "images/herov3-food-green.png",
+  "images/herov3-food.png": "images/herov3-food.png",
   "images/herov3-profile-chart-blue.png": "images/herov3-profile-chart-blue.png",
+  "images/herov3-profile-chart.png": "images/herov3-profile-chart.png",
   "images/square-dots-purple.png": "images/square-dots-purple.png",
   "images/podcast-logo-what-unites-us-white.png": "images/podcast-logo-what-unites-us-white.png",
   "images/logo-one-continuum.png": "images/logo-one-continuum.png",
@@ -46,6 +54,7 @@
   "images/orbit/card.svg": "images/orbit/card.svg",
   "images/orbit/graduate.svg": "images/orbit/graduate.svg",
   "images/herov3-grad-bar-purple.png": "images/herov3-grad-bar-purple.png",
+  "images/herov3-grad-bar.png": "images/herov3-grad-bar.png",
   "images/timeline-vdashes-OLD.png": "images/timeline-vdashes-OLD.png",
   "images/orbit/cutlery.svg": "images/orbit/cutlery.svg",
   "images/orbit/bag.svg": "images/orbit/bag.svg",
@@ -54,6 +63,7 @@
   "images/lazy-placeholder.png": "images/lazy-placeholder.png",
   "images/person-head.svg": "images/person-head.svg",
   "images/timeline-vdashes-new-blue.png": "images/timeline-vdashes-new-blue.png",
+  "images/timeline-vdashes.png": "images/timeline-vdashes.png",
   "images/orbit/heart.svg": "images/orbit/heart.svg",
   "images/arrow-down-br.svg": "images/arrow-down-br.svg",
   "images/arrow-diagonal-up-active.svg": "images/arrow-diagonal-up-active.svg",
