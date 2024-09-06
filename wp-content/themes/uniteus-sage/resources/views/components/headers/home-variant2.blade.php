@@ -95,7 +95,7 @@
                                    style="left: -41%;
                                    width: 65px;
                                    top: 31%" />
-                              <img class="absolute lazy" data-src="@asset('/images/hp-graphic-3.png')" alt=""
+                              <img class="absolute lazy" data-src="@asset('/images/hp-graphic-3b.png')" alt=""
                                    style="left: -27%;
                                    width: 198px;
                                    top: 37%" /> 
@@ -111,7 +111,7 @@
                                    style="right: -40%;
                                     width: 164px;
                                     top: 64%;" />
-                               <img class="absolute lazy" data-src="@asset('/images/hp-graphic-1.png')" alt=""
+                               <img class="absolute lazy" data-src="@asset('/images/hp-graphic-1b.png')" alt=""
                                    style="right: -22%;
                                     width: 164px;
                                     bottom: 38%;" />
