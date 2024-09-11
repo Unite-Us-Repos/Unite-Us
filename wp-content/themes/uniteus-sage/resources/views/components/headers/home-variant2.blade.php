@@ -96,27 +96,27 @@
                                    style="left: -41%;
                                    width: 65px;
                                    top: -10rem" />
-                              <img class="absolute lazy" data-src="@asset('/images/hp-graphic-3b.png')" alt=""
+                                <img class="absolute lazy" data-src="@asset('/images/hp-graphic-3b.png')" alt=""
                                    style="left: -27%;
                                    width: 198px;
                                    top: -6rem;" /> 
-                               <img class="absolute lazy" data-src="@asset('/images/hp-graphic-4.png')" alt=""
+                                <img class="absolute lazy" data-src="@asset('/images/hp-graphic-4.png')" alt=""
                                    style="left: -38%;
                                    width: 175px;
                                    top: -7rem;" /> 
-                               <img class="absolute lazy" data-src="@asset('/images/hp-tile-red.png')" alt=""
+                                <img class="absolute lazy" data-src="@asset('/images/hp-tile-red.png')" alt=""
                                    style="right: -21%;
                                    width: 65px;
                                    top: 16rem;" /> 
-                              <img class="absolute lazy" data-src="@asset('/images/hp-graphic-2.png')" alt=""
+                                <img class="absolute lazy" data-src="@asset('/images/hp-graphic-2.png')" alt=""
                                    style="right: -40%;
                                     width: 164px;
                                     top: 8rem;" />
-                               <img class="absolute lazy" data-src="@asset('/images/hp-graphic-1b.png')" alt=""
+                                <img class="absolute lazy" data-src="@asset('/images/hp-graphic-1b.png')" alt=""
                                    style="right: -22%;
                                     width: 164px;
                                     " />
-                               <img class="absolute lazy" data-src="@asset('/images/hp-tile-yellow.png')" alt=""
+                                <img class="absolute lazy" data-src="@asset('/images/hp-tile-yellow.png')" alt=""
                                    style="right: -36%;
                                    width: 65px;
                                    bottom: 49%;" /> 
