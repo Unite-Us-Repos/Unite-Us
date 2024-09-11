@@ -22,6 +22,7 @@
         .floating-accents {
             max-width: 720px;
             margin: auto;
+            height: 0;
         }
     }
 </style>
