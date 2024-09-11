@@ -26,7 +26,7 @@
     }
 </style>
 <section
-    class="relative hero-v3 component-section md:!py-24 {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+    class="relative hero-v3 component-section md:py-24 {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
 
     <div class="absolute inset-0">
         @if ($background['image'])
