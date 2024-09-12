@@ -7,9 +7,15 @@
     }
 @endphp
 <style>
+     .hero-v1 {
+        overflow: hidden;
+    }
+    .hero-accent-smile {
+        bottom: -2rem;
+    }
      .hero-accent-smile {
             position: absolute;
-            bottom: 3%;
+            bottom: 0;
             left: 0;
             z-index: 20;
         }
@@ -30,13 +36,15 @@
             margin: auto;
             height: 0;
         }
+    }
+    @media (min-width: 1920px) {
         .hero-accent-smile {
-            bottom: 0;
+            bottom: -10rem;
         }
     }
 </style>
 <section
-    class="relative hero-v3 component-section md:py-24 {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+    class="relative hero-v2 component-section md:py-24 {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
 
     <div class="absolute inset-0">
         @if ($background['image'])
