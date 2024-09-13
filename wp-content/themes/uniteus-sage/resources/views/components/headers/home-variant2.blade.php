@@ -10,14 +10,12 @@
      .hero-v1 {
         overflow: hidden;
     }
-    .hero-accent-smile {
-        bottom: -2rem;
-    }
      .hero-accent-smile {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            z-index: 20;
+        position: absolute;
+        bottom: -1rem;
+        left: 0;
+        z-index: 20;
+        height: 220px;
         }
     @media (min-width: 1024px) {
         .text-wrapper {
@@ -28,28 +26,34 @@
             max-width: 813px;
             margin: auto;
         }
-        .bg-image {
-            /* max-height: 835px; */
-        }
         .floating-accents {
             max-width: 720px;
             margin: auto;
             height: 0;
         }
     }
+    @media (min-width: 1440px) {
+        .hero-accent-smile {
+            bottom: -2rem;
+        }
+    }
     @media (min-width: 1920px) {
         .hero-accent-smile {
-            bottom: -10rem;
+            bottom: 0;
+            max-height: 20rem;
         }
     }
 </style>
 <section
-    class="relative hero-v2 component-section md:py-24 {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+    class="relative hero-v2 lg:py-12 border-0 -mb-1 {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
 
     <div class="absolute inset-0">
         @if ($background['image'])
             <img fetchPriority="high"
-                class="w-full h-full object-cover bg-image @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
+                class="w-full h-full object-cover bg-image lg:hidden @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
+                src="@asset('/images/v2-bg-mobile.png')" alt="{{ $background['image']['alt'] }}">
+            <img fetchPriority="high"
+                class="w-full h-full object-cover bg-image hidden lg:block @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
                 src="{{ $background['image']['sizes']['2048x2048'] }}" alt="{{ $background['image']['alt'] }}">
         @endif
     </div>
@@ -59,7 +63,7 @@
         <div class="component-inner-section">
             <div class="relative flex flex-col">
 
-                <div class="relative ">
+                <div class="relative">
 
                     @if (!$hide_breadcrumbs)
                         <div class="mb-6">
@@ -72,8 +76,8 @@
                         </div>
                     @endif
 
-                    <div class="relative z-10 -mt-12 md:mt-0">
-                        <div class="py-12 lg:text-center text-wrapper">
+                    <div class="relative z-10 component-section lg:pt-8">
+                        <div class="lg:text-center text-wrapper">
                             @if ($section['subtitle'])
                                 <div class="text-action-light-blue uppercase font-semibold text-base mb-3">
                                     {!! $section['subtitle'] !!}
@@ -98,7 +102,6 @@
                                 @endphp
                                 @include('components.action-buttons', $data)
                             @endif
-
                             <div class="absolute top-0 bottom-0 right-0 z-20 hidden lg:block inset-0 floating-accents">
                                 <img class="absolute lazy" data-src="@asset('/images/hp-tile-purple.png')" alt=""
                                    style="left: -41%;
@@ -131,8 +134,6 @@
                            </div>
                         </div>
                         @isset($section['logo']['sizes'])
-                            <img class="w-full h-auto lg:hidden" src="{{ $section['logo']['sizes']['large'] }}"
-                            alt="{{ $section['logo']['alt'] }}" />
                             <img class="w-full h-auto hidden lg:block feature-image" src="{{ $section['logo']['sizes']['large'] }}" alt="{{ $section['logo']['alt'] }}"  />
                         @endisset
                     </div>
@@ -140,5 +141,6 @@
             </div>
         </div>
     </div>
-    <img class="w-full h-auto hero-accent-smile" data-src="@asset('/images/hero-accent-smile-v2.png')" src="@asset('/images/hero-accent-smile-v2.png')" alt="accent" />
+    <img class="w-full h-auto lg:hidden relative" src="@asset('/images/PeopleMobileb.png')" alt="hero image" />
+    <img class="w-full h-auto hidden lg:block hero-accent-smile" data-src="@asset('/images/hero-accent-smile-v2b.png')" src="@asset('/images/hero-accent-smile-v2.png')" alt="accent" />
 </section>
