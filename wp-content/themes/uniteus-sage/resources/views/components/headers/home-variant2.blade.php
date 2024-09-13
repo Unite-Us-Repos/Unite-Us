@@ -45,7 +45,7 @@
     }
 </style>
 <section
-    class="relative hero-v2 lg:py-12 border-0 -mb-1 {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+    class="relative hero-v2 lg:py-12 -mb-1 {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
 
     <div class="absolute inset-0">
         @if ($background['image'])
