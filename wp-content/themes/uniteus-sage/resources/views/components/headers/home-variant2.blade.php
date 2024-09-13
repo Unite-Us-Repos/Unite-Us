@@ -12,11 +12,14 @@
     }
      .hero-accent-smile {
         position: absolute;
-        bottom: -1rem;
+        bottom: 1rem;
         left: 0;
         z-index: 20;
         height: 220px;
-        }
+    }
+    .bg-image {
+        max-height: 900px;
+    }
     @media (min-width: 1024px) {
         .text-wrapper {
             max-width: 720px;
@@ -32,14 +35,8 @@
             height: 0;
         }
     }
-    @media (min-width: 1440px) {
-        .hero-accent-smile {
-            bottom: -2rem;
-        }
-    }
     @media (min-width: 1920px) {
         .hero-accent-smile {
-            bottom: 0;
             max-height: 20rem;
         }
     }
