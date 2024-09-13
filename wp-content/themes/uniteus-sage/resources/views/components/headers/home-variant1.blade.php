@@ -104,7 +104,7 @@
                                 <img class="absolute lazy" data-src="@asset('/images/hp-tile-red.png')" alt=""
                                    style="    right: -21%;
     width: 65px;
-    top: 11ch;" /> 
+    top: 11rem;" /> 
                                 <img class="absolute lazy" data-src="@asset('/images/hp-graphic-2.png')" alt=""
                                    style="    right: -40%;
     width: 164px;
