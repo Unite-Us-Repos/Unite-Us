@@ -82,7 +82,7 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
           @if ($menu['children'])
           <div class="relative group">
             <a href="{{ $menu['url'] }}"
-              class="group bg-white rounded-md inline-flex items-center text-base font-medium py-4 hover:text-brand focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-action text-brand">
+              class="group bg-white rounded-md inline-flex items-center text-base font-medium py-4 hover:text-brand focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-action text-brand menu_click">
               <span>{{ $menu['title'] }}</span>
               <img class="ml-2" src="@asset('images/nav-chevron-down.svg')" alt="" width="20" height="20" />
             </a>
@@ -90,7 +90,7 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
               <div class="rounded-lg !shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                   @foreach ($menu['children'] as $child)
-                  <a href="{{ $child['url'] }}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light">
+                  <a href="{{ $child['url'] }}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                     <span class="text-base font-medium text-brand">{{ $child['title'] }}</span>
                   </a>
                   @endforeach
@@ -139,7 +139,7 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
                         <div class="overflow-hidden">
                           <div class="relative grid gap-6 rounded-lg bg-light mb-2 mt-6 px-5 py-6 sm:gap-8 sm:p-8">
                           @foreach ($menu['children'] as $child)
-                            <a href="{{ $child['url'] }}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light">
+                            <a href="{{ $child['url'] }}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click">
                               <span class="text-base font-medium text-brand">{{ $child['title'] }}</span>
                             </a>
                           @endforeach

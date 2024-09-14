@@ -12,7 +12,7 @@
               'theme_location'  => 'footer_solutions',
               'menu_class'      => 'space-y-4 list-none',
               'echo'            => false,
-              'link_class'      => 'text-white hover:text-white'
+              'link_class'      => 'text-white hover:text-white footer_click'
             ])
           !!}
         @endif
@@ -26,7 +26,7 @@
               'theme_location'  => 'footer_products',
               'menu_class'      => 'space-y-4 list-none',
               'echo'            => false,
-              'link_class'      => 'text-white hover:text-white'
+              'link_class'      => 'text-white hover:text-white footer_click'
             ])
           !!}
         @endif
@@ -40,7 +40,7 @@
               'theme_location'  => 'footer_support',
               'menu_class'      => 'space-y-4 list-none',
               'echo'            => false,
-              'link_class'      => 'text-white hover:text-white'
+              'link_class'      => 'text-white hover:text-white footer_click'
             ])
           !!}
         @endif
@@ -54,7 +54,7 @@
               'theme_location'  => 'footer_company',
               'menu_class'      => 'space-y-4 list-none',
               'echo'            => false,
-              'link_class'      => 'text-white hover:text-white'
+              'link_class'      => 'text-white hover:text-white footer_click'
             ])
           !!}
         @endif
@@ -68,7 +68,7 @@
               'theme_location'  => 'footer_legal',
               'menu_class'      => 'space-y-4 list-none',
               'echo'            => false,
-              'link_class'      => 'text-white hover:text-white'
+              'link_class'      => 'text-white hover:text-white footer_click'
             ])
           !!}
         @endif
