@@ -20,6 +20,9 @@
     .bg-image {
         max-height: 900px;
     }
+    .text-wrapper {
+        text-align: center;
+    }
     @media (min-width: 1024px) {
         .text-wrapper {
             max-width: 720px;

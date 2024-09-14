@@ -10,13 +10,22 @@
     .hero-v1 {
         overflow: hidden;
     }
+    .component-section {
+        padding: 7.5rem 1rem;
+    }
+    .text-wrapper {
+        text-align: center
+    }
     @media (min-width: 1024px) {
+        .component-section {
+            padding: 3.5rem 1rem;
+        }
         .text-wrapper {
             max-width: 720px;
             margin: auto;
         }
         .feature-image {
-            max-width: 880px;
+            max-width: 750px;
             margin: auto;
         }
         .bg-image {
@@ -27,7 +36,7 @@
             margin: auto;
             height: 0;
         }
-        
+
     }
 </style>
 <section
