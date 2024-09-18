@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const value = urlParams.get(param);
       if (value) {
           sessionStorage.setItem(param, value);
-      }
+      } 
   });
 
   // For debugging: log the stored UTM parameters
