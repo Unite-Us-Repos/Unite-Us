@@ -224,3 +224,34 @@ function custom_noindex_override() {
     }
 }
 add_action('wp', 'App\\custom_noindex_override');
+
+
+
+// Start the session if it hasn't been started
+add_action('init', function() {
+    if (!session_id()) {
+        session_start();
+    }
+});
+
+// Function to capture UTM parameters and store them in session variables
+function capture_utm_parameters() {
+    // List of UTM parameters
+    $utm_parameters = [
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_term',
+        'utm_content'
+    ];
+
+    // Loop through each UTM parameter and check if it exists in the URL
+    foreach ($utm_parameters as $param) {
+        if (isset($_GET[$param])) {
+            $_SESSION[$param] = sanitize_text_field($_GET[$param]);
+        }
+    }
+}
+
+// Hook the capture function to the 'init' action
+add_action('init', 'App\\capture_utm_parameters');
