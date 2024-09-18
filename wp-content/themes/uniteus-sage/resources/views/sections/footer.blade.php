@@ -113,7 +113,15 @@
 @if (!is_singular('network'))
 <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js" integrity="sha512-dnvR4Aebv5bAtJxDunq3eE8puKAJrY9GBJYl9GC6lTOEC76s1dbDfJFcL9GyzpaDW4vlI/UjR8sKbc1j6Ynx6w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-  iFrameResize({ log: false, crossOrigin: false, heightCalculationMethod:'lowestElement' }, '#formIframe iframe')
+  iFrameResize({ log: false, crossOrigin: false, heightCalculationMethod:'lowestElement' }, '#formIframe iframe');
+  setTimeout(function() {
+    iFrameResize({ 
+        log: false, 
+        crossOrigin: false, 
+        heightCalculationMethod: 'lowestElement' 
+    }, '#formIframe #iframe-container iframe');
+  }, 1000); // 1000 milliseconds = 1 second
+
 </script>
 @endif
 
