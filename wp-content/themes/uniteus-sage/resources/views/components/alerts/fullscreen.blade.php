@@ -64,7 +64,7 @@ if (!is_array($display)) {
             @endif
 
           </div>
-          <div class="flex gap-4 flex-col sm:flex-row items-center justify-between lg:w-3/4">
+          <div class="flex gap-4 flex-col sm:flex-row items-center justify-between">
 
             @if ($title)
             <h3 class="mb-0 text-lg font-bold">{!! $title !!}</h3>
