@@ -23,7 +23,13 @@
     .text-wrapper {
         text-align: center;
     }
+    .component-section {
+        padding: 3.5rem 1rem 0;
+    }
     @media (min-width: 1024px) {
+        .component-section {
+            padding: 3.5rem 1rem;
+        }
         .text-wrapper {
             max-width: 720px;
             margin: auto;
