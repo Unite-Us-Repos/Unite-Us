@@ -72,7 +72,7 @@
                     @endif
 
                     <div class="relative z-10 component-section lg:pt-8">
-                        <div class="lg:text-center text-wrapper">
+                        <div class="lg:text-center text-wrapper lg:pb-4">
                             @if ($section['subtitle'])
                                 <div class="text-action-light-blue uppercase font-semibold text-base mb-3">
                                     {!! $section['subtitle'] !!}
