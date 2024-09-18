@@ -10,9 +10,9 @@
     .hero-v1 {
         overflow: hidden;
     }
-    .component-section {
+    /* .component-section {
         padding: 7.5rem 1rem;
-    }
+    } */
     .text-wrapper {
         text-align: center
     }
@@ -46,7 +46,7 @@
         @if ($background['image'])
             <img fetchPriority="high"
                 class="w-full h-full object-cover bg-image lg:hidden @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
-                src="@asset('/images/v1-bg-mobile.png')" alt="{{ $background['image']['alt'] }}">
+                src="@asset('/images/mobilebgv2.png')" alt="{{ $background['image']['alt'] }}">
             <img fetchPriority="high"
                 class="w-full h-full object-cover bg-image hidden lg:block @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
                 src="{{ $background['image']['sizes']['2048x2048'] }}" alt="{{ $background['image']['alt'] }}">
