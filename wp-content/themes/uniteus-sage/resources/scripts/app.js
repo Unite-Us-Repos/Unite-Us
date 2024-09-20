@@ -297,6 +297,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 // log the stored UTM parameters
 document.addEventListener('DOMContentLoaded', function() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -306,7 +310,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const value = urlParams.get(param);
       if (value) {
           sessionStorage.setItem(param, value);
+<<<<<<< HEAD
       } 
+=======
+      }
+>>>>>>> develop
   });
 
   // For debugging: log the stored UTM parameters

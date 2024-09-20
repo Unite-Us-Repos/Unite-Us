@@ -19,6 +19,7 @@ module.exports = {
     'py-0.5',
     'pl-2.5',
     'pr-1',
+    'lg:pb-4',
     'ml-0.5',
     'h-4',
     'w-4',

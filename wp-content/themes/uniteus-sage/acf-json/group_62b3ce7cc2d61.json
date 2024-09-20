@@ -39,7 +39,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_63068c18b045d",
@@ -84,7 +85,9 @@
                         "centered-cta-training": "Centered (training)",
                         "text-media-with-posts": "Text\/media with posts",
                         "anchor-links": "Anchor Links",
-                        "home-v3": "Home V3"
+                        "home-v3": "Home V3",
+                        "home-variant1": "Home Variant One",
+                        "home-variant2": "Home Variant Two"
                     },
                     "default_value": "background-image-overlapping-cards",
                     "return_format": "value",
@@ -226,7 +229,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_6337b38e32ddd",
@@ -286,7 +290,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_62b57e6256371",
@@ -346,7 +351,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_64bef0ec934e3",
@@ -569,5 +575,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1716609531
+    "modified": 1725578636
 }
