@@ -315,4 +315,4 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log(`${param}: `, sessionStorage.getItem(param));
   });
 });
- 
+  
