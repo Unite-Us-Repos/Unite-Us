@@ -120,11 +120,7 @@
         crossOrigin: false, 
         heightCalculationMethod: 'lowestElement' 
     }, '#formIframe #iframe-container iframe');
-<<<<<<< HEAD
   }, 1000); // 1000 milliseconds = 1 second
-=======
-}, 1000); // 1000 milliseconds = 1 second
->>>>>>> develop
 
 </script>
 @endif

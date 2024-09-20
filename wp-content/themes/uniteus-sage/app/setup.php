@@ -225,10 +225,6 @@ function custom_noindex_override() {
 add_action('wp', 'App\\custom_noindex_override');
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
 // Start the session if it hasn't been started
 add_action('init', function() {
     if (!session_id()) {
