@@ -1826,3 +1826,7 @@ nav.breadcrumbs ol {
   opacity: 100;
 }
 
+.grayscale {
+  filter: grayscale(1);
+}
+
