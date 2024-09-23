@@ -28,7 +28,7 @@ $section_settings = $acf["components"][$index]['layout_settings']['section_setti
               @if ($logo['image'])
 
                 <img
-                  class="w-auto @if ($logo['image_size'] == 'small') max-h-16 @elseif ($logo['image_size'] == 'smaller') max-h-12 @else max-h-20 @endif lazy"
+                  class="grayscale w-auto @if ($logo['image_size'] == 'small') max-h-16 @elseif ($logo['image_size'] == 'smaller') max-h-12 @else max-h-20 @endif lazy"
                   data-src="{{ $logo['image']['sizes']['medium'] }}"
                   alt="{{ $logo['image']['alt'] }}"
                 />
