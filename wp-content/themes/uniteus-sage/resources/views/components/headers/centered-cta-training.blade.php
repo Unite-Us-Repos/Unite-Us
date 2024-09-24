@@ -40,9 +40,18 @@
             {!! $section['subtitle'] !!}
           </div>
         @endif
-        <h1 class="mb-0 font-extrabold @if (($background['color'] == 'light') OR $background['color'] == 'light-gradient') text-brand @else text-white @endif text-5xl lg:text-6xl">
-          {!! $section['title'] !!}
-        </h1>
+
+          @if ($section['is_header'])
+          <div class="mb-0 font-extrabold @if (($background['color'] == 'light') OR $background['color'] == 'light-gradient') text-brand @else text-white @endif text-5xl lg:text-6xl">
+            {!! $section['title'] !!}
+          </div>
+          @else
+          <h1 class="mb-0 font-extrabold @if (($background['color'] == 'light') OR $background['color'] == 'light-gradient') text-brand @else text-white @endif text-5xl lg:text-6xl">
+            {!! $section['title'] !!}
+          </h1>
+          @endif
+
+        
       </div>
 
       <div class="relative max-w-2xl mt-10">

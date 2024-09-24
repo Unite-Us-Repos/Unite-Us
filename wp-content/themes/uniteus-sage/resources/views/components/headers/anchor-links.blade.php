@@ -111,9 +111,17 @@
           @endif
 
           @if ($section['title'])
-            <h1 class="text-white font-syne font-semibold text-4xl leading-none mb-6 sm:mb-10 lg:text-5xl">
-              {!! $section['title'] !!}
-            </h1>
+            
+            @if ($section['is_header'])
+              <div class="text-white font-syne font-semibold text-4xl leading-none mb-6 sm:mb-10 lg:text-5xl">
+                {!! $section['title'] !!}
+              </div>
+            @else
+              <h1 class="text-white font-syne font-semibold text-4xl leading-none mb-6 sm:mb-10 lg:text-5xl">
+                {!! $section['title'] !!}
+              </h1>
+            @endif
+
           @endif
 
           @if ($section['description'])

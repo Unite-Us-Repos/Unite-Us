@@ -49,9 +49,18 @@ $section_settings = $acf["components"][$index]['layout_settings']['section_setti
             {!! $section['subtitle'] !!}
           </div>
         @endif
+        
+
+        @if ($section['is_header'])
+        <div class="mb-0 text-4xl font-extrabold tracking-tight @if (($background['color'] == 'light') OR $background['color'] == 'light-gradient') text-brand @else text-white @endif md:text-5xl lg:text-6xl">
+          {!! $section['title'] !!}
+        </div>
+        @else
         <h1 class="mb-0 text-4xl font-extrabold tracking-tight @if (($background['color'] == 'light') OR $background['color'] == 'light-gradient') text-brand @else text-white @endif md:text-5xl lg:text-6xl">
           {!! $section['title'] !!}
         </h1>
+        @endif
+
       </div>
 
       <div class="relative max-w-4xl mx-auto mt-10">

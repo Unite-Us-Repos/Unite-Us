@@ -84,10 +84,19 @@
                                     {!! $section['subtitle'] !!}
                                 </div>
                             @endif
-                            <h1
+                            {{-- <h1
                                 class="mb-0 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif">
                                 {!! $job_title !!}
-                            </h1>
+                            </h1> --}}
+                            @if ($section['is_header'])
+                                <div class="mb-0 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif">
+                                    {!! $job_title !!}
+                                </div>
+                            @else
+                                <h1 class="mb-0 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif">
+                                    {!! $job_title !!}
+                                </h1>
+                            @endif
 
                             @if ($section['description'])
                                 <div

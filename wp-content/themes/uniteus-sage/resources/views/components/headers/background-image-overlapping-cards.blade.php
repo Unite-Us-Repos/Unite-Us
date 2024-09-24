@@ -59,10 +59,20 @@ $small_font = $section['small_font'] ?? false;
             {!! $section['subtitle'] !!}
           </div>
         @endif
+
+        @if ($section['is_header'])
+        <div class="mb-0 text-4xl tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif
+        @if ($small_font) width-35 text-5xl font-semibold small-font @else font-extrabold md:text-5xl lg:text-6xl @endif">
+          {!! $job_title !!}
+        </div>
+        @else
         <h1 class="mb-0 text-4xl tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif
         @if ($small_font) width-35 text-5xl font-semibold small-font @else font-extrabold md:text-5xl lg:text-6xl @endif">
           {!! $job_title !!}
         </h1>
+        @endif
+
+       
       </div>
 
       <div class="relative md:w-8/12 lg:w-6/12">
