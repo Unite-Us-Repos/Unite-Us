@@ -63,10 +63,12 @@
           @endisset
           @if ($section['title'])
           
-          @if ($section['is_header'])
-          <div class="font-semibold mb-6 width-28 h2">{!! $section['title'] !!}</div>
+          @if ($section['is_header'] === 'h1')
+          <h1 class="hfont-semibold mb-6 width-28 h2">{!! $section['title'] !!}</h1>
+          @elseif ($section['is_header'] === 'h2')
+              <h2 class="font-semibold mb-6 width-28 h2">{!! $section['title'] !!}</h2>
           @else
-          <h1 class="font-semibold mb-6 width-28 h2">{!! $section['title'] !!}</h1>
+              <div class="font-semibold mb-6 width-28 h2">{!! $section['title'] !!}</div>
           @endif
 
           @endif

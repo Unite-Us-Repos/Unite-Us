@@ -46,15 +46,20 @@ $manual = false;
             </div>
           @endif
 
-          @if ($section['is_header'])
-          <div class="text-4xl font-extrabold tracking-tight @if ('light-gradient' === $bg_color) text-brand @else text-white @endif md:text-5xl lg:text-6xl">
-            {!! $section['title'] !!}
-          </div>
-          @else
-          <h1 class="text-4xl font-extrabold tracking-tight @if ('light-gradient' === $bg_color) text-brand @else text-white @endif md:text-5xl lg:text-6xl">
-            {!! $section['title'] !!}
+          @if ($section['is_header'] === 'h1')
+          <h1 class="h1 text-4xl font-extrabold tracking-tight @if ('light-gradient' === $bg_color) text-brand @else text-white @endif md:text-5xl lg:text-6xl">
+              {!! $section['title'] !!}
           </h1>
+          @elseif ($section['is_header'] === 'h2')
+              <h2 class="h1 text-4xl font-extrabold tracking-tight @if ('light-gradient' === $bg_color) text-brand @else text-white @endif md:text-5xl lg:text-6xl">
+                  {!! $section['title'] !!}
+              </h2>
+          @else
+              <div class="h1 text-4xl font-extrabold tracking-tight @if ('light-gradient' === $bg_color) text-brand @else text-white @endif md:text-5xl lg:text-6xl">
+                  {!! $section['title'] !!}
+              </div>
           @endif
+      
 
           @if ($section['description'])
             <div class="@if ('light-gradient' === $bg_color) text-brand @else text-white @endif text-xl">

@@ -44,15 +44,20 @@ $section_settings = $acf["components"][$index]['layout_settings']['section_setti
           </div>
         @endif
        
-        @if ($section['is_header'])
-        <div class="mb-0 font-extrabold @if (($background['color'] == 'light') OR $background['color'] == 'light-gradient') text-brand @else text-white @endif text-5xl lg:text-6xl">
-          {!! $section['title'] !!}
-        </div>
-        @else
-        <h1 class="mb-0 font-extrabold @if (($background['color'] == 'light') OR $background['color'] == 'light-gradient') text-brand @else text-white @endif text-5xl lg:text-6xl">
+        @if ($section['is_header'] === 'h1')
+        <h1 class="h1 mb-0 font-extrabold @if (($background['color'] == 'light') || $background['color'] == 'light-gradient') text-brand @else text-white @endif text-5xl lg:text-6xl">
           {!! $section['title'] !!}
         </h1>
+        @elseif ($section['is_header'] === 'h2')
+            <h2 class="h1 mb-0 font-extrabold @if (($background['color'] == 'light') || $background['color'] == 'light-gradient') text-brand @else text-white @endif text-5xl lg:text-6xl">
+              {!! $section['title'] !!}
+            </h2>
+        @else
+            <div class="h1 mb-0 font-extrabold @if (($background['color'] == 'light') || $background['color'] == 'light-gradient') text-brand @else text-white @endif text-5xl lg:text-6xl">
+              {!! $section['title'] !!}
+            </div>
         @endif
+        
         
       </div>
 

@@ -89,21 +89,22 @@
                                     {!! $section['subtitle'] !!}
                                 </div>
                             @endif
-                            {{-- <h1
-                                class="mb-0 text-4xl lg:text-5xl font-extrabold tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif">
+                           
+                            @if ($section['is_header'] === 'h1')
+                            <h1 class="h1 mb-0 text-4xl lg:text-5xl font-extrabold tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif">
                                 {!! $job_title !!}
-                            </h1> --}}
-                            @if ($section['is_header'])
-                                <div
-                                    class="mb-0 text-4xl lg:text-5xl font-extrabold tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif">
+                            </h1>
+                            @elseif ($section['is_header'] === 'h2')
+                                <h2 class="h1 mb-0 text-4xl lg:text-5xl font-extrabold tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif">
+                                    {!! $job_title !!}
+                                </h2>
+                            @else
+                                <div class="h1 mb-0 text-4xl lg:text-5xl font-extrabold tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif">
                                     {!! $job_title !!}
                                 </div>
-                            @else
-                                <h1
-                                    class="mb-0 text-4xl lg:text-5xl font-extrabold tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif">
-                                    {!! $job_title !!}
-                                </h1>
                             @endif
+
+                        
                             @if ($section['description'])
                                 <div
                                     class="mt-6 @if ($background['color'] == 'light') text-brand @else text-white @endif text-xl">

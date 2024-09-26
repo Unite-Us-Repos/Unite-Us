@@ -94,10 +94,10 @@
                 },
                 {
                     "key": "field_6333b2200f1f1",
-                    "label": "Is div styled as H1",
+                    "label": "h1, h2 or div",
                     "name": "is_header",
                     "aria-label": "",
-                    "type": "true_false",
+                    "type": "select",
                     "instructions": "Display a H1 styled div",
                     "required": 0,
                     "conditional_logic": 0,
@@ -106,12 +106,24 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "",
-                    "default_value": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": "",
+                    "choices": {
+                        "h1": "h1",
+                        "h2": "h2",
+                        "div": "div"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "max": "",
+                    "allow_custom": 0,
+                    "search_placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "allow_null": 0,
                     "ui": 1,
-                    "style": ""
+                    "ajax": 0,
+                    "placeholder": "",
+                    "min": ""
                 },
                 {
                     "key": "field_66511afe0267b",
@@ -325,5 +337,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1727211196
+    "modified": 1727314540
 }
