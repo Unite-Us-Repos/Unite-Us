@@ -98,7 +98,7 @@
                     "name": "is_header",
                     "aria-label": "",
                     "type": "select",
-                    "instructions": "Display a H1 styled div",
+                    "instructions": "Select to display as h1, h2 or div",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -337,5 +337,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1727314540
+    "modified": 1727315618
 }
