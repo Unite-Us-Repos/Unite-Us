@@ -18,11 +18,11 @@ $section_settings = $acf["components"][$index]['layout_settings']['section_setti
         @endif
         
         @if ($section['is_header'])
-        <div class="mb-5 lg:text-4xl font-bold">{!! $section['title'] !!}</div>
+        <div class="mb-5 lg:text-4xl font-bold h2">{!! $section['title'] !!}</div>
         @else
-        <h2 class="mb-5 lg:text-4xl font-bold">{!! $section['title'] !!}</h2>
+        <h1 class="mb-5 lg:text-4xl font-bold h2">{!! $section['title'] !!}</h1>
         @endif
-        
+
         {!! $section['description'] !!}
         @if ($buttons)
           @php

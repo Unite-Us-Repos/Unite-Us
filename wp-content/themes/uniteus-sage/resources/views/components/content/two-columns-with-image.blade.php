@@ -49,11 +49,11 @@ $image_overaly = @asset('/images/network-mask-1.png');
           @if ($section['title'])
          
           @if ($section['is_header'])
-          <div class="mb-6">{!! $section['title'] !!}</div>
+          <div class="mb-6 h2">{!! $section['title'] !!}</div>
           @else
-          <h2 class="mb-6">{!! $section['title'] !!}</h2>
+          <h1 class="mb-6 h2">{!! $section['title'] !!}</h1>
           @endif
-          
+
           @endif
 
           @if ($section['description'])

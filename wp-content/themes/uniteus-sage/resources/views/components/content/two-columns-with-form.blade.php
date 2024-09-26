@@ -64,11 +64,11 @@
           @if ($section['title'])
           
           @if ($section['is_header'])
-          <div class="font-semibold mb-6 width-28">{!! $section['title'] !!}</div>
+          <div class="font-semibold mb-6 width-28 h2">{!! $section['title'] !!}</div>
           @else
-          <h2 class="font-semibold mb-6 width-28">{!! $section['title'] !!}</h2>
+          <h1 class="font-semibold mb-6 width-28 h2">{!! $section['title'] !!}</h1>
           @endif
-          
+
           @endif
   
           @if ($section['description'])
