@@ -36,7 +36,13 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
           <img class="mb-6 max-w-[224px] h-auto" src="{{ $section['logo']['sizes']['medium'] }}" alt="{{ $section['logo']['alt'] }}" />
         @endisset
         @if ($section['title'])
+       
+        @if ($section['is_header'])
+        <div class="mb-6">{!! $section['title'] !!}</div>
+        @else
         <h2 class="mb-6">{!! $section['title'] !!}</h2>
+        @endif
+
         @endif
 
         @if ($section['description'])

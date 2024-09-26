@@ -16,7 +16,13 @@ $section_settings = $acf["components"][$index]['layout_settings']['section_setti
             {{ $section['subtitle'] }}
           </div>
         @endif
+        
+        @if ($section['is_header'])
+        <div class="mb-5 lg:text-4xl font-bold">{!! $section['title'] !!}</div>
+        @else
         <h2 class="mb-5 lg:text-4xl font-bold">{!! $section['title'] !!}</h2>
+        @endif
+        
         {!! $section['description'] !!}
         @if ($buttons)
           @php

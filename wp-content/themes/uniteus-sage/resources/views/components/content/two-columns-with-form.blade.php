@@ -7,11 +7,6 @@
   }
   @endphp
   @php
-  $h_level = 2;
-  $is_heading = $section["is_header"];
-  if ($is_heading) {
-    $h_level = 1;
-  }
   $case_type = $section['case_type'] ?? 'Uppercase';
   
   // Define case type classes
@@ -67,7 +62,13 @@
             <img class="mb-6 max-w-[224px] h-auto" src="{{ $section['logo']['sizes']['medium'] }}" alt="{{ $section['logo']['alt'] }}" />
           @endisset
           @if ($section['title'])
-          <h{{ $h_level }} class="font-semibold mb-6 width-28">{!! $section['title'] !!}</h{{ $h_level }}>
+          
+          @if ($section['is_header'])
+          <div class="font-semibold mb-6 width-28">{!! $section['title'] !!}</div>
+          @else
+          <h2 class="font-semibold mb-6 width-28">{!! $section['title'] !!}</h2>
+          @endif
+          
           @endif
   
           @if ($section['description'])
