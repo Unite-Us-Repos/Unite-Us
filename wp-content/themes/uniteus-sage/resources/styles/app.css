@@ -1833,3 +1833,10 @@ nav.breadcrumbs ol {
 [x-cloak] {
   display: none !important;
 }
+
+figcaption.wp-caption-text {
+  margin-top: 1rem !important; font-size:75%; font-style: italic;
+}
+blockquote h4{
+  font-size: 90%;
+}
