@@ -20,12 +20,6 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
 </script>
 <!-- End of Schema.org Validation -->
 
-<style>
-  [x-cloak] {
-    display: none !important;
-  }
-</style>
-
 <div class="z-50" x-data="{ showSearchModal: false, showMobileMenu: false, isSticky: false, alertHeight: 0 }" x-init="
     alertHeight = $refs.alert ? $refs.alert.offsetHeight : 0;
     window.addEventListener('scroll', () => {
