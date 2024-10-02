@@ -108,7 +108,7 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
         </div>
 
         <!-- Mobile Menu -->
-        <div x-show="showMobileMenu" class="absolute z-50 inset-x-0 p-2 transition transform origin-top-right lg:hidden" style="top:0;">
+        <div x-show="showMobileMenu" class="absolute z-50 inset-x-0 p-2 transition transform origin-top-right lg:hidden" style="top:0; display: none;">
           <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
             <div class="pt-5 px-5">
               <div class="flex items-center justify-between">
