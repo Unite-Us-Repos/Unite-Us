@@ -54,11 +54,30 @@ $small_font = $section['small_font'] ?? false;
           <img class="mb-6 max-w-[224px] h-auto" src="{{ $section['logo']['sizes']['medium'] }}" alt="{{ $section['logo']['alt'] }}" />
         @endisset
 
-        @if ($section['subtitle'])
+        {{-- @if ($section['subtitle'])
           <div class="text-action-light-blue uppercase font-semibold text-base mb-3">
             {!! $section['subtitle'] !!}
           </div>
-        @endif
+        @endif --}}
+        
+        @if ($section['subtitle'])
+        <div class="
+            {{ $section['purple_text'] ? 'text-electric-purple' : 'text-action-light-blue' }} 
+            {{ $section['case_type'] == 'Uppercase' ? 'uppercase' : '' }} 
+            {{ $section['case_type'] == 'Lowercase' ? 'lowercase' : '' }} 
+            {{ $section['case_type'] == 'Camelcase' ? 'capitalize' : '' }} 
+            {{ $section['case_type'] == 'Typed' ? 'none' : '' }} 
+            @if ($section['subtitle_display_as_pill']) 
+                bg-light bg-opacity-10 text-action-light-blue text-sm py-1 px-4 inline-block mb-6 rounded-full
+            @else 
+                font-semibold text-base mb-3
+            @endif
+        ">
+            {!! $section['subtitle'] !!}
+        </div>
+    @endif
+    
+    
 
         @if ($section['is_header'] === 'h1')
         <h1 class="h1 mb-0 text-4xl tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif
