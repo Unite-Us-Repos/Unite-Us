@@ -35,11 +35,34 @@ $global_alerts['section_classes'] = '!p-0 padding-collapse ';
         }
     });
 ">
-  @if (isset($global_alerts['description']) && !empty($global_alerts['description']))
-    <div x-ref="alert">
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      let iframes = document.querySelectorAll("iframe");
+      let hasUniteusWidget = false;
+
+      // Loop through iframes and check if src contains "widgets.uniteus.io"
+      iframes.forEach(function(iframe) {
+          if (iframe.src.includes("widgets.uniteus.io")) {
+              hasUniteusWidget = true;
+          }
+      });
+
+      // If iframe with "widgets.uniteus.io" exists, hide the global alerts
+      if (hasUniteusWidget) {
+          let alertElement = document.querySelector('[x-ref="alert"]');
+          if (alertElement) {
+              alertElement.style.display = 'none';
+          }
+      }
+  });
+</script>
+
+@if (isset($global_alerts['description']) && !empty($global_alerts['description']))
+  <div x-ref="alert">
       @includeIf('components.alerts.fullscreen', $global_alerts)
-    </div>
-  @endif
+  </div>
+@endif
+
 
   <!-- Placeholder to prevent content shift -->
   <div x-ref="placeholder" style="height: 0;"></div>
