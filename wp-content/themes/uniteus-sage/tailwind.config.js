@@ -181,7 +181,10 @@ module.exports = {
     'lg:basis-[49.25%]',
     'lg:basis-[49%]', 
     'xl:basis-[49.25%',
-    'lg:items-end'
+    'lg:items-end',
+    '!pt-6',
+    'lg:w-1/4',
+    'm-8'
   ],
   theme: {
     fontFamily: {

@@ -1697,6 +1697,17 @@ img.expanded {
   background-size: cover;
 }
 
+.bg-purple-overlay {
+  background-image: url("../images/purple-overlay.png");
+  background-position: top left;
+  background-size: 200%;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 768px) {
+  .bg-purple-overlay {
+    background-size: cover;
+  }
+}
 .max-width-10 {
   max-width: 10rem;
 }
@@ -1839,4 +1850,129 @@ figcaption.wp-caption-text {
 }
 blockquote h4{
   font-size: 90%;
+}
+
+
+.report .entry-title {
+  font-weight: 600;
+}
+.report .author {
+  bottom: -0.5rem;
+  left: 0;
+}
+@media (min-width: 768px) {
+  .report .author {
+    left: 4rem;
+  }
+}
+.report .author img {
+  width: 50px;
+  height: 50px;
+}
+
+.report .mobile-image .absolute.inset-0 {
+  left: -1rem;
+  right: -1rem;
+}
+.report .highlight-intro {
+  font-size: 1.5rem;
+}
+
+.report.demo h2 {
+  font-size: 2.25rem;
+  margin-bottom: 0;
+}
+
+.report .key-takeaways {
+  @apply bg-brand text-white;
+  left: -5%;
+  width: 110%;
+}
+.report .key-takeaways .header h2{
+  @apply text-3xl;
+}
+.report .key-takeaways .header h3{
+  @apply text-2xl;
+}
+.report .key-takeaways .takeaways .takeaway {
+  flex-basis: 100%;
+}
+
+.report .key-takeaways .takeaways .takeaway .text-lg{
+  flex-basis: 70%; 
+  padding-left: 1rem;
+}
+
+.report .key-takeaways .tiles-header h3 {
+  @apply text-2xl;
+}
+.report .key-takeaways .tiles-header p {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.report .key-takeaways .tile  {
+  @apply bg-action;
+  width: 100%;
+  border-radius: 1rem;
+  min-height: 8rem;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.report  .wysiwyg-content h2 {
+  @apply text-action;
+  @apply text-3xl;
+}
+
+.report  .wysiwyg-content h3 {
+  @apply text-dark;
+  @apply text-2xl;
+}
+
+.report  .wysiwyg-content p {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.report  .wysiwyg-content ul li {
+  padding-bottom: 1rem;
+}
+.report .blockquote {
+  @apply text-blue-600;
+  font-style: normal;
+  border: 0;
+  margin: 3rem 0 2rem;
+  padding: 2rem 4rem
+}
+.report .blockquote .quote-icon{
+  position: absolute;
+  top: -2rem;
+  left: calc(50% - 23.5px);
+}
+.report .icon-and-highlight .highlight-text {
+  line-height: 2;
+}
+@media (min-width: 768px) {
+  .report .key-takeaways .takeaways .takeaway {
+    flex-basis: 33%;
+    padding: 1rem;
+  }
+  .report .key-takeaways .tile  {
+    @apply bg-transparent; 
+    @apply border-action;
+    border-width: 1px;
+    margin-right: 1rem;
+    flex-basis: calc(33% - 1.5rem);
+  }
+  .report .key-takeaways .tile:hover  {
+    @apply transition-all; 
+    @apply bg-action;
+  }
+  .report .key-takeaways .tile:last-child  {
+    margin-right: 0;
+  }
+  .report .blockquote {
+    padding: 4rem 8rem;
+  }
 }

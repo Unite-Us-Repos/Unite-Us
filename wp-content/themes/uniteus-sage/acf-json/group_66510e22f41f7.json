@@ -3,6 +3,39 @@
     "title": "Blog Author",
     "fields": [
         {
+            "key": "field_670fff5866823",
+            "label": "Manual Entry or Author Selection?",
+            "name": "manual_or_select_author",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "manual": "Manual Entry",
+                "select": "Select Author from List"
+            },
+            "default_value": "manual",
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
+            "allow_custom": 0,
+            "placeholder": "",
+            "search_placeholder": "",
+            "prepend": "",
+            "append": "",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "min": ""
+        },
+        {
             "key": "field_66510e236c5af",
             "label": "Author Name",
             "name": "author_name",
@@ -10,7 +43,15 @@
             "type": "textarea",
             "instructions": "Insert the name of the author for this article which should be displayed in the blog post.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_670fff5866823",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -19,9 +60,57 @@
             "default_value": "",
             "acfe_textarea_code": 0,
             "maxlength": "",
+            "allow_in_bindings": 1,
             "rows": 4,
             "placeholder": "",
             "new_lines": ""
+        },
+        {
+            "key": "field_670fffa966824",
+            "label": "Select Author",
+            "name": "select_author",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_670fff5866823",
+                        "operator": "==",
+                        "value": "select"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "author"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "max": "",
+            "save_custom": 0,
+            "save_post_status": "publish",
+            "acfe_add_post": 0,
+            "acfe_edit_post": 0,
+            "acfe_bidirectional": {
+                "acfe_bidirectional_enabled": "0"
+            },
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": [],
+            "save_post_type": "",
+            "min": ""
         }
     ],
     "location": [
@@ -35,6 +124,13 @@
                 "param": "post_taxonomy",
                 "operator": "==",
                 "value": "category:blog"
+            }
+        ],
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "category:report"
             }
         ]
     ],
@@ -54,5 +150,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1716952075
+    "modified": 1729102215
 }

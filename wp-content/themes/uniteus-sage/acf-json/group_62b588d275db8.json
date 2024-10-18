@@ -142,9 +142,9 @@
                         "id": ""
                     },
                     "choices": {
-                        "6_6": "\/wp-content\/uploads\/2024\/08\/1-2-Column.png",
-                        "5_7": "\/wp-content\/uploads\/2024\/08\/5-7-Column.png",
-                        "7_5": "\/wp-content\/uploads\/2024\/08\/7-5-Column.png"
+                        "6_6": "\/wp-content\/uploads\/2024\/10\/1-2-Column.png",
+                        "5_7": "\/wp-content\/uploads\/2024\/10\/5-7-Column.png",
+                        "7_5": "\/wp-content\/uploads\/2024\/10\/7-5-Column.png"
                     },
                     "default_value": "6_6",
                     "image_size": "thumbnail",
@@ -156,6 +156,7 @@
                     "multiple": 0,
                     "max": "",
                     "layout": "horizontal",
+                    "allow_in_bindings": 1,
                     "min": ""
                 },
                 {
@@ -1901,5 +1902,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1724348750
+    "modified": 1729191051
 }
