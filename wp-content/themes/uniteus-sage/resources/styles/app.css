@@ -616,6 +616,13 @@ body .map-wrap {
     rgba(255, 255, 255, 1) 80%
   );
 }
+.bg-light-gradient-short {
+  background: rgb(238, 245, 252);
+  background: linear-gradient(
+    #eef5fc, 1%, 
+    #fff 5%
+    );
+}
 .bg-dark-gradient {
   background: #2c405a;
   background: linear-gradient(180deg, #182a44 30%, #2c405a 90%);
@@ -1853,6 +1860,9 @@ blockquote h4{
 }
 
 
+
+
+
 .report .entry-title {
   font-weight: 600;
 }
@@ -1931,7 +1941,7 @@ blockquote h4{
   @apply text-2xl;
 }
 
-.report  .wysiwyg-content p {
+.report  .wysiwyg-content p, .report  .wysiwyg-content li {
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
@@ -1953,6 +1963,58 @@ blockquote h4{
 .report .icon-and-highlight .highlight-text {
   line-height: 2;
 }
+.report .spotlight h3 {
+  @apply text-2xl;
+}
+.report .spotlight .purple-text {
+  @apply text-electric-purple;
+}
+.report .spotlight p, .report .spotlight li {
+  font-size: 18px;
+}
+.report .spotlight li:before {
+  color: #9643FF!important;
+}
+
+.report .acf-data-table {
+  border-spacing: 0; /* This removes extra gaps between the cells */
+  border-collapse: separate; /* Ensures border-radius will work */
+  border-radius: 14px; /* General border radius for the table */
+  overflow: hidden;
+}
+
+/* Ensure the top-left and top-right corners are rounded */
+.report .acf-data-table th:first-child {
+  border-top-left-radius: 12px;
+  border-right: 1px solid white;
+}
+
+.report .acf-data-table th:last-child {
+  border-top-right-radius: 12px;
+  border-left: 1px solid white;
+}
+
+/* Ensure the bottom-left and bottom-right corners are rounded */
+.report .acf-data-table td:first-child:last-child {
+  border-bottom-left-radius: 12px;
+}
+
+.report .acf-data-table td:last-child:last-child {
+  border-bottom-right-radius: 12px;
+}
+.report .acf-data-table td li:before {
+  font-size: 1.5rem!important;
+  top: 0.25rem!important;
+}
+
+.text-md {
+  font-size: 18px!important;
+}
+
+.leading-tight {
+  line-height: 1.25!important;
+}
+
 @media (min-width: 768px) {
   .report .key-takeaways .takeaways .takeaway {
     flex-basis: 33%;
@@ -1975,4 +2037,68 @@ blockquote h4{
   .report .blockquote {
     padding: 4rem 8rem;
   }
+}
+.report .report-mobile-menu-wrap {
+  background-image: url('../../resources/images/mobile-menu-bg.png');
+  background-size: cover;
+  z-index:50;
+}
+.report .report-menu {
+  width: 90%;
+  left: 5%;
+  top: 16%;
+}
+  
+@media (min-width: 1024px) {
+  .report .report-menu {
+    width: 100%;
+    left: unset;
+    top: unset;
+    position: relative;
+  }
+} 
+
+/* Scope the CSS to only apply within the #mobileMenu */
+.report #reportDynamicMenu li {
+  margin-top: 0;
+}
+/* Styles for the vertical line in H3 items */
+.report #reportDynamicMenu .vertical-line {
+    border-left: 2px solid #D1D5DB; /* Blue line */
+    height: 100%; /* Adjust as needed */
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+/* Styling for H3 items */
+.report #reportDynamicMenu a.head {
+    padding-left: 12px; /* Indent the text */
+    position: relative;
+}
+
+.report #reportDynamicMenu a.font-medium {
+    margin-left: 56px;
+}
+.report #reportMobileMenu {
+  max-height: calc(100vh - 136px); /* Adjust height based on available space (100vh minus the header size) */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+.report #reportDynamicMenu li.heading:hover .head, 
+.report #reportDynamicMenu li.subheading:hover .head {
+  color: #216CFF;
+}
+.report #reportDynamicMenu li.subheading:hover .vertical-line {
+  border-color: #216CFF;
+}
+.report #reportDynamicMenu li.heading.active {
+  background-color: #eef5fc;
+}
+.report #reportDynamicMenu div.h3-wrapper.active {
+  background-color: #eef5fc;
+}
+.report #reportDynamicMenu div.h3-wrapper {
+  margin-top: 0;
 }

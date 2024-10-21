@@ -153,6 +153,7 @@ module.exports = {
     'lg:-mt-40',
     'lg:absolute',
     'border-8',
+    'border-1',
     'border-action-lighter-blue',
     'py-9',
     'lg:p-4',
@@ -184,7 +185,24 @@ module.exports = {
     'lg:items-end',
     '!pt-6',
     'lg:w-1/4',
-    'm-8'
+    'm-8',
+    'lg:p-16',
+    'border-r',
+    'rounded-tr-md',
+    'rounded-tl-md',
+    'my-4',
+    'text-md',
+    'lg:mt-4',
+    'z-100',
+    'w-90',
+    'pb-2',
+    'items-baseline',
+    'mt-0',
+    'overflow-scroll',
+    'lg:ml-6',
+    'lg:z-10',
+    'px-8'
+
   ],
   theme: {
     fontFamily: {

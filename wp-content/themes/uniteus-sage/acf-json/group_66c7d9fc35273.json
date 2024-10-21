@@ -250,7 +250,41 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_flexible_advanced": 0,
+                    "acfe_flexible_advanced": 1,
+                    "acfe_flexible_stylised_button": 0,
+                    "acfe_flexible_hide_empty_message": 0,
+                    "acfe_flexible_empty_message": "",
+                    "acfe_flexible_layouts_templates": 0,
+                    "acfe_flexible_layouts_placeholder": 0,
+                    "acfe_flexible_layouts_thumbnails": 0,
+                    "acfe_flexible_layouts_settings": 0,
+                    "acfe_flexible_layouts_locations": 0,
+                    "acfe_flexible_async": [],
+                    "acfe_flexible_add_actions": [
+                        "title",
+                        "toggle",
+                        "copy",
+                        "close"
+                    ],
+                    "acfe_flexible_remove_button": [],
+                    "acfe_flexible_layouts_state": "user",
+                    "acfe_flexible_modal_edit": {
+                        "acfe_flexible_modal_edit_enabled": "0",
+                        "acfe_flexible_modal_edit_size": "large"
+                    },
+                    "acfe_flexible_modal": {
+                        "acfe_flexible_modal_enabled": "0",
+                        "acfe_flexible_modal_title": false,
+                        "acfe_flexible_modal_size": "full",
+                        "acfe_flexible_modal_col": "4",
+                        "acfe_flexible_modal_categories": false
+                    },
+                    "acfe_flexible_grid": {
+                        "acfe_flexible_grid_enabled": "0",
+                        "acfe_flexible_grid_align": "center",
+                        "acfe_flexible_grid_valign": "stretch",
+                        "acfe_flexible_grid_wrap": false
+                    },
                     "layouts": {
                         "layout_67114f3d51584": {
                             "key": "layout_67114f3d51584",
@@ -976,7 +1010,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "30",
                                         "class": "",
                                         "id": ""
                                     },
@@ -994,6 +1028,44 @@
                                     "mime_types": "",
                                     "allow_in_bindings": 0,
                                     "preview_size": "medium"
+                                },
+                                {
+                                    "key": "field_6712e0757e8ea",
+                                    "label": "Pill Text",
+                                    "name": "pill_text",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "40",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_6712e0cf7e8eb",
+                                    "label": "Button",
+                                    "name": "button",
+                                    "aria-label": "",
+                                    "type": "link",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "30",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "allow_in_bindings": 0
                                 },
                                 {
                                     "key": "field_671150cf51595",
@@ -1146,36 +1218,7 @@
                     "min": "",
                     "max": "",
                     "button_label": "Add Component",
-                    "acfe_flexible_stylised_button": false,
-                    "acfe_flexible_hide_empty_message": false,
-                    "acfe_flexible_empty_message": "",
-                    "acfe_flexible_layouts_templates": false,
                     "acfe_flexible_layouts_previews": false,
-                    "acfe_flexible_layouts_placeholder": false,
-                    "acfe_flexible_layouts_thumbnails": false,
-                    "acfe_flexible_layouts_settings": false,
-                    "acfe_flexible_layouts_locations": false,
-                    "acfe_flexible_async": [],
-                    "acfe_flexible_add_actions": [],
-                    "acfe_flexible_remove_button": [],
-                    "acfe_flexible_layouts_state": false,
-                    "acfe_flexible_modal_edit": {
-                        "acfe_flexible_modal_edit_enabled": false,
-                        "acfe_flexible_modal_edit_size": "large"
-                    },
-                    "acfe_flexible_modal": {
-                        "acfe_flexible_modal_enabled": false,
-                        "acfe_flexible_modal_title": false,
-                        "acfe_flexible_modal_size": "full",
-                        "acfe_flexible_modal_col": "4",
-                        "acfe_flexible_modal_categories": false
-                    },
-                    "acfe_flexible_grid": {
-                        "acfe_flexible_grid_enabled": false,
-                        "acfe_flexible_grid_align": "center",
-                        "acfe_flexible_grid_valign": "stretch",
-                        "acfe_flexible_grid_wrap": false
-                    },
                     "acfe_flexible_grid_container": false
                 }
             ],
@@ -1209,5 +1252,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1729223613
+    "modified": 1729293317
 }

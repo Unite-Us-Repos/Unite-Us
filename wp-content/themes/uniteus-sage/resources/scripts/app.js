@@ -316,3 +316,268 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
   
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const desktopMenuWrapperOuter = document.querySelector('.report-menu-wrapper-outer');
+  const desktopMenu = document.querySelector('.report-menu-wrapper');
+  const innerContent = document.querySelector('.report-inner-content'); // The content that wraps the WYSIWYG components
+  const navHeight = 80; // The fixed height of the main nav at the top
+  let menuWrapperInitialTop = desktopMenuWrapperOuter.offsetTop; // Initial position of the menu wrapper
+
+  // Handle sticky menu behavior
+  const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const innerContentBottom = innerContent.offsetTop + innerContent.offsetHeight; // Bottom of inner-content
+
+      // Set width dynamically to match the outer wrapper width
+      desktopMenu.style.width = `${desktopMenuWrapperOuter.offsetWidth}px`;
+
+      // Check if the user has scrolled past the initial menu position
+      if (scrollPosition + navHeight > menuWrapperInitialTop) {
+          // Stick the menu as long as it hasn't reached the bottom of inner-content
+          if (scrollPosition + navHeight + desktopMenu.offsetHeight < innerContentBottom) {
+              desktopMenu.style.position = 'fixed';
+              desktopMenu.style.top = `${navHeight}px`;
+          } else {
+              // When at the bottom of inner-content, switch to absolute positioning
+              desktopMenu.style.position = 'absolute';
+              // Calculate the top position based on the inner-content's bottom and menu height
+              desktopMenu.style.top = `${innerContentBottom - desktopMenuWrapperOuter.offsetTop - desktopMenu.offsetHeight}px`;
+          }
+      } else {
+          // If user is above the menu's initial position, reset to normal
+          desktopMenu.style.position = 'relative';
+          desktopMenu.style.top = 'unset';
+      }
+  };
+
+  // Attach scroll event listener
+  window.addEventListener('scroll', handleScroll);
+
+  // On window resize, recalculate the width of the menu to match its container
+  window.addEventListener('resize', function () {
+      desktopMenu.style.width = `${desktopMenuWrapperOuter.offsetWidth}px`;
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const mobileMenu = document.getElementById('reportMobileMenu');
+  const menuToggle = document.getElementById('reportMobileMenuToggle');
+  const menuCloseBtn = document.getElementById('reportMenuCloseBtn');
+  const keyTakeawaysSection = document.querySelector('.key-takeaways');
+  const menu = document.getElementById('reportDynamicMenu');
+  const sections = []; // Store sections and their corresponding menu links
+  const offset = 80; // Main nav (80px)
+
+  const scrollToSectionWithOffset = (element, offset) => {
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      // Detect if it's desktop or mobile and apply the correct offset
+      const isDesktop = window.innerWidth >= 1024; // 1024px breakpoint for desktop
+      const offsetPosition = isDesktop
+          ? elementPosition - offset - 10  // Offset for desktop (Main nav - 10px)
+          : elementPosition - offset - 56; // Offset for mobile (Main nav + Mobile menu - 56px)
+
+      window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+      });
+  };
+
+  // Toggle menu visibility on clicking the toggle button
+  menuToggle.addEventListener('click', function () {
+      mobileMenu.classList.toggle('hidden');
+  });
+
+  // Close the menu when clicking the close button (X)
+  menuCloseBtn.addEventListener('click', function () {
+      mobileMenu.classList.add('hidden');
+  });
+
+  // Set menu height to viewport height minus 80px for nav and 56px for mobile nav
+  const setMenuHeight = () => {
+      const menuHeight = window.innerHeight - offset;
+      mobileMenu.style.height = `${menuHeight}px`;
+  };
+
+  // Add Key Takeaways link to the menu if section exists
+  if (keyTakeawaysSection && menu) {
+      const listItem = document.createElement('li');
+      const link = document.createElement('a');
+
+      // Set up the link properties for Key Takeaways
+      link.href = '#key-takeaways';
+      link.innerHTML = '<div class="text-gray-500 pr-4">A.</div> <div class="head text-blue-600">Key Takeaways</div>';
+      link.classList.add('px-8', 'pt-2', 'pb-2', 'text-sm', 'font-semibold', 'no-underline', 'flex');
+
+      // Add click event to scroll smoothly to the key-takeaways section and close the menu
+      link.addEventListener('click', function (e) {
+          e.preventDefault();
+          scrollToSectionWithOffset(keyTakeawaysSection, offset);
+          mobileMenu.classList.add('hidden'); // Close the menu
+
+          // Remove active class from all headings and subheadings
+          document.querySelectorAll('li.heading, li.subheading, div.h3-wrapper').forEach((el) => {
+              el.classList.remove('active');
+          });
+
+          // Add active class to Key Takeaways
+          listItem.classList.add('active');
+      });
+
+      listItem.classList.add('heading'); // Add .heading class to the li
+      listItem.appendChild(link);
+      menu.appendChild(listItem);
+
+      // Add the Key Takeaways section to the sections array for active detection
+      sections.push({
+          id: 'key-takeaways',
+          element: keyTakeawaysSection
+      });
+  }
+
+  // Scrape WYSIWYG components for h2 and h3 elements
+  const wysiwygSections = document.querySelectorAll('.wysiwyg-content');
+  let h2Counter = 1;
+  let h3Counter = 0;
+  let h3Wrapper = null; // Wrapper for H3 elements
+
+  wysiwygSections.forEach(wysiwyg => {
+      const headings = wysiwyg.querySelectorAll('h2, h3');
+      const h3Elements = Array.from(headings).filter(heading => heading.tagName.toLowerCase() === 'h3');
+
+      headings.forEach(heading => {
+          const headingText = heading.textContent.trim(); // Get trimmed heading text
+
+          // Only add to the menu if the heading has non-empty text
+          if (headingText) {
+              const listItem = document.createElement('li');
+              const link = document.createElement('a');
+              let counterText = '';
+
+              // Set up the scroll behavior for H2 and H3
+              link.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  scrollToSectionWithOffset(heading, offset); // Scroll to the heading
+                  mobileMenu.classList.add('hidden'); // Close the menu
+
+                  // Add active class to clicked li.heading and remove from others only if it's a heading
+                  if (listItem.classList.contains('heading')) {
+                      document.querySelectorAll('li.heading, div.h3-wrapper').forEach((el) => {
+                          el.classList.remove('active');
+                      });
+
+                      // Add active class to clicked heading
+                      listItem.classList.add('active');
+
+                      // If li.parent has a sibling h3-wrapper, also add active class to the h3-wrapper
+                      const siblingH3Wrapper = listItem.nextElementSibling;
+                      if (listItem.classList.contains('parent') && siblingH3Wrapper && siblingH3Wrapper.classList.contains('h3-wrapper')) {
+                          siblingH3Wrapper.classList.add('active');
+                      }
+                  } else if (listItem.classList.contains('subheading')) {
+                      // If a subheading is clicked, activate the closest heading and its h3-wrapper
+                      scrollToSectionWithOffset(heading, offset);
+
+                      const closestHeading = listItem.closest('.h3-wrapper').previousElementSibling;
+                      const parentH3Wrapper = listItem.closest('.h3-wrapper');
+
+                      // Ensure active class is only added to the correct li.parent and div.h3-wrapper
+                      if (closestHeading && closestHeading.classList.contains('parent')) {
+                          document.querySelectorAll('li.heading, div.h3-wrapper').forEach((el) => {
+                              el.classList.remove('active');
+                          });
+
+                          // Add active class to closest li.parent
+                          closestHeading.classList.add('active');
+                          // Add active class to the parent div.h3-wrapper
+                          parentH3Wrapper.classList.add('active');
+                      }
+
+                      mobileMenu.classList.add('hidden');
+                  }
+              });
+
+              // Check if it's an H2 or H3 and adjust the numbering or styling
+              if (heading.tagName.toLowerCase() === 'h2') {
+                  // When encountering an H2, close any open H3 wrapper
+                  if (h3Wrapper) {
+                      menu.appendChild(h3Wrapper); // Append the H3 wrapper to the menu
+                      h3Wrapper = null; // Reset the wrapper
+                  }
+
+                  counterText = `<div class="text-gray-500 pr-4">${h2Counter}.</div> `;
+                  h2Counter++; // Increment H2 counter
+                  h3Counter = 0; // Reset H3 counter after each H2
+                  link.classList.add('px-8', 'pt-2', 'pb-2', 'text-sm', 'font-semibold', 'no-underline', 'flex', 'items-baseline'); // Regular styling for H2
+
+                  // Append the link to the list item and directly to the menu for H2
+                  link.href = `#${heading.id || 'h2-' + h2Counter}`;
+                  link.innerHTML = `${counterText}<div class="head text-blue-600 no-underline pb-2 pt-2">${headingText}</div>`;
+                  listItem.classList.add('heading'); // Add .heading class to li with H2
+                  listItem.appendChild(link);
+                  menu.appendChild(listItem);
+
+                  // Add to sections array for scroll detection
+                  sections.push({
+                      id: heading.id || 'h2-' + h2Counter,
+                      element: heading
+                  });
+
+              } else if (heading.tagName.toLowerCase() === 'h3') {
+                  // Create a new wrapper if one doesn't exist
+                  if (!h3Wrapper) {
+                      h3Wrapper = document.createElement('div'); // Wrapper for all H3 elements under the current H2
+                      h3Wrapper.classList.add('h3-wrapper', 'pt-2', 'pb-2'); // Add the vertical line style
+                  }
+
+                  h3Counter++;
+
+                  // Create the H3 link without numbering (just the vertical bar and indentation)
+                  link.classList.add('text-sm', 'font-medium', 'pl-6', 'pr-6', 'relative', 'flex', 'no-underline'); // Indent H3
+                  link.href = `#${heading.id || 'h3-' + h3Counter}`;
+                  link.innerHTML = `<div class="vertical-line"></div><div class="head text-blue-600 no-underline">${headingText}</div>`;
+                  listItem.classList.add('subheading'); // Add .subheading class to li with H3
+
+                  // Append padding only to middle elements
+                  if (h3Elements.length > 1) {
+                      if (h3Counter === 1) {
+                          link.classList.add('pt-0'); // No padding-top for first element
+                      } else if (h3Counter === h3Elements.length) {
+                          link.classList.add('pb-0'); // No padding-bottom for last element
+                      } else {
+                          link.classList.add('pt-2', 'pb-2'); // Padding for middle elements
+                      }
+                  }
+
+                  // Append the H3 link to the list item
+                  listItem.appendChild(link);
+
+                  // Append the list item to the H3 wrapper
+                  h3Wrapper.appendChild(listItem);
+
+                  // Add to sections array for scroll detection
+                  sections.push({
+                      id: heading.id || 'h3-' + h3Counter,
+                      element: heading
+                  });
+              }
+          }
+      });
+
+      // If there is an open H3 wrapper after processing all headings, append it to the menu
+      if (h3Wrapper) {
+          menu.appendChild(h3Wrapper);
+      }
+
+      // Check for H2 elements with an adjacent h3-wrapper and add the 'parent' class
+      const listItems = menu.querySelectorAll('li.heading');
+      listItems.forEach((li) => {
+          const nextSibling = li.nextElementSibling;
+          if (nextSibling && nextSibling.classList.contains('h3-wrapper')) {
+              li.classList.add('parent'); // Add 'parent' class if h3-wrapper is next sibling
+          }
+      });
+  });
+});
