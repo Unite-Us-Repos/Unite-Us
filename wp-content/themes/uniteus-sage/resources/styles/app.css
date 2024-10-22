@@ -1862,7 +1862,10 @@ blockquote h4{
 
 
 
-
+.report .content-width {
+  max-width: 1280px;
+  margin: auto;
+}
 .report .entry-title {
   font-weight: 600;
 }
