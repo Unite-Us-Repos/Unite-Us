@@ -8,12 +8,24 @@
 
 @endphp
 @php
-    // ALL REPORTS FIELDS
-    $selected_author = get_field('select_author'); // Fetch the author post object from ACF
+    // Get the manual_or_select_author field to determine which method to use
+    $author_selection_method = get_field('manual_or_select_author', $post->ID); 
 
-    if ($selected_author) {
-        $author_name = get_the_title($selected_author); // Get the post title, which could be the author's name
-    $author_image_url = get_the_post_thumbnail_url($selected_author, 'small'); // Get the featured image URL (small size)
+    // Initialize variables for author name and image
+    $selected_author_name = null;
+    $author_image_url = null;
+
+    if ($author_selection_method == 'manual') {
+        // If 'Manual Entry' is selected
+        $author_name = get_field('author_name', $post->ID); // Fetch the manually entered author name
+    } elseif ($author_selection_method == 'select') {
+        // If 'Select Author from List' is selected
+        $selected_author = get_field('select_author'); // Fetch the author post object from ACF
+        
+        if ($selected_author) {
+            $selected_author_name = get_the_title($selected_author); // Get the author name from the selected post
+            $author_image_url = get_the_post_thumbnail_url($selected_author, 'small'); // Get the author's image (small size)
+        }
     }
 @endphp
 @php
@@ -166,11 +178,18 @@
                   $reading_time = ceil($word_count / $reading_speed);
               @endphp
               
-              @if ($author_name)
+              @if ($selected_author_name)
                   <div class="author absolute text-left p-2 bg-white flex flex-row align-items-center justify-center b-4">
                       @if ($author_image_url)
-                          <img class="mx-auto rounded-full" src="{{ $author_image_url }}" alt="{{ $author_name }}">
+                          <img class="mx-auto rounded-full" src="{{ $author_image_url }}" alt="{{ $selected_author_name }}">
                       @endif
+                      <span class="d-block text-lg px-4">
+                          <span class="font-bold">{{ $selected_author_name }}</span><br />
+                          <span class="text-medium-gray">{{ the_date() }} &bull; {{ $reading_time }} min read</span>
+                      </span>
+                  </div>
+              @elseif ($author_name)
+                  <div class="author absolute text-left p-2 bg-white flex flex-row align-items-center justify-center b-4">
                       <span class="d-block text-lg px-4">
                           <span class="font-bold">{{ $author_name }}</span><br />
                           <span class="text-medium-gray">{{ the_date() }} &bull; {{ $reading_time }} min read</span>
