@@ -1,51 +1,61 @@
 @php
-$recommended_press = App\View\Composers\Post::getPosts(4, '', '', array($post->ID));
-if (!isset($layout)) {
-  $layout = '';
-}
-$has_podcast_links = false;
-foreach ($podcast_links as $field_name => $link) {
-  if (!empty($link)) {
-    $has_podcast_links = true;
-  }
-}
-$author_name = get_field('author_name', $post->ID); // Fetch the author name from ACF
+    $recommended_press = App\View\Composers\Post::getPosts(4, '', '', [$post->ID]);
+    if (!isset($layout)) {
+        $layout = '';
+    }
+    $has_podcast_links = false;
+    foreach ($podcast_links as $field_name => $link) {
+        if (!empty($link)) {
+            $has_podcast_links = true;
+        }
+    }
+    $author_name = get_field('author_name', $post->ID); // Fetch the author name from ACF
 
-// Function to extract iframe src
-function extract_iframe_src($content) {
-  if (preg_match('/<iframe[^>]+src="([^"]+)"[^>]*><\/iframe>/', $content, $match)) {
-    return $match[1];
-  }
-  return '';
-}
+    // Function to extract iframe src
+    function extract_iframe_src($content)
+    {
+        if (preg_match('/<iframe[^>]+src="([^"]+)"[^>]*><\/iframe>/', $content, $match)) {
+            return $match[1];
+        }
+        return '';
+    }
 
-// Capture the content output
-ob_start();
-if ('default' == $layout) {
-  the_content();
-}
-$content = ob_get_clean();
+    // Capture the content output
+    ob_start();
+    if ('default' == $layout) {
+        the_content();
+    }
+    $content = ob_get_clean();
 
-// Extract video URL from the content
-$video_url = extract_iframe_src($content);
+    // Extract video URL from the content
+    $video_url = extract_iframe_src($content);
 
-// Schema Markup Variables for Webinar Posts
-$page_title = get_the_title();
-$meta_description = get_post_meta($post->ID, '_yoast_wpseo_metadesc', true);
-$page_url = get_permalink();
-$preview_image = get_the_post_thumbnail_url($post->ID, 'full');
-$publish_date = get_the_date('c', $post->ID);
+    // Schema Markup Variables for Webinar Posts
+    $page_title = get_the_title();
+    $meta_description = get_post_meta($post->ID, '_yoast_wpseo_metadesc', true);
+    $page_url = get_permalink();
+    $preview_image = get_the_post_thumbnail_url($post->ID, 'full');
+    $publish_date = get_the_date('c', $post->ID);
 
-// Retrieve user-provided schema markup from ACF
-$acf_schema_markup = get_field('schema_markup', $post->ID);
+    // Retrieve user-provided schema markup from ACF
+    $acf_schema_markup = get_field('schema_markup', $post->ID);
 
-// Replace variables in user-provided schema markup
-$schema_markup = str_replace(
-  ['{{PageTitle}}', '{{MetDescription}}', '{{VideoURL}}', '{{PageURL}}', '{{PreviewImage}}', '{{PublishDate}}'],
-  [$page_title, $meta_description, $video_url, $page_url, $preview_image, $publish_date],
-  $acf_schema_markup
-);
+    // Replace variables in user-provided schema markup
+    $schema_markup = str_replace(
+        [
+            '{{ PageTitle }}',
+            '{{ MetDescription }}',
+            '{{ VideoURL }}',
+            '{{ PageURL }}',
+            '{{ PreviewImage }}',
+            '{{ PublishDate }}',
+        ],
+        [$page_title, $meta_description, $video_url, $page_url, $preview_image, $publish_date],
+        $acf_schema_markup,
+    );
 @endphp
+
+
 
 <article @php (post_class()) @endphp="@php (post_class()) @endphp">
   <header>
@@ -177,6 +187,9 @@ $schema_markup = str_replace(
   </div>
 </article>
 
+
+
+{{-- RECOMMENDED FOR YOU --}}
 <section class="component-section -mt-10">
   <div class="relative">
     <div class="component-inner-section relative z-10">
@@ -241,6 +254,7 @@ $schema_markup = str_replace(
     </div>
   </div>
 </section>
+
 
 {{-- Output the user-provided schema markup if it exists --}}
 @if ($schema_markup)

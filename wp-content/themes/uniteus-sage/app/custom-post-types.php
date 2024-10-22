@@ -490,6 +490,44 @@ function register_cpt_presenter()
     );
 }
 
+
+// register Authors
+add_action('init', 'register_cpt_author');
+
+function register_cpt_author()
+{
+    register_post_type(
+        'author',
+        array(
+            'labels' => array(
+                'name'               => 'Authors',
+                'singular_name'      => 'Authors',
+                'menu_name'          => 'Authors',
+                'name_admin_bar'     => 'Authors',
+                'add_new'            => 'Add New',
+                'add_new_item'       => 'Add New Author',
+                'edit_item'          => 'Edit Author',
+                'new_item'           => 'New Author',
+                'view_item'          => 'View Author',
+                'search_items'       => 'Search Authors',
+                'not_found'          => 'No Authors found',
+                'not_found_in_trash' => 'No Authors found in trash',
+                'all_items'          => 'Authors',
+            ),
+
+            'public'        => true,
+            'menu_position' => 14,
+            'supports'      => array('title', 'editor', 'thumbnail'),
+            'show_in_rest'  => false,
+            'taxonomies'    => array(''),
+            'menu_icon'     => 'dashicons-edit-large',
+            'has_archive'   => false,
+            'exclude_from_search'   => true
+        )
+    );
+}
+
+
 add_action( 'init', 'cameronjonesweb_unregister_tags' );
 
 /**
