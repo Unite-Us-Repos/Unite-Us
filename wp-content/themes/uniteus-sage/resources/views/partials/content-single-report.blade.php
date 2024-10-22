@@ -29,7 +29,7 @@
 
 
 <article class="report bg-light-gradient-short">
-  <div class="flex flex-col lg:flex-row">
+  <div class="flex flex-col lg:flex-row content-width">
       @if (get_field('display_menu'))
 
 
@@ -109,19 +109,76 @@
                       </div>
                   @endif
 
-                  @if ($author_name)
-                      <div
-                          class="author absolute text-left p-2 bg-white flex flex-row align-items-center justify-center b-4">
-                          @if ($author_image_url)
-                              <img class="mx-auto rounded-full" src="{{ $author_image_url }}"
-                                  alt="{{ $author_name }}">
-                          @endif
-                          <span class="d-block text-lg px-4"><span
-                                  class="font-bold">{{ $author_name }}</span><br /><span
-                                  class="text-medium-gray">{{ the_date() }} &bull; 10 min read</span></span>
+                  @php
+                  // Initialize an empty variable to store all content
+                  $content = '';
+              
+                  // Add the content of the main editor
+                  $content .= strip_tags(get_the_content());
+              
+                  // Loop through the ACF flexible layouts and gather content
+                  if (have_rows('reports_component')) {
+                      while (have_rows('reports_component')) {
+                          the_row();
+              
+                          if (have_rows('components')) {
+                              while (have_rows('components')) {
+                                  the_row();
+              
+                                  // Gather text from WYSIWYG, blockquote, key takeaways, icon_and_highlight, spotlight, and table layouts
+                                  if (get_row_layout() == 'blockquote') {
+                                      $content .= strip_tags(get_sub_field('text')); // Get text from blockquote
+                                  } elseif (get_row_layout() == 'wysiwyg') {
+                                      $content .= strip_tags(get_sub_field('wysiwyg')); // Get text from wysiwyg editor
+                                  } elseif (get_row_layout() == 'key_takeaways') {
+                                      if (have_rows('takeaways')) {
+                                          while (have_rows('takeaways')) {
+                                              the_row();
+                                              $content .= strip_tags(get_sub_field('text')); // Get text from each takeaway
+                                          }
+                                      }
+                                  } elseif (get_row_layout() == 'icon_and_highlight') {
+                                      $content .= strip_tags(get_sub_field('text')); // Get text from the icon and highlight
+                                  } elseif (get_row_layout() == 'spotlight') {
+                                      $content .= strip_tags(get_sub_field('text')); // Get text from the spotlight
+                                  } elseif (get_row_layout() == 'table') {
+                                      $table = get_sub_field('table_display'); // Fetch the table array
+                                      if ($table && isset($table['body'])) {
+                                          foreach ($table['body'] as $row) {
+                                              foreach ($row as $cell) {
+                                                  $content .= strip_tags($cell['c']); // Get text from each table cell
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              
+                  // Calculate the number of words
+                  $word_count = str_word_count($content);
+              
+                  // Define the reading speed (words per minute)
+                  $reading_speed = 200; // Average reading speed
+              
+                  // Calculate the reading time in minutes
+                  $reading_time = ceil($word_count / $reading_speed);
+              @endphp
+              
+              @if ($author_name)
+                  <div class="author absolute text-left p-2 bg-white flex flex-row align-items-center justify-center b-4">
+                      @if ($author_image_url)
+                          <img class="mx-auto rounded-full" src="{{ $author_image_url }}" alt="{{ $author_name }}">
+                      @endif
+                      <span class="d-block text-lg px-4">
+                          <span class="font-bold">{{ $author_name }}</span><br />
+                          <span class="text-medium-gray">{{ the_date() }} &bull; {{ $reading_time }} min read</span>
+                      </span>
+                  </div>
+              @endif
+              
 
-                      </div>
-                  @endif
               </div>
 
               <div class="component-inner-section relative z-10">
@@ -163,10 +220,13 @@
 
                 @if (have_rows('components'))
                     @while (have_rows('components')) @php the_row(); @endphp
-
+                        {{-- Get the ID from the ACF field --}}
+                        @php
+                            $section_id = get_sub_field('id') ? 'id="' . get_sub_field('id') . '"' : '';
+                        @endphp
                         {{-- Check for the "blockquote" layout --}}
                         @if (get_row_layout() == 'blockquote')
-                            <blockquote class="blockquote text-center text-blue-600 bg-light p-8 rounded-lg relative">
+                            <blockquote {!! $section_id !!} class="blockquote text-center text-blue-600 bg-light p-8 rounded-lg relative">
                               <img class="quote-icon" src="/wp-content/themes/uniteus-sage/resources/images/blockquote-icon.svg" alt="quote icon" />
                                 {!! get_sub_field('text') !!}
                             </blockquote>
@@ -294,7 +354,7 @@
             
                         {{-- Check for the "icon_and_highlight" layout --}}
                         @elseif (get_row_layout() == 'icon_and_highlight')
-                            <div class="icon-and-highlight bg-action text-white p-8 mt-8 mb-8 rounded-lg flex">
+                            <div {!! $section_id !!} class="icon-and-highlight bg-action text-white p-8 mt-8 mb-8 rounded-lg flex">
                               <div class="icon pr-4">
                                 @php
                                     $icon = get_sub_field('icon'); // Fetch the icon name from the SVG picker
@@ -314,7 +374,7 @@
 
                         {{-- Check for the "key_takeaways" layout --}}
                         @elseif (get_row_layout() == 'key_takeaways')
-                            <div class="key-takeaways relative p-5 mt-8 mb-5 rounded-lg overflow-hidden">
+                            <div {!! $section_id !!} class="key-takeaways relative p-5 mt-8 mb-5 rounded-lg overflow-hidden">
                               <div class="absolute inset-0 bg-brand opacity-75 bg-purple-overlay"></div>
                                   <div class="z-10 relative p-5">
                                     <div class="header">{!! get_sub_field('header') !!}</div>
@@ -358,7 +418,7 @@
                               $pill_text = get_sub_field('pill_text'); // Pill text field
                               $button = get_sub_field('button'); // Button array field
                           @endphp
-                          <div class="spotlight-container py-8 rounded overflow-hidden">
+                          <div {!! $section_id !!} class="spotlight-container py-8 rounded overflow-hidden">
                             <div class="spotlight p-8 lg:p-16 relative border-electric-purple border rounded-lg" 
                                 @if ($background_image && isset($background_image['url']))
                                     style="background-image: url('{{ $background_image['url'] }}'); background-size: cover;"
@@ -391,7 +451,7 @@
                           @endphp
 
                           @if ($table)
-                            <div class="flex flex-col my-4">
+                            <div {!! $section_id !!} class="flex flex-col my-4">
                               <div class="overflow-x-auto">
                                 <div class="block rounded-lg">
                                   <table class="acf-data-table w-full table-auto border-collapse border-2 border-action">
@@ -440,7 +500,7 @@
 
                         {{-- Check for the "wysiwyg" layout --}}
                         @elseif (get_row_layout() == 'wysiwyg')
-                            <div class="wysiwyg-content">
+                            <div {!! $section_id !!} class="wysiwyg-content">
                                 {!! get_sub_field('wysiwyg') !!}
                             </div>
 

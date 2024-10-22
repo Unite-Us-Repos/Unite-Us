@@ -609,6 +609,27 @@
                             "display": "block",
                             "sub_fields": [
                                 {
+                                    "key": "field_6717ec85acbe1",
+                                    "label": "ID",
+                                    "name": "id",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
                                     "key": "field_67114fb85158a",
                                     "label": "Quote",
                                     "name": "text",
@@ -1030,6 +1051,27 @@
                             "display": "block",
                             "sub_fields": [
                                 {
+                                    "key": "field_6717ec98acbe2",
+                                    "label": "ID",
+                                    "name": "id",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
                                     "key": "field_67114fe15158b",
                                     "label": "Icon",
                                     "name": "icon",
@@ -1089,6 +1131,27 @@
                             "label": "Key Takeaways",
                             "display": "block",
                             "sub_fields": [
+                                {
+                                    "key": "field_6717eca7acbe3",
+                                    "label": "ID",
+                                    "name": "id",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
                                 {
                                     "key": "field_671150155158d",
                                     "label": "Header",
@@ -1317,6 +1380,27 @@
                             "display": "block",
                             "sub_fields": [
                                 {
+                                    "key": "field_6717ecdbacbe4",
+                                    "label": "ID",
+                                    "name": "id",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
                                     "key": "field_6711cfab74ce9",
                                     "label": "Background Image",
                                     "name": "background_image",
@@ -1441,6 +1525,27 @@
                             "display": "block",
                             "sub_fields": [
                                 {
+                                    "key": "field_6717ece6acbe5",
+                                    "label": "ID",
+                                    "name": "id",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
                                     "key": "field_671150e751596",
                                     "label": "Table Display",
                                     "name": "table_display",
@@ -1479,6 +1584,27 @@
                             "label": "WYSIWYG ",
                             "display": "block",
                             "sub_fields": [
+                                {
+                                    "key": "field_6717ecefacbe6",
+                                    "label": "ID",
+                                    "name": "id",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
                                 {
                                     "key": "field_67114f1f5157f",
                                     "label": "WYSIWYG",
@@ -1568,5 +1694,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1729556557
+    "modified": 1729621249
 }
