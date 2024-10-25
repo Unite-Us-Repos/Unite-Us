@@ -61,7 +61,7 @@
           <div id="reportMobileMenu" class="report-menu bg-white fixed top-[130px] rounded-2xl left-0 lg:static lg:block lg:w-auto lg:rounded-lg lg:shadow-lg z-50 lg:z-10 shadow-md hidden overflow-scroll">
             
             <!-- Close button (X) -->
-            <div class="flex justify-end mb-4 lg:hidden">
+            <div class="flex justify-end mb-4 absolute right-0 lg:hidden">
               <button id="reportMenuCloseBtn" class="pt-4 pr-4 text-gray-500 hover:text-action">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -69,7 +69,7 @@
               </button>
             </div>
 
-            <div class="mb-4 px-8 pt-6">
+            <div class="mb-4 px-8 pt-6 hidden lg:block">
               <a href="/knowledge-hub/" class="text-action text-sm uppercase font-bold no-underline flex items-center">
                 <svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M4.17871 0.821289L1 4M1 4L4.17871 7.17871M1 4L9.47656 4" stroke="#2F71F4" stroke-width="1.54119" stroke-linecap="round" stroke-linejoin="round"/>
@@ -77,13 +77,13 @@
               </a>
             </div>
 
-            <div class="pt-4 px-8">
+            <div class="pt-4 px-8 hidden lg:block">
               <h2 class="text-md font-semibold leading-tight">
                 {!! get_the_title() !!} {{-- Post title --}}
               </h2>
             </div>
 
-            <div class="border-t border-gray-300 pt-4"></div>
+            <div class=" hidden lg:block border-t border-gray-300 pt-4"></div>
 
             <div class="pt-4">
               <nav>
@@ -183,14 +183,14 @@
                       @if ($author_image_url)
                           <img class="mx-auto rounded-full" src="{{ $author_image_url }}" alt="{{ $selected_author_name }}">
                       @endif
-                      <span class="d-block text-lg px-4">
+                      <span class="d-block text-sm px-4">
                           <span class="font-bold">{{ $selected_author_name }}</span><br />
                           <span class="text-medium-gray">{{ the_date() }} &bull; {{ $reading_time }} min read</span>
                       </span>
                   </div>
               @elseif ($author_name)
                   <div class="author absolute text-left p-2 bg-white flex flex-row align-items-center justify-center b-4">
-                      <span class="d-block text-lg px-4">
+                      <span class="d-block text-sm px-4">
                           <span class="font-bold">{{ $author_name }}</span><br />
                           <span class="text-medium-gray">{{ the_date() }} &bull; {{ $reading_time }} min read</span>
                       </span>
@@ -534,9 +534,16 @@
           </div>
         </div>
       </div>
-           
+      <div id="reportlightbox" class="lightbox">
+          <span class="close">&times;</span>
+          <div class="lightbox-content-scroller">
+            <img class="lightbox-content" id="reportlightbox-image">
+            <div id="reportcaption"></div>
+          </div>
+      </div>
+        
       {{-- ABOUT UU --}}
-      <div class="{{ get_field('display_menu') ? 'max-w-4xl' : 'max-w-5xl' }}  mb-10 mx-auto">
+      <div class="{{ get_field('display_menu') ? 'max-w-4xl' : 'max-w-5xl' }}  mb-10 mx-auto report-news-about">
           @isset($aboutUniteUs)
               <div id="newsAbout" class="bg-light sm:rounded-xl sm:mx-8 p-10 leading-loose">
                   {!! $aboutUniteUs !!}

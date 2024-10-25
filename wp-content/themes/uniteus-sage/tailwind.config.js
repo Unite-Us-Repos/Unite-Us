@@ -201,7 +201,8 @@ module.exports = {
     'overflow-scroll',
     'lg:ml-6',
     'lg:z-10',
-    'px-8'
+    'px-8',
+    'lg:text-xl'
 
   ],
   theme: {

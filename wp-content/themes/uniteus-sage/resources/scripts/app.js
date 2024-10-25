@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function () {
   const desktopMenuWrapperOuter = document.querySelector('.report-menu-wrapper-outer');
   const desktopMenu = document.querySelector('.report-menu-wrapper');
-  const innerContent = document.querySelector('.report-inner-content'); // The content that wraps the WYSIWYG components
+  const innerContent = document.querySelector('.report-news-about'); // The content that wraps the WYSIWYG components
   const navHeight = 80; // The fixed height of the main nav at the top
   let menuWrapperInitialTop = desktopMenuWrapperOuter.offsetTop; // Initial position of the menu wrapper
 
@@ -609,5 +609,66 @@ document.addEventListener('DOMContentLoaded', function () {
               smoothScrollToSection(targetElement);
           }
       });
+  });
+});
+
+
+  // reports image lightbox 
+document.addEventListener('DOMContentLoaded', function () {
+  const lightbox = document.getElementById('reportlightbox');
+  const lightboxImage = document.getElementById('reportlightbox-image');
+  const close = document.querySelector('.report .close');
+  const wysiwygImages = document.querySelectorAll('.report .wysiwyg-content img');
+
+  let isDragging = false;
+  let startX, startY, scrollLeft, scrollTop;
+
+  wysiwygImages.forEach(img => {
+      img.addEventListener('click', function () {
+          lightbox.style.display = 'block';
+          lightboxImage.src = this.src;
+      });
+  });
+
+  close.addEventListener('click', function () {
+      lightbox.style.display = 'none';
+  });
+
+  // Zooming in/out by scrolling
+  lightboxImage.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      let scale = Number(this.getAttribute('data-scale')) || 1;
+      scale += e.deltaY * -0.001;
+      scale = Math.min(Math.max(1, scale), 4); // Limit scale between 1 and 4
+      this.style.transform = `scale(${scale})`;
+      this.setAttribute('data-scale', scale);
+  });
+
+  // Drag to pan
+  lightboxImage.addEventListener('mousedown', function (e) {
+      isDragging = true;
+      lightboxImage.classList.add('grabbing');
+      startX = e.pageX - lightboxImage.offsetLeft;
+      startY = e.pageY - lightboxImage.offsetTop;
+      scrollLeft = lightbox.scrollLeft;
+      scrollTop = lightbox.scrollTop;
+  });
+
+  lightboxImage.addEventListener('mousemove', function (e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - startX;
+      const y = e.pageY - startY;
+      lightboxImage.style.transform = `translate(${x}px, ${y}px) scale(${lightboxImage.getAttribute('data-scale') || 1})`;
+  });
+
+  lightboxImage.addEventListener('mouseup', function () {
+      isDragging = false;
+      lightboxImage.classList.remove('grabbing');
+  });
+
+  lightboxImage.addEventListener('mouseleave', function () {
+      isDragging = false;
+      lightboxImage.classList.remove('grabbing');
   });
 });
