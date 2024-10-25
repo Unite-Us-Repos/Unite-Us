@@ -549,7 +549,7 @@
                   {!! $aboutUniteUs !!}
                   <div class="my-6 border border-blue-300" style="width: 100px"></div>
                   @if ($postTopics)
-                      <div class="flex items-center mb-3">
+                      <div class="flex flex-wrap items-center mb-3">
                           <span class="text-lg font-bold mr-6">Topics: </span>
                           {!! $postTopics !!}
                       </div>
