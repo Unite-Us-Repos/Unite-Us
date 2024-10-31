@@ -39,7 +39,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_62f674c9ee681",
@@ -84,7 +85,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_62c8f0560061b",
@@ -110,7 +112,7 @@
                         "2-column-cards": "2-column cards",
                         "kh-all": "Knowledge Hub (all)",
                         "kh-featured-recent": "Knowledge Hub Featured\/Recent",
-                        "kh-featured": "Knowledge Hub Featured",
+                        "kh-featured": "Knowledge Hub Featured Latest",
                         "kh-trending": "Knowledge Hub Trending",
                         "hero-featured": "Hero Featured",
                         "carousel-cards": "Carousel Cards",
@@ -121,6 +123,7 @@
                     "return_format": "value",
                     "allow_null": 0,
                     "other_choice": 0,
+                    "allow_in_bindings": 1,
                     "layout": "horizontal",
                     "save_other_choice": 0
                 },
@@ -138,6 +141,11 @@
                                 "field": "field_62c8f0560061b",
                                 "operator": "!=",
                                 "value": "kh-all"
+                            },
+                            {
+                                "field": "field_62c8f0560061b",
+                                "operator": "!=",
+                                "value": "kh-featured"
                             },
                             {
                                 "field": "field_62c8f0560061b",
@@ -164,6 +172,7 @@
                     "return_format": "value",
                     "allow_null": 0,
                     "other_choice": 0,
+                    "allow_in_bindings": 1,
                     "layout": "vertical",
                     "save_other_choice": 0
                 },
@@ -181,6 +190,11 @@
                                 "field": "field_62c8f0560061b",
                                 "operator": "!=",
                                 "value": "kh-all"
+                            },
+                            {
+                                "field": "field_62c8f0560061b",
+                                "operator": "!=",
+                                "value": "kh-featured"
                             },
                             {
                                 "field": "field_62c8f0560061b",
@@ -218,6 +232,7 @@
                     "layout": "vertical",
                     "save_terms": 0,
                     "load_terms": 0,
+                    "allow_in_bindings": 1,
                     "choices": [],
                     "ui": 0,
                     "multiple": 0,
@@ -243,6 +258,11 @@
                                 "field": "field_62c8f0560061b",
                                 "operator": "!=",
                                 "value": "kh-all"
+                            },
+                            {
+                                "field": "field_62c8f0560061b",
+                                "operator": "!=",
+                                "value": "kh-featured"
                             },
                             {
                                 "field": "field_62c8f0560061b",
@@ -283,6 +303,7 @@
                     },
                     "min": "",
                     "max": "",
+                    "allow_in_bindings": 1,
                     "elements": [
                         "featured_image"
                     ],
@@ -305,7 +326,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_62f67b6dcd800",
@@ -362,5 +384,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1709841356
+    "modified": 1730334797
 }
