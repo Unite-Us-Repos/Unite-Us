@@ -19,6 +19,9 @@
             "layout": "row",
             "acfe_seamless_style": 1,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_63693d5d1bfa9",
@@ -36,7 +39,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_62b3bc900242a",
@@ -154,7 +158,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_633316fd5e93d",
@@ -205,6 +210,7 @@
                     "max": 0,
                     "layout": "row",
                     "button_label": "Add Logo",
+                    "rows_per_page": 20,
                     "sub_fields": [
                         {
                             "key": "field_62b3d902ef685",
@@ -287,8 +293,7 @@
                             "placeholder": "",
                             "parent_repeater": "field_62b3d8b1ef684"
                         }
-                    ],
-                    "rows_per_page": 20
+                    ]
                 },
                 {
                     "key": "field_63693d791bfaa",
@@ -306,7 +311,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_63693d821bfab",
@@ -335,10 +341,7 @@
                     "acfe_clone_modal_button": "",
                     "acfe_clone_modal_size": "large"
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         }
     ],
     "location": [
@@ -366,5 +369,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1704490739
+    "modified": 1730758948
 }

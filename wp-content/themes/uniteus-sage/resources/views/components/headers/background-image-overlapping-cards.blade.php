@@ -113,6 +113,15 @@ $small_font = $section['small_font'] ?? false;
           @include('components.action-buttons', $data)
         @endif
       </div>
+      <div class="relative z-10 overflow-hidden pt-12">
+        @if ($widgets)
+          @foreach ($widgets as $widget)
+            @isset ($widget["acf_fc_layout"])
+              @includeIf('widgets.' . str_replace('_', '-', $widget["acf_fc_layout"]))
+            @endisset
+          @endforeach
+        @endif
+      </div>
     </div>
   </div>
 </section>

@@ -202,7 +202,8 @@ module.exports = {
     'lg:ml-6',
     'lg:z-10',
     'px-8',
-    'lg:text-xl'
+    'lg:text-xl',
+    'lg:p-8'
 
   ],
   theme: {
