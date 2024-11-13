@@ -1877,6 +1877,10 @@ blockquote h4{
   .report .author {
     left: 4rem;
   }
+  .report .feature-img {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
 }
 .report .author img {
   width: 50px;

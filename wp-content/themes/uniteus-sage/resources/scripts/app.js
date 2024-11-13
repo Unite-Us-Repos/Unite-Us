@@ -401,41 +401,45 @@ document.addEventListener('DOMContentLoaded', function () {
       mobileMenu.style.height = `${menuHeight}px`;
   };
 
-  // Add Key Takeaways link to the menu if section exists
-  if (keyTakeawaysSection && menu) {
-      const listItem = document.createElement('li');
-      const link = document.createElement('a');
+  // Retrieve the user-defined menu label from the data attribute, defaulting to "Key Takeaways" if not set
+const menuLabel = keyTakeawaysSection.getAttribute('data-menu-label') || 'Key Takeaways';
 
-      // Set up the link properties for Key Takeaways
-      link.href = '#key-takeaways';
-      link.innerHTML = '<div class="text-gray-500 pr-4">A.</div> <div class="head text-blue-600">Key Takeaways</div>';
-      link.classList.add('px-8', 'pt-2', 'pb-2', 'text-sm', 'font-semibold', 'no-underline', 'flex');
+// Add Key Takeaways link to the menu if section exists
+if (keyTakeawaysSection && menu) {
+    const listItem = document.createElement('li');
+    const link = document.createElement('a');
 
-      // Add click event to scroll smoothly to the key-takeaways section and close the menu
-      link.addEventListener('click', function (e) {
-          e.preventDefault();
-          scrollToSectionWithOffset(keyTakeawaysSection, offset);
-          mobileMenu.classList.add('hidden'); // Close the menu
+    // Use menuLabel for the text in the menu
+    link.href = '#key-takeaways';
+    link.innerHTML = `<div class="text-gray-500 pr-4">A.</div> <div class="head text-blue-600">${menuLabel}</div>`;
+    link.classList.add('px-8', 'pt-2', 'pb-2', 'text-sm', 'font-semibold', 'no-underline', 'flex');
 
-          // Remove active class from all headings and subheadings
-          document.querySelectorAll('li.heading, li.subheading, div.h3-wrapper').forEach((el) => {
-              el.classList.remove('active');
-          });
+    // Add click event to scroll smoothly to the key-takeaways section and close the menu
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        scrollToSectionWithOffset(keyTakeawaysSection, offset);
+        mobileMenu.classList.add('hidden'); // Close the menu
 
-          // Add active class to Key Takeaways
-          listItem.classList.add('active');
-      });
+        // Remove active class from all headings and subheadings
+        document.querySelectorAll('li.heading, li.subheading, div.h3-wrapper').forEach((el) => {
+            el.classList.remove('active');
+        });
 
-      listItem.classList.add('heading'); // Add .heading class to the li
-      listItem.appendChild(link);
-      menu.appendChild(listItem);
+        // Add active class to Key Takeaways
+        listItem.classList.add('active');
+    });
 
-      // Add the Key Takeaways section to the sections array for active detection
-      sections.push({
-          id: 'key-takeaways',
-          element: keyTakeawaysSection
-      });
-  }
+    listItem.classList.add('heading'); // Add .heading class to the li
+    listItem.appendChild(link);
+    menu.appendChild(listItem);
+
+    // Add the Key Takeaways section to the sections array for active detection
+    sections.push({
+        id: 'key-takeaways',
+        element: keyTakeawaysSection
+    });
+}
+
 
   // Scrape WYSIWYG components for h2 and h3 elements
   const wysiwygSections = document.querySelectorAll('.wysiwyg-content');

@@ -105,7 +105,7 @@
                   @if ($desktop_featured_image || $mobile_featured_image)
                       {{-- Desktop and tablet image (visible on screen sizes above 640px) --}}
                       @if ($desktop_featured_image)
-                          <img fetchpriority="high" class="w-full h-full object-cover hidden sm:block mt-5"
+                          <img fetchpriority="high" class="feature-img w-full h-full object-cover hidden sm:block mt-5"
                               src="{{ $desktop_featured_image }}"
                               srcset="{{ $desktop_featured_image }} 300w, {{ get_the_post_thumbnail_url(get_the_ID(), '2048x2048') }} 1024w"
                               sizes="(max-width: 1024px) 1024px, 2048px" alt="Featured Image">
@@ -393,7 +393,10 @@
 
                         {{-- Check for the "key_takeaways" layout --}}
                         @elseif (get_row_layout() == 'key_takeaways')
-                            <div {!! $section_id !!} class="key-takeaways relative p-5 mt-8 mb-5 rounded-lg overflow-hidden">
+                          <?php
+                          $menu_label = get_sub_field('menu_label') ?: 'Key Takeaways'; // Get the 'menu_label' field or default to 'Key Takeaways'
+                          ?>
+                            <div {!! $section_id !!} class="key-takeaways relative p-5 mt-8 mb-5 rounded-lg overflow-hidden" data-menu-label="<?php echo esc_attr($menu_label); ?>">
                               <div class="absolute inset-0 bg-brand opacity-75 bg-purple-overlay"></div>
                                   <div class="z-10 relative p-5">
                                     <div class="header">{!! get_sub_field('header') !!}</div>

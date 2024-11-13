@@ -551,6 +551,9 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_67114f075157e",
@@ -1153,6 +1156,27 @@
                                     "append": ""
                                 },
                                 {
+                                    "key": "field_6735389accc68",
+                                    "label": "Menu Label",
+                                    "name": "menu_label",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Fill in a label for the menu, otherwise it will display the value Key Takeaways as default.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
                                     "key": "field_671150155158d",
                                     "label": "Header",
                                     "name": "header",
@@ -1611,7 +1635,7 @@
                                     "name": "wysiwyg",
                                     "aria-label": "",
                                     "type": "wysiwyg",
-                                    "instructions": "",
+                                    "instructions": "To add a horizontal rule, paste in: <br \/>\r\n&lt;hr\/&gt;\r\n<br \/>\r\nTo add spacing around the horizontal rule, paste in: <br \/>\r\n&lt;p class='mb-0'&gt;&amp;nbsp;&lt;\/p&gt;",
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
@@ -1620,7 +1644,6 @@
                                         "id": ""
                                     },
                                     "default_value": "",
-                                    "acfe_wysiwyg_auto_init": 0,
                                     "acfe_wysiwyg_height": 300,
                                     "acfe_wysiwyg_max_height": "",
                                     "acfe_wysiwyg_valid_elements": "",
@@ -1638,6 +1661,7 @@
                                     "toolbar": "full",
                                     "media_upload": 1,
                                     "delay": 0,
+                                    "acfe_wysiwyg_auto_init": 0,
                                     "acfe_wysiwyg_min_height": 300,
                                     "acfe_wysiwyg_toolbar_buttons": []
                                 }
@@ -1663,10 +1687,7 @@
                     "acfe_flexible_layouts_previews": false,
                     "acfe_flexible_grid_container": false
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         }
     ],
     "location": [
@@ -1694,5 +1715,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1729621249
+    "modified": 1731541821
 }
