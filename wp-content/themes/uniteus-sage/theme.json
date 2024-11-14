@@ -38,89 +38,54 @@
           "color": "#fff"
         },
         {
-          "name": "Primary",
-          "slug": "primary",
-          "color": "orange"
+          "name": "Brand Blue",
+          "slug": "brand-blue",
+          "color": "#2C405A"
         },
         {
-          "name": "Secondary",
-          "slug": "secondary",
-          "color": "#2874af"
-        },
-        {
-          "name": "Brand",
-          "slug": "brand",
+          "name": "Dark Blue",
+          "slug": "dark-blue",
           "color": "#0B1538"
         },
         {
-          "name": "Action",
-          "slug": "action",
-          "color": "#2874af"
+          "name": "Action Blue",
+          "slug": "action-blue",
+          "color": "#216CFF"
         },
         {
-          "name": "Dark-blue",
-          "slug": "dark-blue",
-          "color": "#182a44"
+          "name": "Light Blue",
+          "slug": "light-blue",
+          "color": "#19B4FE"
         },
         {
-          "name": "Action-dark",
-          "slug": "action-dark",
-          "color": "#105890"
+          "name": "Pale Blue",
+          "slug": "pale-blue",
+          "color": "#E3EBF4"
         },
         {
-          "name": "Action-light-blue",
-          "slug": "action-light-blue",
-          "color": "#52b4ff"
+          "name": "Light Purple",
+          "slug": "light-purple",
+          "color": "#B58BF8"
         },
         {
-          "name": "Action-lighter-blue",
-          "slug": "action-lighter-blue",
-          "color": "#3b8bca"
-        },
-        {
-          "name": "Dark",
-          "slug": "dark",
-          "color": "#182a44"
-        },
-        {
-          "name": "Redish",
-          "slug": "redish",
-          "color": "#ff4f4f"
-        },
-        {
-          "name": "Light",
-          "slug": "light",
-          "color": "#eef5fc"
-        },
-        {
-          "name": "Light-gradient",
-          "slug": "light-gradient",
-          "color": "#eef5fc"
-        },
-        {
-          "name": "Light-gray",
-          "slug": "light-gray",
-          "color": "#f9fafb"
-        },
-        {
-          "name": "Morado",
-          "slug": "morado",
-          "color": "#712f79"
-        },
-        {
-          "name": "Electric Purple",
-          "slug": "electri-purple",
+          "name": "Action Purple",
+          "slug": "action-purple",
           "color": "#9643FF"
         },
         {
-          "name": "Verde",
-          "slug": "verde",
-          "color": "#117e15"
+          "name": "Orange",
+          "slug": "orange",
+          "color": "#F69B0B"
         },
         {
-          "name": "Rojo",
-          "slug": "rojo",
-          "color": "#cf2a2a"
+          "name": "Green",
+          "slug": "green",
+          "color": "#20C696"
+        },
+        {
+          "name": "Pink",
+          "slug": "pink",
+          "color": "#FF547C"
         }
       ]
     },

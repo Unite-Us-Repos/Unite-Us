@@ -135,7 +135,7 @@ $flex_index = $index;
                 <h2 class="mb-0 text-4xl">{{ $card["title"] }}</h2>
                 @isset ($card['icon']['sizes'])
                  <img
-                  class="group-hover:icon-gray w-40 h-auto object-contain sm:absolute right-0 bottom-0"
+                  class="group-hover:icon-gray w-40 h-auto object-contain right-0 bottom-0"
                   src="{{ $card['icon']['sizes']['medium'] }}" alt=""
                   style="max-height: 90px;"
                   />

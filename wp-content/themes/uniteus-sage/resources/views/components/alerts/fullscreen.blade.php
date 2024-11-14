@@ -95,8 +95,6 @@ if (!is_array($display)) {
                 <path d="M6.5 18L18.5 6M6.5 6L18.5 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-
-      
     </div>
   </div>
 </section>
