@@ -26,7 +26,7 @@ $small_font = $section['small_font'] ?? false;
 
   <div class="absolute inset-0">
     @if ($background['image'])
-      <img fetchpriority="high" class="w-full h-full object-cover @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif" src="{{ $background['image']['sizes']['medium'] }}"
+      <img fetchPriority="high" class="hero-desktop w-full h-full object-cover @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif" src="{{ $background['image']['sizes']['medium'] }}"
         srcset="{{ $background['image']['sizes']['medium'] }} 300w, {{ $background['image']['sizes']['2048x2048'] }} 1024w"
         sizes="(max-width: 600px) 300px, 1024px"
         alt="{{ $background['image']['alt'] }}">

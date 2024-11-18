@@ -141,7 +141,7 @@
             width: 170px;
             bottom: 6.5rem;" />
                     @isset($section['logo']['sizes'])
-                        <img class="hero-mobile w-full h-auto md:hidden" src="{{ $section['logo']['sizes']['medium'] }}"
+                        <img fetchPriority="high" class="hero-mobile w-full h-auto md:hidden" src="{{ $section['logo']['sizes']['medium'] }}"
                             alt="{{ $section['logo']['alt'] }}" />
                     @endisset
                 </div>
