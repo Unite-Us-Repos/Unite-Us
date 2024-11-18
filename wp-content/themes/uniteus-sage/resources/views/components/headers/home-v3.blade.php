@@ -44,12 +44,12 @@
     <div class="absolute inset-0">
         @if ($background['image'])
             <img fetchPriority="high"
-                class="hidden md:block w-full h-full object-cover @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
+                class="hero-desktop hidden md:block w-full h-full object-cover @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
                 src="{{ $background['image']['sizes']['2048x2048'] }}" alt="{{ $background['image']['alt'] }}">
 
-
+{{-- 
             <img class="md:hidden w-full h-full object-cover @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
-                src="{{ $background['logo']['sizes']['medium'] }}" alt="{{ $background['logo']['alt'] }}">
+                src="{{ $background['logo']['sizes']['medium'] }}" alt="{{ $background['logo']['alt'] }}"> --}}
         @endif
     </div>
 
@@ -141,7 +141,7 @@
             width: 170px;
             bottom: 6.5rem;" />
                     @isset($section['logo']['sizes'])
-                        <img class="w-full h-auto md:hidden" src="{{ $section['logo']['sizes']['medium'] }}"
+                        <img class="hero-mobile w-full h-auto md:hidden" src="{{ $section['logo']['sizes']['medium'] }}"
                             alt="{{ $section['logo']['alt'] }}" />
                     @endisset
                 </div>
