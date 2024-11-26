@@ -18,7 +18,7 @@ $flex_index = $index;
 }
 
 .anchor-li {
-  border-left: solid 3px white;
+  border-left: solid 3px transparent;
 }
 
 .anchor-li:hover,
@@ -32,7 +32,17 @@ $flex_index = $index;
 }
 </style>
 <section class="component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
-  <div x-data="{ showSlide{{ $flex_index }}: 0 }" class="component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif">
+  <div x-data="{
+        navHeight: 80, // Default navbar height
+        calculateTop() {
+            const nav = document.querySelector('.navbar'); // Adjust selector for your navbar
+            if (nav) {
+                this.navHeight = nav.offsetHeight; // Dynamically get navbar height
+            }
+        }
+    }" 
+    x-init="calculateTop()" 
+    class="component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif">
 
     <div class="text-center mb-6">
       @if ($section['subtitle'])
@@ -45,16 +55,20 @@ $flex_index = $index;
         </span>
       @endif
       <h2 class="mb-3 @if ('dark' == $background['color']) text-white @endif">{!! $section['title'] !!}</h2>
-      <div class="text-lg @if ('dark' == $background['color']) text-white @endif">
+      <div class=" width-40 mx-auto text-lg @if ('dark' == $background['color']) text-white @endif">
         {!! $section['description'] !!}
-
       </div>
     </div>
+    
     @if ($cards)
-      <div x-data="{ showSlide: '0' }" class="relative flex flex-col lg:grid lg:grid-cols-12 gap-6 pt-12 mt-20">
+    <div x-data="{ showSlide: '0' }" 
+    class="relative flex flex-col lg:grid lg:grid-cols-12 gap-6 pt-12 mt-20 @if (!empty($alternate) && $alternate) alternate @endif">
         <div class="col-span-3">
-          <ul class="hidden lg:flex sticky top-8 list-none flex-col gap-4 border-l border-blue-300"
-          style="border-left: solid 1px #C7D8E8 !important;">
+          <div class="uppercase text-action font-bold pb-4">Jump To</div>
+          <ul class="hidden lg:flex sticky list-none flex-col gap-4 border-l border-blue-300"
+            :style="`top: ${navHeight + 8}px;`" 
+            style="border-left: solid 1px #C7D8E8 !important;">
+      
             @foreach ($cards as $index => $card)
               @php
                 $anchor = strtolower($card["title"]);
@@ -122,7 +136,6 @@ $flex_index = $index;
               </div>
             </div>
           </div>
-
         </div>
         <div class="col-span-9 flex flex-col gap-32">
           @foreach ($cards as $index => $card)
@@ -132,7 +145,9 @@ $flex_index = $index;
             @endphp
             <div id="{{ $anchor }}" x-intersect.margin.0.0.-50%.0="showSlide = '{{ $index }}'">
               <div class="group relative flex flex-col-reverse sm:flex-row sm:justify-between sm:items-end mb-10 gap-10">
-                <h2 class="mb-0 text-4xl">{{ $card["title"] }}</h2>
+                @if (empty($alternate) || !$alternate)
+                  <h2 class="mb-0 text-4xl">{{ $card["title"] }}</h2>
+                @endif
                 @isset ($card['icon']['sizes'])
                  <img
                   class="group-hover:icon-gray w-40 h-auto object-contain right-0 bottom-0"
@@ -145,28 +160,76 @@ $flex_index = $index;
                 {!! $card["description"] !!}
               </div>
 
-              <div class="flex flex-col @if ($card['stats'] && $card['articles']) md:grid md:grid-cols-12 @endif gap-12 mt-10">
+            
+              <div class="flex flex-col gap-12 mt-10
+                @if ($card['stats'] && $card['articles']) 
+                    md:grid md:grid-cols-12 
+                @elseif ($card['stats'] && $card['partners']) 
+                    gap-4 md:flex-row
+                @endif">
+               
                 @if ($card["stats"])
-                <div class="col-span-6">
-                  <h3>Key Stats</h3>
-                  <div class="grid grid-cols-12 gap-5">
-                    @foreach ($card["stats"] as $stat)
-                      <div class="@if ($card['stats'] && $card['articles']) col-span-6 @else col-span-6 md:col-span-3 @endif relative border border-blue-200 rounded-xl p-3 lg:p-6 group">
-                        <div class="relative z-10 text-action group-hover:text-white">
-                        <h2 class="font-extrabold text-3xl mb-4 leading-tight">{!! $stat['label'] !!}</h2>
-                        <div class="text-sm text-brand group-hover:text-white">{!! $stat['description'] !!}</div>
-                        </div>
-                        <div class="absolute inset-0 bg-action z-0 rounded-xl opacity-0 group-hover:opacity-100">
-                          @isset ($stat['background_image']['sizes'])
-                            <img class="opacity-10 w-full h-full object-cover" src="{{ $stat['background_image']['sizes']['medium'] }}" alt="" />
-                          @endif
-                        </div>
+                  @if (empty($alternate) || !$alternate)
+                    <div class="col-span-6">
+                      <h3>Key Stats</h3>
+                      <div class="grid grid-cols-12 gap-5">
+                        @foreach ($card["stats"] as $stat)
+                          <div class="@if ($card['stats'] && $card['articles']) col-span-6 @else col-span-6 md:col-span-3 @endif relative border border-blue-200 rounded-xl p-3 lg:p-6 group">
+                            <div class="relative z-10 text-action group-hover:text-white">
+                            <h2 class="font-extrabold text-3xl mb-4 leading-tight">{!! $stat['label'] !!}</h2>
+                            <div class="text-sm text-brand group-hover:text-white">{!! $stat['description'] !!}</div>
+                            </div>
+                            <div class="absolute inset-0 bg-action z-0 rounded-xl opacity-0 group-hover:opacity-100">
+                              @isset ($stat['background_image']['sizes'])
+                                <img class="opacity-10 w-full h-full object-cover" src="{{ $stat['background_image']['sizes']['medium'] }}" alt="" />
+                              @endif
+                            </div>
+                          </div>
+                        @endforeach
                       </div>
-                    @endforeach
+                    </div>
+                  @else 
+                  <div class="col-span-6  md:basis-1/2 border-t">
+                    <h3 class="uppercase text-action text-sm mb-0 mt-4">Key Stats</h3>
+                    <div class="grid">
+                      <div class=" grid-cols-6 gap-5">
+                        @foreach ($card["stats"] as $stat)
+                          <div class="relative p-3 pl-0 flex gap-1">
+                            <div class="icon pt-1">
+                              <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53027 16.945C12.9486 16.945 16.5303 13.3633 16.5303 8.94501C16.5303 4.52673 12.9486 0.945007 8.53027 0.945007C4.112 0.945007 0.530273 4.52673 0.530273 8.94501C0.530273 13.3633 4.112 16.945 8.53027 16.945ZM12.2374 7.65211C12.6279 7.26159 12.6279 6.62842 12.2374 6.2379C11.8469 5.84738 11.2137 5.84738 10.8232 6.2379L7.53027 9.53079L6.23738 8.2379C5.84686 7.84738 5.21369 7.84738 4.82317 8.2379C4.43264 8.62842 4.43264 9.26159 4.82317 9.65211L6.82317 11.6521C7.21369 12.0426 7.84686 12.0426 8.23738 11.6521L12.2374 7.65211Z" fill="#2F71F4"/>
+                              </svg>
+                            </div>
+                              <div class="text-md text-brand">
+                                {!! $stat['description'] !!}
+                              </div>
+                          </div>
+                        @endforeach
+                      </div>
+                    </div>
                   </div>
-                </div>
+                  @endif
                 @endif
-
+                @if (!empty($card["partners"]))
+                  <div class="col-span-6 flex flex-col md:basis-1/2 border-t">
+                      <h3 class="uppercase text-action text-sm mb-0 mt-4">Partners</h3>
+                      <div class=" flex-col md:flex-row flex-wrap flex-1 flex gap-4 mt-4">
+                          @foreach ($card["partners"] as $partner)
+                              @if (!empty($partner['partner']['url']))
+                                  <div class="flex-classes border rounded shadow-sm bg-white p-4">
+                                      <img 
+                                          src="{{ $partner['partner']['url'] }}" 
+                                          alt="{{ $partner['partner']['alt'] ?? 'Partner logo' }}" 
+                                          class="partner-logo h-auto object-contain"
+                                      />
+                                  </div>
+                              @else  
+                                <p>No image available for this partner.</p>
+                              @endif
+                          @endforeach
+                      </div>
+                  </div>
+                @endif
                 @if ($card["articles"])
                   <div class="col-span-6 flex flex-col">
                     <h3>Articles</h3>
@@ -180,11 +243,11 @@ $flex_index = $index;
                           {{ $article->post_title }}
 
                           <div class="absolute p-7 pr-0 flex justify-end inset-0 z-10 rounded-xl group-hover:opacity-0">
-                <img class="w-5 h-5" src="@asset('/images/arrow-diagonal-up.svg')" alt="" />
-              </div>
-              <div class="absolute p-7 pr-0 flex justify-end inset-0 z-10 rounded-xl opacity-0 group-hover:opacity-100">
-                <img class="w-5 h-5" src="@asset('/images/arrow-diagonal-up-active.svg')" alt="" />
-              </div>
+                            <img class="w-5 h-5" src="@asset('/images/arrow-diagonal-up.svg')" alt="" />
+                          </div>
+                          <div class="absolute p-7 pr-0 flex justify-end inset-0 z-10 rounded-xl opacity-0 group-hover:opacity-100">
+                            <img class="w-5 h-5" src="@asset('/images/arrow-diagonal-up-active.svg')" alt="" />
+                          </div>
                         </a>
                       </div>
                     @endforeach

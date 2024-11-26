@@ -13,10 +13,20 @@ $faq_title = $acf["components"][$index]['faq']['title'] ?? 'Frequently Asked Que
 @includeIf('dividers.waves')
 @endif
 
-<section @isset($acf["components"][$index]['id']) id="{{ $acf["components"][$index]['id'] }}" @endisset class="relative component-section {{ $section_classes }}">
-  <div class="relative component-inner-section max-w-3xl mx-auto">
-    <h2 class="text-4xl font-bold mb-8 text-center">{{ $faq_title }}</h2>
+<section 
+  @isset($acf["components"][$index]['id']) id="{{ $acf["components"][$index]['id'] }}" @endisset
+  class="relative component-section {{ $section_classes }} 
+  @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif"
+  @if ($section_settings['padding_class'] == 'padding-collapse') style="padding: 0;" @endif
+>
+  <div 
+    class="relative component-inner-section max-w-3xl mx-auto 
+    @if ($section_settings['fullscreen']) fullscreen @endif"
+    @if ($section_settings['padding_class'] == 'padding-collapse') style="padding: 0;" @endif
+  >
 
+
+    <h2 class="text-4xl font-bold mb-8 text-center">{{ $faq_title }}</h2>
     @if (!empty($faqs))
       <div class="accordion accordion-vertical" x-data="{ selected: null }">
         <ul class="list-none">

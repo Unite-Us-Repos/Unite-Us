@@ -521,24 +521,17 @@
                             "type": "image",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_632e7f9d9b1d0",
-                                        "operator": "==",
-                                        "value": "grid-with-offset-icons"
-                                    }
-                                ]
-                            ],
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
                             "uploader": "",
-                            "acfe_thumbnail": 0,
                             "return_format": "array",
-                            "preview_size": "medium",
+                            "library": "all",
+                            "upload_folder": "",
+                            "acfe_thumbnail": 0,
                             "min_width": "",
                             "min_height": "",
                             "min_size": "",
@@ -546,8 +539,8 @@
                             "max_height": "",
                             "max_size": "",
                             "mime_types": "",
-                            "library": "all",
-                            "upload_folder": "",
+                            "allow_in_bindings": 1,
+                            "preview_size": "medium",
                             "parent_repeater": "field_632e7f9d9b1ff"
                         },
                         {
@@ -777,5 +770,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1722468046
+    "modified": 1732492772
 }

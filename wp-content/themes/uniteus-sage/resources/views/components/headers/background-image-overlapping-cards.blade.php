@@ -61,21 +61,22 @@ $small_font = $section['small_font'] ?? false;
         @endif --}}
         
         @if ($section['subtitle'])
-        <div class="
-            {{ $section['purple_text'] ? 'text-electric-purple' : 'text-action-light-blue' }} 
-            {{ $section['case_type'] == 'Uppercase' ? 'uppercase' : '' }} 
-            {{ $section['case_type'] == 'Lowercase' ? 'lowercase' : '' }} 
-            {{ $section['case_type'] == 'Camelcase' ? 'capitalize' : '' }} 
-            {{ $section['case_type'] == 'Typed' ? 'none' : '' }} 
-            @if ($section['subtitle_display_as_pill']) 
-                bg-light bg-opacity-10 text-action-light-blue text-sm py-1 px-4 inline-block mb-6 rounded-full
-            @else 
-                font-semibold text-base mb-3
-            @endif
-        ">
-            {!! $section['subtitle'] !!}
-        </div>
-    @endif
+            <div class="
+                {{ $section['purple_text'] ? 'text-electric-purple' : 'text-action-light-blue' }} 
+                {{ $section['case_type'] == 'Uppercase' ? 'uppercase' : '' }} 
+                {{ $section['case_type'] == 'Lowercase' ? 'lowercase' : '' }} 
+                {{ $section['case_type'] == 'Camelcase' ? 'capitalize' : '' }} 
+                {{ $section['case_type'] == 'Typed' ? 'none' : '' }} 
+                @if ($section['subtitle_display_as_pill']) 
+                    bg-light bg-opacity-10 text-action-light-blue text-sm py-1 px-4 inline-block mb-6 rounded-full
+                    {{ $section['gradient_pill'] ? 'gradient-pill' : '' }}
+                @else 
+                    font-semibold text-base mb-3
+                @endif
+            ">
+                {!! $section['subtitle'] !!}
+            </div>
+        @endif
     
     
 
