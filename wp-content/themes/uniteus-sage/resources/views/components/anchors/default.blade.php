@@ -33,11 +33,11 @@ $flex_index = $index;
 </style>
 <section class="component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
   <div x-data="{
-        navHeight: 80, // Default navbar height
+        navHeight: 90, // Default navbar height
         calculateTop() {
-            const nav = document.querySelector('.navbar'); // Adjust selector for your navbar
+            const nav = document.querySelector('.navbar'); 
             if (nav) {
-                this.navHeight = nav.offsetHeight; // Dynamically get navbar height
+                this.navHeight = nav.offsetHeight; 
             }
         }
     }" 
@@ -62,37 +62,38 @@ $flex_index = $index;
     
     @if ($cards)
     <div x-data="{ showSlide: '0' }" 
-    class="relative flex flex-col lg:grid lg:grid-cols-12 gap-6 pt-12 mt-20 @if (!empty($alternate) && $alternate) alternate @endif">
+    class="relative flex flex-col lg:grid lg:grid-cols-12 gap-6 pt-4 @if (!empty($alternate) && $alternate) alternate @endif">
         <div class="col-span-3">
-          <div class="uppercase text-action font-bold pb-4">Jump To</div>
-          <ul class="hidden lg:flex sticky list-none flex-col gap-4 border-l border-blue-300"
-            :style="`top: ${navHeight + 8}px;`" 
-            style="border-left: solid 1px #C7D8E8 !important;">
-      
-            @foreach ($cards as $index => $card)
-              @php
-                $anchor = strtolower($card["title"]);
-                $anchor = str_replace(' ', '-', $anchor);
-              @endphp
-              <li
-                :class="showSlide == '{{ $index }}' ? 'active-anchor' : ''"
-                class="anchor-li"
-                style="padding-left: 30px;"
-                >
-                <a
-                  href="#{{ $anchor }}"
-                  class="anchor-icon flex gap-6 items-center no-underline text-xl text-gray-500"
+          <div class="sticky" :style="`top: ${navHeight + 8}px;`" >
+            <div class="uppercase text-action font-bold pb-4 hidden opacity-0 lg:block lg:opacity-100">Jump To</div>
+            <ul class="hidden lg:flex  list-none flex-col gap-4 border-l border-blue-300"
+              
+              style="border-left: solid 1px #C7D8E8 !important;">
+        
+              @foreach ($cards as $index => $card)
+                @php
+                  $anchor = strtolower($card["title"]);
+                  $anchor = str_replace(' ', '-', $anchor);
+                @endphp
+                <li
+                  :class="showSlide == '{{ $index }}' ? 'active-anchor' : ''"
+                  class="anchor-li"
+                  style="padding-left: 30px;"
                   >
-                  @isset ($card['icon']['sizes'])
-                    <img class="w-12 h-12 object-contain" src="{{ $card['icon']['sizes']['medium'] }}" alt="" />
-                  @endisset
-                  {{ $card["title"]}}
-                </a>
-              </li>
-            @endforeach
-          </ul>
-
-          <div class="sticky top-8 z-20 lg:hidden" style="margin-top: -3rem; margin-bottom: 6rem;">
+                  <a
+                    href="#{{ $anchor }}"
+                    class="anchor-icon flex gap-6 items-center no-underline text-xl text-gray-500"
+                    >
+                    @isset ($card['icon']['sizes'])
+                      <img class="w-12 h-12 object-contain" src="{{ $card['icon']['sizes']['medium'] }}" alt="" />
+                    @endisset
+                    {{ $card["title"]}}
+                  </a>
+                </li>
+              @endforeach
+            </ul>
+          </div>
+          <div class="sticky top-8 z-20 lg:hidden" style="margin-top: 0rem; margin-bottom: 2rem;">
             <div x-data="Components.menu({ open: false })" x-init="init()"
               @keydown.escape.stop="open = false; focusButton()" @click.away="onClickAway($event)"
               class="relative inline-block text-left w-full">
@@ -144,7 +145,7 @@ $flex_index = $index;
               $anchor = str_replace(' ', '-', $anchor);
             @endphp
             <div id="{{ $anchor }}" x-intersect.margin.0.0.-50%.0="showSlide = '{{ $index }}'">
-              <div class="group relative flex flex-col-reverse sm:flex-row sm:justify-between sm:items-end mb-10 gap-10">
+              <div class="group relative flex flex-col-reverse sm:flex-row sm:justify-between sm:items-end mb-0 gap-10">
                 @if (empty($alternate) || !$alternate)
                   <h2 class="mb-0 text-4xl">{{ $card["title"] }}</h2>
                 @endif
@@ -190,11 +191,11 @@ $flex_index = $index;
                     </div>
                   @else 
                   <div class="col-span-6  md:basis-1/2 border-t">
-                    <h3 class="uppercase text-action text-sm mb-0 mt-4">Key Stats</h3>
+                    <h3 class="uppercase text-action text-sm mb-4 mt-4">Key Stats</h3>
                     <div class="grid">
                       <div class=" grid-cols-6 gap-5">
                         @foreach ($card["stats"] as $stat)
-                          <div class="relative p-3 pl-0 flex gap-1">
+                          <div class="relative p-3 pl-0 flex gap-4">
                             <div class="icon pt-1">
                               <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53027 16.945C12.9486 16.945 16.5303 13.3633 16.5303 8.94501C16.5303 4.52673 12.9486 0.945007 8.53027 0.945007C4.112 0.945007 0.530273 4.52673 0.530273 8.94501C0.530273 13.3633 4.112 16.945 8.53027 16.945ZM12.2374 7.65211C12.6279 7.26159 12.6279 6.62842 12.2374 6.2379C11.8469 5.84738 11.2137 5.84738 10.8232 6.2379L7.53027 9.53079L6.23738 8.2379C5.84686 7.84738 5.21369 7.84738 4.82317 8.2379C4.43264 8.62842 4.43264 9.26159 4.82317 9.65211L6.82317 11.6521C7.21369 12.0426 7.84686 12.0426 8.23738 11.6521L12.2374 7.65211Z" fill="#2F71F4"/>
@@ -212,11 +213,11 @@ $flex_index = $index;
                 @endif
                 @if (!empty($card["partners"]))
                   <div class="col-span-6 flex flex-col md:basis-1/2 border-t">
-                      <h3 class="uppercase text-action text-sm mb-0 mt-4">Partners</h3>
+                      <h3 class="uppercase text-action text-sm mb-4 mt-4">Partners</h3>
                       <div class=" flex-col md:flex-row flex-wrap flex-1 flex gap-4 mt-4">
                           @foreach ($card["partners"] as $partner)
                               @if (!empty($partner['partner']['url']))
-                                  <div class="flex-classes border rounded shadow-sm bg-white p-4">
+                                  <div class="flex-classes border rounded-lg shadow-sm bg-white p-4">
                                       <img 
                                           src="{{ $partner['partner']['url'] }}" 
                                           alt="{{ $partner['partner']['alt'] ?? 'Partner logo' }}" 
