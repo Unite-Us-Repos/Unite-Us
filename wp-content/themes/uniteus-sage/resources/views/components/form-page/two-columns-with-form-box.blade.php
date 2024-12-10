@@ -71,15 +71,40 @@ if ($background['overlay']) {
         @endif
       </div>
 
-      <div class="relative lg:row-start-1 lg:col-start-2">
-        @isset ($code_editor)
-          @if (!empty($code_editor))
-            <div id="formIframe" class="rounded-lg shadow-lg bg-white p-10 embed-form text-brand">
-              {!! $code_editor !!}
+      @if (!empty($alternate_form_style) && $alternate_form_style)
+        {{-- Show the second div if alternate_form_style is true --}}
+        <div class="flex flex-col lg:col-span-1 relative">
+          <div class="rounded-md p-6 sm:p-10 bg-light-gradient shadow-md">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl mb-0 font-medium capitalize">Please Fill Out The Form Below</h3>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none">
+                <path d="M12.0003 16.3018H20.0003M12.0003 21.6351H20.0003M22.667 28.3018H9.33366C7.8609 28.3018 6.66699 27.1079 6.66699 25.6351V6.96842C6.66699 5.49567 7.8609 4.30176 9.33366 4.30176H16.7814C17.135 4.30176 17.4741 4.44223 17.7242 4.69228L24.9431 11.9112C25.1932 12.1613 25.3337 12.5004 25.3337 12.854V25.6351C25.3337 27.1078 24.1398 28.3018 22.667 28.3018Z" stroke="#C7D8E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
             </div>
-          @endif
-        @endisset
-      </div>
+            @isset ($code_editor)
+              @if (!empty($code_editor))
+                <div id="formIframe" class=" embed-form text-brand">
+                  {!! $code_editor !!}
+                </div>
+              @endif
+            @endisset
+          </div>
+        </div>
+      @else
+        {{-- Show the first div if alternate_form_style is false --}}
+        <div class="relative lg:row-start-1 lg:col-start-2">
+          @isset ($code_editor)
+            @if (!empty($code_editor))
+              <div id="formIframe" class="rounded-lg shadow-lg bg-white p-10 embed-form text-brand">
+                {!! $code_editor !!}
+              </div>
+            @endif
+          @endisset
+        </div>
+      @endif
+
+
+</div>
     </div>
   </div>
   @if ($background['image'])
