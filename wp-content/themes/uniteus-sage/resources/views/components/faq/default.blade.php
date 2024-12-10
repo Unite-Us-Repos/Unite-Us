@@ -26,7 +26,7 @@ $faq_title = $acf["components"][$index]['faq']['title'] ?? 'Frequently Asked Que
   >
 
 
-    <h2 class="text-4xl font-bold mb-8 text-center">{{ $faq_title }}</h2>
+    <h2 class="text-4xl mb-8 text-center">{{ $faq_title }}</h2>
     @if (!empty($faqs))
       <div class="accordion accordion-vertical" x-data="{ selected: null }">
         <ul class="list-none">
