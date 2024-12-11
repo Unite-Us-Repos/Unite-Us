@@ -203,7 +203,14 @@ module.exports = {
     'lg:z-10',
     'px-8',
     'lg:text-xl',
-    'lg:p-8'
+    'lg:p-8',
+    'h-14',
+    'w-14',
+    'lg:opacity-100',
+    'w-fit',
+    'md:pt-20',
+    '!md:pt-20',
+    'md:!pt-20'
 
   ],
   theme: {

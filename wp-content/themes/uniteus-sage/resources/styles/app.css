@@ -2161,3 +2161,36 @@ blockquote h4{
 .report .grabbing {
   cursor: grabbing !important;
 }
+
+
+.gradient-pill {
+  color: white;
+  background: linear-gradient(to right, #216CFF, #9643FF);
+}
+.gradient-border {
+  background: linear-gradient(to right, #216CFF, #9643FF);
+  padding: 1px; 
+  border-radius: 0.5rem; /* Same as your border radius */
+}
+
+.gradient-border > * {
+  background: white; /* Inner background for content */
+  border-radius: inherit; /* Match the parent border radius */
+}
+
+
+.flex-classes {
+  flex-basis: calc(50% - 1rem);
+  flex-grow: 1;
+  justify-content: center;
+  display: flex;
+}
+
+.partner-logo {
+  max-width: 100%;
+  margin: auto;
+}
+
+.flex-classes:last-child .partner-logo  {
+  max-width: 10rem;
+}
