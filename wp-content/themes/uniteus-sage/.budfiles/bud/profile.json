@@ -1260,7 +1260,7 @@
       "TMPDIR": "/var/folders/l5/7qr9nzp92jj32s0c117qnptm0000gp/T/",
       "npm_package_scripts_translate": "yarn translate:pot && yarn translate:update",
       "npm_config_init_license": "MIT",
-      "TERM_PROGRAM_VERSION": "1.95.3",
+      "TERM_PROGRAM_VERSION": "1.96.0",
       "npm_package_dependencies__alpinejs_intersect": "^3.13.2",
       "npm_package_scripts_dev": "bud dev",
       "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
@@ -1276,14 +1276,15 @@
       "npm_package_devDependencies__roots_sage": "5.7.7",
       "npm_package_license": "MIT",
       "COMMAND_MODE": "unix2003",
-      "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.YAZ14hfnpr/Listeners",
+      "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.qr32W3GDO2/Listeners",
       "__CF_USER_TEXT_ENCODING": "0x1F6:0x0:0x0",
       "npm_package_dependencies_glightbox": "^3.2.0",
       "npm_package_scripts_translate_mo": "wp i18n make-mo ./resources/lang ./resources/lang",
       "npm_execpath": "/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/lib/node_modules/yarn/bin/yarn.js",
-      "PATH": "/var/folders/l5/7qr9nzp92jj32s0c117qnptm0000gp/T/yarn--1733937623319-0.8965914089522804:/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/.bin:/Users/sabrina.matthews/.config/yarn/link/node_modules/.bin:/Users/sabrina.matthews/.yarn/bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin/node_modules/npm/bin/node-gyp-bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin",
+      "PATH": "/var/folders/l5/7qr9nzp92jj32s0c117qnptm0000gp/T/yarn--1734050512430-0.27248982178979664:/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/.bin:/Users/sabrina.matthews/.config/yarn/link/node_modules/.bin:/Users/sabrina.matthews/.yarn/bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin/node_modules/npm/bin/node-gyp-bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin",
       "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"build\"],\"original\":[\"build\"]}",
       "npm_package_dependencies_swiper": "^8.4.5",
+      "LaunchInstanceID": "1E22B2BA-EEFA-4577-AA1D-68FE0452C7DA",
       "_": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/.bin/bud",
       "__CFBundleIdentifier": "com.microsoft.VSCode",
       "PWD": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage",
@@ -1331,6 +1332,7 @@
       "npm_package_scripts_translate_update": "for filename in ./resources/lang/*.po; do msgmerge -U $filename ./resources/lang/sage.pot; done; rm -f ./resources/lang/*.po~",
       "npm_config_init_version": "1.0.0",
       "npm_config_ignore_optional": "",
+      "SECURITYSESSIONID": "186ac",
       "npm_package_devDependencies__roots_bud_tailwindcss": "5.7.7",
       "COLORTERM": "truecolor",
       "npm_node_execpath": "/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin/node",
@@ -1579,8 +1581,29 @@
       },
       "requires": []
     },
-    "@roots/bud-entrypoints": {
-      "name": "@roots/bud-entrypoints",
+    "@roots/bud-react": {
+      "name": "@roots/bud-react",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-babel"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+      },
+      "requires": [
+        [
+          "@roots/bud-babel",
+          "5.7.7"
+        ]
+      ]
+    },
+    "@roots/bud-wordpress-manifests": {
+      "name": "@roots/bud-wordpress-manifests",
       "version": "5.7.7",
       "bud": {
         "type": "extension"
@@ -1589,8 +1612,8 @@
       "peerDependencies": {},
       "requires": []
     },
-    "@roots/bud-wordpress-manifests": {
-      "name": "@roots/bud-wordpress-manifests",
+    "@roots/bud-wordpress-externals": {
+      "name": "@roots/bud-wordpress-externals",
       "version": "5.7.7",
       "bud": {
         "type": "extension"
@@ -1627,29 +1650,8 @@
         ]
       ]
     },
-    "@roots/bud-react": {
-      "name": "@roots/bud-react",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension",
-        "peers": [
-          "@roots/bud-babel"
-        ]
-      },
-      "resolvable": true,
-      "peerDependencies": {
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2"
-      },
-      "requires": [
-        [
-          "@roots/bud-babel",
-          "5.7.7"
-        ]
-      ]
-    },
-    "@roots/bud-wordpress-dependencies": {
-      "name": "@roots/bud-wordpress-dependencies",
+    "@roots/bud-entrypoints": {
+      "name": "@roots/bud-entrypoints",
       "version": "5.7.7",
       "bud": {
         "type": "extension"
@@ -1658,8 +1660,8 @@
       "peerDependencies": {},
       "requires": []
     },
-    "@roots/bud-wordpress-externals": {
-      "name": "@roots/bud-wordpress-externals",
+    "@roots/bud-wordpress-dependencies": {
+      "name": "@roots/bud-wordpress-dependencies",
       "version": "5.7.7",
       "bud": {
         "type": "extension"

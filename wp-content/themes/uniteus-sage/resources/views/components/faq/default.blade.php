@@ -35,7 +35,7 @@ $faq_title = $acf["components"][$index]['faq']['title'] ?? 'Frequently Asked Que
 
               <!-- Question button -->
               <button type="button" class="w-full text-left flex justify-between items-center" @click="selected !== {{ $index }} ? selected = {{ $index }} : selected = null">
-                <h3 class="faq-question text-xl font-semibold mb-0">
+                <h3 class="faq-question text-xl font-semibold mb-0 pr-10">
                   {{ $faq['question'] ?? 'No question provided' }}
                 </h3>
               
