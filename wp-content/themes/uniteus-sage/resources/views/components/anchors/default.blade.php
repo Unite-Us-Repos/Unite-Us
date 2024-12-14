@@ -31,7 +31,7 @@ $flex_index = $index;
   color: #0B1538;
 }
 </style>
-<section class="component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif" @isset($section['id']) id="{{ $section['id'] }}">
+<section class="component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif" @isset($section['id']) id="{{ $section['id'] }}" @endisset>
   <div x-data="{
         navHeight: 90, // Default navbar height
         calculateTop() {
