@@ -218,10 +218,10 @@ $flex_index = $index;
                             @foreach ($card["partners"] as $partner)
                                 @if (!empty($partner['partner']['url']))
                                     <div class="flex-classes border rounded-lg shadow-sm bg-white p-4">
-                                        @if (!empty($partner['partner_link']['url']))
-                                            <a href="{{ $partner['partner_link']['url'] }}" 
-                                              target="{{ $partner['partner_link']['target'] ?? '_self' }}" 
-                                              class="partner-link">
+                                        @if (!empty($partner['link']['url']))
+                                            <a href="{{ $partner['link']['url'] }}" 
+                                              target="{{ $partner['link']['target'] ?? '_self' }}" 
+                                              class="partner-link flex-classes">
                                                 <img 
                                                     src="{{ $partner['partner']['url'] }}" 
                                                     alt="{{ $partner['partner']['alt'] ?? 'Partner logo' }}" 
