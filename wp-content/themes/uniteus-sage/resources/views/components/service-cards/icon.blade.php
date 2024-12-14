@@ -262,7 +262,7 @@ use Illuminate\Support\Str;
                       </svg>                    
                   </span>
                 @endif
-                <div class="relative z-10 w-full h-full text-lg lg:text-4xl">
+                <div class="relative z-10 w-full h-full text-lg lg:text-4xl hover-class">
                   <div classs="absolute inset-0 z-10 border-b-[15px] border-action-dark transition ease-in-out delay-250 group-hover:opacity-0 group-hover:z-0"></div>
                   @if ($link)
                   <a class=" inset-0 text-brand group-hover:text-white no-underline" href="{{ $link }}" @if ($card['is_blank']) target="_blank" @endif>
