@@ -2194,3 +2194,7 @@ blockquote h4{
 .flex-classes:last-child .partner-logo  {
   max-width: 10rem;
 }
+
+.hover-class:hover {
+  background: linear-gradient(to bottom right, #d7d5fd, #e0e9fe);
+}
