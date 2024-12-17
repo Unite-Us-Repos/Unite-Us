@@ -1,10 +1,5 @@
 @php
 $section_settings = $acf["components"][$index]['layout_settings']['section_settings'];
-$h_level = 2;
-$is_heading = $section["is_header"];
-if ($is_heading) {
-  $h_level = 1;
-}
 
 // Define background and text classes
 $background_classes = '';
@@ -55,9 +50,11 @@ if ($background['overlay']) {
         @isset ($section['logo']['sizes'])
           <img class="mb-6 max-w-[224px] h-auto" src="{{ $section['logo']['sizes']['medium'] }}" alt="{{ $section['logo']['alt'] }}" />
         @endisset
-        <h{{ $h_level }} class="mb-0 text-4xl font-extrabold tracking-tight {{ $text_classes }} md:text-5xl lg:text-6xl">
-          {!! $section['title'] !!}
-        </h{{ $h_level }}>
+        <{{ $section['is_header'] === 'h1' ? 'h1' : ($section['is_header'] === 'h2' ? 'h2' : 'div') }}
+        class="text-4xl tracking-tight {{ $small_font ? 'text-5xl font-semibold small-font' : 'font-extrabold md:text-5xl lg:text-6xl' }}">
+            {!! $section['title'] !!}
+        </{{ $section['is_header'] === 'h1' ? 'h1' : ($section['is_header'] === 'h2' ? 'h2' : 'div') }}>
+    
         <div class="text-lg {{ $text_classes }}">
           {!! $section['description'] !!}
         </div>
