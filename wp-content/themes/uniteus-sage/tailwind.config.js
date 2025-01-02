@@ -210,9 +210,17 @@ module.exports = {
     'w-fit',
     'md:pt-20',
     '!md:pt-20',
-    'md:!pt-20'
-
+    'md:!pt-20',
+    'fill-gray-500',
+    'p-12',
+    'pl-12',
+    'underline',
   ],
+  variants: {
+    extend: {
+        fill: ['hover', 'group-hover'],
+    },
+  },
   theme: {
     fontFamily: {
       'sans': ['Proxima Nova', 'ui-sans-serif', 'system-ui'],

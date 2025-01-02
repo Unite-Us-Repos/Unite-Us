@@ -76,6 +76,8 @@ class App extends Composer
                 $menu[$m->ID]['ID']         = $m->ID;
                 $menu[$m->ID]['title']      = $m->title;
                 $menu[$m->ID]['url']        = $m->url;
+                $menu[$m->ID]['classes']    = $m->classes;
+                $menu[$m->ID]['description'] = $m->description;
                 $menu[$m->ID]['children']   = false;
 
                 if ($anchor) {
@@ -91,10 +93,14 @@ class App extends Composer
             if ($m->menu_item_parent) {
                 $submenu[$m->ID] = array();
                 $anchor = get_field('anchor', $m->ID);
-                $submenu[$m->ID]['anchor']  = '';
-                $submenu[$m->ID]['ID']      = $m->ID;
-                $submenu[$m->ID]['title']   = $m->title;
-                $submenu[$m->ID]['url']     = $m->url;
+                $icon = get_field('menu_icon', $m->ID); // Retrieve icon field from ACF
+                $submenu[$m->ID]['anchor'] = '';
+                $submenu[$m->ID]['ID'] = $m->ID;
+                $submenu[$m->ID]['title'] = $m->title;
+                $submenu[$m->ID]['url'] = $m->url;
+                $submenu[$m->ID]['classes'] = $m->classes;
+                $submenu[$m->ID]['icon'] = $icon; // Add the icon field here
+                $submenu[$m->ID]['description'] = $m->description;
 
                 if (isset($menu[$m->menu_item_parent])) {
                     $menu[$m->menu_item_parent]['children'][$m->ID] = $submenu[$m->ID];
@@ -102,9 +108,7 @@ class App extends Composer
 
                 if ($anchor) {
                     $submenu[$m->ID]['anchor'] = $anchor;
-                    $submenu[$m->ID]['url']    = $submenu[$m->ID]['url']
-                        . '#'
-                        . $anchor;
+                    $submenu[$m->ID]['url'] = $submenu[$m->ID]['url'] . '#' . $anchor;
                 }
 
                 $sub_submenu = array();
@@ -112,16 +116,18 @@ class App extends Composer
                     if ($mm->menu_item_parent == $m->ID) {
                         $sub_submenu[$mm->ID] = array();
                         $anchor = get_field('anchor', $mm->ID);
-                        $sub_submenu[$mm->ID]['ID']      = $mm->ID;
-                        $sub_submenu[$mm->ID]['title']   = $mm->title;
-                        $sub_submenu[$mm->ID]['url']     = $mm->url;
-                        $sub_submenu[$mm->ID]['parent']     = $mm->menu_item_parent;
+                        $icon = get_field('menu_icon', $mm->ID); // Retrieve icon field from ACF
+                        $sub_submenu[$mm->ID]['ID'] = $mm->ID;
+                        $sub_submenu[$mm->ID]['title'] = $mm->title;
+                        $sub_submenu[$mm->ID]['url'] = $mm->url;
+                        $sub_submenu[$mm->ID]['classes'] = $mm->classes;
+                        $sub_submenu[$mm->ID]['parent'] = $mm->menu_item_parent;
+                        $sub_submenu[$mm->ID]['icon'] = $icon; // Add the icon field here
+                        $sub_submenu[$mm->ID]['description'] = $mm->description;
 
                         if ($anchor) {
                             $sub_submenu[$mm->ID]['anchor'] = $anchor;
-                            $sub_submenu[$mm->ID]['url'] = $sub_submenu[$mm->ID]['url']
-                                . '#'
-                                . $anchor;
+                            $sub_submenu[$mm->ID]['url'] = $sub_submenu[$mm->ID]['url'] . '#' . $anchor;
                         }
 
                         $menu[$m->menu_item_parent]['children'][$m->ID]['children'][$mm->ID] = $sub_submenu[$mm->ID];
