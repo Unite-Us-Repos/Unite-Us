@@ -179,7 +179,7 @@ $watch('isSticky', value => {
                                           @if (isset($menu['classes']) && in_array('resources', $menu['classes']))
                                           <div class="bg-gray-200 px-5 pt-4 pb-4 pl-12 view-all">
                                               <p class="text-base flex">
-                                                  <a href="/contact" class="text-gray-700 flex items-center gap-4 font-semibold ">View All Resources
+                                                  <a href="/knowledge-hub/" class="text-gray-700 flex items-center gap-4 font-semibold ">View All Resources
                                                     <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M8.26562 1.19189L14.0739 7.00013L8.26562 12.8084" stroke="#216CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                     <path d="M14.0744 6.99951L1.71777 6.99951" stroke="#216CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
