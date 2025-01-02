@@ -31,7 +31,7 @@ $flex_index = $index;
   color: #0B1538;
 }
 </style>
-<section class="component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+<section class="component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif" @isset($section['id']) id="{{ $section['id'] }}" @endisset>
   <div x-data="{
         navHeight: 90, // Default navbar height
         calculateTop() {
@@ -190,7 +190,7 @@ $flex_index = $index;
                       </div>
                     </div>
                   @else 
-                  <div class="col-span-6  md:basis-1/2 border-t">
+                  <div class="key-stats col-span-6 md:basis-1/2 border-t">
                     <h3 class="uppercase text-action text-sm mb-4 mt-4">Key Stats</h3>
                     <div class="grid">
                       <div class=" grid-cols-6 gap-5">
@@ -212,27 +212,40 @@ $flex_index = $index;
                   @endif
                 @endif
                 @if (!empty($card["partners"]))
-                  <div class="col-span-6 flex flex-col md:basis-1/2 border-t">
-                      <h3 class="uppercase text-action text-sm mb-4 mt-4">Partners</h3>
-                      <div class=" flex-col md:flex-row flex-wrap flex-1 flex gap-4 mt-4">
-                          @foreach ($card["partners"] as $partner)
-                              @if (!empty($partner['partner']['url']))
-                                  <div class="flex-classes border rounded-lg shadow-sm bg-white p-4">
-                                      <img 
-                                          src="{{ $partner['partner']['url'] }}" 
-                                          alt="{{ $partner['partner']['alt'] ?? 'Partner logo' }}" 
-                                          class="partner-logo h-auto object-contain"
-                                      />
-                                  </div>
-                              @else  
-                                <p>No image available for this partner.</p>
-                              @endif
-                          @endforeach
-                      </div>
-                  </div>
+                    <div class="partners col-span-6 flex flex-col md:basis-1/2 border-t">
+                        <h3 class="uppercase text-action text-sm mb-4 mt-4">Partners</h3>
+                        <div class="flex-col md:flex-row flex-wrap flex-1 flex gap-4 mt-4">
+                            @foreach ($card["partners"] as $partner)
+                                @if (!empty($partner['partner']['url']))
+                                    <div class="flex-classes border rounded-lg shadow-sm bg-white p-4">
+                                        @if (!empty($partner['link']['url']))
+                                            <a href="{{ $partner['link']['url'] }}" 
+                                              target="{{ $partner['link']['target'] ?? '_self' }}" 
+                                              class="partner-link flex-classes">
+                                                <img 
+                                                    src="{{ $partner['partner']['url'] }}" 
+                                                    alt="{{ $partner['partner']['alt'] ?? 'Partner logo' }}" 
+                                                    class="partner-logo h-auto object-contain"
+                                                />
+                                            </a>
+                                        @else
+                                            <img 
+                                                src="{{ $partner['partner']['url'] }}" 
+                                                alt="{{ $partner['partner']['alt'] ?? 'Partner logo' }}" 
+                                                class="partner-logo h-auto object-contain"
+                                            />
+                                        @endif
+                                    </div>
+                                @else  
+                                    <p>No image available for this partner.</p>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                 @endif
+
                 @if ($card["articles"])
-                  <div class="col-span-6 flex flex-col">
+                  <div class="articles col-span-6 flex flex-col">
                     <h3>Articles</h3>
                     @foreach ($card["articles"] as $article)
                       <div class="text-lg">

@@ -237,12 +237,43 @@
                         ]
                     ],
                     "wrapper": {
-                        "width": "",
+                        "width": "50",
                         "class": "",
                         "id": ""
                     },
                     "message": "",
                     "default_value": 0,
+                    "allow_in_bindings": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1,
+                    "style": ""
+                },
+                {
+                    "key": "field_67620eaab553e",
+                    "label": "Gradient Hover",
+                    "name": "gradient_hover",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "This will create a gradient light purple\/blue hover state.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_632e7f9d9b1d0",
+                                "operator": "==",
+                                "value": "icon"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 1,
                     "ui_on_text": "",
                     "ui_off_text": "",
                     "ui": 1,
@@ -770,5 +801,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1732492772
+    "modified": 1734479613
 }

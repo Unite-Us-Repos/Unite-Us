@@ -206,7 +206,8 @@ use Illuminate\Support\Str;
             </div>
           @else
           <div class="service-icon-card h-full group">
-            <div class="relative flex items-start rounded-lg overflow-hidden group h-full 
+            <div class="relative flex items-start rounded-lg overflow-hidden group h-full
+            @if ($gradient_hover) hover-class @else group-hover:bg-{{ $icon_color_class }} @endif
               @if ($alternate) border-2 border-action @endif
               @if (!empty($card['custom_icon'])) gradient-border @else 
                 bg-white text-brand border border-light @if (empty($card['custom_icon'])) group-hover:border-{{ $icon_color_class }} @endif 
@@ -262,7 +263,7 @@ use Illuminate\Support\Str;
                       </svg>                    
                   </span>
                 @endif
-                <div class="relative z-10 w-full h-full text-lg lg:text-4xl">
+                <div class="relative z-10 w-full h-full text-lg lg:text-4xl @if ($gradient_hover) hover-class @endif">
                   <div classs="absolute inset-0 z-10 border-b-[15px] border-action-dark transition ease-in-out delay-250 group-hover:opacity-0 group-hover:z-0"></div>
                   @if ($link)
                   <a class=" inset-0 text-brand group-hover:text-white no-underline" href="{{ $link }}" @if ($card['is_blank']) target="_blank" @endif>

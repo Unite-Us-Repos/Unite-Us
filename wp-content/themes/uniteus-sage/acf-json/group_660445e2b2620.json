@@ -470,6 +470,24 @@
                                     "allow_in_bindings": 0,
                                     "preview_size": "medium",
                                     "parent_repeater": "field_67453b3fc6ef8"
+                                },
+                                {
+                                    "key": "field_675b83638c855",
+                                    "label": "Link",
+                                    "name": "link",
+                                    "aria-label": "",
+                                    "type": "link",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "allow_in_bindings": 0,
+                                    "parent_repeater": "field_67453b3fc6ef8"
                                 }
                             ],
                             "parent_repeater": "field_66045a6a289a8"
@@ -550,5 +568,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1732603746
+    "modified": 1734050674
 }
