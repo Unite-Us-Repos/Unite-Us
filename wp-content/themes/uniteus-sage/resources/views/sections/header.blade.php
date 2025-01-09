@@ -111,8 +111,7 @@ $watch('isSticky', value => {
                                             d="M6.2177 7.29289C6.60822 6.90237 7.24139 6.90237 7.63191 7.29289L10.9248 10.5858L14.2177 7.29289C14.6082 6.90237 15.2414 6.90237 15.6319 7.29289C16.0224 7.68342 16.0224 8.31658 15.6319 8.70711L11.6319 12.7071C11.2414 13.0976 10.6082 13.0976 10.2177 12.7071L6.2177 8.70711C5.82717 8.31658 5.82717 7.68342 6.2177 7.29289Z" />
                                     </svg>
                                 </a>
-                                <div
-                                class="menu-wrapper absolute hidden group-focus:block group-hover:block z-50 left-1/2 transform -translate-x-1/2 mt-0 w-screen px-0 bg-gray-100">
+                                <div class="menu-wrapper absolute hidden group-focus:block group-hover:block z-50 left-1/2 transform -translate-x-1/2 mt-0 w-screen px-0 bg-white">
                                     <div class="menu-wrapper-inner overflow-hidden">
                                         <div class="menu-item-wrapper relative grid gap-8 p-12 @if (isset($menu['classes']) && in_array('solutions', $menu['classes'])) solutions-menu-item-wrapper @endif">
                                             @foreach ($menu['children'] as $child)
