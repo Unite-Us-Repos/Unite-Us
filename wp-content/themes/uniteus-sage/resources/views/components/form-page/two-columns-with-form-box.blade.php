@@ -99,9 +99,6 @@ if ($background['overlay']) {
           @endisset
         </div>
       @endif
-
-
-</div>
     </div>
   </div>
   @if ($background['image'])
@@ -111,10 +108,10 @@ if ($background['overlay']) {
       sizes="(max-width: 600px) 300px, 1024px"
       alt="{{ $background['image']['alt'] }}">
   </div>
-@endif
+  @endif
 
   @if ($background['overlay'])
-  <div class="absolute inset-0 bg-brand opacity-75"></div>
+    <div class="absolute inset-0 bg-brand opacity-75"></div>
   @endif
   
 </section>
