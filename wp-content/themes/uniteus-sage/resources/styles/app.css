@@ -2204,7 +2204,7 @@ blockquote h4 {
     border-bottom: 5px solid #226cff;
   }
   .company .menu-wrapper {
-    max-width: 25rem;
+    max-width: 31rem;
     top: 75px;
     background-color: #ffffff;
     border-bottom-left-radius: 1rem;
@@ -2214,13 +2214,15 @@ blockquote h4 {
   .company .menu-wrapper-inner {
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    box-shadow: 0 4px 5px -2px #c9c9c9;
+    box-shadow: 0 0px 5px -1px #c9c9c9;
   }
 
   .company .menu-wrapper .menu-item-wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 2rem 3rem;
+    padding-bottom: 2rem;
   }
 
   .company .menu-wrapper .menu-item-wrapper .menu-item {
@@ -2241,7 +2243,7 @@ blockquote h4 {
   .resources .menu-wrapper {
     max-width: 60rem;
     top: 75px;
-    background-color: #f3f3f3;
+    background-color: #ffffff;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
   }
@@ -2249,7 +2251,7 @@ blockquote h4 {
   .resources .menu-wrapper-inner {
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    box-shadow: 0 4px 5px -2px #c9c9c9;
+    box-shadow: 0 0px 5px -1px #c9c9c9;
   }
 
   .resources .menu-wrapper .menu-item-wrapper {
@@ -2267,8 +2269,8 @@ blockquote h4 {
     align-items: flex-start;
   }
   .resources .menu-wrapper .menu-item-wrapper .menu-item a img {
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
     margin-bottom: 1rem;
   }
   .resources:hover .menu-wrapper .featured-block {
@@ -2289,7 +2291,7 @@ blockquote h4 {
     min-height: 20rem;
     top: 75px;
     left: 10rem;
-    background-color: #f3f3f3;
+    background-color: #ffffff;;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
   }
@@ -2297,7 +2299,7 @@ blockquote h4 {
   .solutions .menu-wrapper-inner {
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    box-shadow: 0 4px 5px -2px #c9c9c9;
+    box-shadow: 0 0px 5px -1px #c9c9c9;
   }
 
   .solutions .menu-wrapper .menu-item-wrapper {
@@ -2360,7 +2362,7 @@ blockquote h4 {
     flex-direction: row;
     flex-wrap: wrap;
     width: 46rem;
-    row-gap: 3rem;
+    row-gap: 1.5rem;
     padding-left: 3rem;
     padding-right: 3rem;
     top: 2rem;
@@ -2387,7 +2389,7 @@ blockquote h4 {
     .solutions-menu-item:nth-child(2)
     .sub-sub-menu
     .sub-sub-icon {
-    width: 6rem;
+    width: 5rem;
   }
   .solutions
     .menu-wrapper
@@ -2467,4 +2469,10 @@ blockquote h4 {
     flex-basis: 34%;
     padding: 1rem;
   }
+}
+
+
+.menu-arrow:hover svg {
+  transform: translateX(4px);
+  transition: transform 0.3s ease;
 }

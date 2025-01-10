@@ -121,7 +121,7 @@ $watch('isSticky', value => {
                                                         @if (!empty($child['icon']))
                                                             <img src="{{ $child['icon'] }}" alt="{{ $child['title'] }} icon" class="w-8 h-8 mr-2" />
                                                         @endif
-                                                        <span class="text-base font-semibold text-brand">{{ $child['title'] }}</span>
+                                                        <span class="text-base font-semibold text-brand hover:text-action">{{ $child['title'] }}</span>
                                                         @if (isset($menu['classes']) && in_array('resources', $menu['classes']) && !empty($child['description']))
                                                             <div class="description text-sm text-gray-500 mt-2">
                                                                 {{ $child['description'] }}
@@ -131,7 +131,7 @@ $watch('isSticky', value => {
                                                     @if (!empty($child['children']))
                                                         <div class="sub-sub-menu-wrapper absolute hidden group-focus:block group-hover:block z-50 left-0 top-8 mt-0 sm:px-0">
                                                             <div class="overflow-hidden">
-                                                                <div class="sub-sub-menu relative flex flex-col gap-6 px-8 py-8">
+                                                                <div class="sub-sub-menu relative flex flex-col gap-6 pr-8 pb-8 pt-4">
                                                                     @foreach ($child['children'] as $subChild)
                                                                         <a href="{{ $subChild['url'] }}"
                                                                             class="-m-3 p-3 flex items-start menu_click {{ isset($subChild['classes']) ? implode(' ', $subChild['classes']) : '' }}">
@@ -143,9 +143,9 @@ $watch('isSticky', value => {
                                                                                 </div>
                                                                             @endif
                                                                             <div class="sub-sub-item">
-                                                                            <span class="text-base font-bold text-brand">{{ $subChild['title'] }}</span>
+                                                                            <span class="text-base font-bold text-brand hover:text-action">{{ $subChild['title'] }}</span>
                                                                             @if (!empty($subChild['description']))
-                                                                              <div class="description text-xs text-dark mt-2">
+                                                                              <div class="description text-xs text-gray-500 mt-2">
                                                                                   {{ $subChild['description'] }}
                                                                               </div>
                                                                             @endif
@@ -165,7 +165,7 @@ $watch('isSticky', value => {
                                           <div class="bg-gray-200 px-5 pt-4 pb-4 pl-12">
                                               <p class="text-base font-semibold text-gray-700 flex">
                                                   Have questions?&nbsp;
-                                                  <a href="/contact" class="text-action flex items-center !underline gap-1">Let's talk.
+                                                  <a href="/contact" class="menu-arrow text-action flex items-center !underline gap-1">Let's talk.
                                                     <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M8.26562 1.19189L14.0739 7.00013L8.26562 12.8084" stroke="#216CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                     <path d="M14.0744 6.99951L1.71777 6.99951" stroke="#216CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -178,7 +178,7 @@ $watch('isSticky', value => {
                                           @if (isset($menu['classes']) && in_array('resources', $menu['classes']))
                                           <div class="bg-gray-200 px-5 pt-4 pb-4 pl-12 view-all">
                                               <p class="text-base flex">
-                                                  <a href="/knowledge-hub/" class="text-gray-700 flex items-center gap-4 font-semibold ">View All Resources
+                                                  <a href="/knowledge-hub/" class="menu-arrow text-gray-700 flex items-center gap-4 font-semibold ">View All Resources
                                                     <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M8.26562 1.19189L14.0739 7.00013L8.26562 12.8084" stroke="#216CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                     <path d="M14.0744 6.99951L1.71777 6.99951" stroke="#216CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -205,7 +205,7 @@ $watch('isSticky', value => {
                                             <div class="wrapper relative z-10 flex flex-col items-start">
                                                 @if ($featured_pill)
                                                     <div class="pill p-1 rounded-full flex items-center gap-2">
-                                                        <span class=" bg-dark text-white px-2 py-1 rounded-full uppercase font-semibold">{{ $featured_pill }}</span>
+                                                        <span class="tracking-2px bg-dark text-white px-2 py-1 rounded-full uppercase font-semibold">{{ $featured_pill }}</span>
                                                         @if ($featured_pill_subtext)
                                                             <span class="text-white flex items-center pr-4 gap-2">{{ $featured_pill_subtext }} <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                               <path d="M8.8331 1.04004L13.6695 5.87642M13.6695 5.87642L8.8331 10.7128M13.6695 5.87642L0.772461 5.87642" stroke="white" stroke-width="0.905178" stroke-linecap="round" stroke-linejoin="round"/>
@@ -215,7 +215,7 @@ $watch('isSticky', value => {
                                                     </div>
                                                 @endif
                                                 @if ($featured_button && isset($featured_button['url']) && isset($featured_button['title']))
-                                                    <a href="{{ $featured_button['url'] }}" class="btn bg-white text-dark font-semibold">
+                                                    <a href="{{ $featured_button['url'] }}" class=" menu-arrow btn bg-white text-dark font-semibold rounded-md">
                                                         {{ $featured_button['title'] }} <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                           <path d="M7.43219 0.887695L11.0747 4.53021M11.0747 4.53021L7.43219 8.17273M11.0747 4.53021L1.36133 4.53021" stroke="#2C405A" stroke-opacity="0.5" stroke-width="1.25793" stroke-linecap="round" stroke-linejoin="round"/>
                                                           </svg> 

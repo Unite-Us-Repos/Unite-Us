@@ -100,8 +100,6 @@ if ($background['overlay']) {
         </div>
       @endif
 
-
-</div>
     </div>
   </div>
   @if ($background['image'])
