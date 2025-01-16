@@ -279,17 +279,9 @@
                           </div>
                       </div>
                   </section>
-              @else
-                <section class="component-section">
-                  <div class="component-inner-section">
-                    <p>No testimonials data found.</p>
-                  </div>
-                </section>
               @endif
           @endif
       @endwhile
-  @else
-      <p>No components found.</p>
   @endif
 </section>
 
