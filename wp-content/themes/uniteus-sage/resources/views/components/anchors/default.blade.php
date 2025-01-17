@@ -65,7 +65,9 @@ $flex_index = $index;
     class="relative flex flex-col lg:grid lg:grid-cols-12 gap-6 pt-4 @if (!empty($alternate) && $alternate) alternate @endif">
         <div class="col-span-3">
           <div class="sticky" :style="`top: ${navHeight + 8}px;`" >
-            <div class="uppercase text-action font-bold pb-4 hidden opacity-0 lg:block lg:opacity-100">Jump To</div>
+            <div class="uppercase text-action font-bold pb-4 hidden opacity-0 lg:block lg:opacity-100">
+              @if (!empty($alternate) && $alternate) Use Cases @else Jump To @endif 
+            </div>
             <ul class="hidden lg:flex  list-none flex-col gap-4 border-l border-blue-300"
               
               style="border-left: solid 1px #C7D8E8 !important;">

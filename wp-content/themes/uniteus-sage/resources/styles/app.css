@@ -527,11 +527,13 @@ body .map-wrap {
     color: white;
     background: linear-gradient(to right, #216CFF, #9643FF);
     transition: all;
+    border: none;
 }
 
 .button-gradient:hover {
   color: white;
   background: linear-gradient(to right,  #9643FF, #216CFF);
+  transition: all;
 }
 .bg-light-gradient .button-hollow,
 .bg-light .button-hollow {
@@ -2205,9 +2207,11 @@ blockquote h4{
 @media (min-width: 1024px) {
   .gradient-pill {
     color: #ffffff;
+    background-color: transparent;
+    border: 1px solid #9643ff;
   }
-  .gradient-pill::after {
-    background: transparent; 
+  .gradient-pill::before, .gradient-pill::after {
+    content: none;
   }
 } 
 
