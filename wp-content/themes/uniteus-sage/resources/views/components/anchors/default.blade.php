@@ -169,7 +169,7 @@ $flex_index = $index;
                     gap-4 md:flex-row
                 @endif">
                 @php
-                $keyStatsClass = 'key-stats col-span-6 md:basis-1/2 border-t';
+                $keyStatsClass = 'key-stats col-span-6 md:basis-1/2';
                 
                 // Add flex class ONLY if "Stats" exist, but "Partners" and "Articles" do NOT exist
                 if (!empty($card['stats']) && empty($card['partners']) && empty($card['articles'])) {
