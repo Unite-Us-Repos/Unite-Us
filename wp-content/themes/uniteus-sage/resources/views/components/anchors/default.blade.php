@@ -172,10 +172,9 @@ $flex_index = $index;
                 @endif">
                 @php
                 $keyStatsClass = 'key-stats col-span-6 md:basis-1/2';
-                
                 // Add flex class ONLY if "Stats" exist, but "Partners" and "Articles" do NOT exist
                 if (!empty($card['stats']) && empty($card['partners']) && empty($card['articles'])) {
-                    $keyStatsClass .= ' md:flex';
+                    $keyStatsClass .= ' md:flex md:flex-wrap md:gap-0';
                     $keyStatClass .= ' md:basis-1/3';
                 }
                 @endphp
@@ -203,7 +202,7 @@ $flex_index = $index;
                   <div class="key-stats col-span-6 md:basis-1/2 border-t">
                     <h3 class="uppercase text-action text-sm mb-4 mt-4">Key Stats</h3>
                     <div class="grid">
-                      <div class=" grid-cols-6 gap-5 {{ $keyStatsClass }}">
+                      <div class=" grid-cols-6 {{ $keyStatsClass }}">
                         @foreach ($card["stats"] as $stat)
                           <div class="relative p-3 pl-0 flex gap-4 {{ $keyStatClass }}">
                             <div class="icon pt-1">

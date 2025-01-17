@@ -210,7 +210,8 @@ module.exports = {
     'w-fit',
     'md:pt-20',
     '!md:pt-20',
-    'md:!pt-20'
+    'md:!pt-20',
+    '!md:gap-0'
 
   ],
   theme: {
