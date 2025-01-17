@@ -2408,6 +2408,7 @@ blockquote h4 {
     gap: 2rem;
     padding: 2rem 3rem;
     justify-content: center;
+    min-height: 16rem;
   }
   .resources:hover .menu-wrapper {
     max-width: 75rem;
