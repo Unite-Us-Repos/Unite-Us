@@ -346,6 +346,25 @@ module.exports = {
       }
     },
     {
+      "options": {
+        "emitHtml": false,
+        "publicPath": ""
+      },
+      "plugin": {
+        "name": "EntrypointsManifestPlugin",
+        "stage": null
+      },
+      "name": "entrypoints.json"
+    },
+    {
+      "plugin": {
+        "name": "MergedManifestPlugin"
+      },
+      "file": "entrypoints.json",
+      "entrypointsName": "entrypoints.json",
+      "wordpressName": "wordpress.json"
+    },
+    {
       "plugin": {
         "name": "WordPressDependenciesWebpackPlugin",
         "stage": null
@@ -360,25 +379,6 @@ module.exports = {
       "externals": {
         "type": "window"
       }
-    },
-    {
-      "plugin": {
-        "name": "MergedManifestPlugin"
-      },
-      "file": "entrypoints.json",
-      "entrypointsName": "entrypoints.json",
-      "wordpressName": "wordpress.json"
-    },
-    {
-      "options": {
-        "emitHtml": false,
-        "publicPath": ""
-      },
-      "plugin": {
-        "name": "EntrypointsManifestPlugin",
-        "stage": null
-      },
-      "name": "entrypoints.json"
     }
   ],
   "entry": {
