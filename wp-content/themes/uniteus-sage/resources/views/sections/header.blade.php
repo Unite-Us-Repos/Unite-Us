@@ -137,7 +137,7 @@ $watch('isSticky', value => {
                                                                             class="-m-3 p-3 flex items-start menu_click {{ isset($subChild['classes']) ? implode(' ', $subChild['classes']) : '' }}">
 
                                                                             @if (!empty($subChild['icon']))
-                                                                                <div class="sub-sub-icon">
+                                                                                <div class="sub-sub-icon mr-2">
                                                                                   <img src="{{ $subChild['icon'] }}" alt="{{ $subChild['title'] }} icon"
                                                                                     class="w-5 h-5 mr-2" />
                                                                                 </div>
