@@ -91,7 +91,7 @@ $mobile_image = $section['mobile_image'] ?? null; // ACF image field
                 @if ($stack_on_mobile && $mobile_image) text-brand text-center md:text-left
                 @elseif ($background['color'] == 'light') text-brand 
                 @else text-white @endif
-                @if ($small_font) width-35 text-5xl font-semibold small-font 
+                @if ($small_font) width-35 text-5xl !font-semibold small-font 
                 @else font-extrabold md:text-5xl lg:text-6xl @endif">
                 {!! $job_title !!}
             </h1>

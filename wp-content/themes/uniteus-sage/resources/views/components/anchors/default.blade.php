@@ -168,7 +168,15 @@ $flex_index = $index;
                 @elseif ($card['stats'] && $card['partners']) 
                     gap-4 md:flex-row
                 @endif">
-               
+                @php
+                $keyStatsClass = 'key-stats col-span-6 md:basis-1/2 border-t';
+                
+                // Add flex class ONLY if "Stats" exist, but "Partners" and "Articles" do NOT exist
+                if (!empty($card['stats']) && empty($card['partners']) && empty($card['articles'])) {
+                    $keyStatsClass .= ' md:flex';
+                    $keyStatClass .= ' md:basis-1/3';
+                }
+                @endphp
                 @if ($card["stats"])
                   @if (empty($alternate) || !$alternate)
                     <div class="col-span-6">
@@ -193,9 +201,9 @@ $flex_index = $index;
                   <div class="key-stats col-span-6 md:basis-1/2 border-t">
                     <h3 class="uppercase text-action text-sm mb-4 mt-4">Key Stats</h3>
                     <div class="grid">
-                      <div class=" grid-cols-6 gap-5">
+                      <div class=" grid-cols-6 gap-5 {{ $keyStatsClass }}">
                         @foreach ($card["stats"] as $stat)
-                          <div class="relative p-3 pl-0 flex gap-4">
+                          <div class="relative p-3 pl-0 flex gap-4 {{ $keyStatClass }}">
                             <div class="icon pt-1">
                               <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.53027 16.945C12.9486 16.945 16.5303 13.3633 16.5303 8.94501C16.5303 4.52673 12.9486 0.945007 8.53027 0.945007C4.112 0.945007 0.530273 4.52673 0.530273 8.94501C0.530273 13.3633 4.112 16.945 8.53027 16.945ZM12.2374 7.65211C12.6279 7.26159 12.6279 6.62842 12.2374 6.2379C11.8469 5.84738 11.2137 5.84738 10.8232 6.2379L7.53027 9.53079L6.23738 8.2379C5.84686 7.84738 5.21369 7.84738 4.82317 8.2379C4.43264 8.62842 4.43264 9.26159 4.82317 9.65211L6.82317 11.6521C7.21369 12.0426 7.84686 12.0426 8.23738 11.6521L12.2374 7.65211Z" fill="#2F71F4"/>
