@@ -215,6 +215,7 @@ module.exports = {
     'p-12',
     'pl-12',
     'underline',
+    
   ],
   variants: {
     extend: {
@@ -314,7 +315,10 @@ module.exports = {
         'leading-5': '1.5',
         'leading-6': '1.5',
         'leading-tight': '1.5',
-      }
+      },
+      letterSpacing: {
+        '2px': '2px', // Custom class for 2px letter spacing
+      },
     },
   },
   plugins: [],
