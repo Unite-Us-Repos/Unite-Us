@@ -211,8 +211,14 @@ module.exports = {
     'md:pt-20',
     '!md:pt-20',
     'md:!pt-20',
-    '!md:gap-0'
-
+    '!md:gap-0',
+    'top-[20%]',
+    'transition-colors',
+    'right-4',
+    'top-4',
+    'right-8',
+    'top-8',
+    'h-15'
   ],
   theme: {
     fontFamily: {
