@@ -737,6 +737,28 @@
                                     ]
                                 },
                                 {
+                                    "key": "field_67902c2ab9595",
+                                    "label": "White Background Pill",
+                                    "name": "white_bg",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": "",
+                                    "ui": 1,
+                                    "style": ""
+                                },
+                                {
                                     "key": "field_678f053b4f1f6",
                                     "label": "Pill",
                                     "name": "pill",
@@ -933,5 +955,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1737433258
+    "modified": 1737501842
 }
