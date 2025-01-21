@@ -439,13 +439,14 @@
                 $hasPill = !empty($twoColumns['pill']);
                 $hasHeading = !empty($twoColumns['heading']);
                 $hasContent = !empty($twoColumns['content']);
+                $whiteBG = $card['white_bg'];
             @endphp
 
             <div class="two-columns grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 {{-- Left Side: Text Content --}}
                 <div class="flex flex-col space-y-4">
                     @if ($hasPill)
-                        <span class="bg-light px-3 py-1 text-action text-sm rounded-full inline-block w-fit">
+                        <span class="@if ($whiteBG) bg-white @else bg-light @endif px-3 py-1 text-action text-sm rounded-full inline-block w-fit">
                             {{ $twoColumns['pill'] }}
                         </span>
                     @endif
