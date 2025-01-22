@@ -568,6 +568,10 @@ body .map-wrap {
   @apply no-underline;
 }
 
+.footer-legal li {
+  margin-top: 0 !important;
+}
+
 .acf-icon-action {
   filter: brightness(0) saturate(100%) invert(30%) sepia(100%) saturate(2600%)
     hue-rotate(199deg) brightness(95%) contrast(105%);
@@ -2380,7 +2384,9 @@ blockquote h4 {
   .solutions .menu-wrapper .solutions-menu-item {
     padding: 1rem;
   }
-
+  .solutions .menu-wrapper .solutions-menu-item:first-child .menu_click:hover {
+    opacity: 0.8;
+  }
   .solutions .menu-wrapper .menu-item-wrapper .industries {
     width: 15rem;
     padding-top: 2rem;

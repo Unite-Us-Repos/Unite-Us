@@ -3,9 +3,9 @@
 <footer class="footer-section component-section bg-blue-900" aria-labelledby="footer-heading">
   <h2 id="footer-heading" class="sr-only">Footer</h2>
   <div class="component-inner-section">
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 lg:gap-8">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 lg:gap-8">
       <div class="mb-16 lg:mb-0">
-        <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Solutions</h3>
+        <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Industries</h3>
         @if (has_nav_menu('footer_solutions'))
           {!!
             wp_nav_menu([
@@ -33,7 +33,7 @@
       </div>
 
       <div class="mb-16 lg:mb-0">
-        <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Support</h3>
+        <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Resources</h3>
         @if (has_nav_menu('footer_support'))
           {!!
             wp_nav_menu([
@@ -52,20 +52,6 @@
           {!!
             wp_nav_menu([
               'theme_location'  => 'footer_company',
-              'menu_class'      => 'space-y-4 list-none',
-              'echo'            => false,
-              'link_class'      => 'text-white hover:text-white footer_click'
-            ])
-          !!}
-        @endif
-      </div>
-
-      <div class="mb-16 lg:mb-0">
-        <h3 class="text-sm font-semibold text-blue-400 tracking-wider uppercase">Legal</h3>
-        @if (has_nav_menu('footer_legal'))
-          {!!
-            wp_nav_menu([
-              'theme_location'  => 'footer_legal',
               'menu_class'      => 'space-y-4 list-none',
               'echo'            => false,
               'link_class'      => 'text-white hover:text-white footer_click'
@@ -104,8 +90,23 @@
         @endif
 
       </div>
-      <p class="text-base text-white my-6 lg:my-0 md:order-1">&copy; {{ $currentYear }} Unite Us. All rights reserved.
-      </p>
+      <div class="md:flex">
+        <div class="pr-4">
+          <p class="text-base text-white my-6 lg:my-0 md:order-1">&copy; {{ $currentYear }} Unite Us. All rights reserved.</p>
+        </div>
+        
+          @if (has_nav_menu('footer_legal'))
+            {!!
+              wp_nav_menu([
+                'theme_location'  => 'footer_legal',
+                'menu_class'      => 'space-y-4 list-none flex items-center gap-4 footer-legal',
+                'echo'            => false,
+                'link_class'      => 'text-white hover:text-white footer_click'
+              ])
+            !!}
+          @endif
+        
+    </div>
     </div>
   </div>
 </footer>
