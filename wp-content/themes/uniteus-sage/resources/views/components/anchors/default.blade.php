@@ -292,7 +292,7 @@
                     <div class="p-6 relative">
                         {{-- Pill Text --}}
                         @if ($hasPill)
-                            <span class="bg-light px-3 py-1 text-action text-sm font-semibold rounded-full">
+                            <span class="bg-light px-3 py-1 text-action text-sm rounded-full">
                                 {{ $feature['pill_text'] }}
                             </span>
                         @endif
