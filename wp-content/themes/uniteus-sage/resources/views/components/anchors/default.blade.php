@@ -168,7 +168,7 @@
 
 
                             <div
-                                class="flex flex-col gap-12 mt-10
+                                class="flex flex-col items-start gap-12 mt-10
                 @if ($card['stats'] && $card['articles']) md:grid md:grid-cols-12 
                 @elseif ($card['stats'] && ($card['partners'] || $card['feature_box']['content'])) 
                     gap-4 md:flex-row @endif">
@@ -273,8 +273,7 @@
                     $hasContent = !empty($feature['content']);
                 @endphp
 
-                <div
-                    class="feature-box col-span-6 flex flex-col md:basis-1/2 border-t shadow-lg rounded-lg bg-white group relative overflow-hidden">
+                <div class="feature-box col-span-6 flex flex-col md:basis-1/2 border-t shadow-lg rounded-lg bg-white group relative overflow-hidden">
                     {{-- Wrap in a link if it exists --}}
                     @if ($hasLink)
                         <a href="{{ $feature['link']['url'] }}" target="{{ $feature['link']['target'] ?? '_self' }}"
