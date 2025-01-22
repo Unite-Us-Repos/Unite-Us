@@ -188,7 +188,7 @@
                                 @if ($card['stats'])
                                     @if (empty($alternate) || !$alternate)
                                         <div class="col-span-6">
-                                            <h3>Key Stats</h3>
+                                            <h3>Key Benefits</h3>
                                             <div class="grid grid-cols-12 gap-5">
                                                 @foreach ($card['stats'] as $stat)
                                                     <div
@@ -213,7 +213,7 @@
                             </div>
                         @else
                             <div class="key-stats col-span-6 md:basis-1/2 border-t">
-                                <h3 class="uppercase text-action text-sm mb-4 mt-4">Key Stats</h3>
+                                <h3 class="uppercase text-action text-sm mb-4 mt-4">Key Benefits</h3>
                                 <div class="grid">
                                     <div class="grid-cols-6 {{ $keyStatsClass }}">
                                         @foreach ($card['stats'] as $stat)
