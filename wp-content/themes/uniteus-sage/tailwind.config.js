@@ -218,8 +218,18 @@ module.exports = {
     'top-4',
     'right-8',
     'top-8',
-    'h-15'
+    'h-15',
+    'fill-gray-500',
+    'p-12',
+    'pl-12',
+    'underline',
+    
   ],
+  variants: {
+    extend: {
+        fill: ['hover', 'group-hover'],
+    },
+  },
   theme: {
     fontFamily: {
       'sans': ['Proxima Nova', 'ui-sans-serif', 'system-ui'],
@@ -313,7 +323,10 @@ module.exports = {
         'leading-5': '1.5',
         'leading-6': '1.5',
         'leading-tight': '1.5',
-      }
+      },
+      letterSpacing: {
+        '2px': '2px', // Custom class for 2px letter spacing
+      },
     },
   },
   plugins: [],
