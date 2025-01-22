@@ -439,7 +439,7 @@
                 $hasPill = !empty($twoColumns['pill']);
                 $hasHeading = !empty($twoColumns['heading']);
                 $hasContent = !empty($twoColumns['content']);
-                $whiteBG = $card['white_bg'];
+                $whiteBG = $twoColumns['white_bg'];
             @endphp
 
             <div class="two-columns grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
