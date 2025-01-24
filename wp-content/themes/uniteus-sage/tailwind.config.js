@@ -223,6 +223,7 @@ module.exports = {
     'p-12',
     'pl-12',
     'underline',
+    'pt-8'
     
   ],
   variants: {

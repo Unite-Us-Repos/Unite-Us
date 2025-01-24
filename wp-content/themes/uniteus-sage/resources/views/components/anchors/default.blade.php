@@ -70,8 +70,7 @@
                     <div class="sticky" :style="`top: ${navHeight + 8}px;`">
                         <div class="uppercase text-action font-bold pb-4 hidden opacity-0 lg:block lg:opacity-100">
                             @if (!empty($anchor_heading)) {{ $anchor_heading }}
-                            @else
-                                Jump To @endif
+                            @else Jump To @endif
                         </div>
                         <ul class="hidden lg:flex  list-none flex-col gap-4 border-l border-blue-300"
                             style="border-left: solid 1px #C7D8E8 !important;">
@@ -106,7 +105,8 @@
                                     @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()"
                                     aria-expanded="true" aria-haspopup="true" x-bind:aria-expanded="open.toString()"
                                     @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
-                                    Jump To
+                                    @if (!empty($anchor_heading)) {{ $anchor_heading }}
+                                    @else Jump To @endif
                                     <svg width="8" height="15" viewBox="0 0 8 15" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -213,7 +213,7 @@
                             </div>
                         @else
                             <div class="key-stats col-span-6 md:basis-1/2 border-t">
-                                <h3 class="uppercase text-action text-sm mb-4 mt-4">Key Benefits</h3>
+                                <h3 class="uppercase text-action text-sm mb-4 mt-4">@if (empty($card['key_benefits_title']) || !$card['key_benefits_title']) Key Benefits @else {{$card['key_benefits_title']}} @endif</h3>
                                 <div class="grid">
                                     <div class="grid-cols-6 {{ $keyStatsClass }}">
                                         @foreach ($card['stats'] as $stat)
@@ -238,8 +238,8 @@
             @endif
             @if (!empty($card['partners']))
                 <div class="partners col-span-6 flex flex-col md:basis-1/2 border-t">
-                    <h3 class="uppercase text-action text-sm mb-4 mt-4">Partners</h3>
-                    <div class="flex-col md:flex-row flex-wrap flex-1 flex gap-4 mt-4">
+                    <h3 class="uppercase text-action text-sm mb-4 mt-4">@if (empty($card['partners_title']) || !$card['partners_title']) Partners @else {{$card['partners_title']}} @endif</h3>
+                    <div class="flex-row flex-wrap flex-1 flex gap-4 mt-4">
                         @foreach ($card['partners'] as $partner)
                             @if (!empty($partner['partner']['url']))
                                 <div class="flex-classes border rounded-lg shadow-sm bg-white p-4">
@@ -277,7 +277,7 @@
                     {{-- Wrap in a link if it exists --}}
                     @if ($hasLink)
                         <a href="{{ $feature['link']['url'] }}" target="{{ $feature['link']['target'] ?? '_self' }}"
-                            class="relative block p-6 no-underline hover:no-underline">
+                            class="relative block p-6 pt-8 no-underline hover:no-underline">
                             {{-- External link icon at the top --}}
                             <div class="absolute top-8 right-4">
                                 <svg width="21" height="21" viewBox="0 0 21 21" fill="#C7D8E8"
@@ -288,7 +288,7 @@
                                 </svg>
                             </div>
                     @endif
-                    <div class="p-6 relative">
+                    <div class="@if ($hasLink) p-0 @else p-6 pt-8 @endif relative">
                         {{-- Pill Text --}}
                         @if ($hasPill)
                             <span class="bg-light px-3 py-1 text-action text-sm rounded-full">
@@ -443,7 +443,7 @@
 
             <div class="two-columns grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 {{-- Left Side: Text Content --}}
-                <div class="flex flex-col space-y-4">
+                <div class="flex flex-col space-y-4 order-2 md:order-1">
                     @if ($hasPill)
                         <span class="@if ($whiteBG) bg-white @else bg-light @endif px-3 py-1 text-action text-sm rounded-full inline-block w-fit">
                             {{ $twoColumns['pill'] }}
@@ -465,7 +465,7 @@
 
                 {{-- Right Side: Image --}}
                 @if ($hasImage)
-                    <div>
+                    <div class="order-1 md:order-2">
                         <img src="{{ $twoColumns['image']['url'] }}" alt="{{ $twoColumns['image']['alt'] ?? 'Image' }}"
                             class="w-full h-auto object-cover rounded-lg">
                     </div>

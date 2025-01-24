@@ -2238,10 +2238,6 @@ blockquote h4 {
   margin: auto;
 }
 
-.flex-classes:last-child .partner-logo {
-  max-width: 10rem;
-}
-
 .hover-class:hover {
   background: linear-gradient(to bottom right, #d7d5fd, #e0e9fe);
 }
@@ -2264,7 +2260,15 @@ blockquote h4 {
   border-left: 0;
   font-style: normal;
 }
+.flex-classes:last-child .partner-logo {
+  max-width: 100%;
+}
+
 @media (min-width: 1024px) {
+  .flex-classes:last-child .partner-logo {
+    max-width: 10rem;
+  }
+  
   .company {
     height: 80px;
     border-top: 5px solid white;
@@ -2548,4 +2552,8 @@ blockquote h4 {
 .menu-arrow:hover svg {
   transform: translateX(4px);
   transition: transform 0.3s ease;
+}
+
+.swiper-slide {
+  padding-right: 1rem;
 }
