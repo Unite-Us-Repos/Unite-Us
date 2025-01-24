@@ -994,6 +994,10 @@ ul:not(.list-none) {
 ul:not(.list-none) .li {
   @apply mb-3;
 }
+ul:not(.list-none) li {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
 ul:not(.list-none) li:last-child {
   @apply mb-0;
 }
@@ -1004,16 +1008,16 @@ ul:not(.list-none):not(.list-checkmarks):not(.list-circle-checkmark):not(
   content: "\00B7";
   display: inline-block;
   margin-left: -0.5em;
-  width: 0.5em;
   font-family: u0000;
   line-height: 1;
   font-weight: 900;
   font-size: 2.5rem;
-  top: 8px;
-  position: relative;
+  top: -8px;
+  position: absolute;
 
   @apply text-action;
 }
+
 .bg-dark
   ul:not(.list-none):not(.list-checkmarks):not(.list-circle-checkmark):not(
     .list-video-play
@@ -2259,6 +2263,9 @@ blockquote h4 {
   padding: 0;
   border-left: 0;
   font-style: normal;
+}
+.feature-box h3, .feature-box p {
+  margin-bottom: 1rem;
 }
 .flex-classes:last-child .partner-logo {
   max-width: 100%;
