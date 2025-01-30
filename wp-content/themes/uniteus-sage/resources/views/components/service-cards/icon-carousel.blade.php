@@ -190,18 +190,24 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                     </span>
                   @elseif (!empty($card["icon"]))
                     {{-- Render default icon inside styled span --}}
-                    <span class="mb-5 @if ($alternate) bg-{{ $icon_color_class }} @else bg-light @endif 
-                      group-hover:bg-white w-10 h-10 p-2 flex justify-center items-center rounded-full">
-                      <img class="lazy h-full w-full 
-                        @if ($alternate) acf-icon-white @else acf-icon-{{ $icon_color_class }} @endif 
-                        service-icon group-hover:group-hover-icon" 
-                        data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
-                    </span>
+                    <span class="mb-5 block bg-light
+                    @if ($alternate) bg-{{ $icon_color_class }} @else bg-light @endif 
+                    @if ($icon_color_class == 'electric-purple') 
+                       group-hover:bg-white 
+                     @elseif ($icon_color_class == 'white') 
+                       group-hover:bg-white
+                     @else 
+                       group-hover:bg-action
+                     @endif 
+                   w-10 h-10 p-2 flex justify-center items-center rounded-full">
+                     <img class="lazy h-full w-full acf-icon-{{ $icon_color_class}} service-icon" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
+                   </span>
                   @endif
                 @endisset
-                  @isset ($card["icon"])
+                  {{-- @isset ($card["icon"])
                     @if (!empty($card["icon"]))
                       <span class="mb-5 block bg-light
+                       @if ($alternate) bg-{{ $icon_color_class }} @else bg-light @endif 
                        @if ($icon_color_class == 'electric-purple') 
                           group-hover:bg-white 
                         @elseif ($icon_color_class == 'white') 
@@ -213,7 +219,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                         <img class="lazy h-full w-full acf-icon-{{ $icon_color_class}} service-icon" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
                       </span>
                     @endif
-                  @endisset
+                  @endisset --}}
                   @if ($card['title'])
                   <h3 class="text-xl font-semibold mb-4">{!! $card['title'] !!}</h3>
                   @endif
@@ -243,73 +249,74 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
 
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-      const iconCarousel = document.querySelector(".icon-carousel");
-      const swiperInstance = iconCarousel.querySelector(".swiper").swiper; // Get Swiper instance
-      let isSwiperActive = false;
-      let scrollTimeout = null;
-  
-      if (iconCarousel && swiperInstance) {
-          const observer = new IntersectionObserver((entries) => {
-              entries.forEach((entry) => {
-                  if (entry.isIntersecting) {
-                      document.body.style.overflow = "hidden"; // Lock page scrolling
-                      isSwiperActive = true;
-                  }
-              });
-          }, {
-              root: null,
-              threshold: 0.6, // Trigger when 60% of the section is visible
-          });
-  
-          observer.observe(iconCarousel);
-  
-          iconCarousel.addEventListener("wheel", (event) => {
-              if (!isSwiperActive || scrollTimeout) return;
-  
-              const delta = event.deltaY;
-  
-              if (delta > 0) {
-                  swiperInstance.slideNext(); // Move exactly one tile forward
-              } else if (delta < 0) {
-                  swiperInstance.slidePrev(); // Move exactly one tile backward
-              }
-  
-              event.preventDefault(); // Prevent default page scrolling behavior
-  
-              // Prevent multiple fast scrolls by adding a timeout
-              scrollTimeout = setTimeout(() => {
-                  scrollTimeout = null;
-              }, 600); // Adjust delay if needed
-  
-              // If at the last or first slide, allow normal page scrolling again
-              if (swiperInstance.isEnd || swiperInstance.isBeginning) {
-                  document.body.style.overflow = ""; // Unlock scrolling
-                  isSwiperActive = false;
-              }
-          });
-  
-          // Restore normal scrolling if the user moves past the section
-          document.addEventListener("scroll", () => {
-              const rect = iconCarousel.getBoundingClientRect();
-              if (rect.top > window.innerHeight || rect.bottom < 0) {
-                  document.body.style.overflow = "";
-                  isSwiperActive = false;
-              }
-          });
-  
-          // Prevent spacebar & arrow keys from triggering page scroll while in swiper
-          window.addEventListener("keydown", function (event) {
-              if (isSwiperActive && ["ArrowDown", "ArrowUp", "Space"].includes(event.code)) {
-                  event.preventDefault();
-                  if (event.code === "ArrowDown" || event.code === "Space") {
-                      swiperInstance.slideNext();
-                  } else if (event.code === "ArrowUp") {
-                      swiperInstance.slidePrev();
-                  }
-              }
-          });
-      }
-  });
+ document.addEventListener("DOMContentLoaded", function () {
+    const iconCarousel = document.querySelector(".icon-carousel");
+    const swiperInstance = iconCarousel.querySelector(".swiper").swiper; // Get Swiper instance
+    let isSwiperActive = false;
+    let scrollTimeout = null;
+
+    if (iconCarousel && swiperInstance) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    document.body.style.overflow = "hidden"; // Lock page scrolling
+                    isSwiperActive = true;
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.6, // Trigger when 60% of the section is visible
+        });
+
+        observer.observe(iconCarousel);
+
+        iconCarousel.addEventListener("wheel", (event) => {
+            if (!isSwiperActive || scrollTimeout) return;
+
+            const delta = event.deltaY;
+
+            if (delta > 0) {
+                swiperInstance.slideNext(); // Move forward
+            } else if (delta < 0) {
+                swiperInstance.slidePrev(); // Move backward
+            }
+
+            event.preventDefault(); // Stop page scrolling
+
+            // Add timeout to prevent rapid multiple scrolls
+            scrollTimeout = setTimeout(() => {
+                scrollTimeout = null;
+            }, 600);
+
+            // Allow normal page scroll when reaching the last or first slide
+            if (swiperInstance.isEnd || swiperInstance.isBeginning) {
+                document.body.style.overflow = ""; // Unlock scrolling
+                isSwiperActive = false;
+            }
+        });
+
+        // Restore normal scrolling if the user moves past the section
+        document.addEventListener("scroll", () => {
+            const rect = iconCarousel.getBoundingClientRect();
+            if (rect.top > window.innerHeight || rect.bottom < 0) {
+                document.body.style.overflow = ""; // Unlock scrolling when leaving section
+                isSwiperActive = false;
+            }
+        });
+
+        // Prevent spacebar & arrow keys from triggering page scroll while in swiper
+        window.addEventListener("keydown", function (event) {
+            if (isSwiperActive && ["ArrowDown", "ArrowUp", "Space"].includes(event.code)) {
+                event.preventDefault();
+                if (event.code === "ArrowDown" || event.code === "Space") {
+                    swiperInstance.slideNext();
+                } else if (event.code === "ArrowUp") {
+                    swiperInstance.slidePrev();
+                }
+            }
+        });
+    }
+});
+
   </script>
   
