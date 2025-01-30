@@ -7,7 +7,46 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
 
 $faqs = $acf["components"][$index]['faq']['faq_wrapper'] ?? [];
 $faq_title = $acf["components"][$index]['faq']['title'] ?? 'Frequently Asked Questions';
+
+$faq_schema_json = ''; // Initialize as empty
+
+if (!empty($faqs)) {
+    $faq_schema = [
+        "@context" => "https://schema.org",
+        "@type" => "FAQPage",
+        "mainEntity" => []
+    ];
+
+    foreach ($faqs as $faq) {
+        $question = $faq['question'] ?? 'No question provided';
+        $answer = $faq['answer'] ?? 'No answer provided';
+
+        // Strip all HTML tags and trim whitespace & newlines
+        $clean_answer = strip_tags($answer);
+        $clean_answer = preg_replace('/\s+/', ' ', $clean_answer); // Replace multiple spaces/newlines with a single space
+        $clean_answer = trim($clean_answer); // Trim leading/trailing spaces
+
+        $faq_schema['mainEntity'][] = [
+            "@type" => "Question",
+            "name" => trim($question), // Trim question to remove leading/trailing spaces
+            "acceptedAnswer" => [
+                "@type" => "Answer",
+                "text" => $clean_answer
+            ]
+        ];
+    }
+
+    // Convert array to JSON
+    $faq_schema_json = json_encode($faq_schema, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+}
 @endphp
+
+@if (!empty($faq_schema_json))
+  <script type="application/ld+json">
+  {!! $faq_schema_json !!}
+  </script>
+@endif
+
 
 @if ($background['has_divider'])
 @includeIf('dividers.waves')

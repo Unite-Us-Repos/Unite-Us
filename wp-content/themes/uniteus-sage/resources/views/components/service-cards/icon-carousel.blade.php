@@ -16,7 +16,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
 @if ($background['has_divider'])
   @includeIf('dividers.waves')
 @endif
-<section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="relative @if ($background['color'] == 'dark') text-white @endif component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+<section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="relative @if ($background['color'] == 'dark') text-white @endif icon-carousel component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
   @if ('center' == $section["alignment"])
   <div class="component-inner-section">
     <div class="text-center mb-7">
@@ -240,3 +240,76 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
   <div class="absolute h-1/3 lg:h-1/3 bg-white bottom-0 left-0 right-0 hidden lg:block"></div>
   @endif
 </section>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const iconCarousel = document.querySelector(".icon-carousel");
+      const swiperInstance = iconCarousel.querySelector(".swiper").swiper; // Get Swiper instance
+      let isSwiperActive = false;
+      let scrollTimeout = null;
+  
+      if (iconCarousel && swiperInstance) {
+          const observer = new IntersectionObserver((entries) => {
+              entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                      document.body.style.overflow = "hidden"; // Lock page scrolling
+                      isSwiperActive = true;
+                  }
+              });
+          }, {
+              root: null,
+              threshold: 0.6, // Trigger when 60% of the section is visible
+          });
+  
+          observer.observe(iconCarousel);
+  
+          iconCarousel.addEventListener("wheel", (event) => {
+              if (!isSwiperActive || scrollTimeout) return;
+  
+              const delta = event.deltaY;
+  
+              if (delta > 0) {
+                  swiperInstance.slideNext(); // Move exactly one tile forward
+              } else if (delta < 0) {
+                  swiperInstance.slidePrev(); // Move exactly one tile backward
+              }
+  
+              event.preventDefault(); // Prevent default page scrolling behavior
+  
+              // Prevent multiple fast scrolls by adding a timeout
+              scrollTimeout = setTimeout(() => {
+                  scrollTimeout = null;
+              }, 600); // Adjust delay if needed
+  
+              // If at the last or first slide, allow normal page scrolling again
+              if (swiperInstance.isEnd || swiperInstance.isBeginning) {
+                  document.body.style.overflow = ""; // Unlock scrolling
+                  isSwiperActive = false;
+              }
+          });
+  
+          // Restore normal scrolling if the user moves past the section
+          document.addEventListener("scroll", () => {
+              const rect = iconCarousel.getBoundingClientRect();
+              if (rect.top > window.innerHeight || rect.bottom < 0) {
+                  document.body.style.overflow = "";
+                  isSwiperActive = false;
+              }
+          });
+  
+          // Prevent spacebar & arrow keys from triggering page scroll while in swiper
+          window.addEventListener("keydown", function (event) {
+              if (isSwiperActive && ["ArrowDown", "ArrowUp", "Space"].includes(event.code)) {
+                  event.preventDefault();
+                  if (event.code === "ArrowDown" || event.code === "Space") {
+                      swiperInstance.slideNext();
+                  } else if (event.code === "ArrowUp") {
+                      swiperInstance.slidePrev();
+                  }
+              }
+          });
+      }
+  });
+  </script>
+  
