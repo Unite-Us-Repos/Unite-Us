@@ -5,6 +5,17 @@
 .service-icon-cards:hover .acf-icon-action {
   filter: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(5310%) hue-rotate(306deg) brightness(112%) contrast(102%) !important;
 }
+@media (min-width: 1024px) {
+.swiper-wrapper {
+  justify-content: center;
+        max-width: 80rem;
+        margin: auto;    
+        display: flex;
+}
+.swiper-slide {
+  flex-shrink: 1;
+}
+}
 </style>
 @php
 $s_settings = [
@@ -94,39 +105,29 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
       @endif
 
 
-      <div x-data="{swiper: null}" x-init="swiper = new Swiper($refs.container, {
-        loop: false,
-        grabCursor: true,
-        pagination: {
-        el: '.swiper-pagination',
-        dynamicBullets: true,
-        clickable: true,
-        },
-        preventClicks: false,
-        slidesPerView: 1.25,
-        spaceBetween: 25,
-        breakpoints: {
-          640: {
-            slidesPerView: 2.25,
-          },
-          980: {
-            slidesPerView: 3.25,
-          },
-          1024: {
-            slidesPerView: 3.25,
-          },
-          1280: {
-            slidesPerView: 4.25,
-          },
-          1440: {
-            slidesPerView: 3.25,
-          },
-          1600: {
-            slidesPerView: 4.25,
-          },
-        },
-      });">
-      <div class="swiper !pl-6 sm:!pl-10 lg:!pl-20" x-ref="container">
+      <div x-data="{ swiper: null }" 
+     x-init="
+       if (window.innerWidth < 1024) {
+         swiper = new Swiper($refs.container, {
+           loop: false,
+           grabCursor: true,
+           pagination: {
+             el: '.swiper-pagination',
+             dynamicBullets: true,
+             clickable: true,
+           },
+           preventClicks: false,
+           slidesPerView: 1.25,
+           spaceBetween: 25,
+           breakpoints: {
+             640: { slidesPerView: 2.25 },
+             980: { slidesPerView: 3.25 },
+             1024: { slidesPerView: 3.25 },
+           },
+         });
+       }
+     ">
+      <div class="swiper !pl-6 sm:!pl-10 md:!pl-0" x-ref="container">
         <div class="swiper-wrapper pb-10">
       @foreach ($cards as $index => $card)
         @php
@@ -248,75 +249,3 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
 </section>
 
 
-<script>
- document.addEventListener("DOMContentLoaded", function () {
-    const iconCarousel = document.querySelector(".icon-carousel");
-    const swiperInstance = iconCarousel.querySelector(".swiper").swiper; // Get Swiper instance
-    let isSwiperActive = false;
-    let scrollTimeout = null;
-
-    if (iconCarousel && swiperInstance) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    document.body.style.overflow = "hidden"; // Lock page scrolling
-                    isSwiperActive = true;
-                }
-            });
-        }, {
-            root: null,
-            threshold: 0.6, // Trigger when 60% of the section is visible
-        });
-
-        observer.observe(iconCarousel);
-
-        iconCarousel.addEventListener("wheel", (event) => {
-            if (!isSwiperActive || scrollTimeout) return;
-
-            const delta = event.deltaY;
-
-            if (delta > 0) {
-                swiperInstance.slideNext(); // Move forward
-            } else if (delta < 0) {
-                swiperInstance.slidePrev(); // Move backward
-            }
-
-            event.preventDefault(); // Stop page scrolling
-
-            // Add timeout to prevent rapid multiple scrolls
-            scrollTimeout = setTimeout(() => {
-                scrollTimeout = null;
-            }, 600);
-
-            // Allow normal page scroll when reaching the last or first slide
-            if (swiperInstance.isEnd || swiperInstance.isBeginning) {
-                document.body.style.overflow = ""; // Unlock scrolling
-                isSwiperActive = false;
-            }
-        });
-
-        // Restore normal scrolling if the user moves past the section
-        document.addEventListener("scroll", () => {
-            const rect = iconCarousel.getBoundingClientRect();
-            if (rect.top > window.innerHeight || rect.bottom < 0) {
-                document.body.style.overflow = ""; // Unlock scrolling when leaving section
-                isSwiperActive = false;
-            }
-        });
-
-        // Prevent spacebar & arrow keys from triggering page scroll while in swiper
-        window.addEventListener("keydown", function (event) {
-            if (isSwiperActive && ["ArrowDown", "ArrowUp", "Space"].includes(event.code)) {
-                event.preventDefault();
-                if (event.code === "ArrowDown" || event.code === "Space") {
-                    swiperInstance.slideNext();
-                } else if (event.code === "ArrowUp") {
-                    swiperInstance.slidePrev();
-                }
-            }
-        });
-    }
-});
-
-  </script>
-  
