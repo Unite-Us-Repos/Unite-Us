@@ -6,13 +6,13 @@
   filter: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(5310%) hue-rotate(306deg) brightness(112%) contrast(102%) !important;
 }
 @media (min-width: 1024px) {
-.swiper-wrapper {
+  .icon-carousel .swiper-wrapper {
   justify-content: center;
         max-width: 80rem;
         margin: auto;    
         display: flex;
 }
-.swiper-slide {
+.icon-carousel .swiper-slide {
   flex-shrink: 1;
 }
 }
