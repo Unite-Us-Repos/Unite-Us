@@ -27,9 +27,19 @@ $image_overaly = @asset('/images/network-mask-1.png');
 @if ($background['has_divider'])
   @includeIf('dividers.waves')
 @endif
-<section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
-  <div class="component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif">
+<section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
 
+  <div class="absolute inset-0">
+    @if ($background['image'])
+      <img fetchPriority="high" class="w-full h-full @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif" 
+        src="{{ $background['image']['sizes']['medium'] }}"
+        srcset="{{ $background['image']['sizes']['medium'] }} 300w, {{ $background['image']['sizes']['2048x2048'] }} 1024w"
+        sizes="(max-width: 600px) 300px, 1024px"
+        alt="{{ $background['image']['alt'] }}">
+    @endif
+  </div>
+
+  <div class="relative z-10 component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif">
     <div class="md:relative flex flex-col lg:grid lg:grid-cols-12 lg:gap-10">
 
       <div class="flex flex-col items-start @if ('accordion' == $type) lg:col-span-4 @else lg:col-span-{{ $columns[0] }} @endif @if ('center' == $vertical_alignment) justify-center @endif @if (('image' == $type) OR ('embed' == $type)) order-2 @endif text-lg @if ('image' == $type) @if ('text_image' == $layout) lg:order-1 @else lg:order-2 @endif @endif">

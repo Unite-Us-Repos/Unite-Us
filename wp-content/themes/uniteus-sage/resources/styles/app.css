@@ -2564,3 +2564,14 @@ blockquote h4 {
 .swiper-slide {
   padding-right: 1rem;
 }
+
+.content-video-header .video-wrapper iframe {
+  width: 100%;
+  min-height: 220px;
+  border-radius: 2rem;
+}
+@media (min-width: 1024px) {
+  .content-video-header .video-wrapper iframe {
+    min-height: 320px;
+  }
+} 

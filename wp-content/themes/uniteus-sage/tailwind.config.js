@@ -223,7 +223,16 @@ module.exports = {
     'p-12',
     'pl-12',
     'underline',
-    'pt-8'
+    'pt-8',
+    '!text-3xl',
+    '!text-4xl',
+    'md:!text-4xl',
+    'md:pb-48',
+    'max-w-[570px]',
+    '!pb-48',
+    'md:w-48',
+    'md:basis-2/3',
+    'md:mt-16'
     
   ],
   variants: {
