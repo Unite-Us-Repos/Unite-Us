@@ -18,7 +18,7 @@
     @includeIf('dividers.waves')
 @endif
 
-<section class="component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+<section class="testing component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
     <div class="component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif">
 
         @if ($h_level === 1)
