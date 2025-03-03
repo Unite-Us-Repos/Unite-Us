@@ -65,7 +65,7 @@ $watch('isSticky', value => {
     <!-- Placeholder to prevent content shift -->
     <div x-ref="placeholder" style="height: 0;"></div>
 
-    <div id="nav" x-ref="nav" class="top-nav bg-white">
+    <div id="nav" x-ref="nav" class="top-nav bg-white lg:bg-white">
         <div class="mx-auto">
             <div class="flex relative justify-between items-center max-w-7xl mx-auto px-8 lg:justify-start">
                 <div class="flex justify-start py-4 lg:py-0 lg:w-0 lg:flex-1">
@@ -151,7 +151,7 @@ $watch('isSticky', value => {
                                                                             @endif
                                                                             </div>
                                                                         </a>
-                                                                       
+
                                                                     @endforeach
                                                                 </div>
                                                             </div>
@@ -218,7 +218,7 @@ $watch('isSticky', value => {
                                                     <a href="{{ $featured_button['url'] }}" class=" menu-arrow btn bg-white text-dark font-semibold rounded-md">
                                                         {{ $featured_button['title'] }} <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                           <path d="M7.43219 0.887695L11.0747 4.53021M11.0747 4.53021L7.43219 8.17273M11.0747 4.53021L1.36133 4.53021" stroke="#2C405A" stroke-opacity="0.5" stroke-width="1.25793" stroke-linecap="round" stroke-linejoin="round"/>
-                                                          </svg> 
+                                                          </svg>
                                                     </a>
                                                 @endif
                                             </div>
