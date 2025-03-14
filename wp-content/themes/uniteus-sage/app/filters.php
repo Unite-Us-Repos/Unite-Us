@@ -1161,3 +1161,23 @@ add_filter(
         return $provider;
     }, 10, 3
 );
+
+// remove body class names for top level main nav
+// fixes warped menu
+add_filter(
+    'body_class',
+    function ($wp_classes, $extra_classes) {
+        // List body classes to delete
+        $class_delete = array('company', 'resources', 'solutions');
+
+        // Verify if exist the class of WP in $class_delete
+        foreach ($wp_classes as $class_css_key => $class_css) {
+            if (in_array($class_css, $class_delete)) {
+                unset($wp_classes[$class_css_key]);
+            }
+        }
+
+        // Add the extra classes back untouched
+        return array_merge( $wp_classes, (array) $extra_classes );
+    }, 20, 2
+);
