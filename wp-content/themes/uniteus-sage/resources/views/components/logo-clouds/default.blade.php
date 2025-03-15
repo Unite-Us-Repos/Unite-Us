@@ -14,11 +14,11 @@ $section_settings = $acf["components"][$index]['layout_settings']['section_setti
     @if ($section['description'])
         <div class="text-center text-lg"> {!! $section['description'] !!}</div>
     @endif
-    <div class="@if ('grid-grayscale' == $style) grayscale opacity-70 @endif flex flex-wrap lg:flex-nowrap justify-center lg:justify-between sm:flex-row py-10">
+    <div class="@if ('grid-grayscale' == $style) grayscale opacity-70 @endif flex flex-wrap lg:flex-nowrap justify-center lg:justify-between sm:flex-row py-10 lg:gap-12">
       @if ($logos)
         @foreach ($logos as $logo)
           <div class="basis-1/2 md:basis-1/3 p-3 @if ('auto' != $columns) lg:basis-{{ $columns }} @else lg:basis-auto @endif">
-            <div class="h-full flex justify-center h-full items-center @if ('default' == $style) bg-light p-8 @endif rounded-lg @if (('default' == $style) OR ('grid-white' == $style)) @endif rounded-lg">
+            <div class="h-full flex justify-center items-center @if ('default' == $style) bg-light p-8 @endif rounded-lg @if (('default' == $style) OR ('grid-white' == $style)) @endif rounded-lg">
               @if ($logo['link'])
                 <a
                   href="{{ $logo['link']}}"
