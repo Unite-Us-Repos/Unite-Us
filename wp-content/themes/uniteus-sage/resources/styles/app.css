@@ -1977,7 +1977,7 @@ blockquote h4 {
   @apply text-blue-600;
   font-style: normal;
   border: 0;
-  margin: 3rem 0 2rem;
+  margin: 3rem 0;
 }
 .report .blockquote .quote-icon {
   position: absolute;
