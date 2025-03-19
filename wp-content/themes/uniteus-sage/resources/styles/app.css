@@ -594,6 +594,10 @@ body .map-wrap {
   filter: brightness(0) invert(1);
 }
 
+.key-takeaways .acf-icon-action {
+  filter: invert(0) sepia(32%) saturate(3165%) hue-rotate(207deg) brightness(0) contrast(101%);
+}
+
 /* Backgrounds */
 .products-gradient {
   transition: all linear 0.25s;
@@ -1909,7 +1913,7 @@ blockquote h4 {
   right: -1rem;
 }
 .report .highlight-intro {
-  @apply text-xl
+  font-size: 1.5rem;
 }
 
 .report.demo h2 {
@@ -1977,7 +1981,7 @@ blockquote h4 {
   @apply text-blue-600;
   font-style: normal;
   border: 0;
-  margin: 3rem 0;
+  margin: 3rem 0 2rem;
 }
 .report .blockquote .quote-icon {
   position: absolute;
