@@ -595,6 +595,11 @@ body .map-wrap {
 }
 
 .key-takeaways .acf-icon-action {
+  filter: brightness(0) invert(0);
+  filter: invert(9%) sepia(32%) saturate(3165%) hue-rotate(207deg) brightness(88%) contrast(101%);
+}
+
+.key-takeaways .acf-icon-action {
   filter: invert(0) sepia(32%) saturate(3165%) hue-rotate(207deg) brightness(0) contrast(101%);
 }
 
