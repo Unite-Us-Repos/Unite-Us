@@ -1913,7 +1913,7 @@ blockquote h4 {
   right: -1rem;
 }
 .report .highlight-intro {
-  font-size: 1.5rem;
+  @apply text-xl
 }
 
 .report.demo h2 {
