@@ -37,7 +37,7 @@ if ($background['overlay']) {
 @if ($background['has_divider'])
   @includeIf('dividers.waves')
 @endif
-<section class="relative component-section {{ $section_classes }} {{ $background_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif" @if ($background['color'] == 'custom') style="background-color: {{ $background['custom_color'] }} @endif">
+<section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="relative component-section {{ $section_classes }} {{ $background_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif" @if ($background['color'] == 'custom') style="background-color: {{ $background['custom_color'] }} @endif">
   <div class="relative z-10 component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif">
     <div class="flex flex-col md:relative md:flex-none md:grid md:grid-cols-2 gap-10 lg:gap-28 {{ $text_classes }}" style="@if ($background['color'] == 'custom') color: {{ $background['text_color'] }} @endif">
 
@@ -54,7 +54,7 @@ if ($background['overlay']) {
         class="mb-8 text-4xl tracking-tight {{ $section['small_font'] ? 'text-5xl font-semibold small-font' : 'font-extrabold md:text-5xl lg:text-6xl' }}">
             {!! $section['title'] !!}
         </{{ $section['is_header'] === 'h1' ? 'h1' : ($section['is_header'] === 'h2' ? 'h2' : 'div') }}>
-    
+
         <div class="text-lg {{ $text_classes }}">
           {!! $section['description'] !!}
         </div>
@@ -113,5 +113,5 @@ if ($background['overlay']) {
   @if ($background['overlay'])
     <div class="absolute inset-0 bg-brand opacity-75"></div>
   @endif
-  
+
 </section>
