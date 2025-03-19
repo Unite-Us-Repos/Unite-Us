@@ -28,11 +28,11 @@
       bottom: 0" />
     </div>
     <div class="absolute bg-homev3 inset-0 bg-brand z-10 hidden md:block" style="width: 50%;">
-        <img class="absolute" rc="@asset('/images/herov3-food-green.png')" alt=""
+        <img class="absolute" src="@asset('/images/herov3-food-green.png')" alt=""
             style="right: -130px;
     width: 230px;
     top: 0" />
-        <img class="absolute" data-src="@asset('/images/herov3-profile-chart-blue.png')" alt=""
+        <img class="absolute" src="@asset('/images/herov3-profile-chart-blue.png')" alt=""
             style="right: -80px;
     width: 140px;
     bottom: 33%;" />
