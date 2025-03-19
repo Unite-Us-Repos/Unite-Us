@@ -594,6 +594,11 @@ body .map-wrap {
   filter: brightness(0) invert(1);
 }
 
+.key-takeaways .acf-icon-action {
+  filter: brightness(0) invert(0);
+  filter: invert(9%) sepia(32%) saturate(3165%) hue-rotate(207deg) brightness(88%) contrast(101%);
+}
+
 /* Backgrounds */
 .products-gradient {
   transition: all linear 0.25s;

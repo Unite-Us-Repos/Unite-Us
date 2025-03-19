@@ -400,13 +400,13 @@
                               <div class="absolute inset-0 bg-brand opacity-75 bg-purple-overlay"></div>
                                   <div class="z-10 relative p-5">
                                     <div class="header">{!! get_sub_field('header') !!}</div>
-                                    <div class="takeaways flex flex-wrap mb-4">
+                                    <div class="takeaways flex flex-col gap-2 md:grid grid-cols-2 mb-4">
                                         @if (have_rows('takeaways'))
                                             @while (have_rows('takeaways')) @php the_row(); @endphp
                                                 @php
                                                   $icon = get_sub_field('icon');
                                                 @endphp
-                                                <div class="takeaway flex mb-8">
+                                                <div class="takeaway flex">
                                                   @if ($icon)
                                                       <span class="icon mb-5 mt-2 bg-light w-10 h-10 p-2 flex justify-center items-center rounded-full">
                                                         <img class="lazy h-full w-full acf-icon-action" src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $icon }}.svg" alt="Icon" />
