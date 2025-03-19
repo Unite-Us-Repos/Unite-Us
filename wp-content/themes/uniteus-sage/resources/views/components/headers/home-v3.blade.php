@@ -18,25 +18,25 @@
     <!-- Overlay -->
 
     <div class="absolute flex justify-end top-0 bottom-0 right-0 z-20" style="width: 50%">
-        <img class="absolute hidden lg:block lazy" data-src="@asset('/images/herov3-blue-bar.png')" alt=""
+        <img class="absolute hidden lg:block" src="@asset('/images/herov3-blue-bar.png')" alt=""
             style="right: 8%;
       width: 208px;
       top: 7%" />
-        <img class="absolute lazy" data-src="@asset('/images/herov3-heart-home-pink.png')" alt=""
+        <img class="absolute" src="@asset('/images/herov3-heart-home-pink.png')" alt=""
             style="right: 0;
       width: 230px;
       bottom: 0" />
     </div>
     <div class="absolute bg-homev3 inset-0 bg-brand z-10 hidden md:block" style="width: 50%;">
-        <img class="absolute lazy" data-src="@asset('/images/herov3-food-green.png')" alt=""
+        <img class="absolute" rc="@asset('/images/herov3-food-green.png')" alt=""
             style="right: -130px;
     width: 230px;
     top: 0" />
-        <img class="absolute lazy" data-src="@asset('/images/herov3-profile-chart-blue.png')" alt=""
+        <img class="absolute" data-src="@asset('/images/herov3-profile-chart-blue.png')" alt=""
             style="right: -80px;
     width: 140px;
     bottom: 33%;" />
-        <img class="absolute hidden lg:block lazy" data-src="@asset('/images/herov3-grad-bar-purple.png')" alt=""
+        <img class="absolute hidden lg:block" src="@asset('/images/herov3-grad-bar-purple.png')" alt=""
             style="right: -225px;
     width: 160px;
     bottom: 13%;" />
@@ -47,7 +47,7 @@
                 class="hero-desktop hidden md:block w-full h-full object-cover @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
                 src="{{ $background['image']['sizes']['2048x2048'] }}" alt="{{ $background['image']['alt'] }}">
 
-{{-- 
+{{--
             <img class="md:hidden w-full h-full object-cover @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
                 src="{{ $background['logo']['sizes']['medium'] }}" alt="{{ $background['logo']['alt'] }}"> --}}
         @endif
@@ -84,7 +84,6 @@
                                     {!! $section['subtitle'] !!}
                                 </div>
                             @endif
-                            
                             @if ($section['is_header'] === 'h1')
                             <h1 class="h1 mb-0 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight @if ($background['color'] == 'light') text-brand @else text-white @endif">
                                 {!! $job_title !!}
@@ -98,7 +97,6 @@
                                     {!! $job_title !!}
                                 </div>
                             @endif
-                        
                             @if ($section['description'])
                                 <div
                                     class="mt-6 @if ($background['color'] == 'light') text-brand @else text-white @endif text-xl">
