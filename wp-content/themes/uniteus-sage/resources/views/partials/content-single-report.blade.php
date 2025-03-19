@@ -208,7 +208,7 @@
                   </div>
               </div>
               <div class="component-inner-section relative z-10">
-                  <div class="categories flex flex-wrap max-w-5xl pt-6 px-4 mx-auto">
+                  <div class="categories flex flex-wrap max-w-5xl px-4 mx-auto">
                       @if ($industries && !is_wp_error($industries))
                           @foreach ($industries as $industry)
                               <div
