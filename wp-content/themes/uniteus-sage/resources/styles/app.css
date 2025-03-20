@@ -1913,7 +1913,7 @@ blockquote h4 {
   right: -1rem;
 }
 .report .highlight-intro {
-  font-size: 1.5rem;
+  @apply text-xl
 }
 
 .report.demo h2 {
@@ -1923,8 +1923,6 @@ blockquote h4 {
 
 .report .key-takeaways {
   @apply bg-brand text-white;
-  left: -5%;
-  width: 110%;
 }
 .report .key-takeaways .header h2 {
   @apply text-3xl;
