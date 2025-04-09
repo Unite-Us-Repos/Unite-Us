@@ -1332,6 +1332,29 @@ ul.list-box {
   transition: all 0.25s linear;
 }
 
+.bg-gradient-clip-v2 {
+  background: linear-gradient(90deg,
+  #25C696 -3.11%,
+  #216CFF 35.56%,
+  #9643FF 74.77%,
+  #FF548B 104.31%),
+  linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  @apply bg-clip-text text-transparent
+}
+
+.ticker {
+  animation: scrolling var(--marquee-time) linear infinite;
+}
+
+.ticker:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrolling {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-1 * var(--marquee-width))); }
+}
+
 .service-card {
   min-height: 320px;
   width: 100%;
@@ -2563,6 +2586,10 @@ blockquote h4 {
 
 .swiper-slide {
   padding-right: 1rem;
+}
+
+.icon-carousel .swiper-slide {
+  padding-right: 0;
 }
 
 .content-video-header .video-wrapper iframe {

@@ -24,6 +24,71 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
+                    "key": "field_67f6859d2b8c3",
+                    "label": "Info",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "top",
+                    "endpoint": 0,
+                    "no_preference": 0,
+                    "selected": 0
+                },
+                {
+                    "key": "field_67f685cb2b8c4",
+                    "label": "Info",
+                    "name": "info",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_619d6d6e74604"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0,
+                    "acfe_seamless_style": 0,
+                    "acfe_clone_modal": 0,
+                    "acfe_clone_modal_close": 0,
+                    "acfe_clone_modal_button": "",
+                    "acfe_clone_modal_size": "large"
+                },
+                {
+                    "key": "field_672a579cf4204",
+                    "label": "FAQ",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "top",
+                    "endpoint": 0,
+                    "no_preference": 0,
+                    "selected": 0
+                },
+                {
                     "key": "field_67d3541e65985",
                     "label": "Style",
                     "name": "style",
@@ -39,21 +104,22 @@
                     },
                     "choices": {
                         "default": "Default",
-                        "two-column": "Two-Column"
+                        "two-column": "Two-Column",
+                        "image-swap": "Image Swap"
                     },
                     "default_value": "default",
                     "return_format": "value",
                     "multiple": 0,
                     "max": "",
-                    "allow_custom": 0,
-                    "placeholder": "",
-                    "search_placeholder": "",
                     "prepend": "",
                     "append": "",
                     "allow_null": 0,
                     "allow_in_bindings": 0,
                     "ui": 0,
                     "ajax": 0,
+                    "placeholder": "",
+                    "allow_custom": 0,
+                    "search_placeholder": "",
                     "min": ""
                 },
                 {
@@ -76,25 +142,6 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": ""
-                },
-                {
-                    "key": "field_672a579cf4204",
-                    "label": "FAQ",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "tab",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "placement": "top",
-                    "endpoint": 0,
-                    "no_preference": 0,
-                    "selected": 0
                 },
                 {
                     "key": "field_61ad0baa922dd",
@@ -176,6 +223,44 @@
                             "acfe_wysiwyg_min_height": 300,
                             "acfe_wysiwyg_toolbar_buttons": [],
                             "parent_repeater": "field_61ad0baa922dd"
+                        },
+                        {
+                            "key": "field_67f686f1e34c5",
+                            "label": "Image",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_67d3541e65985",
+                                        "operator": "==",
+                                        "value": "image-swap"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "uploader": "",
+                            "return_format": "array",
+                            "library": "all",
+                            "upload_folder": "",
+                            "acfe_thumbnail": 0,
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 1,
+                            "preview_size": "medium",
+                            "parent_repeater": "field_61ad0baa922dd"
                         }
                     ]
                 },
@@ -253,5 +338,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1741903487
+    "modified": 1744209813
 }

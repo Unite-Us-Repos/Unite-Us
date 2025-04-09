@@ -82,6 +82,7 @@
                         "centered": "Centered",
                         "centered-boxed": "Centered Boxed",
                         "centered-boxed-variant1": "Centered Boxed Variant One",
+                        "centered-boxed-variant1-video": "Centered Boxed Variant One (Video)",
                         "centered-cta-cards": "Centered (w\/ CTA cards)",
                         "centered-cta-training": "Centered (training)",
                         "text-media-with-posts": "Text\/media with posts",
@@ -604,5 +605,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1741906665
+    "modified": 1744140237
 }
