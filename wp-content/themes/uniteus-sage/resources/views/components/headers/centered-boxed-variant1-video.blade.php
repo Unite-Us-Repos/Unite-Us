@@ -58,7 +58,7 @@
             @include('components.action-buttons', $data)
           @endif
 
-          <p><a href="#" id="video-hero-link" class="relative no-underline mt-8 text-white font-semibold text-xl pb-1">Watch the Video</a></p>
+          <p><a href="#" id="video-hero-link" class="relative inline-block hover:text-white no-underline mt-8 text-white font-semibold text-xl pb-1">Watch the Video</a></p>
         </div>
       </div>
     </div>
