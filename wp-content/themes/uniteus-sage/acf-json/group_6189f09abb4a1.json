@@ -1782,14 +1782,14 @@
                 },
                 "layout_67f56a76bc9df": {
                     "key": "layout_67f56a76bc9df",
-                    "name": "ticker",
-                    "label": "Ticker",
+                    "name": "scrolling_text",
+                    "label": "Scrolling Text",
                     "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_67f56a87bc9e2",
-                            "label": "Ticker",
-                            "name": "ticker",
+                            "label": "Scrolling Text",
+                            "name": "scrolling_text",
                             "aria-label": "",
                             "type": "clone",
                             "instructions": "",
@@ -1805,7 +1805,7 @@
                             "hide_instructions": "",
                             "hide_required": "",
                             "clone": [
-                                "group_66d097e42a174"
+                                "field_66d097e66e873"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -2011,5 +2011,5 @@
     "acfe_permissions": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1744173800
+    "modified": 1744301927
 }

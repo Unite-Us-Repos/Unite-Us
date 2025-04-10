@@ -1346,17 +1346,30 @@ ul.list-box {
   @apply bg-clip-text text-transparent
 }
 
-.ticker {
+.marquee {
   animation: scrolling var(--marquee-time) linear infinite;
 }
 
-.ticker:hover {
+.marquee a {
+  text-decoration: none;
+}
+
+.marquee-ltr {
+  animation: scrolling-left-to-right var(--marquee-time) linear infinite;
+}
+
+.marquee a:hover {
   animation-play-state: paused;
 }
 
 @keyframes scrolling {
   0% { transform: translateX(0); }
   100% { transform: translateX(calc(-1 * var(--marquee-width))); }
+}
+
+@keyframes scrolling-left-to-right {
+  0% { transform: translateX(calc(-1 * var(--marquee-width))); }
+  100% { transform: translateX(0); }
 }
 
 .service-card {

@@ -1,11 +1,11 @@
 {
     "key": "group_66d097e42a174",
-    "title": "Ticker",
+    "title": "Scrolling Text",
     "fields": [
         {
             "key": "field_66d097e66e873",
-            "label": "Ticker",
-            "name": "ticker",
+            "label": "Scrolling Text",
+            "name": "scrolling_text",
             "aria-label": "",
             "type": "group",
             "instructions": "",
@@ -21,9 +21,84 @@
             "acfe_group_modal": 0,
             "sub_fields": [
                 {
+                    "key": "field_67f7f92cf22d1",
+                    "label": "Items",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "top",
+                    "endpoint": 0,
+                    "no_preference": 0,
+                    "selected": 0
+                },
+                {
+                    "key": "field_67f7f3f29c589",
+                    "label": "Settings",
+                    "name": "settings",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "acfe_seamless_style": 0,
+                    "acfe_group_modal": 0,
+                    "sub_fields": [
+                        {
+                            "key": "field_67f7f8369c58a",
+                            "label": "Direction",
+                            "name": "direction",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "rtl": "Right to left",
+                                "ltr": "Left to right"
+                            },
+                            "default_value": "rtl",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_custom": 0,
+                            "placeholder": "",
+                            "search_placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "max": "",
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "min": ""
+                        }
+                    ],
+                    "acfe_group_modal_close": 0,
+                    "acfe_group_modal_button": "",
+                    "acfe_group_modal_size": "large"
+                },
+                {
                     "key": "field_66d098b76e877",
-                    "label": "News Items",
-                    "name": "ticker_items",
+                    "label": "Scrolling Items",
+                    "name": "scrolling_items",
                     "aria-label": "",
                     "type": "repeater",
                     "instructions": "",
@@ -35,7 +110,7 @@
                         "id": ""
                     },
                     "acfe_repeater_stylised_button": 0,
-                    "layout": "table",
+                    "layout": "row",
                     "pagination": 0,
                     "min": 0,
                     "max": 0,
@@ -57,27 +132,112 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "strong\/b,em\/i",
-                            "acfe_wysiwyg_height": 100,
+                            "default_value": "",
+                            "acfe_wysiwyg_min_height": 80,
                             "acfe_wysiwyg_max_height": "",
-                            "acfe_wysiwyg_valid_elements": "strong\/b,em\/i",
+                            "acfe_wysiwyg_valid_elements": "",
                             "acfe_wysiwyg_custom_style": "",
                             "acfe_wysiwyg_disable_wp_style": 0,
-                            "acfe_wysiwyg_autoresize": 0,
+                            "acfe_wysiwyg_autoresize": 1,
                             "acfe_wysiwyg_disable_resize": 1,
                             "acfe_wysiwyg_remove_path": 0,
                             "acfe_wysiwyg_menubar": 0,
                             "acfe_wysiwyg_transparent": 0,
                             "acfe_wysiwyg_merge_toolbar": 0,
-                            "acfe_wysiwyg_custom_toolbar": 0,
+                            "acfe_wysiwyg_custom_toolbar": 1,
+                            "acfe_wysiwyg_toolbar_buttons": {
+                                "acfe_wysiwyg_toolbar_1": [
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "formatselect"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "bold"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "italic"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "bullist"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "numlist"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "blockquote"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "alignleft"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "aligncenter"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "alignright"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "link"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "wp_more"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "spellchecker"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "fullscreen"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "wp_adv"
+                                    }
+                                ],
+                                "acfe_wysiwyg_toolbar_2": [
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "styleselect"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "strikethrough"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "hr"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "forecolor"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "pastetext"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "removeformat"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "charmap"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "outdent"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "indent"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "undo"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "redo"
+                                    },
+                                    {
+                                        "acfe_wysiwyg_toolbar_row": "wp_help"
+                                    }
+                                ],
+                                "acfe_wysiwyg_toolbar_3": "",
+                                "acfe_wysiwyg_toolbar_4": ""
+                            },
                             "allow_in_bindings": 0,
-                            "tabs": "visual",
-                            "toolbar": "basic",
+                            "tabs": "all",
+                            "toolbar": "full",
                             "media_upload": 0,
                             "delay": 0,
                             "acfe_wysiwyg_auto_init": 0,
-                            "acfe_wysiwyg_min_height": 300,
-                            "acfe_wysiwyg_toolbar_buttons": [],
+                            "acfe_wysiwyg_height": 300,
                             "parent_repeater": "field_66d098b76e877"
                         },
                         {
@@ -100,6 +260,52 @@
                             "parent_repeater": "field_66d098b76e877"
                         }
                     ]
+                },
+                {
+                    "key": "field_67f7f894568f7",
+                    "label": "Background",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "top",
+                    "endpoint": 0,
+                    "no_preference": 0,
+                    "selected": 0
+                },
+                {
+                    "key": "field_67f7f8ac568f8",
+                    "label": "Background",
+                    "name": "background",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_62b57d81ca6a0"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0,
+                    "acfe_seamless_style": 0,
+                    "acfe_clone_modal": 0,
+                    "acfe_clone_modal_close": 0,
+                    "acfe_clone_modal_button": "",
+                    "acfe_clone_modal_size": "large"
                 }
             ],
             "acfe_group_modal_close": 0,
@@ -132,5 +338,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1744137031
+    "modified": 1744311464
 }

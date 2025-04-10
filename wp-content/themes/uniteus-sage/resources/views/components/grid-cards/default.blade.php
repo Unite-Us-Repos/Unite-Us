@@ -1,9 +1,9 @@
-<section class="component-section">
+<section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="component-section relative {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
   <div class="component-inner-section">
     <div class="grid-cards flex flex-col lg:grid lg:grid-cols-12 gap-8 w-full">
       @foreach ($cards as $card)
 
-        <div class="grid-card col-span-{{ $card['acfe_layout_col'] }} relative flex flex-col justify-end bg-blue-100 p-8 pt-40 rounded-md">
+        <div class="grid-card col-span-{{ $card['acfe_layout_col'] }} relative flex flex-col justify-end bg-light p-8 pt-40 rounded-md">
           <div class="relative z-20">
           <h2 class="text-2xl !font-normal mb-4">{!! $card['title'] !!}</h2>
           {!! $card['description'] !!}
