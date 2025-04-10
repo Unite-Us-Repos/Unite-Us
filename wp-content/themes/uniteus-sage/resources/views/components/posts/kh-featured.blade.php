@@ -3,11 +3,11 @@ global $wpdb;
 
 // Direct SQL query to get only the latest post
 $latest_post = $wpdb->get_row("
-    SELECT * 
-    FROM $wpdb->posts 
-    WHERE post_type = 'post' 
-      AND post_status = 'publish' 
-    ORDER BY post_date DESC 
+    SELECT *
+    FROM $wpdb->posts
+    WHERE post_type = 'post'
+      AND post_status = 'publish'
+    ORDER BY post_date DESC
     LIMIT 1
 ");
 @endphp
@@ -17,6 +17,9 @@ $latest_post = $wpdb->get_row("
 @endif
 
 @if ($latest_post)
+@php
+$type = App\View\Composers\Post::getType($latest_post->ID);
+@endphp
 <section class="max-w-7xl mx-auto {{ $section_classes }}">
   <header>
     <section class="component-section relative">
@@ -33,7 +36,7 @@ $latest_post = $wpdb->get_row("
               <a href="{{ get_permalink($latest_post->ID) }}">
                 <span class="text-sm font-medium text-white mr-6">
                   <span class="inline-block bg-action font-medium rounded-full px-4 py-1">
-                    {{ get_post_type_object($latest_post->post_type)->labels->singular_name }}
+                    {{ $type }}
                   </span>
                 </span>
               </a>
