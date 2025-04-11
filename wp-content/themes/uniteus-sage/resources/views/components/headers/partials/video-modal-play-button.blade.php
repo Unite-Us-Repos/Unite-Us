@@ -77,7 +77,7 @@
                 <div x-show="modalOpen" class="w-full h-full">
                     <iframe
                         class="w-full h-full"
-                        src="https://player.vimeo.com/video/894144179?autoplay=1"
+                        src="https://player.vimeo.com/video/894144179?autoplay=0"
                         title="Vimeo video player"
                         frameborder="0"
                         allow="autoplay; fullscreen; picture-in-picture"
