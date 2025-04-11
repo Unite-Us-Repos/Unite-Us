@@ -131,6 +131,64 @@
                             "display": "block",
                             "sub_fields": [
                                 {
+                                    "key": "field_67f8a7b7edf11",
+                                    "label": "ID",
+                                    "name": "id",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Can be used for anchor links.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "instruction_placement": "",
+                                    "hide_field": "",
+                                    "hide_label": "",
+                                    "hide_instructions": "",
+                                    "hide_required": "",
+                                    "default_value": "",
+                                    "acfe_settings": "",
+                                    "acfe_validate": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_67f8a6df4916e",
+                                    "label": "Pill",
+                                    "name": "pill",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "instruction_placement": "",
+                                    "hide_field": "",
+                                    "hide_label": "",
+                                    "hide_instructions": "",
+                                    "hide_required": "",
+                                    "default_value": "",
+                                    "acfe_settings": "",
+                                    "acfe_validate": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
                                     "key": "field_67f5f979facfd",
                                     "label": "Title",
                                     "name": "title",
@@ -345,5 +403,5 @@
     "acfe_permissions": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1744305463
+    "modified": 1744349315
 }
