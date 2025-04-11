@@ -1,5 +1,5 @@
 @php $section_settings = $acf["components"][$index]['layout_settings']['section_settings']; $video_type = 'vimeo'; @endphp
-<div class="relative">
+<div class="relative" x-data="videoController">
 <section class="relative z-10 max-w-7xl mx-auto component-section @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
     <!-- Overlay -->
     @if ($background['image'])
@@ -58,7 +58,7 @@
             @include('components.action-buttons', $data)
           @endif
 
-          <p><a href="#" id="video-hero-link" class="relative inline-block no-underline mt-8 text-white font-semibold text-xl pb-1">Watch the Video</a></p>
+          <p><a href="#" id="video-hero-link" class="relative trigger-play inline-block no-underline mt-8 text-white hover:text-white font-semibold text-xl pb-1">Watch the Video</a></p>
         </div>
       </div>
     </div>
