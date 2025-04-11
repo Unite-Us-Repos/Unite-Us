@@ -1,9 +1,9 @@
-<div class="flex align-center justify-center [&_[x-cloak]]:hidden" x-data="videoController">
+<div class="flex align-center justify-center [&_[x-cloak]]:hidden">
 
     <!-- Video thumbnail -->
     <button
         id="openVideoModal"
-        class="relative flex justify-center items-center focus:outline-none focus-visible:ring focus-visible:ring-indigo-300 rounded-3xl group"
+        class="relative trigger-play flex justify-center items-center focus:outline-none focus-visible:ring focus-visible:ring-indigo-300 rounded-3xl group"
         @click="modalOpen = true"
         aria-controls="modal"
         aria-label="Watch the video"
@@ -46,7 +46,7 @@
         x-transition:leave-end="opacity-0 scale-75"
         x-cloak
     >
-        <div class="max-w-5xl w-full mx-auto h-full flex items-center">
+        <div class="max-w-7xl w-full mx-auto h-full flex items-center">
             <div
                 class="w-full max-h-full rounded-3xl shadow-2xl aspect-video bg-black overflow-hidden"
                 @click.outside="modalOpen = false"
@@ -101,7 +101,9 @@
 </div>
 
 <script>
-  // Add this Alpine.js component data to your existing x-data
+// This script initializes the Alpine.js component for the video modal
+// It handles the opening and closing of the modal, as well as the video playback
+// This component handles the video modal functionality
 document.addEventListener('alpine:init', () => {
     Alpine.data('videoController', () => ({
         modalOpen: false,
@@ -110,15 +112,16 @@ document.addEventListener('alpine:init', () => {
             // Get reference to the video element
             const bgVideo = document.getElementById('bgVideo');
 
-            // Add event listener to the play button
-            document.getElementById('openVideoModal').addEventListener('click', () => {
-                // Pause the background video when the modal is opened
-                if (bgVideo) {
-                    bgVideo.pause();
-                }
+            // Add event listener to all elements with trigger-play class
+            document.querySelectorAll('.trigger-play').forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                  if (bgVideo) {
+                      bgVideo.pause();
+                  }
 
-                // Set modalOpen to true
-                this.modalOpen = true;
+                  // Set modalOpen to true
+                  this.modalOpen = true;
+                });
             });
 
             // Optional: Resume video when modal is closed
@@ -126,7 +129,7 @@ document.addEventListener('alpine:init', () => {
                 if (!value && bgVideo) {
                     // If you want to auto-resume the video when modal is closed
                     // Uncomment the next line
-                    // bgVideo.play();
+                    bgVideo.play();
                 }
             });
         }
