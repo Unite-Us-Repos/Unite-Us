@@ -3,24 +3,26 @@ module.exports = {
   "cache": {
     "name": "bud.production",
     "type": "filesystem",
-    "version": "lcielv4tipwu_iked2ryw1il3de_",
-    "cacheDirectory": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/.budfiles/cache/webpack",
+    "version": "lgcbky40ly9g2xxgc7rmovrnbpg_",
+    "cacheDirectory": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/.budfiles/cache/webpack",
     "managedPaths": [
-      "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules"
+      "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules"
     ],
     "buildDependencies": {
       "bud": [
-        "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/package.json",
-        "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/.editorconfig",
-        "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/bud.config.js",
-        "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/composer.json",
-        "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/jsconfig.json",
-        "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/tailwind.config.js",
-        "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/theme.json"
+        "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/package.json",
+        "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/.editorconfig",
+        "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/.yarnrc.yml",
+        "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/bud.config.js",
+        "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/composer.json",
+        "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/jsconfig.json",
+        "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/package-lock.json",
+        "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/tailwind.config.js",
+        "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/theme.json"
       ]
     }
   },
-  "context": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage",
+  "context": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage",
   "infrastructureLogging": {
     "console": {
       "Console": {}
@@ -33,7 +35,7 @@ module.exports = {
       {
         "test": {},
         "include": [
-          "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+          "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
         ],
         "parser": {
           "requireEnsure": false
@@ -45,60 +47,60 @@ module.exports = {
             "test": {},
             "use": [
               {
-                "loader": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/babel-loader/lib/index.js",
+                "loader": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/babel-loader/lib/index.js",
                 "options": {
                   "presets": [
                     [
-                      "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/@babel/preset-env/lib/index.js"
+                      "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/@babel/preset-env/lib/index.js"
                     ],
                     [
-                      "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/@babel/preset-react/lib/index.js"
+                      "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/@babel/preset-react/lib/index.js"
                     ]
                   ],
                   "plugins": [
                     [
-                      "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/@babel/plugin-transform-runtime/lib/index.js",
+                      "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/@babel/plugin-transform-runtime/lib/index.js",
                       {
                         "helpers": false
                       }
                     ],
                     [
-                      "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js"
+                      "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js"
                     ],
                     [
-                      "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/@babel/plugin-syntax-dynamic-import/lib/index.js"
+                      "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/@babel/plugin-syntax-dynamic-import/lib/index.js"
                     ],
                     [
-                      "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/@babel/plugin-proposal-class-properties/lib/index.js"
+                      "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/@babel/plugin-proposal-class-properties/lib/index.js"
                     ]
                   ]
                 }
               }
             ],
             "include": [
-              "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+              "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
             ]
           },
           {
             "test": {},
             "use": [
               {
-                "loader": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/mini-css-extract-plugin/dist/loader.js"
+                "loader": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/mini-css-extract-plugin/dist/loader.js"
               },
               {
-                "loader": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/css-loader/dist/cjs.js",
+                "loader": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/css-loader/dist/cjs.js",
                 "options": {
                   "importLoaders": 1,
                   "sourceMap": false
                 }
               },
               {
-                "loader": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/@roots/bud-postcss/node_modules/postcss-loader/dist/cjs.js",
+                "loader": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/@roots/bud-postcss/node_modules/postcss-loader/dist/cjs.js",
                 "options": {
                   "postcssOptions": {
                     "plugins": [
                       [
-                        "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/@roots/bud-postcss/node_modules/postcss-import/index.js"
+                        "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/@roots/bud-postcss/node_modules/postcss-import/index.js"
                       ],
                       [
                         null
@@ -107,7 +109,7 @@ module.exports = {
                         null
                       ],
                       [
-                        "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/@roots/bud-postcss/node_modules/postcss-preset-env/dist/index.cjs",
+                        "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/@roots/bud-postcss/node_modules/postcss-preset-env/dist/index.cjs",
                         {
                           "stage": 1,
                           "features": {
@@ -122,17 +124,17 @@ module.exports = {
               }
             ],
             "include": [
-              "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+              "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
             ]
           },
           {
             "test": {},
             "use": [
               {
-                "loader": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/mini-css-extract-plugin/dist/loader.js"
+                "loader": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/mini-css-extract-plugin/dist/loader.js"
               },
               {
-                "loader": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/css-loader/dist/cjs.js",
+                "loader": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/css-loader/dist/cjs.js",
                 "options": {
                   "importLoaders": 1,
                   "localIdentName": "[name]__[local]___[hash:base64:5]",
@@ -142,13 +144,13 @@ module.exports = {
               }
             ],
             "include": [
-              "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+              "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
             ]
           },
           {
             "test": {},
             "include": [
-              "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+              "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
             ],
             "type": "asset/resource",
             "generator": {
@@ -158,7 +160,7 @@ module.exports = {
           {
             "test": {},
             "include": [
-              "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+              "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
             ],
             "type": "asset/resource",
             "generator": {
@@ -168,7 +170,7 @@ module.exports = {
           {
             "test": {},
             "include": [
-              "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+              "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
             ],
             "type": "asset/resource",
             "generator": {
@@ -178,7 +180,7 @@ module.exports = {
           {
             "test": {},
             "include": [
-              "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+              "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
             ],
             "type": "asset",
             "generator": {
@@ -188,7 +190,7 @@ module.exports = {
           {
             "test": {},
             "include": [
-              "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+              "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
             ],
             "type": "json",
             "parser": {}
@@ -196,7 +198,7 @@ module.exports = {
           {
             "test": {},
             "include": [
-              "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+              "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
             ],
             "type": "json",
             "parser": {}
@@ -205,39 +207,39 @@ module.exports = {
             "test": {},
             "use": [
               {
-                "loader": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/html-loader/dist/cjs.js"
+                "loader": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/html-loader/dist/cjs.js"
               }
             ],
             "include": [
-              "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+              "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
             ]
           },
           {
             "test": {},
             "use": [
               {
-                "loader": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/csv-loader/index.js"
+                "loader": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/csv-loader/index.js"
               }
             ],
             "include": [
-              "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+              "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
             ]
           },
           {
             "test": {},
             "use": [
               {
-                "loader": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/xml-loader/index.js"
+                "loader": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/node_modules/xml-loader/index.js"
               }
             ],
             "include": [
-              "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+              "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
             ]
           },
           {
             "test": {},
             "include": [
-              "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources"
+              "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources"
             ],
             "type": "json",
             "parser": {}
@@ -253,7 +255,7 @@ module.exports = {
     "assetModuleFilename": "[name].[contenthash:6][ext]",
     "chunkFilename": "[name].[contenthash:6].js",
     "filename": "[name].[contenthash:6].js",
-    "path": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/public",
+    "path": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/public",
     "pathinfo": false,
     "publicPath": ""
   },
@@ -303,15 +305,15 @@ module.exports = {
   "performance": {
     "hints": false
   },
-  "recordsPath": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/.budfiles/bud/modules.json",
+  "recordsPath": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/.budfiles/bud/modules.json",
   "stats": "normal",
-  "target": "browserslist:/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/package.json",
+  "target": "browserslist:/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/package.json",
   "plugins": [
     {
       "patterns": [
         {
           "from": "images/**/*",
-          "context": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources",
+          "context": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources",
           "noErrorOnMissing": true
         }
       ],
@@ -358,14 +360,6 @@ module.exports = {
     },
     {
       "plugin": {
-        "name": "MergedManifestPlugin"
-      },
-      "file": "entrypoints.json",
-      "entrypointsName": "entrypoints.json",
-      "wordpressName": "wordpress.json"
-    },
-    {
-      "plugin": {
         "name": "WordPressDependenciesWebpackPlugin",
         "stage": null
       },
@@ -379,6 +373,14 @@ module.exports = {
       "externals": {
         "type": "window"
       }
+    },
+    {
+      "plugin": {
+        "name": "MergedManifestPlugin"
+      },
+      "file": "entrypoints.json",
+      "entrypointsName": "entrypoints.json",
+      "wordpressName": "wordpress.json"
     }
   ],
   "entry": {
@@ -404,12 +406,12 @@ module.exports = {
   },
   "resolve": {
     "alias": {
-      "@src": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources",
-      "@dist": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/public",
-      "@fonts": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources/fonts",
-      "@images": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources/images",
-      "@scripts": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources/scripts",
-      "@styles": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources/styles"
+      "@src": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources",
+      "@dist": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/public",
+      "@fonts": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources/fonts",
+      "@images": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources/images",
+      "@scripts": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources/scripts",
+      "@styles": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources/styles"
     },
     "extensions": [
       ".wasm",
@@ -422,7 +424,7 @@ module.exports = {
       ".yml"
     ],
     "modules": [
-      "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/resources",
+      "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/resources",
       "node_modules"
     ]
   }
