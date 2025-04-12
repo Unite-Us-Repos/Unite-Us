@@ -76,7 +76,7 @@ const debounce = (func, wait, immediate = true) => {
   let timeout
   return () => {
     const context = this
-    const args = arguments
+    const args = []
     const callNow = immediate && !timeout
     clearTimeout(timeout)
     timeout = setTimeout(function () {
