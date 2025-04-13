@@ -28,6 +28,7 @@ class Shortcodes
             'day',
             'year',
             'current_state',
+            'rotating_text',
         ];
 
         return collect($shortcodes)
@@ -142,6 +143,44 @@ class Shortcodes
             return $post->post_name;
         }
     }
+
+    /**
+     * Rotating Text Shortcode
+     *
+     * Creates a rotating text element using AlpineJS
+     * Usage: [rotating_text words="Word1,Word2,Word3" default="Default"]
+     */
+    function rotating_text($atts) {
+        // Define shortcode attributes and defaults
+        $atts = shortcode_atts(
+            array(
+                'words' => 'Word1,Word2,Word3',
+                'default' => 'Starting Text',
+                'delay' => 2000,
+                'capitalize' => 'true',
+                'add_period' => 'true'
+            ),
+            $atts,
+            'rotating_text'
+        );
+
+        // Convert comma-separated words to a JavaScript array
+        $words_array = explode(',', $atts['words']);
+        $words_array = array_map('trim', $words_array);
+        $words_json = json_encode($words_array);
+
+        // Create the output
+        $output = '<span class="rotating-title-text block text-action" ';
+        $output .= 'x-data="rotatingText({ ';
+        $output .= 'words: ' . esc_attr($words_json) . ', ';
+        $output .= 'delay: ' . intval($atts['delay']) . ', ';
+        $output .= 'capitalize: ' . $atts['capitalize'] . ', ';
+        $output .= 'addPeriod: ' . $atts['add_period'] . ' })" ';
+        $output .= 'x-text="currentText">' . esc_html($atts['default']) . ($atts['add_period'] === 'true' ? '.' : '') . '</span>';
+
+        return $output;
+    }
+
 }
 
 new Shortcodes();

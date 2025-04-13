@@ -20,6 +20,13 @@ const main = async (err) => {
 
   Alpine.plugin(intersect)
   Alpine.plugin(collapse)
+
+  // Load rotating text component before starting Alpine
+  if (document.querySelector('[x-data^="rotatingText"]')) {
+    const { rotatingText } = await import('./rotating-text.js');
+    rotatingText();
+  }
+
   Alpine.start()
 
   var lazyLoadInstance = new LazyLoad({
