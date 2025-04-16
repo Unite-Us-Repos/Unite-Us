@@ -5,9 +5,9 @@
 
         <div
           @if ($card['id']) id="{{ ($card['id']) }}" @endif
-          class="grid-card border-2 border-gray-200 col-span-{{ $card['acfe_layout_col'] }} relative flex flex-col justify-end bg-light p-8 pt-40 rounded-md"
+          class="grid-card col-span-{{ $card['acfe_layout_col'] }} relative flex flex-col justify-end bg-light p-8 pt-40 rounded-md"
           style="
-          @isset($card['card_color']['color']) background-color: {{ $card['card_color']['color'] }}; border-color: {{ $card['card_color']['color'] }}; @endif
+          @isset($card['card_color']['color']) background-color: {{ $card['card_color']['color'] }}; @endif
           @isset($card['card_text_color']['color']) color: {{ $card['card_text_color']['color'] }}; @endif
           ">
           <div class="relative z-20">
