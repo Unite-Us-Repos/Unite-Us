@@ -69,7 +69,7 @@ if (!empty($faqs)) {
     <div class="col-span-6">
       @if ($section['title'] || $section['description'])
 
-        <div class="text-left text-lg max-w-4xl mx-auto mb-10">
+        <div class="text-left text-lg max-w-4xl mx-auto mb-6">
           @if ($section['title'])
             <{{ $section['is_header'] ?? 'div' }}>{!! $section['title'] !!}</{{ $section['is_header'] ?? 'div' }}>
           @endif
