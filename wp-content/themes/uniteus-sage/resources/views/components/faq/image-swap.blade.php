@@ -66,10 +66,10 @@ if (!empty($faqs)) {
 
 
   <div class="flex flex-col lg:grid lg:grid-cols-12 lg:gap-14">
-    <div class="col-span-6">
+    <div class="col-span-6 order-2 lg:order-1">
       @if ($section['title'] || $section['description'])
 
-        <div class="text-left text-lg max-w-4xl mx-auto mb-6">
+        <div class="text-left text-lg max-w-4xl mx-auto mb-6 hidden lg:block">
           @if ($section['title'])
             <{{ $section['is_header'] ?? 'div' }}>{!! $section['title'] !!}</{{ $section['is_header'] ?? 'div' }}>
           @endif
@@ -127,7 +127,19 @@ if (!empty($faqs)) {
         @endif
       </div>
 
-      <div class="col-span-6">
+      <div class="col-span-6 order-1 lg:order-2">
+        @if ($section['title'] || $section['description'])
+
+          <div class="text-left text-lg max-w-4xl mx-auto mb-6 lg:hidden">
+            @if ($section['title'])
+              <{{ $section['is_header'] ?? 'div' }}>{!! $section['title'] !!}</{{ $section['is_header'] ?? 'div' }}>
+            @endif
+            @if ($section['description'])
+              {!! $section['description'] !!}
+            @endif
+          </div>
+
+        @endif
         <div class="sticky top-20">
           @include('components.faq.partials.swiper', $faqs)
         </div>
