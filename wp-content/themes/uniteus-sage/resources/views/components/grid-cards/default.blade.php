@@ -40,7 +40,7 @@
           </div>
           @if ($card['background_image'])
             <div class="absolute inset-0 sm:rounded-lg overflow-hidden">
-              <img fetchpriority="high" class="w-full h-full object-cover" src="{{ $card['background_image']['sizes']['medium'] }}" srcset="{{ $card['background_image']['sizes']['medium'] }} 300w, {{ $card['background_image']['sizes']['2048x2048'] }} 1024w" sizes="(max-width: 600px) 300px, 1024px" alt="{{ $card['background_image']['alt'] }}">
+              <img fetchpriority="high" class="w-full h-full object-cover object-right-top" src="{{ $card['background_image']['sizes']['medium'] }}" srcset="{{ $card['background_image']['sizes']['medium'] }} 300w, {{ $card['background_image']['sizes']['2048x2048'] }} 1024w" sizes="(max-width: 600px) 300px, 1024px" alt="{{ $card['background_image']['alt'] }}">
             </div>
           @endif
         </div>
