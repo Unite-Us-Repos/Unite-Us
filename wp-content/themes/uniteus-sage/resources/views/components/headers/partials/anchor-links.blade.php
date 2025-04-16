@@ -66,9 +66,14 @@
 
 #video-hero-link::after {
   height: 2px;
+  box-shadow: 1px 1px 30px #fff, 1px 1px 30px #0048ff
 }
 
 #jump-links a:hover {
   color: transparent;
+}
+
+.text-glow{
+  text-shadow: 1px 1px 30px #fff, 1px 1px 30px #0048ff;
 }
 </style>
