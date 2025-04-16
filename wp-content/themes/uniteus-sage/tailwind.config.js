@@ -92,6 +92,21 @@ module.exports = {
     'max-w-5xl',
     'max-w-6xl',
     'max-w-7xl',
+    'max-w-4/5',
+    'max-w-3/4',
+    'max-w-2/3',
+    'max-w-1/2',
+    'max-w-1/3',
+    'max-w-1/4',
+    'max-w-1/5',
+    'max-w-1/6',
+    'max-w-1/12',
+    'max-w-2/12',
+    'max-w-3/12',
+    'max-w-4/12',
+    'max-w-5/12',
+    'max-w-6/12',
+    'max-w-7/12',
     'text-white',
     'text-dark',
     'text-light',
@@ -180,7 +195,7 @@ module.exports = {
     'sm:w-auto',
     'lg:p-4',
     'lg:basis-[49.25%]',
-    'lg:basis-[49%]', 
+    'lg:basis-[49%]',
     'xl:basis-[49.25%',
     'lg:items-end',
     '!pt-6',
@@ -233,7 +248,7 @@ module.exports = {
     'md:w-48',
     'md:basis-2/3',
     'md:mt-16'
-    
+
   ],
   variants: {
     extend: {

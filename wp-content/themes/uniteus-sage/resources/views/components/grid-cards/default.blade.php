@@ -3,10 +3,20 @@
     <div class="grid-cards flex flex-col lg:grid lg:grid-cols-12 gap-8 w-full">
       @foreach ($cards as $card)
 
-        <div @if ($card['id']) id="{{ ($card['id']) }}" @endif class="grid-card col-span-{{ $card['acfe_layout_col'] }} relative flex flex-col justify-end bg-light p-8 pt-40 rounded-md">
+        <div
+          @if ($card['id']) id="{{ ($card['id']) }}" @endif
+          class="grid-card col-span-{{ $card['acfe_layout_col'] }} relative flex flex-col justify-end bg-light p-8 pt-40 rounded-md"
+          style="
+          @isset($card['card_color']['color']) background-color: {{ $card['card_color']['color'] }}; @endisset
+          @isset($card['card_text_color']['color']) color: {{ $card['card_text_color']['color'] }}; @endisset
+          ">
           <div class="relative z-20">
           @if ($card['pill'])
-            <div class=" text-action bg-white mix-blend-multiply text-sm py-1 px-4 inline-flex gap-2 mb-3 rounded-full" style="background-color: {{ $card['background_color'] ? $card['background_color']['color'] : 'inherit' }}">
+            <div
+              class="text-blue-600 font-semibold bg-white mix-blend-multiply text-sm py-1 px-4 inline-flex justify-center items-center gap-2 mb-3 rounded-full"
+              @isset ($card['pill_color']['color']) style="background-color: {{ $card['pill_color']['color'] }}; @endisset
+              @isset($card['pill_text_color']['color']) color: {{ $card['pill_text_color']['color'] }}; @endif
+              ">
               <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_f_26446_7304)">
                 <path d="M14.527 3.59107C12.3173 3.15964 11.8875 2.72981 11.4561 0.520134C11.4445 0.460737 11.3595 0.460737 11.3479 0.520134C10.9165 2.72981 10.4866 3.15964 8.27697 3.59107C8.21757 3.60268 8.21757 3.68762 8.27697 3.69923C10.4866 4.13065 10.9165 4.56049 11.3479 6.77016C11.3595 6.82956 11.4445 6.82956 11.4561 6.77016C11.8875 4.56049 12.3173 4.13065 14.527 3.69923C14.5864 3.68762 14.5864 3.60268 14.527 3.59107Z" fill="white"/>
@@ -26,10 +36,10 @@
             </div>
           @endif
           <h2 class="text-2xl !font-normal mb-4">{!! $card['title'] !!}</h2>
-          {!! $card['description'] !!}
+            <div class="w-4/5" style="min-width: 420px;">{!! $card['description'] !!}</div>
           </div>
           @if ($card['background_image'])
-            <div class="absolute inset-0 sm:rounded-md overflow-hidden">
+            <div class="absolute inset-0 sm:rounded-lg overflow-hidden">
               <img fetchpriority="high" class="w-full h-full object-cover" src="{{ $card['background_image']['sizes']['medium'] }}" srcset="{{ $card['background_image']['sizes']['medium'] }} 300w, {{ $card['background_image']['sizes']['2048x2048'] }} 1024w" sizes="(max-width: 600px) 300px, 1024px" alt="{{ $card['background_image']['alt'] }}">
             </div>
           @endif
