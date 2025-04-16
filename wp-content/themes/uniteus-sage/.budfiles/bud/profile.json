@@ -113,6 +113,21 @@
             "max-w-5xl",
             "max-w-6xl",
             "max-w-7xl",
+            "max-w-4/5",
+            "max-w-3/4",
+            "max-w-2/3",
+            "max-w-1/2",
+            "max-w-1/3",
+            "max-w-1/4",
+            "max-w-1/5",
+            "max-w-1/6",
+            "max-w-1/12",
+            "max-w-2/12",
+            "max-w-3/12",
+            "max-w-4/12",
+            "max-w-5/12",
+            "max-w-6/12",
+            "max-w-7/12",
             "text-white",
             "text-dark",
             "text-light",
@@ -474,6 +489,21 @@
               "max-w-5xl",
               "max-w-6xl",
               "max-w-7xl",
+              "max-w-4/5",
+              "max-w-3/4",
+              "max-w-2/3",
+              "max-w-1/2",
+              "max-w-1/3",
+              "max-w-1/4",
+              "max-w-1/5",
+              "max-w-1/6",
+              "max-w-1/12",
+              "max-w-2/12",
+              "max-w-3/12",
+              "max-w-4/12",
+              "max-w-5/12",
+              "max-w-6/12",
+              "max-w-7/12",
               "text-white",
               "text-dark",
               "text-light",
@@ -741,50 +771,6 @@
           }
         }
       },
-      "package.json": {
-        "name": "package.json",
-        "path": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/package.json",
-        "module": {
-          "name": "sage",
-          "private": true,
-          "browserslist": [
-            "extends @wordpress/browserslist-config"
-          ],
-          "engines": {
-            "node": ">=16.0.0"
-          },
-          "scripts": {
-            "dev": "bud dev",
-            "build": "bud build",
-            "translate": "yarn translate:pot && yarn translate:update",
-            "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"app,resources\"",
-            "translate:update": "for filename in ./resources/lang/*.po; do msgmerge -U $filename ./resources/lang/sage.pot; done; rm -f ./resources/lang/*.po~",
-            "translate:compile": "yarn translate:mo && yarn translate:js",
-            "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
-            "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
-          },
-          "devDependencies": {
-            "@roots/bud": "5.7.7",
-            "@roots/bud-tailwindcss": "5.7.7",
-            "@roots/sage": "5.7.7"
-          },
-          "dependencies": {
-            "@alpinejs/collapse": "^3.12.2",
-            "@alpinejs/intersect": "^3.13.2",
-            "alpinejs": "^3.10.2",
-            "dayjs": "^1.11.9",
-            "glightbox": "^3.2.0",
-            "iframe-resizer": "^4.3.2",
-            "moment": "^2.29.4",
-            "simple-parallax-js": "^5.6.2",
-            "swiper": "^8.4.5",
-            "tippy.js": "4.0.4",
-            "tocbot": "^4.18.2",
-            "vanilla-lazyload": "^17.8.3"
-          },
-          "packageManager": "yarn@4.9.1"
-        }
-      },
       ".yarnrc.yml": {
         "name": ".yarnrc.yml",
         "path": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/.yarnrc.yml",
@@ -867,6 +853,49 @@
                 "App\\Providers\\ThemeServiceProvider"
               ]
             }
+          }
+        }
+      },
+      "package.json": {
+        "name": "package.json",
+        "path": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/package.json",
+        "module": {
+          "name": "sage",
+          "private": true,
+          "browserslist": [
+            "extends @wordpress/browserslist-config"
+          ],
+          "engines": {
+            "node": ">=16.0.0"
+          },
+          "scripts": {
+            "dev": "bud dev",
+            "build": "bud build",
+            "translate": "yarn translate:pot && yarn translate:update",
+            "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"app,resources\"",
+            "translate:update": "for filename in ./resources/lang/*.po; do msgmerge -U $filename ./resources/lang/sage.pot; done; rm -f ./resources/lang/*.po~",
+            "translate:compile": "yarn translate:mo && yarn translate:js",
+            "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
+            "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
+          },
+          "devDependencies": {
+            "@roots/bud": "5.7.7",
+            "@roots/bud-tailwindcss": "5.7.7",
+            "@roots/sage": "5.7.7"
+          },
+          "dependencies": {
+            "@alpinejs/collapse": "^3.12.2",
+            "@alpinejs/intersect": "^3.13.2",
+            "alpinejs": "^3.10.2",
+            "dayjs": "^1.11.9",
+            "glightbox": "^3.2.0",
+            "iframe-resizer": "^4.3.2",
+            "moment": "^2.29.4",
+            "simple-parallax-js": "^5.6.2",
+            "swiper": "^8.4.5",
+            "tippy.js": "4.0.4",
+            "tocbot": "^4.18.2",
+            "vanilla-lazyload": "^17.8.3"
           }
         }
       },
@@ -17596,8 +17625,7 @@
       "tippy.js": "4.0.4",
       "tocbot": "^4.18.2",
       "vanilla-lazyload": "^17.8.3"
-    },
-    "packageManager": "yarn@4.9.1"
+    }
   },
   "installed": {
     "@roots/bud": "5.7.7",
@@ -17657,8 +17685,7 @@
         "tippy.js": "4.0.4",
         "tocbot": "^4.18.2",
         "vanilla-lazyload": "^17.8.3"
-      },
-      "packageManager": "yarn@4.9.1"
+      }
     },
     "disk": {
       "projectDir": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage",
@@ -17773,7 +17800,7 @@
       "NVM_INC": "/Users/tamayo/.nvm/versions/node/v18.20.7/include/node",
       "LDFLAGS": "-L/usr/local/opt/icu4c/lib",
       "_VOLTA_TOOL_RECURSION": "1",
-      "TERM_PROGRAM": "Apple_Terminal",
+      "TERM_PROGRAM": "vscode",
       "PROJECT_CWD": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage",
       "INIT_CWD": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage",
       "DISABLE_AUTO_TITLE": "true",
@@ -17782,40 +17809,51 @@
       "TERM": "xterm-256color",
       "CPPFLAGS": "-I/usr/local/opt/icu4c/include",
       "TMPDIR": "/var/folders/rt/53l1f6y92dd8cbtvg_h2rtkm0000gn/T/",
-      "TERM_PROGRAM_VERSION": "440",
+      "TERM_PROGRAM_VERSION": "1.98.1",
       "MallocNanoZone": "0",
       "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
       "VOLTA_HOME": "/Users/tamayo/.volta",
+      "ZDOTDIR": "/Users/tamayo",
       "PHPRC": "/Users/tamayo/Library/Application Support/Local/run/sg0uSJOyB/conf/php",
       "TERM_SESSION_ID": "CF89CA83-175C-4BF5-8834-FF0847D13C74",
       "MAGICK_CODER_MODULE_PATH": "/Users/tamayo/Library/Application Support/Local/lightning-services/php-8.1.23+0/bin/darwin/ImageMagick/modules-Q16/coders",
       "NVM_DIR": "/Users/tamayo/.nvm",
       "USER": "tamayo",
+      "COMMAND_MODE": "unix2003",
       "SSH_AUTH_SOCK": "/private/tmp/com.apple.launchd.yjREKEgoG2/Listeners",
+      "VSCODE_PROFILE_INITIALIZED": "1",
       "WP_CLI_CONFIG_PATH": "/Applications/Local.app/Contents/Resources/extraResources/bin/wp-cli/config.yaml",
       "__CF_USER_TEXT_ENCODING": "0x1F5:0x0:0x0",
-      "npm_execpath": "/private/var/folders/rt/53l1f6y92dd8cbtvg_h2rtkm0000gn/T/xfs-e4fc0c4b/yarn",
-      "PATH": "/private/var/folders/rt/53l1f6y92dd8cbtvg_h2rtkm0000gn/T/xfs-e4fc0c4b:/Users/tamayo/.volta/tools/image/npm/11.0.0/bin:/Users/tamayo/.volta/tools/image/yarn/4.6.0/bin:/Users/tamayo/.volta/tools/image/node/22.13.0/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/icu4c/bin:/Users/tamayo/.volta/bin:/Users/tamayo/.yarn/bin:/Users/tamayo/.config/yarn/global/node_modules/.bin:/Applications/Local.app/Contents/Resources/extraResources/bin/composer/posix:/Applications/Local.app/Contents/Resources/extraResources/bin/wp-cli/posix:/Users/tamayo/Library/Application Support/Local/lightning-services/php-8.1.23+0/bin/darwin/bin:/Users/tamayo/Library/Application Support/Local/lightning-services/mysql-8.0.16+6/bin/darwin/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/icu4c/bin:/Users/tamayo/.nvm/versions/node/v18.20.7/bin:/Users/tamayo/.volta/bin:/Users/tamayo/.yarn/bin:/Users/tamayo/.config/yarn/global/node_modules/.bin:/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/git/bin:/Users/tamayo/.composer/vendor/bin:/Users/tamayo/.composer/vendor/bin",
+      "npm_execpath": "/private/var/folders/rt/53l1f6y92dd8cbtvg_h2rtkm0000gn/T/xfs-e630cbd8/yarn",
+      "PATH": "/private/var/folders/rt/53l1f6y92dd8cbtvg_h2rtkm0000gn/T/xfs-e630cbd8:/Users/tamayo/.volta/tools/image/npm/11.0.0/bin:/Users/tamayo/.volta/tools/image/yarn/4.6.0/bin:/Users/tamayo/.volta/tools/image/node/22.13.0/bin:/Users/tamayo/.nvm/versions/node/v18.20.7/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/icu4c/bin:/Users/tamayo/.nvm/versions/node/v18.20.7/bin:/Users/tamayo/.volta/bin:/Users/tamayo/.yarn/bin:/Users/tamayo/.config/yarn/global/node_modules/.bin:/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/git/bin:/usr/local/opt/icu4c/sbin:/usr/local/opt/icu4c/bin:/Users/tamayo/.volta/bin:/Users/tamayo/.yarn/bin:/Users/tamayo/.config/yarn/global/node_modules/.bin:/Applications/Local.app/Contents/Resources/extraResources/bin/composer/posix:/Applications/Local.app/Contents/Resources/extraResources/bin/wp-cli/posix:/Users/tamayo/Library/Application Support/Local/lightning-services/php-8.1.23+0/bin/darwin/bin:/Users/tamayo/Library/Application Support/Local/lightning-services/mysql-8.0.16+6/bin/darwin/bin:/Users/tamayo/.nvm/versions/node/v18.20.7/bin:/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/Users/tamayo/.composer/vendor/bin:/Users/tamayo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand:/Users/tamayo/.composer/vendor/bin",
       "WP_CLI_DISABLE_AUTO_CHECK_UPDATE": "1",
       "npm_package_json": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage/package.json",
-      "__CFBundleIdentifier": "com.apple.Terminal",
+      "USER_ZDOTDIR": "/Users/tamayo",
+      "__CFBundleIdentifier": "com.microsoft.VSCode",
       "PWD": "/Users/tamayo/Local Sites/uniteus-dev/app/public/wp-content/themes/uniteus-sage",
       "npm_lifecycle_event": "build",
       "npm_package_name": "sage",
       "LANG": "en_US.UTF-8",
+      "VSCODE_GIT_ASKPASS_EXTRA_ARGS": "",
       "XPC_FLAGS": "0x0",
       "NODE_ENV": "production",
       "npm_package_version": "",
       "XPC_SERVICE_NAME": "0",
+      "VSCODE_INJECTION": "1",
       "HOME": "/Users/tamayo",
-      "SHLVL": "3",
+      "SHLVL": "5",
+      "VSCODE_GIT_ASKPASS_MAIN": "/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass-main.js",
       "LOGNAME": "tamayo",
-      "BERRY_BIN_FOLDER": "/private/var/folders/rt/53l1f6y92dd8cbtvg_h2rtkm0000gn/T/xfs-e4fc0c4b",
+      "BERRY_BIN_FOLDER": "/private/var/folders/rt/53l1f6y92dd8cbtvg_h2rtkm0000gn/T/xfs-e630cbd8",
+      "VSCODE_GIT_IPC_HANDLE": "/var/folders/rt/53l1f6y92dd8cbtvg_h2rtkm0000gn/T/vscode-git-bc4b27046a.sock",
       "NVM_BIN": "/Users/tamayo/.nvm/versions/node/v18.20.7/bin",
       "npm_config_user_agent": "yarn/4.9.1 npm/? node/v22.13.0 darwin x64",
       "MYSQL_HOME": "/Users/tamayo/Library/Application Support/Local/run/sg0uSJOyB/conf/mysql",
+      "GIT_ASKPASS": "/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass.sh",
+      "VSCODE_GIT_ASKPASS_NODE": "/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app/Contents/MacOS/Code Helper (Plugin)",
       "DISPLAY": "/private/tmp/com.apple.launchd.DudLKaYD7l/org.macosforge.xquartz:0",
-      "npm_node_execpath": "/private/var/folders/rt/53l1f6y92dd8cbtvg_h2rtkm0000gn/T/xfs-e4fc0c4b/node"
+      "npm_node_execpath": "/private/var/folders/rt/53l1f6y92dd8cbtvg_h2rtkm0000gn/T/xfs-e630cbd8/node",
+      "COLORTERM": "truecolor"
     },
     "colorDepth": 256,
     "args": {
@@ -17867,7 +17905,6 @@
         "tocbot": "^4.18.2",
         "vanilla-lazyload": "^17.8.3"
       },
-      "packageManager": "yarn@4.9.1",
       "version": "0.0.0",
       "bud": null,
       "resolvable": true,
@@ -17934,24 +17971,6 @@
         ]
       ]
     },
-    "@roots/sage": {
-      "name": "@roots/sage",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension",
-        "peers": [
-          "@roots/bud-preset-wordpress"
-        ]
-      },
-      "resolvable": true,
-      "peerDependencies": {},
-      "requires": [
-        [
-          "@roots/bud-preset-wordpress",
-          "5.7.7"
-        ]
-      ]
-    },
     "@roots/bud-tailwindcss": {
       "name": "@roots/bud-tailwindcss",
       "version": "5.7.7",
@@ -17971,6 +17990,39 @@
           "5.7.7"
         ]
       ]
+    },
+    "@roots/sage": {
+      "name": "@roots/sage",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-preset-wordpress"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": [
+        [
+          "@roots/bud-preset-wordpress",
+          "5.7.7"
+        ]
+      ]
+    },
+    "@roots/bud-postcss": {
+      "name": "@roots/bud-postcss",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "postcss": "^8.4.5",
+        "postcss-import": "^14.0.2",
+        "postcss-nested": "^5.0.6",
+        "postcss-preset-env": "^7.1.0"
+      },
+      "requires": []
     },
     "@roots/bud-preset-wordpress": {
       "name": "@roots/bud-preset-wordpress",
@@ -18027,21 +18079,6 @@
         ]
       ]
     },
-    "@roots/bud-postcss": {
-      "name": "@roots/bud-postcss",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension"
-      },
-      "resolvable": true,
-      "peerDependencies": {
-        "postcss": "^8.4.5",
-        "postcss-import": "^14.0.2",
-        "postcss-nested": "^5.0.6",
-        "postcss-preset-env": "^7.1.0"
-      },
-      "requires": []
-    },
     "@roots/bud-babel": {
       "name": "@roots/bud-babel",
       "version": "5.7.7",
@@ -18063,44 +18100,6 @@
     },
     "@roots/bud-entrypoints": {
       "name": "@roots/bud-entrypoints",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension"
-      },
-      "resolvable": true,
-      "peerDependencies": {},
-      "requires": []
-    },
-    "@roots/bud-preset-recommend": {
-      "name": "@roots/bud-preset-recommend",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension",
-        "peers": [
-          "@roots/bud-babel",
-          "@roots/bud-entrypoints",
-          "@roots/bud-postcss"
-        ]
-      },
-      "resolvable": true,
-      "peerDependencies": {},
-      "requires": [
-        [
-          "@roots/bud-babel",
-          "5.7.7"
-        ],
-        [
-          "@roots/bud-entrypoints",
-          "5.7.7"
-        ],
-        [
-          "@roots/bud-postcss",
-          "5.7.7"
-        ]
-      ]
-    },
-    "@roots/bud-wordpress-dependencies": {
-      "name": "@roots/bud-wordpress-dependencies",
       "version": "5.7.7",
       "bud": {
         "type": "extension"
@@ -18140,8 +18139,46 @@
         ]
       ]
     },
+    "@roots/bud-preset-recommend": {
+      "name": "@roots/bud-preset-recommend",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-babel",
+          "@roots/bud-entrypoints",
+          "@roots/bud-postcss"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": [
+        [
+          "@roots/bud-babel",
+          "5.7.7"
+        ],
+        [
+          "@roots/bud-entrypoints",
+          "5.7.7"
+        ],
+        [
+          "@roots/bud-postcss",
+          "5.7.7"
+        ]
+      ]
+    },
     "@roots/bud-wordpress-manifests": {
       "name": "@roots/bud-wordpress-manifests",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
+    },
+    "@roots/bud-wordpress-dependencies": {
+      "name": "@roots/bud-wordpress-dependencies",
       "version": "5.7.7",
       "bud": {
         "type": "extension"
