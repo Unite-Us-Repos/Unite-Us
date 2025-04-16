@@ -57,7 +57,7 @@
                 <div x-show="modalOpen" class="w-full h-full">
                     <iframe
                         class="w-full h-full"
-                        src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1"
+                        src="https://www.youtube.com/embed/VIDEO_ID?autoplay=0"
                         title="YouTube video player"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
