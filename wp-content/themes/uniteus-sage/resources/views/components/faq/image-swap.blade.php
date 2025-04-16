@@ -68,11 +68,10 @@ if (!empty($faqs)) {
   <div class="flex flex-col lg:grid lg:grid-cols-12 lg:gap-14">
     <div class="col-span-6">
       @if ($section['title'] || $section['description'])
+
         <div class="text-left text-lg max-w-4xl mx-auto mb-10">
           @if ($section['title'])
-
-            <h2> <span id="rotating-title-text" class="block text-action" x-data="rotatingText({ words: ['Screenings', 'Resources', 'Referrals', 'Reimbursements'], delay: 2000, capitalize: true, addPeriod: true })" x-text="currentText" >Screenings.</span> All Made Simpler! </h2>
-
+            <{{ $section['is_header'] ?? 'div' }}>{!! $section['title'] !!}</{{ $section['is_header'] ?? 'div' }}>
           @endif
           @if ($section['description'])
             {!! $section['description'] !!}
@@ -140,47 +139,7 @@ if (!empty($faqs)) {
 @if ($background['divider_bottom'])
 @includeIf('dividers.waves-bottom')
 @endif
-<script>
-  document.addEventListener('alpine:init', () => {
-    Alpine.data('rotatingText', (config = {}) => ({
-      words: config.words || [],
-      wordIndex: 0,
-      delay: config.delay || 2000,
-      capitalize: config.capitalize !== undefined ? config.capitalize : true,
-      addPeriod: config.addPeriod !== undefined ? config.addPeriod : true,
-
-      init() {
-        setInterval(() => {
-          this.wordIndex = (this.wordIndex + 1) % this.words.length;
-        }, this.delay);
-      },
-
-      get currentText() {
-        let text = this.words[this.wordIndex];
-
-        if (this.capitalize) {
-          text = text.charAt(0).toUpperCase() + text.slice(1);
-        }
-
-        if (this.addPeriod) {
-          text += '.';
-        }
-
-        return text;
-      }
-    }));
-  });
-</script>
-
 <style>
-#rotating-title-text,
-.special-accordion .faq-question {
-  background: linear-gradient(0deg, #216CFF, #216CFF),
-  linear-gradient(90deg, rgba(150, 67, 255, 0) 0%, #9643FF 100%);
-  background-clip: text;
-  transition: all 0.25s linear;
-}
-#rotating-title-text,
 .special-accordion .faq-question.title-text-clip {
   color: transparent;
 }

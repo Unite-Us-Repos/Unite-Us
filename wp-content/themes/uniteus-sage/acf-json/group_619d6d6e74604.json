@@ -380,10 +380,6 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "tabs": "all",
-                    "toolbar": "full",
-                    "media_upload": 1,
-                    "delay": 0,
                     "acfe_wysiwyg_height": 300,
                     "acfe_wysiwyg_max_height": "",
                     "acfe_wysiwyg_valid_elements": "",
@@ -395,10 +391,106 @@
                     "acfe_wysiwyg_menubar": 0,
                     "acfe_wysiwyg_transparent": 0,
                     "acfe_wysiwyg_merge_toolbar": 0,
-                    "acfe_wysiwyg_custom_toolbar": 0,
+                    "acfe_wysiwyg_custom_toolbar": 1,
+                    "acfe_wysiwyg_toolbar_buttons": {
+                        "acfe_wysiwyg_toolbar_1": [
+                            {
+                                "acfe_wysiwyg_toolbar_row": "formatselect"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "bold"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "italic"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "bullist"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "numlist"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "blockquote"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "alignleft"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "aligncenter"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "alignright"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "link"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "wp_more"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "spellchecker"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "fullscreen"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "wp_adv"
+                            },
+                            {
+                                "acfe_wysiwyg_toolbar_row": "rotating_text_shortcode"
+                            }
+                        ],
+                        "acfe_wysiwyg_toolbar_2": {
+                            "0": {
+                                "acfe_wysiwyg_toolbar_row": "styleselect"
+                            },
+                            "1": {
+                                "acfe_wysiwyg_toolbar_row": "strikethrough"
+                            },
+                            "2": {
+                                "acfe_wysiwyg_toolbar_row": "hr"
+                            },
+                            "3": {
+                                "acfe_wysiwyg_toolbar_row": "forecolor"
+                            },
+                            "4": {
+                                "acfe_wysiwyg_toolbar_row": "pastetext"
+                            },
+                            "5": {
+                                "acfe_wysiwyg_toolbar_row": "removeformat"
+                            },
+                            "6": {
+                                "acfe_wysiwyg_toolbar_row": "charmap"
+                            },
+                            "7": {
+                                "acfe_wysiwyg_toolbar_row": "outdent"
+                            },
+                            "8": {
+                                "acfe_wysiwyg_toolbar_row": "indent"
+                            },
+                            "9": {
+                                "acfe_wysiwyg_toolbar_row": "undo"
+                            },
+                            "10": {
+                                "acfe_wysiwyg_toolbar_row": "redo"
+                            },
+                            "11": {
+                                "acfe_wysiwyg_toolbar_row": "wp_help"
+                            },
+                            "67fc287099de0": {
+                                "acfe_wysiwyg_toolbar_row": "rotating_text_shortcode"
+                            }
+                        },
+                        "acfe_wysiwyg_toolbar_3": "",
+                        "acfe_wysiwyg_toolbar_4": ""
+                    },
+                    "allow_in_bindings": 1,
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0,
                     "acfe_wysiwyg_auto_init": 0,
-                    "acfe_wysiwyg_min_height": 300,
-                    "acfe_wysiwyg_toolbar_buttons": []
+                    "acfe_wysiwyg_min_height": 300
                 }
             ]
         }
@@ -428,5 +520,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1733781685
+    "modified": 1744578676
 }
