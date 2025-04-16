@@ -2615,3 +2615,7 @@ blockquote h4 {
     min-height: 320px;
   }
 }
+
+.jump-menu-wrap ul {
+  @apply p-6 lg:p-0 flex flex-col bg-white lg:bg-transparent lg:flex-row rounded-lg shadow-md lg:shadow-none overflow-hidden
+}
