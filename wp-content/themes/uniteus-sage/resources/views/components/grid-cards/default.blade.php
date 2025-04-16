@@ -7,8 +7,8 @@
           @if ($card['id']) id="{{ ($card['id']) }}" @endif
           class="grid-card col-span-{{ $card['acfe_layout_col'] }} relative flex flex-col justify-end bg-light p-8 pt-40 rounded-md"
           style="
-          @isset($card['card_color']['color']) background-color: {{ $card['card_color']['color'] }}; @endisset
-          @isset($card['card_text_color']['color']) color: {{ $card['card_text_color']['color'] }}; @endisset
+          @isset($card['card_color']['color']) background-color: {{ $card['card_color']['color'] }}; @endif
+          @isset($card['card_text_color']['color']) color: {{ $card['card_text_color']['color'] }}; @endif
           ">
           <div class="relative z-20">
           @if ($card['pill'])
@@ -40,7 +40,7 @@
           </div>
           @if ($card['background_image'])
             <div class="absolute inset-0 sm:rounded-lg overflow-hidden">
-              <img fetchpriority="high" class="w-full h-full object-cover" src="{{ $card['background_image']['sizes']['medium'] }}" srcset="{{ $card['background_image']['sizes']['medium'] }} 300w, {{ $card['background_image']['sizes']['2048x2048'] }} 1024w" sizes="(max-width: 600px) 300px, 1024px" alt="{{ $card['background_image']['alt'] }}">
+              <img fetchpriority="high" class="w-full h-full object-cover object-right-top" src="{{ $card['background_image']['sizes']['medium'] }}" srcset="{{ $card['background_image']['sizes']['medium'] }} 300w, {{ $card['background_image']['sizes']['2048x2048'] }} 1024w" sizes="(max-width: 600px) 300px, 1024px" alt="{{ $card['background_image']['alt'] }}">
             </div>
           @endif
         </div>
