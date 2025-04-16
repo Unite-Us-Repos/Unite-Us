@@ -91,7 +91,7 @@ if (!empty($faqs)) {
     }">
           <ul class="special-accordion list-none">
             @foreach ($faqs as $index => $faq)
-              <li class="relative faq-item py-6 px-9 lg:p-10 mb-6 bg-white rounded-lg shadow-lg" x-ref="container{{ $index }}" :class="{ 'open': selected === {{ $index }} }">
+              <li class="relative faq-item border border-light py-4 px-6 mb-3 bg-white rounded-lg" x-ref="container{{ $index }}" :class="{ 'open': selected === {{ $index }} }">
 
                 <!-- Question button -->
                 <button type="button" class="w-full text-left flex justify-between items-center"
@@ -104,7 +104,7 @@ if (!empty($faqs)) {
                     }
                   ">
                   <h3 class="faq-question text-xl font-semibold mb-0 pr-10"
-                  :class="{ 'text-action title-text-clip': selected === {{ $index }} }">
+                  :class="{ 'text-action': selected === {{ $index }} }">
                     {{ $faq['question'] ?? 'No question provided' }}
                   </h3>
 
@@ -114,7 +114,7 @@ if (!empty($faqs)) {
                 <div class="relative overflow-hidden transition-all max-h-0 duration-700"
                     x-ref="container{{ $index }}"
                     x-bind:style="selected === {{ $index }} ? 'max-height: ' + $refs.container{{ $index }}.scrollHeight + 'px' : ''">
-                  <div class="faq-answer text-lg border-t border-blue-300 mt-6 pt-6">
+                  <div class="faq-answer text-lg mt-4">
                     {!! $faq['answer'] ?? 'No answer provided' !!}
                   </div>
                 </div>
