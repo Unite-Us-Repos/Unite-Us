@@ -10,7 +10,7 @@
           @isset($card['card_color']['color']) background-color: {{ $card['card_color']['color'] }}; @endif
           @isset($card['card_text_color']['color']) color: {{ $card['card_text_color']['color'] }}; @endif
           ">
-          <div class="relative z-20">
+          <div class="relative z-20 mt-20 pt-20">
           @if ($card['pill'])
             <div
               class="text-blue-600 font-semibold bg-white mix-blend-multiply text-sm py-1 px-4 inline-flex justify-center items-center gap-2 mb-3 rounded-full"
@@ -36,7 +36,7 @@
             </div>
           @endif
           <h2 class="text-2xl !font-normal mb-4">{!! $card['title'] !!}</h2>
-            <div class="w-4/5" style="min-width: 420px;">{!! $card['description'] !!}</div>
+            <div class="w-4/5">{!! $card['description'] !!}</div>
           </div>
           @if ($card['background_image'])
             <div class="absolute inset-0 sm:rounded-lg overflow-hidden">

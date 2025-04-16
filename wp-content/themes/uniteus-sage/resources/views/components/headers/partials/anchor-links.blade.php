@@ -65,7 +65,7 @@
 }
 
 #video-hero-link::after {
-  height: 4px;
+  height: 2px;
 }
 
 #jump-links a:hover {
