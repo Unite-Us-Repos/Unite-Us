@@ -106,7 +106,7 @@ $anchors = [
 ];
 @endphp
 
-<div class="mx-auto max-w-7xl lg:mt-10 flex justify-center align-middle relative" style="z-index: 1">
+<div class="mx-auto max-w-7xl sm:mt-10 flex justify-center align-middle relative" style="z-index: 1">
 @include('components.headers.partials.anchor-links', $anchors)
 </div>
 <div class="absolute bottom-0 left-0 right-0 bg-light h-72"></div>

@@ -2619,5 +2619,5 @@ blockquote h4 {
 }
 
 .jump-menu-wrap ul {
-  @apply p-6 lg:p-0 flex flex-col bg-white lg:bg-transparent lg:flex-row rounded-lg shadow-md lg:shadow-none overflow-hidden
+  @apply p-6 sm:p-0 flex flex-col bg-white sm:bg-transparent sm:flex-row rounded-lg shadow-md sm:shadow-none overflow-hidden
 }

@@ -22,6 +22,7 @@ $s_settings = [
         'collapse_padding' => false,
         'fullscreen' => '',
 ];
+$is_swiper = false;
 $section_settings = isset($acf["components"][$index]['layout_settings']['section_settings']) ? $acf["components"][$index]['layout_settings']['section_settings'] : $s_settings;
 @endphp
 @if ($background['has_divider'])
@@ -104,7 +105,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
       <div class="absolute h-2/3 bg-white bottom-0 left-0 right-0 -ml-12 -mr-12 lg:hidden"></div>
       @endif
 
-
+      @if ($is_swiper)
       <div x-data="{ swiper: null }"
      x-init="
        if (window.innerWidth < 1024) {
@@ -127,8 +128,15 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
          });
        }
      ">
-      <div class="swiper" x-ref="container">
+     <div>
+        <div class="swiper" x-ref="container">
         <div class="swiper-wrapper pb-10 lg:gap-6">
+     @else
+        <div class="component-inner-section">
+        <div class="no-swiper">
+        <div class="flex flex-col lg:flex-row gap-6">
+     @endif
+
       @foreach ($cards as $index => $card)
         @php
           $link = $card['link'];
@@ -141,10 +149,9 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
             $link = false;
           }
         @endphp
-        <div class="swiper-slide" style="height: auto;">
+        <div class="{{ $is_swiper ? 'swiper-slide' : '' }}" style="height: auto;">
           <div class="service-icon-cards h-full group">
-            <div class="bg-white text-brand transition-all hover:shadow-lg relative flex items-start rounded-lg overflow-hidden group h-full
-            @if ($background['color'] != 'light-gradient') shadow-lg @endif
+            <div class="bg-white text-brand relative flex items-start rounded-lg overflow-hidden group h-full
             @if ($card['bg_image']) group-hover:bg-action-dark
             @else
             group-hover:bg-electric-purple
@@ -152,33 +159,22 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
             gradient-border">
 
 
+              <div class="article-card relative z-10 w-full h-full p-9 text-lg lg:text-4xl">
+                  @if ($link)
+                    <a aria-label="{{ esc_html(strip_tags($card['title'])) }}" aria-describedby="article-card-{{ $index }}" class="absolute inset-0 z-20 no-underline" href="{{ $link }}" @if ($card['is_blank']) target="_blank" @endif"><span class="sr-only">{!! $card['title'] !!}</span></a>
+                  @endif
 
-
-
-              <div class="relative z-10 w-full h-full p-9 text-lg lg:text-4xl">
-                <div classs="absolute inset-0 z-10 border-b-[15px] border-action-dark transition ease-in-out delay-250 group-hover:opacity-0 group-hover:z-0"></div>
-                @if ($link)
-                <a class="absolute inset-0 p-9 text-brand group-hover:text-white no-underline" href="{{ $link }}" @if ($card['is_blank']) target="_blank" @endif>
-                @endif
                 <div class="relative">
 
                 @if ($card['thumbnail'])
-                <div class="mb-10 rounded-lg overflow-hidden">
-                  @if ($link)
-                  <a class="no-underline" href="{{ $link }}" @if ($card['is_blank']) target="_blank" @endif alt="{{ strip_tags($card['title']) }}">
-                  @endif
-                    <img class="lazy w-full h-full aspect-video object-contain" decoding="async" data-src="{{ $card['thumbnail']['sizes']['medium_large'] }}" alt="{{ $card['thumbnail']['alt'] }}" />
-                  @if ($link)
-                  </a>
-                  @endif
-                </div>
-              @endif
-
-
+                  <div class="mb-10 rounded-lg overflow-hidden">
+                      <img class="lazy w-full h-full aspect-video object-contain" decoding="async" data-src="{{ $card['thumbnail']['sizes']['medium_large'] }}" alt="{{ $card['thumbnail']['alt'] }}" />
+                  </div>
+                @endif
 
 
                   @if ($card['title'])
-                  <h3 class="text-xl font-semibold mb-4">{!! $card['title'] !!}</h3>
+                  <h3 id="article-card-{{ $index }}" class="text-xl font-semibold mb-4">{!! $card['title'] !!}</h3>
                   @endif
                   @if ($card['description'])
                     <div class="text-lg w-full">
@@ -186,9 +182,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                     </div>
                   @endif
                 </div>
-                @if ($link)
-                </a>
-                @endif
+
               </div>
             </div>
         </div>
@@ -205,3 +199,11 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
 </section>
 
 
+<style>
+  .article-card {
+    transition: all 0.5s linear;
+  }
+  .article-card:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>

@@ -13,8 +13,8 @@
   <div class="swiper" x-ref="container">
     <div class="swiper-wrapper">
       @foreach ($faqs as $index => $faq)
-        <div class="swiper-slide bg-white h-auto">
-          <img class="w-full h-auto aspect-square object-contain object-center"
+        <div class="swiper-slide bg-white h-auto flex justify-center lg:justify-end">
+          <img class="w-full max-w-sm h-auto aspect-square object-contain object-center"
               src="{{ $faq['image']['sizes']['medium_large'] }}"
               alt="" />
         </div>
