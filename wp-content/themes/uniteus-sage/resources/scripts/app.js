@@ -22,9 +22,9 @@ const main = async (err) => {
   Alpine.plugin(collapse)
 
   // Load rotating text component before starting Alpine
-  if (document.querySelector('[x-data^="rotatingText"]')) {
-    const { rotatingText } = await import('./rotating-text.js');
-    rotatingText();
+  if (document.querySelector('[x-data^="typewriterEffect"]')) {
+    const { typewriterEffect } = await import('./typewriter-effect.js')
+    typewriterEffect()
   }
 
   Alpine.start()
