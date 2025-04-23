@@ -1,16 +1,21 @@
 <section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="component-section relative {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
   <div class="component-inner-section">
-    <div class="grid-cards flex flex-col lg:grid lg:grid-cols-12 gap-8 w-full">
+    <div class="grid-cards flex flex-col md:grid md:grid-cols-12 gap-8 w-full">
       @foreach ($cards as $card)
 
         <div
           @if ($card['id']) id="{{ ($card['id']) }}" @endif
-          class="grid-card col-span-{{ $card['acfe_layout_col'] }} relative flex flex-col justify-end bg-light p-8 pt-40 rounded-md"
+          class="grid-card col-span-{{ $card['acfe_layout_col'] }}
+            relative flex flex-col justify-start
+            bg-light p-8
+            border-2 border-light
+            rounded-lg overflow-hidden
+            "
           style="
-          @isset($card['card_color']['color']) background-color: {{ $card['card_color']['color'] }}; @endif
-          @isset($card['card_text_color']['color']) color: {{ $card['card_text_color']['color'] }}; @endif
+          @isset($card['card_color']['color']) background-color: {{ $card['card_color']['color'] }}; border-color: {{ $card['card_color']['color'] }}; @endisset
+          @isset($card['card_text_color']['color']) color: {{ $card['card_text_color']['color'] }}; @endisset
           ">
-          <div class="relative z-20 mt-20 pt-20">
+          <div class="relative z-20 mt-32 pt-32">
           @if ($card['pill'])
             <div
               class="text-blue-600 font-semibold bg-white mix-blend-multiply text-sm py-1 px-4 inline-flex justify-center items-center gap-2 mb-3 rounded-full"
@@ -36,11 +41,14 @@
             </div>
           @endif
           <h2 class="text-2xl !font-normal mb-4">{!! $card['title'] !!}</h2>
-            <div class="w-4/5">{!! $card['description'] !!}</div>
+            <div class="w-4/5" style="color: {{ isset($card['card_text_color']['color']) ? $card['card_text_color']['color'] : 'inherit' }}">{!! $card['description'] !!}</div>
           </div>
           @if ($card['background_image'])
-            <div class="absolute inset-0 sm:rounded-lg overflow-hidden">
-              <img fetchpriority="high" class="w-full h-full object-cover object-right-top" src="{{ $card['background_image']['sizes']['medium'] }}" srcset="{{ $card['background_image']['sizes']['medium'] }} 300w, {{ $card['background_image']['sizes']['2048x2048'] }} 1024w" sizes="(max-width: 600px) 300px, 1024px" alt="{{ $card['background_image']['alt'] }}">
+            <div class="absolute inset-0">
+              @if ($card['mobile_background_image'])
+                <img class="lazy w-full lg:hidden h-full object-cover object-left-top" data-src="{{ $card['mobile_background_image']['sizes']['large'] }}" alt="{{ $card['mobile_background_image']['alt'] }}">
+              @endif
+              <img class="lazy w-full @if ($card['mobile_background_image']) hidden lg:block @endif h-full object-cover object-left-top" data-src="{{ $card['background_image']['sizes']['large'] }}" alt="{{ $card['background_image']['alt'] }}">
             </div>
           @endif
         </div>
