@@ -424,6 +424,43 @@
                                     "mime_types": "",
                                     "allow_in_bindings": 0,
                                     "preview_size": "medium"
+                                },
+                                {
+                                    "key": "field_6809157067cdc",
+                                    "label": "Mobile Background Image",
+                                    "name": "mobile_background_image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "acfe_permissions": "",
+                                    "instruction_placement": "",
+                                    "hide_field": "",
+                                    "hide_label": "",
+                                    "hide_instructions": "",
+                                    "hide_required": "",
+                                    "uploader": "",
+                                    "return_format": "array",
+                                    "library": "all",
+                                    "upload_folder": "",
+                                    "acfe_thumbnail": 0,
+                                    "acfe_settings": "",
+                                    "acfe_validate": "",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": "",
+                                    "allow_in_bindings": 0,
+                                    "preview_size": "medium"
                                 }
                             ],
                             "min": "",
@@ -543,5 +580,5 @@
     "acfe_permissions": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1744394702
+    "modified": 1745425810
 }
