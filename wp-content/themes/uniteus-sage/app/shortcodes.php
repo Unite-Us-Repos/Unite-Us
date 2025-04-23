@@ -190,7 +190,7 @@ class Shortcodes
                 'phrases' => 'Word1,Word2,Word3',
                 'typing_speed' => 100,
                 'delete_speed' => 50,
-                'pause_before_delete' => 3000,
+                'pause_before_delete' => 1500,
                 'pause_before_next' => 500,
                 'loop' => 'true',
                 'show_cursor' => 'true',
