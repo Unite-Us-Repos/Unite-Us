@@ -132,9 +132,25 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
         <div class="swiper" x-ref="container">
         <div class="swiper-wrapper pb-10 lg:gap-6">
      @else
+        @php
+          $grid_count_array = [
+            'full' => 1,
+            '2/4' => 2,
+            '2/6' => 3,
+            '1/4' => 4,
+            '1/5' => 5,
+          ];
+          $grid_cols = 'lg:grid-cols-1';
+          $md_grid_cols = '';
+
+          if ($columns && $columns != 'full') {
+            $grid_cols = 'lg:grid-cols-' . $grid_count_array[$columns];
+            $md_grid_cols = 'md:grid-cols-2';
+          }
+        @endphp
         <div class="component-inner-section">
         <div class="no-swiper">
-        <div class="flex flex-col lg:flex-row gap-6">
+        <div class="flex flex-col md:grid {{ $md_grid_cols }} {{ $grid_cols }} gap-6">
      @endif
 
       @foreach ($cards as $index => $card)
@@ -149,7 +165,10 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
             $link = false;
           }
         @endphp
-        <div class="{{ $is_swiper ? 'swiper-slide' : '' }}" style="height: auto;">
+
+
+
+        <div class="@if ($is_swiper) swiper-slide @endif" style="height: auto;">
           <div class="service-icon-cards h-full group">
             <div class="bg-white text-brand relative flex items-start rounded-lg overflow-hidden group h-full
             @if ($card['bg_image']) group-hover:bg-action-dark
