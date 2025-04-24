@@ -15,7 +15,7 @@
           @isset($card['card_color']['color']) background-color: {{ $card['card_color']['color'] }}; border-color: {{ $card['card_color']['color'] }}; @endisset
           @isset($card['card_text_color']['color']) color: {{ $card['card_text_color']['color'] }}; @endisset
           ">
-          <div class="relative z-20 mt-32 pt-32">
+          <div class="relative z-20 sm:mt-32 sm:pt-32 mt-36 pt-36">
           @if ($card['pill'])
             <div
               class="text-blue-600 font-semibold bg-white mix-blend-multiply text-sm py-1 px-4 inline-flex justify-center items-center gap-2 mb-3 rounded-full"
@@ -50,7 +50,7 @@
               @if ($card['mobile_background_image'])
                 <img class="lazy w-full sm:hidden md:block lg:hidden h-full object-cover object-left-top" data-src="{{ $card['mobile_background_image']['sizes']['large'] }}" alt="{{ $card['mobile_background_image']['alt'] }}">
               @endif
-              <img class="lazy w-full @if ($card['mobile_background_image']) hidden sm:block md:hidden lg:block @endif h-full object-cover object-left-top" data-src="{{ $card['background_image']['sizes']['large'] }}" alt="{{ $card['background_image']['alt'] }}">
+              <img class="lazy w-full @if ($card['mobile_background_image']) hidden sm:block md:hidden lg:block @endif h-full object-cover object-left-top" data-src="{{ $card['background_image']['sizes']['2048x2048'] }}" alt="{{ $card['background_image']['alt'] }}">
             </div>
           @endif
         </div>
