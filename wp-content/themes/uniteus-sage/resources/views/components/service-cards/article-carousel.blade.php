@@ -196,7 +196,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                   <h3 id="article-card-{{ $index }}" class="text-xl font-semibold mb-4">{!! $card['title'] !!}</h3>
                   @endif
                   @if ($card['description'])
-                    <div class="text-lg w-full">
+                    <div class="text-base w-full">
                         {!! $card['description'] !!}
                     </div>
                   @endif
