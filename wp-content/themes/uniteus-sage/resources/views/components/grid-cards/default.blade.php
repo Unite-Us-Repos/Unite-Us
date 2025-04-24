@@ -6,7 +6,7 @@
         <div
           @if ($card['id']) id="{{ ($card['id']) }}" @endif
           class="grid-card col-span-{{ $card['acfe_layout_col'] }}
-            relative flex flex-col justify-start
+            relative flex flex-col justify-end
             bg-light p-8
             border-2 border-light
             rounded-lg overflow-hidden
@@ -41,14 +41,16 @@
             </div>
           @endif
           <h2 class="text-2xl !font-normal mb-4">{!! $card['title'] !!}</h2>
-            <div class="w-4/5" style="color: {{ isset($card['card_text_color']['color']) ? $card['card_text_color']['color'] : 'inherit' }}">{!! $card['description'] !!}</div>
+            <div style="color: {{ isset($card['card_text_color']['color']) ? $card['card_text_color']['color'] : 'inherit' }}">
+              {!! $card['description'] !!}
+            </div>
           </div>
           @if ($card['background_image'])
             <div class="absolute inset-0">
               @if ($card['mobile_background_image'])
-                <img class="lazy w-full lg:hidden h-full object-cover object-left-top" data-src="{{ $card['mobile_background_image']['sizes']['large'] }}" alt="{{ $card['mobile_background_image']['alt'] }}">
+                <img class="lazy w-full sm:hidden md:block lg:hidden h-full object-cover object-left-top" data-src="{{ $card['mobile_background_image']['sizes']['large'] }}" alt="{{ $card['mobile_background_image']['alt'] }}">
               @endif
-              <img class="lazy w-full @if ($card['mobile_background_image']) hidden lg:block @endif h-full object-cover object-left-top" data-src="{{ $card['background_image']['sizes']['large'] }}" alt="{{ $card['background_image']['alt'] }}">
+              <img class="lazy w-full @if ($card['mobile_background_image']) hidden sm:block md:hidden lg:block @endif h-full object-cover object-left-top" data-src="{{ $card['background_image']['sizes']['large'] }}" alt="{{ $card['background_image']['alt'] }}">
             </div>
           @endif
         </div>
