@@ -27,7 +27,7 @@
     <div class="jump-menu-wrap w-full md:relative">
       <ul id="jump-links" class="absolute sm:relative flex flex-col justify-center sm:flex-row  w-full flex-wrap gap-4 sm:gap-5 md:gap-x-10 list-none font-medium text-lg">
         <li class="hidden sm:block w-full text-center  lg:w-auto">
-          <span style="color:#2C405A">Jump to Features:</span>
+          <span style="color:#2C405A">What's New:</span>
         </li>
         @foreach($anchors as $anchor)
         <li>
