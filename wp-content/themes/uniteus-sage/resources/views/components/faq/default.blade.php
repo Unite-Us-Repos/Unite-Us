@@ -52,20 +52,20 @@ if (!empty($faqs)) {
 @includeIf('dividers.waves')
 @endif
 
-<section 
+<section
   @isset($acf["components"][$index]['id']) id="{{ $acf["components"][$index]['id'] }}" @endisset
-  class="relative component-section {{ $section_classes }} 
+  class="relative component-section {{ $section_classes }}
   @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif"
   @if ($section_settings['padding_class'] == 'padding-collapse') style="padding: 0;" @endif
 >
-  <div 
-    class="relative component-inner-section max-w-3xl mx-auto 
+  <div
+    class="relative component-inner-section max-w-3xl mx-auto
     @if ($section_settings['fullscreen']) fullscreen @endif"
     @if ($section_settings['padding_class'] == 'padding-collapse') style="padding: 0;" @endif
   >
 
 
-    <h2 class="text-4xl mb-8 text-center">{{ $faq_title }}</h2>
+    <h2 class="text-4xl mb-10 text-center">{{ $faq_title }}</h2>
     @if (!empty($faqs))
       <div class="accordion accordion-vertical" x-data="{ selected: null }">
         <ul class="list-none">
@@ -74,16 +74,16 @@ if (!empty($faqs)) {
 
               <!-- Question button -->
               <button type="button" class="w-full text-left flex justify-between items-center" @click="selected !== {{ $index }} ? selected = {{ $index }} : selected = null">
-                <h3 class="faq-question text-xl font-semibold mb-0 pr-10" 
+                <h3 class="faq-question text-xl font-semibold mb-0 pr-10"
                 :class="{ 'text-action': selected === {{ $index }} }">
                   {{ $faq['question'] ?? 'No question provided' }}
                 </h3>
-              
+
               </button>
 
               <!-- Answer with sliding effect -->
-              <div class="relative overflow-hidden transition-all max-h-0 duration-700" 
-                   x-ref="container{{ $index }}" 
+              <div class="relative overflow-hidden transition-all max-h-0 duration-700"
+                   x-ref="container{{ $index }}"
                    x-bind:style="selected === {{ $index }} ? 'max-height: ' + $refs.container{{ $index }}.scrollHeight + 'px' : ''">
                 <div class="faq-answer text-lg border-t border-blue-300 mt-6 pt-6">
                   {!! $faq['answer'] ?? 'No answer provided' !!}

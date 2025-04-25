@@ -1336,6 +1336,42 @@ ul.list-box {
   transition: all 0.25s linear;
 }
 
+.bg-gradient-clip-v2 {
+  background: linear-gradient(90deg,
+  #25C696 -3.11%,
+  #216CFF 35.56%,
+  #9643FF 74.77%,
+  #FF548B 104.31%),
+  linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  @apply bg-clip-text text-transparent
+}
+
+.marquee {
+  animation: scrolling var(--marquee-time) linear infinite;
+}
+
+.marquee a {
+  text-decoration: none;
+}
+
+.marquee-ltr {
+  animation: scrolling-left-to-right var(--marquee-time) linear infinite;
+}
+
+.marquee a:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrolling {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-1 * var(--marquee-width))); }
+}
+
+@keyframes scrolling-left-to-right {
+  0% { transform: translateX(calc(-1 * var(--marquee-width))); }
+  100% { transform: translateX(0); }
+}
+
 .service-card {
   min-height: 320px;
   width: 100%;
@@ -2567,6 +2603,10 @@ blockquote h4 {
   padding-right: 1rem;
 }
 
+.icon-carousel .swiper-slide {
+  padding-right: 0;
+}
+
 .content-video-header .video-wrapper iframe {
   width: 100%;
   min-height: 220px;
@@ -2576,4 +2616,8 @@ blockquote h4 {
   .content-video-header .video-wrapper iframe {
     min-height: 320px;
   }
+}
+
+.jump-menu-wrap ul {
+  @apply p-6 sm:p-0 flex flex-col bg-white sm:bg-transparent sm:flex-row rounded-lg shadow-md sm:shadow-none overflow-hidden
 }

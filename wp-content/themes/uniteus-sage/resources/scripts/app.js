@@ -20,6 +20,13 @@ const main = async (err) => {
 
   Alpine.plugin(intersect)
   Alpine.plugin(collapse)
+
+  // Load rotating text component before starting Alpine
+  if (document.querySelector('[x-data^="typewriterEffect"]')) {
+    const { typewriterEffect } = await import('./typewriter-effect.js')
+    typewriterEffect()
+  }
+
   Alpine.start()
 
   var lazyLoadInstance = new LazyLoad({
@@ -67,6 +74,124 @@ const main = async (err) => {
  */
 domReady(main);
 import.meta.webpackHot?.accept(main);
+
+
+/**
+ * See https://stackoverflow.com/a/24004942/11784757
+ */
+const debounce = (func, wait, immediate = true) => {
+  let timeout
+  return () => {
+    const context = this
+    const args = []
+    const callNow = immediate && !timeout
+    clearTimeout(timeout)
+    timeout = setTimeout(function () {
+      timeout = null
+      if (!immediate) {
+        func.apply(context, args)
+      }
+    }, wait)
+    if (callNow) func.apply(context, args)
+  }
+}
+
+/**
+ * Append the child element and wait for the parent's
+ * dimensions to be recalculated
+ * See https://stackoverflow.com/a/66172042/11784757
+ */
+const appendChildAwaitLayout = (parent, element) => {
+  return new Promise((resolve, _) => {
+    const resizeObserver = new ResizeObserver((entries, observer) => {
+      observer.disconnect()
+      resolve(entries)
+    })
+    resizeObserver.observe(element)
+    parent.appendChild(element)
+  })
+}
+
+document.addEventListener('alpine:init', () => {
+  Alpine.data(
+    'Marquee',
+    ({ speed = 1, spaceX = 0, dynamicWidthElements = false }) => ({
+      dynamicWidthElements,
+      async init() {
+        if (this.dynamicWidthElements) {
+          const images = this.$el.querySelectorAll('img')
+          // If there are any images, make sure they are loaded before
+          // we start cloning them, since their width might be dynamically
+          // calculated
+          if (images) {
+            await Promise.all(
+              Array.from(images).map(image => {
+                return new Promise((resolve, _) => {
+                  if (image.complete) {
+                    resolve()
+                  } else {
+                    image.addEventListener('load', () => {
+                      resolve()
+                    })
+                  }
+                })
+              })
+            )
+          }
+        }
+
+        // Store the original element so we can restore it on screen resize later
+        this.originalElement = this.$el.cloneNode(true)
+        const originalWidth = this.$el.scrollWidth + spaceX * 4
+        // Required for the marquee scroll animation
+        // to loop smoothly without jumping
+        this.$el.style.setProperty('--marquee-width', originalWidth + 'px')
+        this.$el.style.setProperty(
+          '--marquee-time',
+          ((1 / speed) * originalWidth) / 100 + 's'
+        )
+        this.resize()
+        // Make sure the resize function can only be called once every 100ms
+        // Not strictly necessary but stops lag when resizing window a bit
+        window.addEventListener('resize', debounce(this.resize.bind(this), 100))
+      },
+      async resize() {
+        // Reset to original number of elements
+        this.$el.innerHTML = this.originalElement.innerHTML
+
+        // Keep cloning elements until marquee starts to overflow
+        let i = 0
+        while (this.$el.scrollWidth <= this.$el.clientWidth) {
+          if (this.dynamicWidthElements) {
+            // If we don't give this.$el time to recalculate its dimensions
+            // when adding child nodes, the scrollWidth and clientWidth won't
+            // change, thus resulting in this while loop looping forever
+            await appendChildAwaitLayout(
+              this.$el,
+              this.originalElement.children[i].cloneNode(true)
+            )
+          } else {
+            this.$el.appendChild(
+              this.originalElement.children[i].cloneNode(true)
+            )
+          }
+          i += 1
+          i = i % this.originalElement.childElementCount
+        }
+
+        // Add another (original element count) of clones so the animation
+        // has enough elements off-screen to scroll into view
+        let j = 0
+        while (j < this.originalElement.childElementCount) {
+          this.$el.appendChild(this.originalElement.children[i].cloneNode(true))
+          j += 1
+          i += 1
+          i = i % this.originalElement.childElementCount
+        }
+      },
+    })
+  )
+})
 
 /**
  * Components
@@ -231,11 +356,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (chevronIcon) {
           chevronIcon.classList.remove('expanded');
         }
-        
+
         if (expandedDescription) {
           expandedDescription.classList.remove('expanded');
         }
-        
+
         if (bgImage) {
           bgImage.classList.remove('expanded');
         }
@@ -251,16 +376,16 @@ document.addEventListener('DOMContentLoaded', function() {
     cards.forEach(function(card) {
       card.onclick = function(event) {
         //console.log('yes');
-        
+
         // Stop the event from propagating to the document click event
         event.stopPropagation();
-        
+
         // Check if the clicked card is already expanded
         var isExpanded = card.querySelector('.expanded-description').classList.contains('expanded');
-        
+
         // Collapse all other cards
         collapseAllCards();
-        
+
         // If the clicked card was not expanded, expand it
         if (!isExpanded) {
           var chevronIcon = card.querySelector('.chevron-icon');
@@ -272,11 +397,11 @@ document.addEventListener('DOMContentLoaded', function() {
           if (chevronIcon) {
             chevronIcon.classList.add('expanded');
           }
-          
+
           if (expandedDescription) {
             expandedDescription.classList.add('expanded');
           }
-          
+
           if (bgImage) {
             bgImage.classList.add('expanded');
           }
@@ -290,7 +415,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       };
     });
-    
+
     // Collapse all cards when clicking outside
     document.addEventListener('click', function() {
       collapseAllCards();
@@ -315,7 +440,7 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log(`${param}: `, sessionStorage.getItem(param));
   });
 });
-  
+
 
 
 
@@ -324,42 +449,45 @@ document.addEventListener('DOMContentLoaded', function () {
   const desktopMenu = document.querySelector('.report-menu-wrapper');
   const innerContent = document.querySelector('.report-news-about'); // The content that wraps the WYSIWYG components
   const navHeight = 80; // The fixed height of the main nav at the top
-  let menuWrapperInitialTop = desktopMenuWrapperOuter.offsetTop; // Initial position of the menu wrapper
 
-  // Handle sticky menu behavior
-  const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const innerContentBottom = innerContent.offsetTop + innerContent.offsetHeight; // Bottom of inner-content
+  if (desktopMenuWrapperOuter) {
+    let menuWrapperInitialTop = desktopMenuWrapperOuter.offsetTop; // Initial position of the menu wrapper
 
-      // Set width dynamically to match the outer wrapper width
-      desktopMenu.style.width = `${desktopMenuWrapperOuter.offsetWidth}px`;
+    // Handle sticky menu behavior
+    const handleScroll = () => {
+        const scrollPosition = window.scrollY;
+        const innerContentBottom = innerContent.offsetTop + innerContent.offsetHeight; // Bottom of inner-content
 
-      // Check if the user has scrolled past the initial menu position
-      if (scrollPosition + navHeight > menuWrapperInitialTop) {
-          // Stick the menu as long as it hasn't reached the bottom of inner-content
-          if (scrollPosition + navHeight + desktopMenu.offsetHeight < innerContentBottom) {
-              desktopMenu.style.position = 'fixed';
-              desktopMenu.style.top = `${navHeight}px`;
-          } else {
-              // When at the bottom of inner-content, switch to absolute positioning
-              desktopMenu.style.position = 'absolute';
-              // Calculate the top position based on the inner-content's bottom and menu height
-              desktopMenu.style.top = `${innerContentBottom - desktopMenuWrapperOuter.offsetTop - desktopMenu.offsetHeight}px`;
-          }
-      } else {
-          // If user is above the menu's initial position, reset to normal
-          desktopMenu.style.position = 'relative';
-          desktopMenu.style.top = 'unset';
-      }
-  };
+        // Set width dynamically to match the outer wrapper width
+        desktopMenu.style.width = `${desktopMenuWrapperOuter.offsetWidth}px`;
 
-  // Attach scroll event listener
-  window.addEventListener('scroll', handleScroll);
+        // Check if the user has scrolled past the initial menu position
+        if (scrollPosition + navHeight > menuWrapperInitialTop) {
+            // Stick the menu as long as it hasn't reached the bottom of inner-content
+            if (scrollPosition + navHeight + desktopMenu.offsetHeight < innerContentBottom) {
+                desktopMenu.style.position = 'fixed';
+                desktopMenu.style.top = `${navHeight}px`;
+            } else {
+                // When at the bottom of inner-content, switch to absolute positioning
+                desktopMenu.style.position = 'absolute';
+                // Calculate the top position based on the inner-content's bottom and menu height
+                desktopMenu.style.top = `${innerContentBottom - desktopMenuWrapperOuter.offsetTop - desktopMenu.offsetHeight}px`;
+            }
+        } else {
+            // If user is above the menu's initial position, reset to normal
+            desktopMenu.style.position = 'relative';
+            desktopMenu.style.top = 'unset';
+        }
+    };
 
-  // On window resize, recalculate the width of the menu to match its container
-  window.addEventListener('resize', function () {
-      desktopMenu.style.width = `${desktopMenuWrapperOuter.offsetWidth}px`;
-  });
+    // Attach scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // On window resize, recalculate the width of the menu to match its container
+    window.addEventListener('resize', function () {
+        desktopMenu.style.width = `${desktopMenuWrapperOuter.offsetWidth}px`;
+    });
+  }
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -371,73 +499,75 @@ document.addEventListener('DOMContentLoaded', function () {
   const sections = []; // Store sections and their corresponding menu links
   const offset = 80; // Main nav (80px)
 
-  const scrollToSectionWithOffset = (element, offset) => {
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      // Detect if it's desktop or mobile and apply the correct offset
-      const isDesktop = window.innerWidth >= 1024; // 1024px breakpoint for desktop
-      const offsetPosition = isDesktop
-          ? elementPosition - offset - 10  // Offset for desktop (Main nav - 10px)
-          : elementPosition - offset - 56; // Offset for mobile (Main nav + Mobile menu - 56px)
+  if (mobileMenu) {
+    const scrollToSectionWithOffset = (element, offset) => {
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        // Detect if it's desktop or mobile and apply the correct offset
+        const isDesktop = window.innerWidth >= 1024; // 1024px breakpoint for desktop
+        const offsetPosition = isDesktop
+            ? elementPosition - offset - 10  // Offset for desktop (Main nav - 10px)
+            : elementPosition - offset - 56; // Offset for mobile (Main nav + Mobile menu - 56px)
 
-      window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth',
-      });
-  };
-
-  // Toggle menu visibility on clicking the toggle button
-  menuToggle.addEventListener('click', function () {
-      mobileMenu.classList.toggle('hidden');
-  });
-
-  // Close the menu when clicking the close button (X)
-  menuCloseBtn.addEventListener('click', function () {
-      mobileMenu.classList.add('hidden');
-  });
-
-  // Set menu height to viewport height minus 80px for nav and 56px for mobile nav
-  const setMenuHeight = () => {
-      const menuHeight = window.innerHeight - offset;
-      mobileMenu.style.height = `${menuHeight}px`;
-  };
-
-  // Retrieve the user-defined menu label from the data attribute, defaulting to "Key Takeaways" if not set
-const menuLabel = keyTakeawaysSection.getAttribute('data-menu-label') || 'Key Takeaways';
-
-// Add Key Takeaways link to the menu if section exists
-if (keyTakeawaysSection && menu) {
-    const listItem = document.createElement('li');
-    const link = document.createElement('a');
-
-    // Use menuLabel for the text in the menu
-    link.href = '#key-takeaways';
-    link.innerHTML = `<div class="text-gray-500 pr-4">A.</div> <div class="head text-blue-600">${menuLabel}</div>`;
-    link.classList.add('px-8', 'pt-2', 'pb-2', 'text-sm', 'font-semibold', 'no-underline', 'flex');
-
-    // Add click event to scroll smoothly to the key-takeaways section and close the menu
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
-        scrollToSectionWithOffset(keyTakeawaysSection, offset);
-        mobileMenu.classList.add('hidden'); // Close the menu
-
-        // Remove active class from all headings and subheadings
-        document.querySelectorAll('li.heading, li.subheading, div.h3-wrapper').forEach((el) => {
-            el.classList.remove('active');
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
         });
+    };
 
-        // Add active class to Key Takeaways
-        listItem.classList.add('active');
+    // Toggle menu visibility on clicking the toggle button
+    menuToggle.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
     });
 
-    listItem.classList.add('heading'); // Add .heading class to the li
-    listItem.appendChild(link);
-    menu.appendChild(listItem);
-
-    // Add the Key Takeaways section to the sections array for active detection
-    sections.push({
-        id: 'key-takeaways',
-        element: keyTakeawaysSection
+    // Close the menu when clicking the close button (X)
+    menuCloseBtn.addEventListener('click', function () {
+        mobileMenu.classList.add('hidden');
     });
+
+    // Set menu height to viewport height minus 80px for nav and 56px for mobile nav
+    const setMenuHeight = () => {
+        const menuHeight = window.innerHeight - offset;
+        mobileMenu.style.height = `${menuHeight}px`;
+    };
+
+    // Retrieve the user-defined menu label from the data attribute, defaulting to "Key Takeaways" if not set
+  const menuLabel = keyTakeawaysSection.getAttribute('data-menu-label') || 'Key Takeaways';
+
+  // Add Key Takeaways link to the menu if section exists
+  if (keyTakeawaysSection && menu) {
+      const listItem = document.createElement('li');
+      const link = document.createElement('a');
+
+      // Use menuLabel for the text in the menu
+      link.href = '#key-takeaways';
+      link.innerHTML = `<div class="text-gray-500 pr-4">A.</div> <div class="head text-blue-600">${menuLabel}</div>`;
+      link.classList.add('px-8', 'pt-2', 'pb-2', 'text-sm', 'font-semibold', 'no-underline', 'flex');
+
+      // Add click event to scroll smoothly to the key-takeaways section and close the menu
+      link.addEventListener('click', function (e) {
+          e.preventDefault();
+          scrollToSectionWithOffset(keyTakeawaysSection, offset);
+          mobileMenu.classList.add('hidden'); // Close the menu
+
+          // Remove active class from all headings and subheadings
+          document.querySelectorAll('li.heading, li.subheading, div.h3-wrapper').forEach((el) => {
+              el.classList.remove('active');
+          });
+
+          // Add active class to Key Takeaways
+          listItem.classList.add('active');
+      });
+
+      listItem.classList.add('heading'); // Add .heading class to the li
+      listItem.appendChild(link);
+      menu.appendChild(listItem);
+
+      // Add the Key Takeaways section to the sections array for active detection
+      sections.push({
+          id: 'key-takeaways',
+          element: keyTakeawaysSection
+      });
+    }
 }
 
 
@@ -617,7 +747,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-  // reports image lightbox 
+  // reports image lightbox
 document.addEventListener('DOMContentLoaded', function () {
   const lightbox = document.getElementById('reportlightbox');
   const lightboxImage = document.getElementById('reportlightbox-image');
@@ -627,52 +757,54 @@ document.addEventListener('DOMContentLoaded', function () {
   let isDragging = false;
   let startX, startY, scrollLeft, scrollTop;
 
-  wysiwygImages.forEach(img => {
-      img.addEventListener('click', function () {
-          lightbox.style.display = 'block';
-          lightboxImage.src = this.src;
-      });
-  });
+  if (lightbox) {
+    wysiwygImages.forEach(img => {
+        img.addEventListener('click', function () {
+            lightbox.style.display = 'block';
+            lightboxImage.src = this.src;
+        });
+    });
 
-  close.addEventListener('click', function () {
-      lightbox.style.display = 'none';
-  });
+    close.addEventListener('click', function () {
+        lightbox.style.display = 'none';
+    });
 
-  // Zooming in/out by scrolling
-  lightboxImage.addEventListener('wheel', function (e) {
-      e.preventDefault();
-      let scale = Number(this.getAttribute('data-scale')) || 1;
-      scale += e.deltaY * -0.001;
-      scale = Math.min(Math.max(1, scale), 4); // Limit scale between 1 and 4
-      this.style.transform = `scale(${scale})`;
-      this.setAttribute('data-scale', scale);
-  });
+    // Zooming in/out by scrolling
+    lightboxImage.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        let scale = Number(this.getAttribute('data-scale')) || 1;
+        scale += e.deltaY * -0.001;
+        scale = Math.min(Math.max(1, scale), 4); // Limit scale between 1 and 4
+        this.style.transform = `scale(${scale})`;
+        this.setAttribute('data-scale', scale);
+    });
 
-  // Drag to pan
-  lightboxImage.addEventListener('mousedown', function (e) {
-      isDragging = true;
-      lightboxImage.classList.add('grabbing');
-      startX = e.pageX - lightboxImage.offsetLeft;
-      startY = e.pageY - lightboxImage.offsetTop;
-      scrollLeft = lightbox.scrollLeft;
-      scrollTop = lightbox.scrollTop;
-  });
+    // Drag to pan
+    lightboxImage.addEventListener('mousedown', function (e) {
+        isDragging = true;
+        lightboxImage.classList.add('grabbing');
+        startX = e.pageX - lightboxImage.offsetLeft;
+        startY = e.pageY - lightboxImage.offsetTop;
+        scrollLeft = lightbox.scrollLeft;
+        scrollTop = lightbox.scrollTop;
+    });
 
-  lightboxImage.addEventListener('mousemove', function (e) {
-      if (!isDragging) return;
-      e.preventDefault();
-      const x = e.pageX - startX;
-      const y = e.pageY - startY;
-      lightboxImage.style.transform = `translate(${x}px, ${y}px) scale(${lightboxImage.getAttribute('data-scale') || 1})`;
-  });
+    lightboxImage.addEventListener('mousemove', function (e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - startX;
+        const y = e.pageY - startY;
+        lightboxImage.style.transform = `translate(${x}px, ${y}px) scale(${lightboxImage.getAttribute('data-scale') || 1})`;
+    });
 
-  lightboxImage.addEventListener('mouseup', function () {
-      isDragging = false;
-      lightboxImage.classList.remove('grabbing');
-  });
+    lightboxImage.addEventListener('mouseup', function () {
+        isDragging = false;
+        lightboxImage.classList.remove('grabbing');
+    });
 
-  lightboxImage.addEventListener('mouseleave', function () {
-      isDragging = false;
-      lightboxImage.classList.remove('grabbing');
-  });
+    lightboxImage.addEventListener('mouseleave', function () {
+        isDragging = false;
+        lightboxImage.classList.remove('grabbing');
+    });
+  }
 });

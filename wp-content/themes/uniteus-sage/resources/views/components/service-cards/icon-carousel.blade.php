@@ -9,7 +9,7 @@
   .icon-carousel .swiper-wrapper {
   justify-content: center;
         max-width: 80rem;
-        margin: auto;    
+        margin: auto;
         display: flex;
 }
 .icon-carousel .swiper-slide {
@@ -95,7 +95,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
 
 
 
-  <div class="relative z-10 -mx-4" style="padding: 0;">
+  <div class="relative z-10" style="padding: 0;">
     @if (($section['id'] == 'service-card-bg-half') OR ($section['id'] == 'service-cards-privacy'))
       <div class="absolute lg:hidden right-0 left-0 h-3/4 bg-dark z-10 -ml-4 -mr-4 bottom-0"></div>
     @endif
@@ -105,7 +105,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
       @endif
 
 
-      <div x-data="{ swiper: null }" 
+      <div x-data="{ swiper: null }"
      x-init="
        if (window.innerWidth < 1024) {
          swiper = new Swiper($refs.container, {
@@ -127,8 +127,8 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
          });
        }
      ">
-      <div class="swiper !pl-6 sm:!pl-10 md:!pl-0" x-ref="container">
-        <div class="swiper-wrapper pb-10">
+      <div class="swiper" x-ref="container">
+        <div class="swiper-wrapper pb-10 lg:gap-6">
       @foreach ($cards as $index => $card)
         @php
           $link = $card['link'];
@@ -143,12 +143,12 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
         @endphp
         <div class="swiper-slide" style="height: auto;">
           <div class="service-icon-cards h-full group">
-            <div class="bg-white text-brand transition-all hover:shadow-lg relative flex items-start rounded-lg overflow-hidden group h-full 
-            @if ($background['color'] != 'light-gradient') shadow-lg @endif 
-            @if ($card['bg_image']) group-hover:bg-action-dark  
-            @else 
-            group-hover:bg-electric-purple 
-            @endif 
+            <div class="bg-white text-brand transition-all hover:shadow-lg relative flex items-start rounded-lg overflow-hidden group h-full
+            @if ($background['color'] != 'light-gradient') shadow-lg @endif
+            @if ($card['bg_image']) group-hover:bg-action-dark
+            @else
+            group-hover:bg-electric-purple
+            @endif
             @if (!empty($card['custom_icon'])) gradient-border @endif">
 
               @if ($card['bg_image'])
@@ -185,21 +185,21 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                   {{-- Check for custom_icon and render in a separate wrapper --}}
                   @if (!empty($card["custom_icon"]))
                     <span class="w-14 h-14 p-2 flex justify-center items-center rounded-full">
-                      <img class="lazy h-full w-full custom-icon service-icon" 
-                        data-src="{{ $card['custom_icon']['url'] }}" 
+                      <img class="lazy h-full w-full custom-icon service-icon"
+                        data-src="{{ $card['custom_icon']['url'] }}"
                         alt="{{ $card['custom_icon']['alt'] ?? 'Custom Icon' }}" />
                     </span>
                   @elseif (!empty($card["icon"]))
                     {{-- Render default icon inside styled span --}}
                     <span class="mb-5 block bg-light
-                    @if ($alternate) bg-{{ $icon_color_class }} @else bg-light @endif 
-                    @if ($icon_color_class == 'electric-purple') 
-                       group-hover:bg-white 
-                     @elseif ($icon_color_class == 'white') 
+                    @if ($alternate) bg-{{ $icon_color_class }} @else bg-light @endif
+                    @if ($icon_color_class == 'electric-purple')
                        group-hover:bg-white
-                     @else 
+                     @elseif ($icon_color_class == 'white')
+                       group-hover:bg-white
+                     @else
                        group-hover:bg-action
-                     @endif 
+                     @endif
                    w-10 h-10 p-2 flex justify-center items-center rounded-full">
                      <img class="lazy h-full w-full acf-icon-{{ $icon_color_class}} service-icon" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
                    </span>
@@ -208,14 +208,14 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                   {{-- @isset ($card["icon"])
                     @if (!empty($card["icon"]))
                       <span class="mb-5 block bg-light
-                       @if ($alternate) bg-{{ $icon_color_class }} @else bg-light @endif 
-                       @if ($icon_color_class == 'electric-purple') 
-                          group-hover:bg-white 
-                        @elseif ($icon_color_class == 'white') 
+                       @if ($alternate) bg-{{ $icon_color_class }} @else bg-light @endif
+                       @if ($icon_color_class == 'electric-purple')
                           group-hover:bg-white
-                        @else 
+                        @elseif ($icon_color_class == 'white')
+                          group-hover:bg-white
+                        @else
                           group-hover:bg-action
-                        @endif 
+                        @endif
                       w-10 h-10 p-2 flex justify-center items-center rounded-full">
                         <img class="lazy h-full w-full acf-icon-{{ $icon_color_class}} service-icon" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
                       </span>

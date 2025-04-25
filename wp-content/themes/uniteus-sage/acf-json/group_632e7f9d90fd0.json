@@ -134,6 +134,7 @@
                         "default": "Service Cards",
                         "icon": "Icon Cards",
                         "icon-carousel": "Icon Cards (carousel)",
+                        "article-carousel": "Article Cards (carousel, video optional)",
                         "squared": "Squared",
                         "video-carousel": "Video Carousel"
                     },
@@ -144,6 +145,7 @@
                     "prepend": "",
                     "append": "",
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": "",
@@ -465,6 +467,13 @@
                                         "operator": "==",
                                         "value": "squared"
                                     }
+                                ],
+                                [
+                                    {
+                                        "field": "field_632e7f9d9b1d0",
+                                        "operator": "==",
+                                        "value": "article-carousel"
+                                    }
                                 ]
                             ],
                             "wrapper": {
@@ -474,6 +483,7 @@
                             },
                             "uploader": "",
                             "return_format": "array",
+                            "library": "all",
                             "upload_folder": "",
                             "acfe_thumbnail": 0,
                             "min_width": "",
@@ -483,8 +493,8 @@
                             "max_height": "",
                             "max_size": "",
                             "mime_types": "",
+                            "allow_in_bindings": 1,
                             "preview_size": "medium",
-                            "library": "all",
                             "parent_repeater": "field_632e7f9d9b1ff"
                         },
                         {
@@ -552,7 +562,15 @@
                             "type": "image",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_632e7f9d9b1d0",
+                                        "operator": "!=",
+                                        "value": "article-carousel"
+                                    }
+                                ]
+                            ],
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -589,6 +607,13 @@
                                         "operator": "==",
                                         "value": "squared"
                                     }
+                                ],
+                                [
+                                    {
+                                        "field": "field_632e7f9d9b1d0",
+                                        "operator": "==",
+                                        "value": "article-carousel"
+                                    }
                                 ]
                             ],
                             "wrapper": {
@@ -598,6 +623,7 @@
                             },
                             "uploader": "",
                             "return_format": "array",
+                            "library": "all",
                             "upload_folder": "",
                             "acfe_thumbnail": 0,
                             "min_width": "",
@@ -607,8 +633,8 @@
                             "max_height": "",
                             "max_size": "",
                             "mime_types": "",
+                            "allow_in_bindings": 1,
                             "preview_size": "medium",
-                            "library": "all",
                             "parent_repeater": "field_632e7f9d9b1ff"
                         },
                         {
@@ -801,5 +827,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1734479613
+    "modified": 1744226283
 }

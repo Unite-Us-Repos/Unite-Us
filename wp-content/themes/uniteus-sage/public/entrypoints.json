@@ -1,29 +1,29 @@
 {
   "app": {
     "js": [
-      "runtime.2e1ea6.js",
-      "vendor/app.54c78d.js",
-      "app.b7af32.js"
+      "runtime.4c11ae.js",
+      "vendor/app.23a5b5.js",
+      "app.09c466.js"
     ],
     "css": [
-      "app.8e51d5.css"
+      "app.5e87aa.css"
     ],
     "dependencies": []
   },
   "time": {
     "js": [
-      "runtime.2e1ea6.js",
-      "time.8aa5e0.js"
+      "runtime.4c11ae.js",
+      "time.9e5fde.js"
     ],
     "dependencies": []
   },
   "editor": {
     "js": [
-      "runtime.2e1ea6.js",
+      "runtime.4c11ae.js",
       "editor.ecc938.js"
     ],
     "css": [
-      "editor.3e45fd.css"
+      "editor.4b0087.css"
     ],
     "dependencies": [
       "wp-blocks"
