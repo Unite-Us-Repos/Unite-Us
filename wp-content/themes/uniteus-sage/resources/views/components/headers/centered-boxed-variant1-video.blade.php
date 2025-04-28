@@ -58,7 +58,13 @@
             @include('components.action-buttons', $data)
           @endif
 
-          <p><a href="#" id="video-hero-link" class="relative trigger-play inline-block no-underline mt-8 text-white hover:text-white font-semibold text-xl pb-1">Watch the Video</a></p>
+          @if ($video_modal['video_url'])
+            <div class="mt-8">
+              <a href="#" id="video-hero-link" class="relative trigger-play inline-block no-underline text-white hover:text-white font-semibold text-xl pb-1">
+                {{ $video_modal['button_text'] }}
+              </a>
+            </div>
+          @endif
         </div>
       </div>
     </div>

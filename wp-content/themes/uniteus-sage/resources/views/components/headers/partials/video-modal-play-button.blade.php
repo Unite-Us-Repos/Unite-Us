@@ -1,12 +1,89 @@
+@php
+/**
+ * Extract YouTube video ID from various YouTube URL formats
+ *
+ * @param string $url YouTube URL
+ * @return string|false Video ID or false if not found
+ */
+function extractYoutubeId($url) {
+    $pattern = '/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/';
+
+    if (preg_match($pattern, $url, $matches)) {
+        return $matches[1];
+    }
+
+    return false;
+}
+
+/**
+ * Extract Vimeo video ID from various Vimeo URL formats
+ *
+ * @param string $url Vimeo URL
+ * @return string|false Video ID or false if not found
+ */
+function extractVimeoId($url) {
+    // Remove any query parameters or fragments
+    $url = preg_replace('/(\?|\#).*/', '', $url);
+
+    // Pattern to match various Vimeo URL formats
+    $pattern = '/(?:vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/(?:[^\/]*)\/videos\/|album\/(?:\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?))/i';
+
+    if (preg_match($pattern, $url, $matches)) {
+        return $matches[1];
+    }
+
+    return false;
+}
+
+/**
+ * Detect if a URL is from YouTube or Vimeo
+ *
+ * @param string $url URL to check
+ * @return string|false Returns "youtube", "vimeo", or false if neither is found
+ */
+function detectVideoPlatform($url) {
+    // Convert URL to lowercase for case-insensitive matching
+    $url = strtolower($url);
+
+    // Check for YouTube
+    if (strpos($url, 'youtube.com') !== false || strpos($url, 'youtu.be') !== false) {
+        return 'youtube';
+    }
+
+    // Check for Vimeo
+    if (strpos($url, 'vimeo.com') !== false || strpos($url, 'player.vimeo.com') !== false) {
+        return 'vimeo';
+    }
+
+    // Neither YouTube nor Vimeo
+    return false;
+}
+
+$youtube_ID = '';
+$vimeo_ID = '';
+$video_type = '';
+if (isset($video_modal['video_url'])) {
+  $video_type = detectVideoPlatform($video_modal['video_url']);
+  if ($video_type == 'youtube') {
+      $youtube_ID = extractYoutubeId($video_modal['video_url']);
+      if (strpos($youtube_ID, '&') !== false) {
+          $youtube_ID = explode('&', $youtube_ID)[0];
+      }
+  } elseif ($video_type == 'vimeo') {
+      $vimeo_ID = extractVimeoId($video_modal['video_url']);
+  }
+}
+@endphp
 <div class="flex align-center justify-center [&_[x-cloak]]:hidden">
 
+  @if ($video_modal['video_url'])
     <!-- Video thumbnail -->
     <button
         id="openVideoModal"
         class="relative trigger-play flex justify-center items-center focus:outline-none focus-visible:ring focus-visible:ring-indigo-300 rounded-3xl group"
         @click="modalOpen = true"
         aria-controls="modal"
-        aria-label="Watch the video"
+        aria-label="{{ $video_modal['button_text'] }}"
     >
       <!-- Play icon -->
       <svg width="91" height="90" viewBox="0 0 91 90" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,6 +92,7 @@
       </svg>
     </button>
     <!-- End: Video thumbnail -->
+  @endif
 
     <!-- Modal backdrop -->
     <div
@@ -57,7 +135,7 @@
                 <div x-show="modalOpen" class="w-full h-full">
                     <iframe
                         class="w-full h-full"
-                        src="https://www.youtube.com/embed/VIDEO_ID?autoplay=0"
+                        src="https://www.youtube.com/embed/{{ $youtube_ID }}?autoplay=0"
                         title="YouTube video player"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -77,7 +155,7 @@
                 <div x-show="modalOpen" class="w-full h-full">
                     <iframe
                         class="w-full h-full"
-                        src="https://player.vimeo.com/video/894144179?autoplay=0"
+                        src="https://player.vimeo.com/video/{{ $vimeo_ID }}?autoplay=0"
                         title="Vimeo video player"
                         frameborder="0"
                         allow="autoplay; fullscreen; picture-in-picture"
