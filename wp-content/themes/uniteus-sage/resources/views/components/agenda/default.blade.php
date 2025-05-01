@@ -149,7 +149,7 @@
                                         <div class="@if ($session['breakout_session']) breakout-session lg:basis-[49%] xl:basis-[49.25%] @else basis-full @endif" x-ref="container{{ $tab_index . '_' . $s_index }}" :class="{ 'open': selected === '{{ $tab_index . '_' . $s_index }}' }">
 
                                             <div class="relative social-card py-6 px-9 lg:p-10 bg-white rounded-lg shadow-lg">
-                                                
+
                                                 @if ($session['description'] || !empty($session['topic']) || $session['presenters'] || $session['video'])
                                                     <button type="button" class="w-full"
                                                         @click="selected !== '{{ $tab_index . '_' . $s_index }}' ? selected = '{{ $tab_index . '_' . $s_index }}' : selected = null">
@@ -171,6 +171,7 @@
                                                                                 fill="#216CFF" />
                                                                         </svg>
                                                                     @else
+                                                                      @if ($session_time)
                                                                         <svg width="26" height="26"
                                                                             viewBox="0 0 26 26" fill="none"
                                                                             xmlns="http://www.w3.org/2000/svg">
@@ -180,13 +181,16 @@
                                                                                 stroke-linecap="round"
                                                                                 stroke-linejoin="round" />
                                                                         </svg>
+                                                                      @endif
                                                                     @endif
                                                                     <span
                                                                         class="text-medium-gray text-base font-semibold">
                                                                         @if ($session['video'])
                                                                             Watch On-Demand
                                                                         @else
+                                                                          @if ($session_time)
                                                                             {!! $session_time !!} {{ $abbr }}
+                                                                          @endif
                                                                         @endif
                                                                     </span>
                                                                 </div>
@@ -229,22 +233,26 @@
                                                                                 fill="#216CFF" />
                                                                         </svg>
                                                                     @else
-                                                                        <svg width="26" height="26"
-                                                                            viewBox="0 0 26 26" fill="none"
-                                                                            xmlns="http://www.w3.org/2000/svg">
-                                                                            <path
-                                                                                d="M12.8832 8.70556V13L16.104 16.2208M22.5456 13C22.5456 18.3364 18.2196 22.6625 12.8832 22.6625C7.54674 22.6625 3.2207 18.3364 3.2207 13C3.2207 7.66356 7.54674 3.33752 12.8832 3.33752C18.2196 3.33752 22.5456 7.66356 22.5456 13Z"
-                                                                                stroke="#216cff" stroke-width="2.14721"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round" />
-                                                                        </svg>
+                                                                        @if ($session_time)
+                                                                          <svg width="26" height="26"
+                                                                              viewBox="0 0 26 26" fill="none"
+                                                                              xmlns="http://www.w3.org/2000/svg">
+                                                                              <path
+                                                                                  d="M12.8832 8.70556V13L16.104 16.2208M22.5456 13C22.5456 18.3364 18.2196 22.6625 12.8832 22.6625C7.54674 22.6625 3.2207 18.3364 3.2207 13C3.2207 7.66356 7.54674 3.33752 12.8832 3.33752C18.2196 3.33752 22.5456 7.66356 22.5456 13Z"
+                                                                                  stroke="#216cff" stroke-width="2.14721"
+                                                                                  stroke-linecap="round"
+                                                                                  stroke-linejoin="round" />
+                                                                          </svg>
+                                                                        @endif
                                                                     @endif
                                                                     <span
                                                                         class="text-medium-gray text-base font-semibold">
                                                                         @if ($session['video'])
                                                                             Watch On-Demand
                                                                         @else
-                                                                            {!! $session_time !!} {{ $abbr }}
+                                                                            @if ($session_time)
+                                                                              {!! $session_time !!} {{ $abbr }}
+                                                                            @endif
                                                                         @endif
                                                                     </span>
                                                                 </div>
@@ -276,14 +284,14 @@
                                                 @endif
 
                                                 @if ($session['description'] || !empty($session['topic']) || $session['presenters'] || $session['video'])
-                                                
+
                                                     <div class="relative overflow-hidden transition-all max-h-0 duration-700" x-ref="container{{ $tab_index . '_' . $s_index }}" x-bind:style="selected === '{{ $tab_index . '_' . $s_index }}' ? 'max-height: ' + $refs.container{{ $tab_index . '_' . $s_index }}.scrollHeight + 'px' : ''">
                                                         @if ($session['breakout_session'])
-                                                            
+
                                                             <div class="flex flex-col gap-4 lg:grid lg:grid-cols-12">
 
                                                                 <!-- Featured Image -->
-                                                                
+
                                                                 @isset($session['featured_image']['sizes'])
                                                                 <div class="lg:col-span-12">
                                                                     <img class="mt-10 mx-auto"
@@ -291,7 +299,7 @@
                                                                         alt="" />
                                                                 </div>
                                                                 @endisset
-                                                            
+
                                                                 <!-- Topic -->
                                                                 <div class="lg:col-span-6 lg:order-2">
                                                                     @if (!empty($session['topic']))
@@ -305,7 +313,7 @@
                                                                         </div>
                                                                     @endif
                                                                 </div>
-                                                            
+
                                                                 <!-- Presenters -->
                                                                 <div class="lg:col-span-6 lg:order-1">
                                                                     @if ($session['presenters'])
@@ -338,7 +346,7 @@
                                                                                             <div class="text-sm">
                                                                                                 {!! $m['title'] !!}
                                                                                             </div>
-                                                            
+
                                                                                             @if ($m['social_media_link'] && $show_social)
                                                                                                 <div class="social-media-links mt-2 flex items-center gap-2">
                                                                                                     @foreach ($m['social_media_link'] as $link)
@@ -359,7 +367,7 @@
                                                                                                     @endforeach
                                                                                                 </div>
                                                                                             @endif
-                                                            
+
                                                                                         </div>
                                                                                     </div>
                                                                                 @endforeach
@@ -367,7 +375,7 @@
                                                                         @endforeach
                                                                     @endif
                                                                 </div>
-                                                            
+
                                                                 <!-- Video and Description -->
                                                                 <div class="col-span-12 text-lg border-t border-blue-300 lg:mr-16 lg:mt-6 pt-6 lg:order-3">
                                                                     @if ($session['video'])
@@ -379,9 +387,9 @@
                                                                     @endif
                                                                     {!! $session['description'] !!}
                                                                 </div>
-                                                            
+
                                                             </div>
-                                                            
+
                                                         @else
 
                                                             <div class="flex flex-col gap-8 lg:grid lg:grid-cols-12">
@@ -484,7 +492,7 @@
                                                             </div>
 
                                                         @endif
-                                                    </div>  
+                                                    </div>
 
                                                 @endif
                                             </div>
