@@ -1991,22 +1991,27 @@ blockquote h4 {
   justify-content: center;
 }
 
-.report .wysiwyg-content h2 {
+.report .wysiwyg-content h2,
+.wysiwyg-content-kt h2 {
   @apply text-action;
   @apply text-3xl;
 }
 
-.report .wysiwyg-content h3 {
+.report .wysiwyg-content h3,
+.wysiwyg-content-kt h3 {
   @apply text-dark;
   @apply text-2xl;
 }
 
 .report .wysiwyg-content p,
-.report .wysiwyg-content li {
+.report .wysiwyg-content li,
+.wysiwyg-content-kt p,
+.wysiwyg-content-kt li {
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
-.report .wysiwyg-content ul li {
+.report .wysiwyg-content ul li,
+ {
   padding-bottom: 1rem;
 }
 .report .blockquote {
