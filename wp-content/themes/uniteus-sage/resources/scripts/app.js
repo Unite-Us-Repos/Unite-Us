@@ -494,7 +494,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const mobileMenu = document.getElementById('reportMobileMenu');
   const menuToggle = document.getElementById('reportMobileMenuToggle');
   const menuCloseBtn = document.getElementById('reportMenuCloseBtn');
-  const keyTakeawaysSection = document.querySelector('.key-takeaways');
+  const keyTakeawaysSection = document.querySelector('.key-takeaways-menu');
   const menu = document.getElementById('reportDynamicMenu');
   const sections = []; // Store sections and their corresponding menu links
   const offset = 80; // Main nav (80px)
@@ -583,6 +583,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       headings.forEach(heading => {
           const headingText = heading.textContent.trim(); // Get trimmed heading text
+          const currentHeading = heading;
 
           // Only add to the menu if the heading has non-empty text
           if (headingText) {
@@ -648,6 +649,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
                   // Append the link to the list item and directly to the menu for H2
                   link.href = `#${heading.id || 'h2-' + h2Counter}`;
+                  // Add heading id attribute if it doesn't exist
+                  // This ensures that the same heading doesn't get multiple ids
+                  // and allows for smooth scrolling
+                  // to the same heading
+
+                  if (!heading.id) {
+                     // add id attribute to currentHeading
+                    currentHeading.id = heading.id || 'h2-' + h2Counter;
+                  }
+
+                  // Set the inner HTML for the link
                   link.innerHTML = `${counterText}<div class="head text-blue-600 no-underline pb-2 pt-2">${headingText}</div>`;
                   listItem.classList.add('heading'); // Add .heading class to li with H2
                   listItem.appendChild(link);
@@ -718,10 +730,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  const offset = 100; // Offset for fixed navigation (80px)
+  let offset = 100; // Offset for fixed navigation (80px)
 
   // Function to scroll smoothly to a section
   const smoothScrollToSection = (element) => {
+      if (window.innerWidth <= 1024) {
+          offset = 160; // Offset for desktop (80px + 100px for the menu)
+      } else {
+        offset = 100; // Offset for mobile (80px)
+      }
+
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - offset;
 
@@ -741,6 +759,7 @@ document.addEventListener('DOMContentLoaded', function () {
           // Scroll to the section if the target exists
           if (targetElement) {
               smoothScrollToSection(targetElement);
+              reportMenuCloseBtn.click(); // Close the mobile menu after scrolling
           }
       });
   });
