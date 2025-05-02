@@ -38,7 +38,20 @@
     $topics = get_the_terms(get_the_ID(), 'topic');
 @endphp
 
+@php
+$components = isset($acf['reports_component']['components']) ? $acf['reports_component']['components'] : null;
+$show_jump_menu = false;
 
+// Loop through the ACF flexible layouts and gather content
+if ($components) {
+  foreach ($components as $component) {
+    $component_layout = $component['acf_fc_layout'];
+    if ($component_layout == 'key_takeaways') {
+      $show_jump_menu = true;
+    }
+  }
+}
+@endphp
 
 <article class="report bg-light-gradient-short">
   <div class="flex flex-col lg:flex-row content-width">
@@ -46,16 +59,18 @@
 
 
       <section class="report-menu-wrapper-outer w-full lg:w-1/4 lg:mt-4 lg:relative lg:ml-6 z-50 lg:z-10">
-        <section class="report-menu-wrapper">
+        <div class="report-menu-wrapper">
           <!-- Mobile menu wrapper - visible on mobile only -->
-          <div class="report-mobile-menu-wrap flex w-full justify-between items-center lg:hidden p-4 px-8 fixed lg:relative top-[80px] left-0 right-0 z-40 bg-white shadow-md" id="reportMobileMenuToggle">
-            <span class="text-white">Jump To</span>
-            <span>
-              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M4 0C4.26522 5.96046e-08 4.51957 0.105357 4.70711 0.292893L7.70711 3.29289C8.09763 3.68342 8.09763 4.31658 7.70711 4.70711C7.31658 5.09763 6.68342 5.09763 6.29289 4.70711L4 2.41421L1.70711 4.70711C1.31658 5.09763 0.683417 5.09763 0.292893 4.70711C-0.0976311 4.31658 -0.097631 3.68342 0.292893 3.29289L3.29289 0.292893C3.48043 0.105357 3.73478 0 4 0ZM0.292893 9.29289C0.683417 8.90237 1.31658 8.90237 1.70711 9.29289L4 11.5858L6.29289 9.29289C6.68342 8.90237 7.31658 8.90237 7.70711 9.29289C8.09763 9.68342 8.09763 10.3166 7.70711 10.7071L4.70711 13.7071C4.31658 14.0976 3.68342 14.0976 3.29289 13.7071L0.292893 10.7071C-0.0976311 10.3166 -0.0976311 9.68342 0.292893 9.29289Z" fill="white"/>
-              </svg>
-            </span>
-          </div>
+           @if ($show_jump_menu)
+            <div class="report-mobile-menu-wrap flex w-full justify-between items-center lg:hidden p-4 px-8 fixed lg:relative top-[80px] left-0 right-0 z-40 bg-white shadow-md" id="reportMobileMenuToggle">
+              <span class="text-white">Jump To</span>
+              <span>
+                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M4 0C4.26522 5.96046e-08 4.51957 0.105357 4.70711 0.292893L7.70711 3.29289C8.09763 3.68342 8.09763 4.31658 7.70711 4.70711C7.31658 5.09763 6.68342 5.09763 6.29289 4.70711L4 2.41421L1.70711 4.70711C1.31658 5.09763 0.683417 5.09763 0.292893 4.70711C-0.0976311 4.31658 -0.097631 3.68342 0.292893 3.29289L3.29289 0.292893C3.48043 0.105357 3.73478 0 4 0ZM0.292893 9.29289C0.683417 8.90237 1.31658 8.90237 1.70711 9.29289L4 11.5858L6.29289 9.29289C6.68342 8.90237 7.31658 8.90237 7.70711 9.29289C8.09763 9.68342 8.09763 10.3166 7.70711 10.7071L4.70711 13.7071C4.31658 14.0976 3.68342 14.0976 3.29289 13.7071L0.292893 10.7071C-0.0976311 10.3166 -0.0976311 9.68342 0.292893 9.29289Z" fill="white"/>
+                </svg>
+              </span>
+            </div>
+            @endif
 
           <!-- Mobile menu with close (X) button -->
           <div id="reportMobileMenu" class="report-menu bg-white fixed top-[130px] rounded-2xl left-0 lg:static lg:block lg:w-auto lg:rounded-lg lg:shadow-lg z-50 lg:z-10 shadow-md hidden overflow-scroll">
@@ -83,17 +98,19 @@
               </h2>
             </div>
 
-            <div class=" hidden lg:block border-t border-gray-300 pt-4"></div>
+            @if ($show_jump_menu)
+              <div class=" hidden lg:block border-t border-gray-300 pt-4"></div>
 
-            <div class="pt-4">
-              <nav>
-                <ul id="reportDynamicMenu" class="space-y-2 list-none">
-                  <!-- Menu items will be inserted here -->
-                </ul>
-              </nav>
-            </div>
+              <div class="pt-4">
+                <nav>
+                  <ul id="reportDynamicMenu" class="space-y-2 list-none">
+                    <!-- Menu items will be inserted here -->
+                  </ul>
+                </nav>
+              </div>
+            @endif
           </div>
-        </section>
+        </div>
       </section>
 
 
@@ -128,45 +145,48 @@
                   // Add the content of the main editor
                   $content .= strip_tags(get_the_content());
 
+                  // Get the ACF flexible content field
+                  $components = isset($acf['reports_component']['components']) ? $acf['reports_component']['components'] : null;
+
                   // Loop through the ACF flexible layouts and gather content
-                  if (have_rows('reports_component')) {
-                      while (have_rows('reports_component')) {
-                          the_row();
+                  if ($components) {
 
-                          if (have_rows('components')) {
-                              while (have_rows('components')) {
-                                  the_row();
+                    foreach ($components as $component) {
 
-                                  // Gather text from WYSIWYG, blockquote, key takeaways, icon_and_highlight, spotlight, and table layouts
-                                  if (get_row_layout() == 'blockquote') {
-                                      $content .= strip_tags(get_sub_field('text')); // Get text from blockquote
-                                  } elseif (get_row_layout() == 'wysiwyg') {
-                                      $content .= strip_tags(get_sub_field('wysiwyg')); // Get text from wysiwyg editor
-                                  } elseif (get_row_layout() == 'key_takeaways') {
-                                      if (have_rows('takeaways')) {
-                                          while (have_rows('takeaways')) {
-                                              the_row();
-                                              $content .= strip_tags(get_sub_field('text')); // Get text from each takeaway
-                                          }
-                                      }
-                                  } elseif (get_row_layout() == 'icon_and_highlight') {
-                                      $content .= strip_tags(get_sub_field('text')); // Get text from the icon and highlight
-                                  } elseif (get_row_layout() == 'spotlight') {
-                                      $content .= strip_tags(get_sub_field('text')); // Get text from the spotlight
-                                  } elseif (get_row_layout() == 'table') {
-                                      $table = get_sub_field('table_display'); // Fetch the table array
-                                      if ($table && isset($table['body'])) {
-                                          foreach ($table['body'] as $row) {
-                                              foreach ($row as $cell) {
-                                                  $content .= strip_tags($cell['c']); // Get text from each table cell
-                                              }
-                                          }
-                                      }
-                                  }
-                              }
-                          }
-                      }
+                        $component_layout = $component['acf_fc_layout'];
+
+                        if ($component_layout == 'wysiwyg') {
+                            // Get the content from the wysiwyg field
+                            $content .= $component['wysiwyg'] ?? '';
+                        }
+                        // Check if the layout is one of the specified types
+                        if (in_array($component_layout, ['blockquote', 'icon_and_highlight', 'spotlight'])) {
+                            // Get the content from the specific layout
+                            $content .= $component['text'] ?? '';
+                        }
+                        // Check if the layout is 'key_takeaways' and gather text from its subfields
+                        if ($component_layout == 'key_takeaways') {
+                            if (isset($component['takeaways'])) {
+                                foreach ($component['takeaways'] as $takeaway) {
+                                    $content .= $takeaway['text'] ?? '';
+                                }
+                            }
+                        }
+                        // Check if the layout is 'table' and gather text from its subfields
+                        if ($component_layout == 'table') {
+                            if (isset($component['table_display']['body'])) {
+                                foreach ($component['table_display']['body'] as $row) {
+                                    foreach ($row as $cell) {
+                                        $content .= $cell['c'] ?? '';
+                                    }
+                                }
+                            }
+                        }
+                    }
                   }
+
+                  // Remove any HTML tags from the content
+                  $content = strip_tags($content);
 
                   // Calculate the number of words
                   $word_count = str_word_count($content);
@@ -392,11 +412,21 @@
                             </div>
 
                         {{-- Check for the "key_takeaways" layout --}}
-                        @elseif (get_row_layout() == 'key_takeaways')
+                        @elseif (get_row_layout() == 'key_takeaways' && get_sub_field('style') == 'plain')
                           <?php
                           $menu_label = get_sub_field('menu_label') ?: 'Key Takeaways'; // Get the 'menu_label' field or default to 'Key Takeaways'
                           ?>
-                            <div {!! $section_id !!} class="key-takeaways relative p-5 mt-8 mb-5 rounded-lg overflow-hidden" data-menu-label="<?php echo esc_attr($menu_label); ?>">
+
+                            <div {!! $section_id !!} class="wysiwyg-content-kt key-takeaways-menu" data-menu-label="<?php echo esc_attr($menu_label); ?>">
+                              {!! get_sub_field('header') !!}
+                            </div>
+                        {{-- Check for the "key_takeaways" layout --}}
+                        @elseif (get_row_layout() == 'key_takeaways' && get_sub_field('style') != 'plain')
+                          <?php
+                          $menu_label = get_sub_field('menu_label') ?: 'Key Takeaways'; // Get the 'menu_label' field or default to 'Key Takeaways'
+                          ?>
+
+                            <div {!! $section_id !!} class="key-takeaways key-takeaways-menu relative p-5 mt-8 mb-5 rounded-lg overflow-hidden" data-menu-label="<?php echo esc_attr($menu_label); ?>">
                               <div class="absolute inset-0 bg-brand opacity-75 bg-purple-overlay"></div>
                                   <div class="z-10 relative p-5">
                                     <div class="header">{!! get_sub_field('header') !!}</div>
