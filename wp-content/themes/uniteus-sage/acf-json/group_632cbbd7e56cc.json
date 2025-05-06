@@ -499,7 +499,7 @@
                     "label": "Document",
                     "name": "document",
                     "aria-label": "",
-                    "type": "url",
+                    "type": "file",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -508,9 +508,21 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "allow_in_bindings": 1,
-                    "placeholder": ""
+                    "uploader": "",
+                    "return_format": "url",
+                    "upload_folder": "",
+                    "multiple": 0,
+                    "max": "",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "library": "all",
+                    "preview_style": "default",
+                    "placeholder": "Select",
+                    "button_label": "Add File",
+                    "stylised_button": 0,
+                    "file_count": 0,
+                    "min": ""
                 }
             ]
         },
@@ -1144,12 +1156,12 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6814fd56cd991",
-                                    "label": "Style",
-                                    "name": "style",
+                                    "key": "field_6735389accc68",
+                                    "label": "Menu Label",
+                                    "name": "menu_label",
                                     "aria-label": "",
-                                    "type": "select",
-                                    "instructions": "Use plain if you wish to have dynamic side menu items but without any stylized text and backgrounds. By selecting this, it will behave like the wysiwyg component.",
+                                    "type": "text",
+                                    "instructions": "Fill in a label for the menu, otherwise it will display the value Key Takeaways as default.",
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
@@ -1157,24 +1169,12 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "choices": {
-                                        "default": "Default (stylized)",
-                                        "plain": "Plain"
-                                    },
-                                    "default_value": "default",
-                                    "return_format": "value",
-                                    "multiple": 0,
-                                    "prepend": "",
-                                    "append": "",
-                                    "max": "",
-                                    "allow_null": 0,
+                                    "default_value": "",
+                                    "maxlength": "",
                                     "allow_in_bindings": 0,
-                                    "ui": 0,
-                                    "ajax": 0,
                                     "placeholder": "",
-                                    "allow_custom": 0,
-                                    "search_placeholder": "",
-                                    "min": ""
+                                    "prepend": "",
+                                    "append": ""
                                 },
                                 {
                                     "key": "field_671150155158d",
@@ -1217,18 +1217,10 @@
                                     "label": "Takeaways",
                                     "name": "takeaways",
                                     "aria-label": "",
-                                    "type": "text",
+                                    "type": "repeater",
                                     "instructions": "",
                                     "required": 0,
-                                    "conditional_logic": [
-                                        [
-                                            {
-                                                "field": "field_6814fd56cd991",
-                                                "operator": "==",
-                                                "value": "default"
-                                            }
-                                        ]
-                                    ],
+                                    "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -1236,15 +1228,95 @@
                                     },
                                     "acfe_repeater_stylised_button": 1,
                                     "layout": "block",
-                                    "min": "",
-                                    "max": "",
+                                    "min": 0,
+                                    "max": 0,
                                     "collapsed": "",
                                     "button_label": "Add Takeaway",
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": ""
+                                    "rows_per_page": 20,
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_6711502c5158f",
+                                            "label": "Icon",
+                                            "name": "icon",
+                                            "aria-label": "",
+                                            "type": "svg_icon_picker",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "30",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "allow_in_bindings": 0,
+                                            "initial_value": "",
+                                            "parent_repeater": "field_671150235158e"
+                                        },
+                                        {
+                                            "key": "field_6711502c5158f",
+                                            "label": "Icon",
+                                            "name": "icon",
+                                            "aria-label": "",
+                                            "type": "svg_icon_picker",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "30",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "allow_in_bindings": 0,
+                                            "initial_value": "",
+                                            "parent_repeater": "field_671150235158e"
+                                        },
+                                        {
+                                            "key": "field_6711503a51590",
+                                            "label": "Text",
+                                            "name": "text",
+                                            "aria-label": "",
+                                            "type": "textarea",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "70",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "acfe_textarea_code": 0,
+                                            "maxlength": "",
+                                            "allow_in_bindings": 1,
+                                            "rows": 3,
+                                            "placeholder": "",
+                                            "new_lines": "",
+                                            "parent_repeater": "field_671150235158e"
+                                        },
+                                        {
+                                            "key": "field_6711503a51590",
+                                            "label": "Text",
+                                            "name": "text",
+                                            "aria-label": "",
+                                            "type": "textarea",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "70",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "acfe_textarea_code": 0,
+                                            "maxlength": "",
+                                            "allow_in_bindings": 1,
+                                            "rows": 3,
+                                            "placeholder": "",
+                                            "new_lines": "",
+                                            "parent_repeater": "field_671150235158e"
+                                        }
+                                    ]
                                 },
                                 {
                                     "key": "field_6711505e51591",
@@ -1254,15 +1326,7 @@
                                     "type": "wysiwyg",
                                     "instructions": "",
                                     "required": 0,
-                                    "conditional_logic": [
-                                        [
-                                            {
-                                                "field": "field_6814fd56cd991",
-                                                "operator": "==",
-                                                "value": "default"
-                                            }
-                                        ]
-                                    ],
+                                    "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -1295,18 +1359,10 @@
                                     "label": "Tiles",
                                     "name": "tiles",
                                     "aria-label": "",
-                                    "type": "text",
+                                    "type": "repeater",
                                     "instructions": "",
                                     "required": 0,
-                                    "conditional_logic": [
-                                        [
-                                            {
-                                                "field": "field_6814fd56cd991",
-                                                "operator": "==",
-                                                "value": "default"
-                                            }
-                                        ]
-                                    ],
+                                    "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
@@ -1314,15 +1370,58 @@
                                     },
                                     "acfe_repeater_stylised_button": 1,
                                     "layout": "table",
-                                    "min": "",
-                                    "max": "",
+                                    "min": 0,
+                                    "max": 0,
                                     "collapsed": "",
                                     "button_label": "Add Tile",
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": ""
+                                    "rows_per_page": 20,
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_6711509951593",
+                                            "label": "Header",
+                                            "name": "header",
+                                            "aria-label": "",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "30",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "maxlength": "",
+                                            "allow_in_bindings": 0,
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "parent_repeater": "field_6711507751592"
+                                        },
+                                        {
+                                            "key": "field_6711509e51594",
+                                            "label": "Text",
+                                            "name": "text",
+                                            "aria-label": "",
+                                            "type": "textarea",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "70",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "acfe_textarea_code": 0,
+                                            "maxlength": "",
+                                            "allow_in_bindings": 0,
+                                            "rows": 2,
+                                            "placeholder": "",
+                                            "new_lines": "",
+                                            "parent_repeater": "field_6711507751592"
+                                        }
+                                    ]
                                 }
                             ],
                             "min": "",
@@ -1657,5 +1756,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1746206366
+    "modified": 1746568574
 }
