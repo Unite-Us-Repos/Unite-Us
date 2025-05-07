@@ -10,6 +10,7 @@
 @php
     // Get the manual_or_select_author field to determine which method to use
     $author_selection_method = get_field('manual_or_select_author', $post->ID);
+    $author_selection_method = get_field('manual_or_select_author', $post->ID);
 
     // Initialize variables for author name and image
     $selected_author_name = null;
@@ -21,6 +22,7 @@
     } elseif ($author_selection_method == 'select') {
         // If 'Select Author from List' is selected
         $selected_author = get_field('select_author'); // Fetch the author post object from ACF
+
 
         if ($selected_author) {
             $selected_author_name = get_the_title($selected_author); // Get the author name from the selected post
@@ -75,6 +77,7 @@ if ($components) {
           <!-- Mobile menu with close (X) button -->
           <div id="reportMobileMenu" class="report-menu bg-white fixed top-[130px] rounded-2xl left-0 lg:static lg:block lg:w-auto lg:rounded-lg lg:shadow-lg z-50 lg:z-10 shadow-md hidden overflow-scroll">
 
+
             <!-- Close button (X) -->
             <div class="flex justify-end mb-4 absolute right-0 lg:hidden">
               <button id="reportMenuCloseBtn" class="pt-4 pr-4 text-gray-500 hover:text-action">
@@ -114,6 +117,7 @@ if ($components) {
       </section>
 
 
+
       @endif
     <section class="content w-full {{ get_field('display_menu') ? 'lg:w-3/4' : 'lg:w-full' }}">
       <header>
@@ -141,6 +145,7 @@ if ($components) {
                   @php
                   // Initialize an empty variable to store all content
                   $content = '';
+
 
                   // Add the content of the main editor
                   $content .= strip_tags(get_the_content());
@@ -191,12 +196,15 @@ if ($components) {
                   // Calculate the number of words
                   $word_count = str_word_count($content);
 
+
                   // Define the reading speed (words per minute)
                   $reading_speed = 200; // Average reading speed
+
 
                   // Calculate the reading time in minutes
                   $reading_time = ceil($word_count / $reading_speed);
               @endphp
+
 
               @if ($selected_author_name)
                   <div class="author absolute text-left p-2 bg-white flex flex-row align-items-center justify-center b-4">
@@ -216,6 +224,7 @@ if ($components) {
                       </span>
                   </div>
               @endif
+
 
 
               </div>
@@ -251,7 +260,9 @@ if ($components) {
         <div class="component-inner-section relative z-10">
           <div class="max-w-5xl pt-6 px-6 mx-auto highlight-intro">
 
+
             @php the_content(); @endphp
+
 
             {{-- ACF Flexible Content Loop --}}
             @if (have_rows('reports_component'))
@@ -273,9 +284,11 @@ if ($components) {
                         {{-- Check for the "buttons" layout --}}
                         @elseif (get_row_layout() == 'buttons')
 
+
                           @php
                               $buttons = get_sub_field('action_buttons');
                           @endphp
+
 
                           @if ($buttons)
                             @php
@@ -308,6 +321,7 @@ if ($components) {
                                 }
 
                             @endphp
+
 
                             <div class="flex flex-wrap flex-col w-full sm:flex-row gap-6 pb-4 @if ('text' == $button_layout) mt-5 @elseif ('simple-justified' == $style && !$mt) mt-9 sm:mt-10 @elseif ($mt) {{ $mt }} @else mt-9 sm:mt-10 @endif button-layout-{{ $button_layout }} {{ $layout }} md:{{ $justify }}">
                               @foreach ($buttons as $index => $button)
@@ -391,6 +405,7 @@ if ($components) {
                             </div>
                           @endif
 
+
                         {{-- Check for the "icon_and_highlight" layout --}}
                         @elseif (get_row_layout() == 'icon_and_highlight')
                             <div {!! $section_id !!} class="icon-and-highlight bg-action text-white p-8 mt-8 mb-8 rounded-lg flex">
@@ -399,12 +414,14 @@ if ($components) {
                                     $icon = get_sub_field('icon'); // Fetch the icon name from the SVG picker
                                 @endphp
 
+
                                 @if ($icon)
                                   <span class="mb-5 bg-white w-10 h-10 p-2 flex justify-center items-center rounded-full">
                                     <img src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $icon }}.svg" alt="Icon" class="icon-image acf-icon-action lazy h-full w-full " />
                                   </span>
                                 @endif
                             </div>
+
 
                                 <div class="highlight-text text-lg">
                                     {!! get_sub_field('text') !!}
@@ -472,6 +489,7 @@ if ($components) {
                           @endphp
                           <div {!! $section_id !!} class="spotlight-container py-8 rounded overflow-hidden">
                             <div class="spotlight p-8 lg:p-16 relative border-electric-purple border rounded-lg"
+                            <div class="spotlight p-8 lg:p-16 relative border-electric-purple border rounded-lg"
                                 @if ($background_image && isset($background_image['url']))
                                     style="background-image: url('{{ $background_image['url'] }}'); background-size: cover;"
                                 @endif>
@@ -483,7 +501,9 @@ if ($components) {
                                     </div>
                                 @endif
 
+
                                 {!! get_sub_field('text') !!}
+
 
                                 @if ($button && isset($button['url']))
                                     <a href="{{ $button['url'] }}" class="button action-button  button-id-0  flex items-center gap-3  button-solid-purple">
@@ -494,8 +514,10 @@ if ($components) {
                             </div>
                           </div>
 
+
                         {{-- Check for the "table" layout --}}
                         @elseif (get_row_layout() == 'table')
+
 
 
                           @php
@@ -507,6 +529,7 @@ if ($components) {
                               <div class="overflow-x-auto">
                                 <div class="block rounded-lg">
                                   <table class="acf-data-table w-full table-auto border-collapse border-2 border-action">
+
 
                                   {{-- Check if a caption exists and display it --}}
                                   @if (isset($table['caption']))
@@ -550,6 +573,7 @@ if ($components) {
                           @endif
 
 
+
                         {{-- Check for the "wysiwyg" layout --}}
                         @elseif (get_row_layout() == 'wysiwyg')
                             <div {!! $section_id !!} class="wysiwyg-content">
@@ -564,6 +588,7 @@ if ($components) {
             @endwhile
             @endif
 
+
           </div>
         </div>
       </div>
@@ -574,6 +599,7 @@ if ($components) {
             <div id="reportcaption"></div>
           </div>
       </div>
+
 
       {{-- ABOUT UU --}}
       <div class="{{ get_field('display_menu') ? 'max-w-4xl' : 'max-w-5xl' }}  mb-10 mx-auto report-news-about">
@@ -596,6 +622,7 @@ if ($components) {
       </div>
 
     </section>
+
 
   </div>
 </article>

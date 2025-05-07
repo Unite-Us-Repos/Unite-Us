@@ -2237,6 +2237,7 @@ blockquote h4 {
   position: absolute;
   top: -2px; left: -2px; right: -2px; bottom: -2px;
   background: linear-gradient(90deg, #216cff, #9643ff);
+  background: linear-gradient(90deg, #216cff, #9643ff);
   border-radius: inherit;
   z-index: -2;
 }
@@ -2245,6 +2246,7 @@ blockquote h4 {
   content: "";
   position: absolute;
   top: 0px; left: 0px; right: 0px; bottom: 0px;
+  background: #ffffff;
   background: #ffffff;
   border-radius: inherit;
   z-index: -1;
