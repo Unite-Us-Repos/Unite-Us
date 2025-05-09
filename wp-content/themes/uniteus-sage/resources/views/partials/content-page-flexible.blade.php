@@ -7,6 +7,15 @@ $skin = str_replace('template-', '', $skin);
 {{-- Dynamically load ACF components --}}
 @if ($flexibleComponents)
   @foreach ($flexibleComponents as $index => $component)
+    @php
+        $component = (array) $component;
+        $component["data"] = array_merge($component["data"], [
+            'component_index' => $index,
+            'skin' => $skin,
+            'flexibleComponents' => $flexibleComponents,
+            'page_id' => get_the_ID(),
+        ]);
+      @endphp
       @includeFirst(
         [
           'components.' . $component["component"] . '.' . $skin . '.' . $component["style"],

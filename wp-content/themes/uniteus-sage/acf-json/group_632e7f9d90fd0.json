@@ -134,6 +134,7 @@
                         "default": "Service Cards",
                         "icon": "Icon Cards",
                         "icon-carousel": "Icon Cards (carousel)",
+                        "icon-help": "Icon Cards (with help menu)",
                         "article-carousel": "Article Cards (carousel, video optional)",
                         "squared": "Squared",
                         "video-carousel": "Video Carousel"
@@ -798,6 +799,60 @@
                     "acfe_clone_modal_close": 0,
                     "acfe_clone_modal_button": "",
                     "acfe_clone_modal_size": "large"
+                },
+                {
+                    "key": "field_681c0a9ea59c2",
+                    "label": "Help Menu",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_632e7f9d9b1d0",
+                                "operator": "==",
+                                "value": "icon-help"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "top",
+                    "endpoint": 0,
+                    "no_preference": 0,
+                    "selected": 0
+                },
+                {
+                    "key": "field_681c0ab4a59c3",
+                    "label": "Help Menu",
+                    "name": "help_menu",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_681c08dd83585"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0,
+                    "acfe_seamless_style": 0,
+                    "acfe_clone_modal": 0,
+                    "acfe_clone_modal_close": 0,
+                    "acfe_clone_modal_button": "",
+                    "acfe_clone_modal_size": "large"
                 }
             ]
         }
@@ -827,5 +882,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1744226283
+    "modified": 1746668248
 }

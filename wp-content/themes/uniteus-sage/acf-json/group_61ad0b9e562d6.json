@@ -104,8 +104,9 @@
                     },
                     "choices": {
                         "default": "Default",
-                        "two-column": "Two-Column",
-                        "image-swap": "Image Swap"
+                        "two-column": "Two-Column Layout (item | item)",
+                        "image-swap": "Image Swap",
+                        "two-column-content": "Two-Column (content | FAQs)"
                     },
                     "default_value": "default",
                     "return_format": "value",
@@ -338,5 +339,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1744209813
+    "modified": 1746804754
 }

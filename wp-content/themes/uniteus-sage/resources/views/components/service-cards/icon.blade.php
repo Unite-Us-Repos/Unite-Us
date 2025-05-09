@@ -10,11 +10,11 @@ use Illuminate\Support\Str;
   $section_settings = isset($acf["components"][$index]['layout_settings']['section_settings']) ? $acf["components"][$index]['layout_settings']['section_settings'] : $s_settings;
   $alternate = !empty($alternate) ? 'icon-cards-alternate' : '';
   @endphp
-  
+
   @if ($background['has_divider'])
     @includeIf('dividers.waves')
   @endif
-  
+
   <section @isset($section['id']) id="{{ $section['id'] }}" @endisset class="relative @if ($background['color'] == 'dark') text-white @endif component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif {{ $alternate }}">
     @if ('center' == $section["alignment"])
     <div class="component-inner-section">
@@ -86,15 +86,15 @@ use Illuminate\Support\Str;
       @if (($background['color'] != 'light-gradient') && ($section['id'] != 'service-card-bg-half') && ($section['id'] != 'service-cards-privacy'))
         <div class="absolute h-2/3 bg-white bottom-0 left-0 right-0 -ml-12 -mr-12 lg:hidden"></div>
       @endif
-  
+
       @foreach ($cards as $index => $card)
         @php
           $link = $card['link'];
           $external_link = $card['external_link'];
-  
+
           if ($external_link) {
             $link = $external_link;
-          } 
+          }
           if ($card['link_type'] == 'none') {
             $link = false;
           }
@@ -104,7 +104,7 @@ use Illuminate\Support\Str;
   $card_title_slug = Str::slug(strip_tags($card['title']), '-');
 @endphp
         <div class="relative sm:basis-6/12 p-3 @if ($columns) lg:basis-{{ $columns }} @else lg:basis-2/6 @endif">
-          
+
           @if (($background['color'] == 'dark') && $loop->first)
             <div class="absolute h-1/2 bg-dark bottom-0 left-0 right-0 -ml-12 -mr-12 lg:hidden"></div>
           @endif
@@ -116,9 +116,9 @@ use Illuminate\Support\Str;
           @endif
           @if (!empty($card['expandable_tile']))
             <div class="service-icon-card group expandable" data-card-id="card-{{ $index }}">
-              <div class="even-height bg-white text-brand 
+              <div class="even-height bg-white text-brand
               @if ($background['color'] != 'light-gradient') shadow-lg @endif
-              @if ($card['bg_image']) group-hover:bg-{{ $icon_color_class }} @else group-hover:bg-{{ $icon_color_class }} @endif 
+              @if ($card['bg_image']) group-hover:bg-{{ $icon_color_class }} @else group-hover:bg-{{ $icon_color_class }} @endif
               group-hover:text-white transition-all hover:shadow-lg border border-light relative flex items-start rounded-lg overflow-hidden group h-full">
                 @if ($card['bg_image'])
                   <div style="z-index: 1;" class="absolute inset-0">
@@ -153,7 +153,7 @@ use Illuminate\Support\Str;
                   <span class="absolute chevron-icon">
                     <svg width="27" height="15" viewBox="0 0 27 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M2.40014 1.59122L13.4896 12.6806L24.579 1.59122" stroke="#C7D8E8" stroke-width="3.16841" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>                    
+                    </svg>
                   </span>
                 @endif
                 <div class="relative z-10 w-full p-9 text-lg lg:text-4xl">
@@ -164,14 +164,14 @@ use Illuminate\Support\Str;
                   <div class="text-block relative">
                     @isset ($card["icon"])
                       @if (!empty($card["icon"]))
-                      <span class="mb-5 bg-light 
-                        @if ($icon_color_class == 'electric-purple') 
-                          group-hover:bg-electric-purple-hover 
-                        @elseif ($icon_color_class == 'white') 
+                      <span class="mb-5 bg-light
+                        @if ($icon_color_class == 'electric-purple')
+                          group-hover:bg-electric-purple-hover
+                        @elseif ($icon_color_class == 'white')
                           group-hover:bg-white
-                        @else 
+                        @else
                           group-hover:bg-action-dark-blue
-                        @endif 
+                        @endif
                         w-10 h-10 p-2 flex justify-center items-center rounded-full">
                           <img class="lazy h-full w-full acf-icon-{{ $icon_color_class }} service-icon" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
                       </span>
@@ -196,7 +196,7 @@ use Illuminate\Support\Str;
                         @endif
                       </div>
                     @endif
-                   
+
                   </div>
                   @if ($link)
                   </a>
@@ -209,16 +209,16 @@ use Illuminate\Support\Str;
             <div class="relative flex items-start rounded-lg overflow-hidden group h-full
             @if ($gradient_hover) hover-class @else group-hover:bg-{{ $icon_color_class }} @endif
               @if ($alternate) border-2 border-action @endif
-              @if (!empty($card['custom_icon'])) gradient-border @else 
-                bg-white text-brand border border-light @if (empty($card['custom_icon'])) group-hover:border-{{ $icon_color_class }} @endif 
+              @if (!empty($card['custom_icon'])) gradient-border @else
+                bg-white text-brand border border-light @if (empty($card['custom_icon'])) group-hover:border-{{ $icon_color_class }} @endif
                 @if ($background['color'] != 'light-gradient') shadow-lg @endif
-                @if ($card['bg_image'] && empty($card['custom_icon'])) group-hover:bg-{{ $icon_color_class }} @endif 
+                @if ($card['bg_image'] && empty($card['custom_icon'])) group-hover:bg-{{ $icon_color_class }} @endif
                 @if (empty($card['custom_icon'])) group-hover:text-white @endif
                 transition-all @if (empty($card['custom_icon'])) hover:shadow-lg @endif
               @endif
             ">
-          
-    
+
+
                 @if ($card['bg_image'])
                   <div style="z-index: 1;" class="absolute inset-0">
                     @if ($link)
@@ -230,7 +230,7 @@ use Illuminate\Support\Str;
                     @endif
                   </div>
                 @endif
-    
+
                 @if ($card['thumbnail'])
                   <div style="z-index: 1;" class="top-10 left-0 right-0 px-3 absolute h-1/2">
                     @if ($link)
@@ -260,7 +260,7 @@ use Illuminate\Support\Str;
                   <span class="absolute chevron-icon">
                     <svg width="27" height="15" viewBox="0 0 27 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M2.40014 1.59122L13.4896 12.6806L24.579 1.59122" stroke="#C7D8E8" stroke-width="3.16841" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>                    
+                      </svg>
                   </span>
                 @endif
                 <div class="relative z-10 w-full h-full text-lg lg:text-4xl @if ($gradient_hover) hover-class @endif">
@@ -274,23 +274,23 @@ use Illuminate\Support\Str;
                         {{-- Check for custom_icon and render in a separate wrapper --}}
                         @if (!empty($card["custom_icon"]))
                           <span class="w-14 h-14 p-2 flex justify-center items-center rounded-full">
-                            <img class="lazy h-full w-full custom-icon service-icon" 
-                              data-src="{{ $card['custom_icon']['url'] }}" 
+                            <img class="lazy h-full w-full custom-icon service-icon"
+                              data-src="{{ $card['custom_icon']['url'] }}"
                               alt="{{ $card['custom_icon']['alt'] ?? 'Custom Icon' }}" />
                           </span>
                         @elseif (!empty($card["icon"]))
                           {{-- Render default icon inside styled span --}}
-                          <span class="mb-5 @if ($alternate) bg-{{ $icon_color_class }} @else bg-light @endif 
+                          <span class="mb-5 @if ($alternate) bg-{{ $icon_color_class }} @else bg-light @endif
                             group-hover:bg-white w-10 h-10 p-2 flex justify-center items-center rounded-full">
-                            <img class="lazy h-full w-full 
-                              @if ($alternate) acf-icon-white @else acf-icon-{{ $icon_color_class }} @endif 
-                              service-icon group-hover:group-hover-icon" 
+                            <img class="lazy h-full w-full
+                              @if ($alternate) acf-icon-white @else acf-icon-{{ $icon_color_class }} @endif
+                              service-icon group-hover:group-hover-icon"
                               data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $card['icon'] }}.svg" alt="" />
                           </span>
                         @endif
                       @endisset
                     </div>
-                    
+
                     <div>
                       @if ($card['title'])
                       <h3 class="@if ($alternate) text-action text-xxl group-hover:text-white font-bold @else text-xl font-semibold @endif  mb-4">{!! $card['title'] !!}</h3>
@@ -317,5 +317,10 @@ use Illuminate\Support\Str;
         </div>
       @endforeach
     </div>
+
+    @if ($helpMenuDataJson)
+      @include('components.service-cards.partials.help-menu', [
+          'helpMenuDataJson' => $helpMenuDataJson,
+      ])
+    @endif
   </section>
-  

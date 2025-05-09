@@ -147,9 +147,10 @@
                     "default_value": "",
                     "acfe_textarea_code": 0,
                     "maxlength": "",
+                    "allow_in_bindings": 1,
                     "rows": "",
                     "placeholder": "",
-                    "new_lines": ""
+                    "new_lines": "br"
                 },
                 {
                     "key": "field_6333b2200f1f1",
@@ -520,5 +521,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1744578676
+    "modified": 1746663103
 }
