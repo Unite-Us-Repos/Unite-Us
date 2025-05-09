@@ -15,7 +15,7 @@
           document.getElementById('location-description{{ $component_index }}').focus();
         }
       }
-    }" class="px-1 mt-3">
+    }" class="px-1 mt-10">
     <div class="w-full flex md:grid grid-cols-12 border border-light bg-white shadow-lg rounded-lg gap-6 p-9">
       <div class="col-span-12">
         <h3 class="mb-2 sm:text-2xl">{{ $help_menu['settings']['section_title'] }}</h3>
