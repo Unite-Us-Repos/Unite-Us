@@ -12,7 +12,7 @@
       },
       handleKeyDown(event) {
         if (event.key === 'Enter' || event.key === ' ') {
-          document.getElementById('location-description').focus();
+          document.getElementById('location-description{{ $component_index }}').focus();
         }
       }
     }" class="p-3">
@@ -23,18 +23,18 @@
       </div>
 
       <div class="col-span-6">
-        <label for="location" class="sr-only" id="location-label">{{ $help_menu['settings']['select_text_prompt'] }}</label>
+        <label for="location" class="sr-only" id="location-label{{ $component_index }}">{{ $help_menu['settings']['select_text_prompt'] }}</label>
         <div class="mt-2 grid grid-cols-1">
           <select
-            id="location"
+            id="location{{ $component_index }}"
             name="location"
             x-model="selectedIndex"
             class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-            aria-labelledby="location-label"
-            aria-describedby="location-description"
-            aria-controls="results"
+            aria-labelledby="location-label{{ $component_index }}"
+            aria-describedby="location-description{{ $component_index }}"
+            aria-controls="location-results{{ $component_index }}"
             @keydown="handleKeyDown"
-            @change="$nextTick(() => document.getElementById('location-description').focus())"
+            @change="$nextTick(() => document.getElementById('location-description{{ $component_index }}').focus())"
           >
             <template x-for="(location, index) in locations" :key="index">
               <option :value="index" x-text="location.title"></option>
@@ -47,7 +47,7 @@
     </div>
 
     <div
-      id="results"
+      id="location-results{{ $component_index }}"
       class="col-span-6"
       role="region"
       aria-live="polite"
@@ -55,7 +55,7 @@
     >
       <h3 class="mb-2 sm:text-2xl" x-text="displayTitle"></h3>
       <div
-        id="location-description"
+        id="location-description{{ $component_index }}"
         x-html="displayDescription"
         tabindex="0"
       ></div>
