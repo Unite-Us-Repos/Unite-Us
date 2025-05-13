@@ -271,6 +271,25 @@ add_filter(
                 'classes' => 'ol-circles-sm',
                 'wrapper' => false,
             ),
+            array(
+                'title' => 'Background Gradient (Service)',
+                'block' => 'span',
+                'classes' => 'bg-gradient-service',
+                'wrapper' => false,
+
+            ),
+            array(
+                'title' => 'Background Gradient (Clips)',
+                'block' => 'span',
+                'classes' => 'bg-gradient-clips',
+                'wrapper' => true,
+            ),
+            array(
+                'title' => 'Background Gradient (Clips V2)',
+                'block' => 'span',
+                'classes' => 'bg-gradient-clip-v2',
+                'wrapper' => true,
+            ),
         );
 
         // Insert the array, JSON ENCODED, into 'style_formats'
@@ -1180,39 +1199,4 @@ add_filter(
         // Add the extra classes back untouched
         return array_merge( $wp_classes, (array) $extra_classes );
     }, 20, 2
-);
-
-// Callback function to filter the MCE settings
-// Attach callback to 'tiny_mce_before_init'
-add_filter(
-    'tiny_mce_before_init',
-    function ($init_array) {
-        // Define the style_formats array
-        $style_formats = array(
-            // Each array child is a format with it's own settings
-            array(
-                'title' => 'Background Gradient (Service)',
-                'block' => 'span',
-                'classes' => 'bg-gradient-service',
-                'wrapper' => false,
-
-            ),
-            array(
-                'title' => 'Background Gradient (Clips)',
-                'block' => 'span',
-                'classes' => 'bg-gradient-clips',
-                'wrapper' => true,
-            ),
-            array(
-                'title' => 'Background Gradient (Clips V2)',
-                'block' => 'span',
-                'classes' => 'bg-gradient-clip-v2',
-                'wrapper' => true,
-            ),
-        );
-        // Insert the array, JSON ENCODED, into 'style_formats'
-        $init_array['style_formats'] = wp_json_encode( $style_formats );
-
-        return $init_array;
-    }
 );
