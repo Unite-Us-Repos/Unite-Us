@@ -23,7 +23,7 @@
               @if (str_contains($card['card_layout'], 'text-image')) lg:order-2 @endif
               ">
               @if ($card['card_image'])
-                <img class="lazy w-full h-auto"
+                <img class="lazy w-full h-auto max-w-xl mx-auto"
                 data-src="{{ $card['card_image']['sizes']['large'] }}"
                 alt="{{ $card['card_image']['alt'] }}">
               @endif
