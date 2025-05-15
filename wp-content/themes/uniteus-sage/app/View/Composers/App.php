@@ -233,7 +233,7 @@ class App extends Composer
                         $data['section_classes'] = $data['section_classes'] . '-bottom-up';
                     }
 
-                    if (isset($data['background']['seamless_sections'])) {
+                    if (isset($data['background']['seamless_sections']) && ($data['background']['seamless_sections'])) {
                         $data['section_classes'] = $data['section_classes'] . ' seamless-section';
                     }
 

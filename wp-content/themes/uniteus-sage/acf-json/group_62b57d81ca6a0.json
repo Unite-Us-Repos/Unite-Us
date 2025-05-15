@@ -307,7 +307,7 @@
                     "name": "seamless_sections",
                     "aria-label": "",
                     "type": "true_false",
-                    "instructions": "If below components has a wavy top divider, the current component will be shifted down to blend with the wavy divider.",
+                    "instructions": "The current component will be shifted down and overlap with the below component. If below component has a wavy top divider, the components will blend with the wavy divider.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -315,7 +315,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "Yes, blend with below component",
+                    "message": "Yes, blend current component with below component",
                     "default_value": 0,
                     "allow_in_bindings": 0,
                     "ui": 0,
@@ -351,5 +351,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747321130
+    "modified": 1747322394
 }
