@@ -555,7 +555,7 @@ body .map-wrap {
     border: 1px solid transparent;
 }
 .button-hollow-gradient img {
-  opacity: 1;
+  opacity: 0.9 !important;
 }
 .button-hollow-gradient::after {
   content: '';
