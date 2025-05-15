@@ -254,6 +254,7 @@ module.exports = {
     'lg:columns-2',
     'lg:columns-3',
     'lg:columns-4',
+    'grid-cols-4',
   ],
   variants: {
     extend: {
