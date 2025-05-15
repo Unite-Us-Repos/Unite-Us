@@ -110,6 +110,11 @@ h2 br,
   @apply hidden md:block;
 }
 
+.inner-box h2,
+.grid-card h2 {
+  @apply mb-6
+}
+
 p {
   line-height: 1.5;
 }
@@ -232,16 +237,21 @@ ul.list-checkmarks li {
   background-image: url("../images/bullet-checkmark.svg");
   background-position: top 5px left;
   background-repeat: no-repeat;
-  @apply pl-8 mb-2;
+  display: inline-block;
+  @apply pl-8 pt-0.5 mb-2;
 }
 ul.list-circle-checkmark li {
   background-image: url("../images/bullet-circle-checkmark.svg");
   background-position: top 5px left;
   background-repeat: no-repeat;
-  @apply pl-8 mb-2;
+  display: inline-block;
+  @apply pl-8 pt-0.5 mb-2;
 }
 .bg-dark ul.list-checkmarks li {
   background-image: url("../images/bullet-checkmark-light.svg");
+}
+ul.list-circle-checkmark.alt li {
+  background-image: url("../images/bullet-circle-checkmark-alt.svg");
 }
 ul.list-video-play li {
   background-image: url("../images/video-play-purple.svg");
@@ -1343,6 +1353,18 @@ ul.list-box {
   #9643FF 74.77%,
   #FF548B 104.31%),
   linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  @apply bg-clip-text text-transparent
+}
+
+.text-gradient-service {
+  background: linear-gradient(0deg, #216CFF, #216CFF),
+    linear-gradient(90deg, rgba(150, 67, 255, 0) 0%, #9643FF 100%);
+}
+
+.bg-gradient-service,
+.bg-gradient-clips,
+.bg-gradient-clip-v2,
+.text-gradient-service {
   @apply bg-clip-text text-transparent
 }
 
