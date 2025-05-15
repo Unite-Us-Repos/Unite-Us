@@ -48,6 +48,7 @@ class Post extends Composer
             'networkFooterText' => $this->networkFooterText(),
             'getHelpPage' => $this->getHelpPage(),
             'anchorLinks' => $this->getAnchorLinks(),
+            'anchorLinksData' => $this->getAnchorLinksData(),
             'networkActiveStates' => $this->getNetworkFormActiveStates(),
             'recommendedPagesData' => $this->getRecommendedPagesData(),
         ];
@@ -977,16 +978,69 @@ class Post extends Composer
         return $postItems;
     }
 
-    public function getAnchorLinks() {
-        $fields = get_fields(get_the_ID());
+    /**
+     * Returns the anchor links data.
+     * Components must have a section ID.
+     * The ID is used to create the anchor link and the name.
+     * The name is used to display the link.
+     *
+     * @return array|bool
+     */
+    public function getAnchorLinksData() {
+        $anchors = [];
         $html = '';
+        $fields = get_fields(get_the_ID());
+
+        // check if there are any components
+        // if not, return false
+        if (!isset($fields['components']) || !is_array($fields['components'])) {
+            return false;
+        }
+
+        // check if first component is headers
+        // if so, we check for custom anchor links
+        $is_headers_component = ($fields['components'][0]['acf_fc_layout'] == 'headers') ? true : false;
+        if ($is_headers_component) {
+            // check if headers component has custom anchor links
+            if (isset($fields['components'][0]['headers']['custom_anchor_links']) && is_array($fields['components'][0]['headers']['custom_anchor_links'])) {
+                foreach ($fields['components'][0]['headers']['custom_anchor_links'] as $index => $custom_anchor) {
+
+                    // sanitize the anchor
+                    $anchor = trim($custom_anchor['anchor_id']);
+                    $anchor = strtolower($anchor);
+                    $anchor = str_replace('  ', '-', $anchor);
+                    $anchor = str_replace('/', '-', $anchor);
+                    $anchor = str_replace(' ', '-', $anchor);
+
+                    if (!empty($anchor)) {
+                        $anchors[$anchor] = $custom_anchor['anchor_title'];
+                    }
+                }
+                return $anchors;
+            }
+        }
 
         if (isset($fields['components']) && is_array($fields['components'])) {
             foreach ($fields['components'] as $index=> $field) {
+                // skip headers component
+                // this is used to create the anchor links
+                // but we don't want to display the header in the list
+                if ($field['acf_fc_layout'] == 'headers') {
+                    continue;
+                }
+
+                // skip if no section ID
                 if (!isset($field[$field['acf_fc_layout']]['section']['id'])) {
                     continue;
                 }
+
+                // get the section ID
+                // this is used to create the anchor link
+                // and the name
+                // the name is used to display the link
                 $anchor = $field[$field['acf_fc_layout']]['section']['id'];
+
+                // sanitize the anchor
                 $anchor = trim($anchor);
                 $anchor = strtolower($anchor);
                 $anchor = str_replace('  ', '-', $anchor);
@@ -996,13 +1050,32 @@ class Post extends Composer
                 $anchor_name = str_replace('-', ' ', $anchor);
                 $anchor_name = ucwords($anchor_name);
                 if (!empty($anchor)) {
-                $html .= '<a href="#' . $anchor . '">' . $anchor_name . '</a>';
+                    $anchors[$anchor] = $anchor_name;
                 }
             }
 
-            return $html;
+            return $anchors;
         }
         return false;
+    }
+
+    /**
+     * Returns the anchor links html.
+     * Components must have a section ID.
+     * The ID is used to create the anchor link and the name.
+     * The name is used to display the link.
+     *
+     * @return string
+     */
+    public function getAnchorLinks() {
+        $anchors = $this->getAnchorLinksData();
+        $html = '';
+        if ($anchors) {
+            foreach ($anchors as $hash => $anchor_name) {
+                $html .= '<a href="#' . $hash . '">' . $anchor_name . '</a>';
+            }
+        }
+        return $html;
     }
 
     public static function getNetworkFormActiveStates()

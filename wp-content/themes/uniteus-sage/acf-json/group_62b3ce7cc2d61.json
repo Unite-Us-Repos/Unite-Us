@@ -121,12 +121,13 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "Anchor links will be auto generated from section IDs",
+                    "message": "Yes (auto-generated from section IDs)",
                     "default_value": 0,
-                    "style": "",
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ui_on_text": "",
-                    "ui_off_text": ""
+                    "ui_off_text": "",
+                    "style": ""
                 },
                 {
                     "key": "field_62b40a3e891be",
@@ -665,6 +666,131 @@
                     "acfe_group_modal_close": 0,
                     "acfe_group_modal_button": "",
                     "acfe_group_modal_size": "large"
+                },
+                {
+                    "key": "field_682558b58689e",
+                    "label": "Anchor Links",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_64ae648ebe31f",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "top",
+                    "endpoint": 0,
+                    "no_preference": 0,
+                    "selected": 0
+                },
+                {
+                    "key": "field_6825536004289",
+                    "label": "Anchor Links Title",
+                    "name": "anchor_links_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Prepended to links; Used for mobile drop menu title.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_64ae648ebe31f",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_6825597798eb0",
+                    "label": "Custom Anchor Links",
+                    "name": "custom_anchor_links",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "If used, will override auto-generated anchors.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_repeater_stylised_button": 0,
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Add Row",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_682559aa98eb1",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "anchor-id",
+                            "prepend": "#",
+                            "append": "",
+                            "parent_repeater": "field_6825597798eb0"
+                        },
+                        {
+                            "key": "field_68255a0198eb2",
+                            "label": "Anchor Title",
+                            "name": "anchor_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_6825597798eb0"
+                        }
+                    ]
                 }
             ]
         }
@@ -694,5 +820,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1745858341
+    "modified": 1747278441
 }
