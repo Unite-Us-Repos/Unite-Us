@@ -53,7 +53,7 @@ if (!empty($faqs)) {
 @endif
 
 <section
-  @isset($acf["components"][$index]['id']) id="{{ $acf["components"][$index]['id'] }}" @endisset
+  @isset ($section['id']) id="{{ $section['id'] }}" @endisset
   class="relative component-section {{ $section_classes }}
   @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif"
   @if ($section_settings['padding_class'] == 'padding-collapse') style="padding: 0;" @endif
