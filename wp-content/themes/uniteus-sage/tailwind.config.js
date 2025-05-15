@@ -247,8 +247,13 @@ module.exports = {
     '!pb-48',
     'md:w-48',
     'md:basis-2/3',
-    'md:mt-16'
-
+    'md:mt-16',
+    'columns-2',
+    'columns-3',
+    'columns-4',
+    'lg:columns-2',
+    'lg:columns-3',
+    'lg:columns-4',
   ],
   variants: {
     extend: {
