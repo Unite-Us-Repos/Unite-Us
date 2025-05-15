@@ -99,10 +99,11 @@
                         "button-hollow-white": "Hollow Button (white)",
                         "button-solid-purple": "Solid Button (electric purple)",
                         "button-hollow-purple": "Hollow Button (electric purple)",
-                        "button-gradient": "Gradient Button"
+                        "button-gradient": "Gradient Button",
+                        "button-hollow-gradient": "Hollow Button (gradient)"
                     },
                     "default_value": "button-solid",
-                    "return_format": "",
+                    "return_format": "value",
                     "multiple": 0,
                     "max": "",
                     "prepend": "",
@@ -385,5 +386,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1737078833
+    "modified": 1747322936
 }
