@@ -1,21 +1,38 @@
 <section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="component-section relative {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
   <div class="component-inner-section">
-    <div class="grid-cards flex flex-col md:grid md:grid-cols-12 gap-8 w-full">
+    <div class="grid-cards grid-cards-{{ $style }} flex flex-col md:grid md:grid-cols-12 gap-8 w-full">
       @foreach ($cards as $card)
 
         <div
           @if ($card['id']) id="{{ ($card['id']) }}" @endif
           class="grid-card col-span-{{ $card['acfe_layout_col'] }}
             relative flex flex-col justify-end
-            bg-light p-8
+            bg-light
             border-2 border-light
             rounded-lg overflow-hidden
+            @if ($style == 'default') p-8 @endif
             "
           style="
           @isset($card['card_color']['color']) background-color: {{ $card['card_color']['color'] }}; border-color: {{ $card['card_color']['color'] }}; @endisset
           @isset($card['card_text_color']['color']) color: {{ $card['card_text_color']['color'] }}; @endisset
           ">
-          <div class="relative z-20 sm:mt-32 sm:pt-32 mt-36 pt-36">
+
+          @if (str_contains($card['card_layout'], 'two-col'))
+          <div class="flex flex-col lg:grid grid-cols-2 gap-16 p-8 lg:p-16">
+            <div class="relative z-20
+              @if (str_contains($card['card_layout'], 'text-image')) lg:order-2 @endif
+              ">
+              @if ($card['card_image'])
+                <img class="lazy w-full h-auto"
+                data-src="{{ $card['card_image']['sizes']['large'] }}"
+                alt="{{ $card['card_image']['alt'] }}">
+              @endif
+            </div>
+          @endif
+          <div>
+          <div class="relative z-20
+            @if ($style == 'default' && !str_contains($card['card_layout'], 'two-col')) sm:mt-32 sm:pt-32 mt-36 pt-36 @endif
+            @if ($style == 'solutions' && !str_contains($card['card_layout'], 'two-col')) p-8 lg:p-16 @endif">
           @if ($card['pill'])
             <div
               class="text-blue-600 font-semibold bg-white mix-blend-multiply text-sm py-1 px-4 inline-flex justify-center items-center gap-2 mb-3 rounded-full"
@@ -40,7 +57,10 @@
               <span>{{ $card['pill'] }}</span>
             </div>
           @endif
-          <h2 class="text-2xl !font-normal mb-4">{!! $card['title'] !!}</h2>
+
+          @if ($card['title'])
+            <h2 class="text-2xl !font-normal mb-4">{!! $card['title'] !!}</h2>
+          @endif
             <div style="color: {{ isset($card['card_text_color']['color']) ? $card['card_text_color']['color'] : 'inherit' }}">
               {!! $card['description'] !!}
             </div>
@@ -48,14 +68,22 @@
           @if ($card['background_image'])
             <div class="absolute inset-0">
               @if ($card['mobile_background_image'])
-                <img class="lazy w-full sm:hidden md:block lg:hidden h-full object-cover object-left-top" data-src="{{ $card['mobile_background_image']['sizes']['large'] }}" alt="{{ $card['mobile_background_image']['alt'] }}">
+                <img class="lazy w-full sm:hidden md:block lg:hidden h-full object-cover
+                  @if ($style == 'default') object-top @endif
+                  @if ($style == 'solutions') object-center @endif"
+                data-src="{{ $card['mobile_background_image']['sizes']['large'] }}"
+                alt="{{ $card['mobile_background_image']['alt'] }}">
               @endif
               <img class="lazy w-full @if ($card['mobile_background_image']) hidden sm:block md:hidden lg:block @endif h-full object-cover object-left-top" data-src="{{ $card['background_image']['sizes']['2048x2048'] }}" alt="{{ $card['background_image']['alt'] }}">
             </div>
           @endif
+
+           @if (str_contains($card['card_layout'], 'two-col'))
+            </div>
+          @endif
+      </div>
         </div>
 
       @endforeach
-      </div>
   </div>
 </section>
