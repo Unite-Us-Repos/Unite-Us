@@ -418,6 +418,10 @@ body .map-wrap {
   @apply px-4 py-14 sm:py-20;
 }
 
+.component-section.seamless-section {
+  @apply pb-28 -mb-14 sm:pb-40 sm:-mb-20;
+}
+
 .component-section.alert {
   @apply px-4 py-10 sm:py-10;
 }
@@ -545,6 +549,41 @@ body .map-wrap {
   background: linear-gradient(to right,  #9643FF, #216CFF);
   transition: all;
 }
+
+.button-hollow-gradient {
+    position: relative;
+    border: 1px solid transparent;
+}
+.button-hollow-gradient img {
+  opacity: 1;
+}
+.button-hollow-gradient::after {
+  content: '';
+  display: block;
+  padding-top: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  border-radius: 6px;
+
+  /* Create gradient border with transparent center */
+  padding: 2px; /* Border thickness */
+  background: linear-gradient(113.78deg, #2F71F4 0%, #2F71F4 48.34%, #9643FF 100%);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+
+  transition: all 0.5s linear;
+}
+
 .bg-light-gradient .button-hollow,
 .bg-light .button-hollow {
   @apply text-action border-action;
