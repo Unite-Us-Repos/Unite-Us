@@ -233,6 +233,10 @@ class App extends Composer
                         $data['section_classes'] = $data['section_classes'] . '-bottom-up';
                     }
 
+                    if (isset($data['background']['seamless_sections'])) {
+                        $data['section_classes'] = $data['section_classes'] . ' seamless-section';
+                    }
+
                     if (isset($data['section']['title'])) {
                         $data['section']['title'] = $this->doUnderline($data['section']['title']);
                     }

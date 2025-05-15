@@ -19,6 +19,9 @@
             "layout": "row",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_62b57d8ae9bd2",
@@ -297,11 +300,30 @@
                     "ui_on_text": "",
                     "ui_off_text": "",
                     "style": ""
+                },
+                {
+                    "key": "field_68260052d46eb",
+                    "label": "Seamless Sections",
+                    "name": "seamless_sections",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "If below components has a wavy top divider, the current component will be shifted down to blend with the wavy divider.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "Yes, blend with below component",
+                    "default_value": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "style": ""
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         }
     ],
     "location": [
@@ -329,5 +351,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1708545785
+    "modified": 1747321130
 }

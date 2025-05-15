@@ -418,6 +418,10 @@ body .map-wrap {
   @apply px-4 py-14 sm:py-20;
 }
 
+.component-section.seamless-section {
+  @apply pb-28 -mb-14 sm:pb-40 sm:-mb-20;
+}
+
 .component-section.alert {
   @apply px-4 py-10 sm:py-10;
 }
