@@ -828,7 +828,15 @@
                     "type": "repeater",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62b3ce8ceff86",
+                                "operator": "==",
+                                "value": "centered-boxed-variant1-video-stats"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -940,5 +948,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747339332
+    "modified": 1747342123
 }
