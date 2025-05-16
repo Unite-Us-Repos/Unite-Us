@@ -499,7 +499,7 @@
                     "label": "Document",
                     "name": "document",
                     "aria-label": "",
-                    "type": "file",
+                    "type": "url",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -508,21 +508,9 @@
                         "class": "",
                         "id": ""
                     },
-                    "uploader": "",
-                    "return_format": "url",
-                    "upload_folder": "",
-                    "multiple": 0,
-                    "max": "",
-                    "min_size": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "library": "all",
-                    "preview_style": "default",
-                    "placeholder": "Select",
-                    "button_label": "Add File",
-                    "stylised_button": 0,
-                    "file_count": 0,
-                    "min": ""
+                    "default_value": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": ""
                 }
             ]
         },
@@ -1756,5 +1744,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1746568574
+    "modified": 1747336168
 }

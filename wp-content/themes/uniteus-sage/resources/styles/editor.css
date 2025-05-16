@@ -113,6 +113,9 @@ ul.list-circle-checkmark li {
   background-repeat: no-repeat;
   padding-left: 1.25rem;
 }
+ul.list-circle-checkmark.alt li {
+  background-image: url("../images/bullet-circle-checkmark-alt.svg");
+}
 ul.list-box {
   padding: 1.5rem 1rem 1.5rem 2.5rem;
   border-radius: 6px;
@@ -161,8 +164,14 @@ ul ul {
   linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
 }
 
+.text-gradient-service {
+  background: linear-gradient(0deg, #216CFF, #216CFF),
+    linear-gradient(90deg, rgba(150, 67, 255, 0) 0%, #9643FF 100%);
+}
+
 .bg-gradient-service,
 .bg-gradient-clips,
-.bg-gradient-clip-v2 {
+.bg-gradient-clip-v2,
+.text-gradient-service {
   @apply bg-clip-text text-transparent
 }

@@ -13,7 +13,7 @@
                     }" class="relative w-full sm:mb-10 flex flex-col items-center">
   <div class="w-full sm:hidden">
     <button id="menu-button" type="button" class="flex w-full justify-between items-center gap-x-1.5  bg-light p-6 px-8 text-base font-medium text-brand hover:bg-gray-50" x-ref="button" @click="onButtonClick()" @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()" aria-expanded="true" aria-haspopup="true" x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
-      What's New
+      {{ $anchor_links_title ? $anchor_links_title : 'Jump To' }}
       <svg width="9" height="14" viewbox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M4.56152 0C4.82674 5.96046e-08 5.08109 0.105357 5.26863 0.292893L8.26863 3.29289C8.65915 3.68342 8.65915 4.31658 8.26863 4.70711C7.87811 5.09763 7.24494 5.09763 6.85442 4.70711L4.56152 2.41421L2.26863 4.70711C1.87811 5.09763 1.24494 5.09763 0.854417 4.70711C0.463892 4.31658 0.463892 3.68342 0.854417 3.29289L3.85442 0.292893C4.04195 0.105357 4.29631 0 4.56152 0ZM0.854417 9.29289C1.24494 8.90237 1.87811 8.90237 2.26863 9.29289L4.56152 11.5858L6.85442 9.29289C7.24494 8.90237 7.87811 8.90237 8.26863 9.29289C8.65915 9.68342 8.65915 10.3166 8.26863 10.7071L5.26863 13.7071C4.87811 14.0976 4.24494 14.0976 3.85442 13.7071L0.854417 10.7071C0.463892 10.3166 0.463892 9.68342 0.854417 9.29289Z" fill="#2C405A"/>
       </svg>
@@ -27,14 +27,13 @@
     <div class="jump-menu-wrap w-full md:relative">
       <ul id="jump-links" class="absolute sm:relative flex flex-col justify-center sm:flex-row  w-full flex-wrap gap-4 sm:gap-5 md:gap-x-10 list-none font-medium text-lg">
         <li class="hidden sm:block w-full text-center  lg:w-auto">
-          <span style="color:#2C405A">What's New:</span>
+          <span style="color:#2C405A">{{ $anchor_links_title ? $anchor_links_title . ':'  : ''  }}</span>
         </li>
-        @foreach($anchors as $anchor)
+        @foreach($anchorLinksData as $hash => $anchor_name)
         <li>
-          <a class="no-underline text-brand block" href="#{{ $anchor['id'] }}">{{ $anchor['title'] }}</a>
+          <a class="no-underline text-brand block" href="#{{ $hash }}">{{ $anchor_name }}</a>
         </li>
         @endforeach
-
       </ul>
     </div>
   </div>

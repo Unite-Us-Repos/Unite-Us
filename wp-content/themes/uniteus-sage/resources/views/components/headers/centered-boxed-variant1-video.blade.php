@@ -29,15 +29,15 @@
           </div>
 
           @if ($section['is_header'] === 'h1')
-          <h1 class="mb-0 !text-5xl !font-medium tracking-tight @if (($background['color'] == 'light') || $background['color'] == 'light-gradient') text-brand @else text-white @endif md:text-5xl lg:text-6xl">
+          <h1 class="mb-0 !text-5xl !font-semibold tracking-tight @if (($background['color'] == 'light') || $background['color'] == 'light-gradient') text-brand @else text-white @endif md:text-5xl lg:text-6xl">
             {!! $section['title'] !!}
           </h1>
           @elseif ($section['is_header'] === 'h2')
-          <h2 class="mb-0 !text-5xl !font-medium tracking-tight @if (($background['color'] == 'light') || $background['color'] == 'light-gradient') text-brand @else text-white @endif md:text-5xl lg:text-6xl">
+          <h2 class="mb-0 !text-5xl !font-semibold tracking-tight @if (($background['color'] == 'light') || $background['color'] == 'light-gradient') text-brand @else text-white @endif md:text-5xl lg:text-6xl">
             {!! $section['title'] !!}
           </h2>
           @else
-          <div class="mb-0 !text-5xl !font-medium tracking-tight @if (($background['color'] == 'light') || $background['color'] == 'light-gradient') text-brand @else text-white @endif md:text-5xl lg:text-6xl">
+          <div class="mb-0 !text-5xl !font-semibold tracking-tight @if (($background['color'] == 'light') || $background['color'] == 'light-gradient') text-brand @else text-white @endif md:text-5xl lg:text-6xl">
             {!! $section['title'] !!}
           </div>
           @endif
@@ -45,7 +45,7 @@
 
         <div class="relative max-w-3xl mx-auto mt-6">
           @if ($section['description'])
-          <div class="@if (($background['color'] == 'light') OR $background['color'] == 'light-gradient') text-brand @else text-white @endif text-xl font-semibold">
+          <div class="@if (($background['color'] == 'light') OR $background['color'] == 'light-gradient') text-brand @else text-white @endif text-lg font-semibold">
             {!! $section['description'] !!}
           </div>
           @endif
@@ -87,33 +87,16 @@
       </div>
     @endif
   </section>
-@php
-$anchors = [
-  [
-  'title' => 'Screenings',
-  'id' => 'screenings',
-  ],
-  [
-  'title' => 'Share Resources',
-  'id' => 'resources',
-  ],
-  [
-  'title' => 'Refer',
-  'id' => 'refer',
-  ],
-  [
-  'title' => 'Reimburse',
-  'id' => 'reimburse',
-  ],
-  [
-  'title' => 'Track Impact',
-  'id' => 'impact',
-  ],
-];
-@endphp
 
 <div class="mx-auto max-w-7xl sm:mt-10 flex justify-center align-middle relative" style="z-index: 1">
-@include('components.headers.partials.anchor-links', $anchors)
+
+@if ($display_anchor_links)
+  @include('components.headers.partials.anchor-links', $anchorLinksData)
+@endif
+
+@if (str_contains($style, 'stats'))
+  @include('components.headers.partials.stats')
+@endif
 </div>
 <div class="absolute bottom-0 left-0 right-0 bg-light h-72"></div>
 </div>

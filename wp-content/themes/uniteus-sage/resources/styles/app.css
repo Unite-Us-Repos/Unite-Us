@@ -110,6 +110,11 @@ h2 br,
   @apply hidden md:block;
 }
 
+.inner-box h2,
+.grid-card h2 {
+  @apply mb-6
+}
+
 p {
   line-height: 1.5;
 }
@@ -232,16 +237,21 @@ ul.list-checkmarks li {
   background-image: url("../images/bullet-checkmark.svg");
   background-position: top 5px left;
   background-repeat: no-repeat;
-  @apply pl-8 mb-2;
+  display: inline-block;
+  @apply pl-8 pt-0.5 mb-2;
 }
 ul.list-circle-checkmark li {
   background-image: url("../images/bullet-circle-checkmark.svg");
   background-position: top 5px left;
   background-repeat: no-repeat;
-  @apply pl-8 mb-2;
+  display: inline-block;
+  @apply pl-8 pt-0.5 mb-2;
 }
 .bg-dark ul.list-checkmarks li {
   background-image: url("../images/bullet-checkmark-light.svg");
+}
+ul.list-circle-checkmark.alt li {
+  background-image: url("../images/bullet-circle-checkmark-alt.svg");
 }
 ul.list-video-play li {
   background-image: url("../images/video-play-purple.svg");
@@ -408,6 +418,10 @@ body .map-wrap {
   @apply px-4 py-14 sm:py-20;
 }
 
+.component-section.seamless-section {
+  @apply pb-28 -mb-14 sm:pb-40 sm:-mb-20;
+}
+
 .component-section.alert {
   @apply px-4 py-10 sm:py-10;
 }
@@ -535,6 +549,42 @@ body .map-wrap {
   background: linear-gradient(to right,  #9643FF, #216CFF);
   transition: all;
 }
+
+.button-hollow-gradient {
+    position: relative;
+    border: 1px solid transparent;
+    @apply px-7 py-3
+}
+.button-hollow-gradient img {
+  opacity: 0.9 !important;
+}
+.button-hollow-gradient::after {
+  content: '';
+  display: block;
+  padding-top: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  border-radius: 6px;
+
+  /* Create gradient border with transparent center */
+  padding: 2px; /* Border thickness */
+  background: linear-gradient(113.78deg, #2F71F4 0%, #2F71F4 48.34%, #9643FF 100%);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+
+  transition: all 0.5s linear;
+}
+
 .bg-light-gradient .button-hollow,
 .bg-light .button-hollow {
   @apply text-action border-action;
@@ -1343,6 +1393,18 @@ ul.list-box {
   #9643FF 74.77%,
   #FF548B 104.31%),
   linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  @apply bg-clip-text text-transparent
+}
+
+.text-gradient-service {
+  background: linear-gradient(0deg, #216CFF, #216CFF),
+    linear-gradient(90deg, rgba(150, 67, 255, 0) 0%, #9643FF 100%);
+}
+
+.bg-gradient-service,
+.bg-gradient-clips,
+.bg-gradient-clip-v2,
+.text-gradient-service {
   @apply bg-clip-text text-transparent
 }
 
@@ -2627,4 +2689,57 @@ blockquote h4 {
 
 .jump-menu-wrap ul {
   @apply p-6 sm:p-0 flex flex-col bg-white sm:bg-transparent sm:flex-row rounded-lg shadow-md sm:shadow-none overflow-hidden
+}
+
+/* Image Color Filters */
+.image-filter {
+  filter: grayscale(1) brightness(0.5);
+  transition: all 0.3s ease;
+
+  &.white {
+    filter: brightness(0) saturate(100%) invert(100%);
+  }
+  &.black {
+    filter: brightness(0) saturate(100%) invert(0%);
+  }
+  &.gray {
+    filter: brightness(0) saturate(100%) invert(50%);
+  }
+  &.brand {
+    filter: brightness(0) saturate(100%) invert(17%) sepia(19%) saturate(1137%) hue-rotate(182deg) brightness(97%) contrast(87%);
+  }
+}
+
+/* Gradient Line */
+.top-gradient-line {
+  position: relative;
+  padding-top: 1.5rem; /* Adjust this value to control the space above the line */
+}
+
+.top-gradient-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #216CFF 0%, #9643FF 100%);
+}
+
+/* Vertical Divider */
+/* Add vertical dividers between items (except first and last) */
+.vertical-dividers li:not(:first-child)::before,
+.vertical-dividers div:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: rgba(44, 64, 90, 0.2);
+}
+
+.vertical-dividers li,
+.vertical-dividers div {
+  position: relative;
 }
