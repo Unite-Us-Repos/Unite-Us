@@ -87,7 +87,6 @@
       </div>
     @endif
   </section>
-@php
 
 <div class="mx-auto max-w-7xl sm:mt-10 flex justify-center align-middle relative" style="z-index: 1">
 
