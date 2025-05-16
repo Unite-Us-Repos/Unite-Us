@@ -1950,6 +1950,7 @@ nav.breadcrumbs ol {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
+.light-gradient-overlay,
 .page-template.contact .bg-brand,
 .page-template.demo .bg-brand {
   background-color: transparent;
