@@ -2709,3 +2709,21 @@ blockquote h4 {
     filter: brightness(0) saturate(100%) invert(17%) sepia(19%) saturate(1137%) hue-rotate(182deg) brightness(97%) contrast(87%);
   }
 }
+
+/* Vertical Divider */
+/* Add vertical dividers between items (except first and last) */
+.vertical-dividers li:not(:first-child)::before,
+.vertical-dividers div:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: rgba(44, 64, 90, 0.2);
+}
+
+.vertical-dividers li,
+.vertical-dividers div {
+  position: relative;
+}
