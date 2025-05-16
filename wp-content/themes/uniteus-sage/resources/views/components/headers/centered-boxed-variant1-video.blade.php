@@ -14,7 +14,7 @@
         <div class="relative max-w-4xl mx-auto">
 
           @isset ($section['logo']['sizes'])
-            <img class="mb-6 max-w-[224px] h-auto" src="{{ $section['logo']['sizes']['medium'] }}" alt="{{ $section['logo']['alt'] }}"/>
+            <img class="mb-8 max-w-xs h-auto mx-auto" src="{{ $section['logo']['sizes']['large'] }}" alt="{{ $section['logo']['alt'] }}"/>
           @endisset
 
           @if ($section['subtitle'])
@@ -24,9 +24,8 @@
           @endif
 
           <!-- play button -->
-          <div class="mb-10">
-            @include('components.headers.partials.video-modal-play-button')
-          </div>
+          @include('components.headers.partials.video-modal-play-button')
+          <!-- end play button -->
 
           @if ($section['is_header'] === 'h1')
           <h1 class="mb-0 !text-5xl !font-semibold tracking-tight @if (($background['color'] == 'light') || $background['color'] == 'light-gradient') text-brand @else text-white @endif md:text-5xl lg:text-6xl">
