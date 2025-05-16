@@ -111,7 +111,7 @@ if ($background['overlay']) {
   @endif
 
   @if ($background['overlay'])
-    <div class="absolute inset-0 bg-brand opacity-75"></div>
+    <div class="absolute inset-0 @if ($background['color'] == 'light-gradient') light-gradient-overlay @else bg-brand @endif opacity-75"></div>
   @endif
 
 </section>
