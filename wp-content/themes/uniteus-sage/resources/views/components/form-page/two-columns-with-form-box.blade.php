@@ -33,6 +33,12 @@ switch ($background['color']) {
 if ($background['overlay']) {
     $text_classes = 'text-white';
 }
+
+// Add additional classes based on settings
+// Light gradient with overlay should have text color set to brand
+if ($background['color'] == 'light-gradient' && $background['overlay']) {
+  $text_classes = 'text-brand';
+}
 @endphp
 @if ($background['has_divider'])
   @includeIf('dividers.waves')
