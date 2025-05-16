@@ -553,6 +553,7 @@ body .map-wrap {
 .button-hollow-gradient {
     position: relative;
     border: 1px solid transparent;
+    @apply px-7 py-3
 }
 .button-hollow-gradient img {
   opacity: 0.9 !important;
