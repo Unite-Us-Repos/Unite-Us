@@ -2710,6 +2710,22 @@ blockquote h4 {
   }
 }
 
+/* Gradient Line */
+.top-gradient-line {
+  position: relative;
+  padding-top: 1.5rem; /* Adjust this value to control the space above the line */
+}
+
+.top-gradient-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #216CFF 0%, #9643FF 100%);
+}
+
 /* Vertical Divider */
 /* Add vertical dividers between items (except first and last) */
 .vertical-dividers li:not(:first-child)::before,
