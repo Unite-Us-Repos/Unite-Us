@@ -233,7 +233,9 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
     </div>
   </div>
 </section>
-
+@if ($background['divider_bottom'])
+  @includeIf('dividers.waves-bottom')
+@endif
 
 <style>
 .testimonials .article-card {

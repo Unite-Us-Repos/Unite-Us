@@ -813,7 +813,7 @@
                             {
                                 "field": "field_62b3ce8ceff86",
                                 "operator": "==",
-                                "value": "centered-boxed-variant1-video"
+                                "value": "centered-boxed-variant1-video-stats"
                             }
                         ]
                     ],
@@ -955,5 +955,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747342236
+    "modified": 1747342563
 }
