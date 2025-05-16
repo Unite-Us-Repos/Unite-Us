@@ -1,6 +1,6 @@
 @if ($stats)
 <div class="component-inner-section mb-10">
-  <div class="vertical-dividers flex flex-col sm:grid grid-cols-{{ count($stats) }}">
+  <div class="vertical-dividers flex flex-col md:grid grid-cols-{{ count($stats) }}">
     @foreach ($stats as $stat)
       <div class="flex flex-col justify-between px-9 gap-6">
         <div class="text-brand text-lg">{!! $stat['description'] !!}</div>
