@@ -5,25 +5,12 @@
       <div class="flex flex-col justify-between px-9 gap-6">
         <div class="text-brand text-lg">{!! $stat['description'] !!}</div>
         @if ($stat['logo'])
-          <img class="max-w-[120px] w-full h-auto mb-2" src="{{ $stat['logo']['sizes']['medium'] }}" alt="{{ $stat['logo']['alt'] }}" />
+          <span class="image-filter brand">
+            <img class="w-32 h-12 object-contain object-left-bottom mb-2" src="{{ $stat['logo']['sizes']['medium'] }}" alt="{{ $stat['logo']['alt'] }}" />
+          </span>
         @endif
       </div>
     @endforeach
   </div>
 </div>
 @endif
-<style>
-  /* Add vertical dividers between items (except first and last) */
-    .vertical-dividers div:not(:first-child)::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background-color: rgba(44, 64, 90, 0.2);
-    }
-    .vertical-dividers div {
-      position: relative;
-    }
-    </style>
