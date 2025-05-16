@@ -1,4 +1,7 @@
 @php
+if (!$video_modal['video_url']){
+    return;
+}
 /**
  * Extract YouTube video ID from various YouTube URL formats
  *
@@ -74,7 +77,7 @@ if (isset($video_modal['video_url'])) {
   }
 }
 @endphp
-<div class="flex align-center justify-center [&_[x-cloak]]:hidden">
+<div class="flex mb-10 align-center justify-center [&_[x-cloak]]:hidden">
 
   @if ($video_modal['video_url'])
     <!-- Video thumbnail -->
