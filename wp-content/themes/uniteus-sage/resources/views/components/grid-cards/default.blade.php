@@ -81,8 +81,12 @@
            @if (str_contains($card['card_layout'], 'two-col'))
             </div>
           @endif
-      </div>
         </div>
+
+        <div class="relative mt-8 px-8 sm:px-0 lg:px-8 z-20">
+          @include('components.grid-cards.partials.key-points', ['key_points' => $card['key_points']])
+        </div>
+      </div>
 
       @endforeach
   </div>
