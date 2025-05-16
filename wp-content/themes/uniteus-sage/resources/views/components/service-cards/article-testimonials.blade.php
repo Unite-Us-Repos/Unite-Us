@@ -1,28 +1,10 @@
 <style>
-.service-icon-cards {
-  min-height: 240px;
-  position: relative;
-}
-.service-icon-cards:hover .acf-icon-action {
-  filter: brightness(0) saturate(100%) invert(100%) sepia(3%) saturate(5310%) hue-rotate(306deg) brightness(112%) contrast(102%) !important;
-}
-@media (min-width: 1024px) {
-  .icon-carousel .swiper-wrapper {
-  justify-content: center;
-        max-width: 80rem;
-        margin: auto;
-        display: flex;
-}
-.icon-carousel .swiper-slide {
-  flex-shrink: 1;
-}
-}
-.article-cards {
+.article-cards.testimonials {
   border: solid 1px #2F71F4;
   border-radius: 1rem;
   overflow: hidden;
 }
-.article-card::after {
+.testimonials .article-card::after {
   content: '';
   display: block;
   padding-top: 100%;
@@ -60,7 +42,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
 @if ($background['has_divider'])
   @includeIf('dividers.waves')
 @endif
-<section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="relative @if ($background['color'] == 'dark') text-white @endif icon-carousel component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+<section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="relative @if ($background['color'] == 'dark') text-white @endif component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
 @if ($background['image'])
   <div class="absolute inset-0">
     <img fetchpriority="high" class="w-full h-full object-cover @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif" src="{{ $background['image']['sizes']['medium'] }}"
@@ -187,7 +169,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
         @endphp
         <div class="component-inner-section">
         <div class="no-swiper">
-        <div class="flex flex-col md:grid {{ $md_grid_cols }} {{ $grid_cols }} gap-6">
+        <div class="flex testimonials flex-col md:grid {{ $md_grid_cols }} {{ $grid_cols }} gap-6">
      @endif
 
       @foreach ($cards as $index => $card)
@@ -205,7 +187,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
 
 
 
-        <div class="@if ($is_swiper) swiper-slide @endif" style="height: auto;">
+        <div>
           <div class="service-icon-cards h-full group">
             <div class="bg-transparent text-white relative flex items-start overflow-hidden group h-full
 
@@ -254,10 +236,13 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
 
 
 <style>
-  .article-card {
-    transition: all 0.5s linear;
-  }
-  .article-card:hover {
-    background: rgba(255, 255, 255, 0.8);
-  }
+.testimonials .article-card {
+  transition: all 0.5s linear;
+  border-radius: 1rem;
+}
+.testimonials .article-card:hover {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)),
+    linear-gradient(0deg, rgba(47, 113, 244, 0.08), rgba(47, 113, 244, 0.08)),
+    linear-gradient(117.36deg, rgba(150, 67, 255, 0) 36.69%, rgba(150, 67, 255, 0.08) 100%);
+}
 </style>
