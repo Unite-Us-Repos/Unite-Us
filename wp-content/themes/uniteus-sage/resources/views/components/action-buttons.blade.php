@@ -81,8 +81,8 @@
         }
 
         // Generate unique class names
-        $button_class = 'button-id-' . $index;
-        $button_hover_class = 'button-hover-' . $index;
+        $button_class = 'button-id-' . $component_index . '-' . $index;
+        $button_hover_class = 'button-hover-' . $component_index . '-' . $index;
       @endphp
         <div class="@if ('text' != $button_layout) inline-flex @endif">
           <a href="{{ $link }}" {!! $click_action !!} class="button action-button {{ $classes }} {{ $button_class }} @isset ($button['icon']) flex items-center gap-3 @endif {{ $button['style'] }}" style="text-decoration:none !important;@if ('text' == $button_layout) padding: 0.75rem 0; @endif" @if ($button['is_blank']) target="_blank" @endif>
@@ -98,14 +98,21 @@
             @endisset
           </a>
         </div>
-        <style>
-          .{{ $button_class }} {
-            {!! $button_styles !!}
-          }
-          .{{ $button_class }}:hover {
-            {!! $button_hover_styles !!}
-          }
-        </style>
+        @if ($button_styles || $button_hover_styles)
+          <style>
+            @if ($button_styles)
+            .{{ $button_class }} {
+              {!! $button_styles !!}
+            }
+            @endif
+
+            @if ($button_hover_styles)
+            .{{ $button_class }}:hover {
+              {!! $button_hover_styles !!}
+            }
+            @endif
+          </style>
+        @endif
 
     @endforeach
   </div>
