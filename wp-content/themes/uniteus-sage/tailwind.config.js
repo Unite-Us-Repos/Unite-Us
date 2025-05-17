@@ -255,7 +255,6 @@ module.exports = {
     'lg:columns-3',
     'lg:columns-4',
     'grid-cols-4',
-    // Added vertical dividers classes to safelist
     'vertical-dividers',
     'sm:vertical-dividers',
     'md:vertical-dividers',

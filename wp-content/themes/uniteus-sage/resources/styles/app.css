@@ -2726,3 +2726,20 @@ blockquote h4 {
   height: 2px;
   background: linear-gradient(90deg, #216CFF 0%, #9643FF 100%);
 }
+
+@layer utilities {
+  .vertical-dividers > li:not(:first-child)::before,
+  .vertical-dividers > div:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: rgba(44, 64, 90, 0.2);
+  }
+  .vertical-dividers > li,
+  .vertical-dividers > div {
+    position: relative;
+  }
+}
