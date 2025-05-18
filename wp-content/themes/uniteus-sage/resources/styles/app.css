@@ -2728,8 +2728,24 @@ blockquote h4 {
 }
 
 @layer utilities {
-  .vertical-dividers > li:not(:first-child)::before,
-  .vertical-dividers > div:not(:first-child)::before {
+  /* Base positioning for all dividers */
+  .horizontal-dividers > *, .vertical-dividers > * {
+    position: relative;
+  }
+
+  /* Default (mobile-first) horizontal dividers */
+  .horizontal-dividers > *:not(:first-child)::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba(44, 64, 90, 0.2);
+  }
+
+  /* Default vertical dividers */
+  .vertical-dividers > *:not(:first-child)::before {
     content: '';
     position: absolute;
     left: 0;
@@ -2738,8 +2754,52 @@ blockquote h4 {
     width: 1px;
     background-color: rgba(44, 64, 90, 0.2);
   }
-  .vertical-dividers > li,
-  .vertical-dividers > div {
-    position: relative;
+
+  /* Clear base horizontal dividers when switching to vertical */
+  .vertical-dividers > *:not(:first-child)::after {
+    content: none; /* Clear horizontal dividers */
+  }
+
+  /* Clear base vertical dividers when switching to horizontal */
+  .horizontal-dividers > *:not(:first-child)::before {
+    content: none; /* Clear vertical dividers */
+  }
+
+  /* Responsive breakpoints - clear horizontal dividers when switching to vertical */
+  @screen sm {
+    .sm\:vertical-dividers > *:not(:first-child)::after {
+      content: none; /* Clear horizontal dividers */
+    }
+  }
+
+  @screen md {
+    .md\:vertical-dividers > *:not(:first-child)::after {
+      content: none; /* Clear horizontal dividers */
+    }
+  }
+
+  @screen lg {
+    .lg\:vertical-dividers > *:not(:first-child)::after {
+      content: none; /* Clear horizontal dividers */
+    }
+  }
+
+  /* Also handle the reverse scenario (vertical to horizontal) */
+  @screen sm {
+    .sm\:horizontal-dividers > *:not(:first-child)::before {
+      content: none; /* Clear vertical dividers */
+    }
+  }
+
+  @screen md {
+    .md\:horizontal-dividers > *:not(:first-child)::before {
+      content: none; /* Clear vertical dividers */
+    }
+  }
+
+  @screen lg {
+    .lg\:horizontal-dividers > *:not(:first-child)::before {
+      content: none; /* Clear vertical dividers */
+    }
   }
 }

@@ -97,7 +97,7 @@
   @include('components.headers.partials.stats')
 @endif
 </div>
-<div class="absolute bottom-0 left-0 right-0 bg-light h-72"></div>
+<div class="absolute bottom-0 left-0 right-0 bg-light h-full md:h-96"></div>
 </div>
 
 <style>
