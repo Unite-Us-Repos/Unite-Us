@@ -260,7 +260,7 @@ module.exports = {
     'md:vertical-dividers',
     'lg:vertical-dividers',
     'xl:vertical-dividers',
-    '2xl:vertical-dividers'
+    '2xl:vertical-dividers',
   ],
   variants: {
     extend: {
