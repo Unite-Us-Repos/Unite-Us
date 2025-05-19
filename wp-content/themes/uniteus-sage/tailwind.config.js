@@ -255,6 +255,12 @@ module.exports = {
     'lg:columns-3',
     'lg:columns-4',
     'grid-cols-4',
+    'vertical-dividers',
+    'sm:vertical-dividers',
+    'md:vertical-dividers',
+    'lg:vertical-dividers',
+    'xl:vertical-dividers',
+    '2xl:vertical-dividers',
   ],
   variants: {
     extend: {
