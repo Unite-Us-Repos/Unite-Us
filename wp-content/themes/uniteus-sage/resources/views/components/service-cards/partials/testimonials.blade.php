@@ -19,7 +19,7 @@
           <div class="flex flex-col lg:grid lg:grid-cols-12">
             <div class="col-span-7">
               <div class="text-2xl md:text-3xl md:leading-normal">
-                {!! $testimonial['quote'] !!}
+                <div class="quotes">{!! $testimonial['quote'] !!}</div>
               </div>
               <footer class="mt-4">
                 <div class="md:flex">
@@ -31,7 +31,7 @@
                     </div>
                   @endif
                   <div class="mt-3 text-lg md:mt-0 flex flex-col md:flex-row">
-                    <div>{{ $testimonial['name'] }}</div>
+                    <div class="quote-title">{{ $testimonial['name'] }}</div>
                     @if ($testimonial['title_position'])
                       <div>&nbsp; &mdash; &nbsp;{{ $testimonial['title_position'] }}</div>
                     @endif
@@ -56,6 +56,7 @@
     <div class="swiper-pagination"></div>
   </div>
 
+  <div class="flex gap-4">
   @if (count($testimonials) > 1)
     <button aria-label="previous" @click="swiper.slidePrev()"
       class="text-blue-300 hover:text-action ease-out duration-300 flex justify-center items-center w-10 h-10 rounded-full focus:outline-none">
@@ -72,4 +73,5 @@
       </svg>
     </button>
   @endif
+  </div>
 </div>

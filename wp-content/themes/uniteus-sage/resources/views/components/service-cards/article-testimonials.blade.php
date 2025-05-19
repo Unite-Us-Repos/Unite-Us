@@ -247,4 +247,48 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
     linear-gradient(0deg, rgba(47, 113, 244, 0.08), rgba(47, 113, 244, 0.08)),
     linear-gradient(117.36deg, rgba(150, 67, 255, 0) 36.69%, rgba(150, 67, 255, 0.08) 100%);
 }
+
+.quotes {
+  position: relative;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  quotes: """ """;
+}
+
+.quote-title {
+  padding-left: 1rem;
+}
+
+/* Opening quote at the beginning */
+.quotes::before {
+  content: open-quote;
+  font-size: 2rem;
+  line-height: 1;
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  color: #fff;
+}
+
+/* Remove the default closing quote from quotes class */
+.quotes::after {
+  content: none;
+}
+
+/* Add closing quote after the last paragraph */
+.quotes p:last-child {
+  position: relative;
+  display: inline !important;
+}
+
+.quotes p:last-child::after {
+  content: close-quote;
+  font-size: 2rem;
+  line-height: 1;
+  position: absolute;
+  display: inline;
+  color: #ffffff;
+  vertical-align: bottom;
+  margin-left: 0.25rem;
+}
 </style>
