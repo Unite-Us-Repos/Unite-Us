@@ -31,7 +31,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
 
   <div class="absolute inset-0">
     @if ($background['image'])
-      <img fetchPriority="high" class="w-full h-full @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif" 
+      <img fetchPriority="high" class="w-full h-full @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
         src="{{ $background['image']['sizes']['medium'] }}"
         srcset="{{ $background['image']['sizes']['medium'] }} 300w, {{ $background['image']['sizes']['2048x2048'] }} 1024w"
         sizes="(max-width: 600px) 300px, 1024px"
@@ -40,7 +40,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
   </div>
 
   <div class="relative z-10 component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif">
-    <div class="md:relative flex flex-col lg:grid lg:grid-cols-12 lg:gap-10">
+    <div class="md:relative flex flex-col lg:grid lg:grid-cols-12 lg:gap-28">
 
       <div class="flex flex-col items-start @if ('accordion' == $type) lg:col-span-4 @else lg:col-span-{{ $columns[0] }} @endif @if ('center' == $vertical_alignment) justify-center @endif @if (('image' == $type) OR ('embed' == $type)) order-2 @endif text-lg @if ('image' == $type) @if ('text_image' == $layout) lg:order-1 @else lg:order-2 @endif @endif">
         @if ($section['subtitle'])
@@ -57,7 +57,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
             <img class="mb-6 max-w-[224px] h-auto" src="{{ $section['logo']['sizes']['medium'] }}" alt="{{ $section['logo']['alt'] }}" />
           @endisset
           @if ($section['title'])
-         
+
           @if ($section['is_header'] === 'h1')
           <h1 class="mb-6 h2">{!! $section['title'] !!}</h1>
           @elseif ($section['is_header'] === 'h2')
@@ -65,7 +65,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
           @else
               <div class="mb-6 h2">{!! $section['title'] !!}</div>
           @endif
-      
+
           @endif
 
           @if ($section['description'])
@@ -341,14 +341,14 @@ $image_overaly = @asset('/images/network-mask-1.png');
               </ul>
             </div>
           @endif
-          
+
           @if ('list' == $type)
-          
+
           @if (!empty($list_items))
             <div class="list-items-with-icons flex flex-wrap mt-5 mb-3">
                 @foreach ($list_items as $item)
                     <div class="item basis-full lg:basis-1/2 flex gap-2 p-2 lg:p-4 items-center">
-                        
+
                         @if (isset($item['svg_picker_or_custom_icon_upload']))
                         <div class="basis-1/5 flex justify-start lg:justify-end align-middle">
                             @if ($item['svg_picker_or_custom_icon_upload'] == 'SVG Icon Picker' && !empty($item['icon']))
@@ -370,7 +370,7 @@ $image_overaly = @asset('/images/network-mask-1.png');
                 @endforeach
             </div>
           @endif
-    
+
           @endif
 
           @if ($buttons && ('widget_area' == $button_placement))
