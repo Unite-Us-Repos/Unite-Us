@@ -14,7 +14,7 @@
   @if ($background['color'] != 'light-gradient') shadow-lg @endif
   @if ($card['bg_image']) group-hover:bg-action-dark
   @else
-  group-hover:bg-electric-purple group-hover:text-white
+  group-hover:bg-electric-purple gradient-purple group-hover:text-white
   @endif
   @if (!empty($card['custom_icon'])) gradient-border @endif">
 
@@ -103,3 +103,10 @@
     </div>
   </div>
 </div>
+<style>
+.gradient-purple:hover {
+  background-color: #9643FF;
+  background-image: linear-gradient(317.09deg, #216CFF 0%, rgba(33, 108, 255, 0) 100%);
+  color: white;
+}
+</style>
