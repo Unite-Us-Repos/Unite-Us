@@ -45,6 +45,11 @@ class HelpMenu extends Composer
     public function helpMenuData()
     {
         $menu_items = $this->data->help_menu['help_items'] ?? [];
+
+        if (empty($menu_items)) {
+            return [];
+        }
+
         // Get first option
         if (isset($this->data->help_menu['settings']['select_text_prompt'])) {
             // Add to help_menu['help_items'] array as first item
