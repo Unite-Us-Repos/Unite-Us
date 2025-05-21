@@ -45,7 +45,11 @@ $image_overaly = @asset('/images/network-mask-1.png');
       <div class="flex flex-col items-start @if ('accordion' == $type) lg:col-span-4 @else lg:col-span-{{ $columns[0] }} @endif @if ('center' == $vertical_alignment) justify-center @endif @if (('image' == $type) OR ('embed' == $type)) order-2 @endif text-lg @if ('image' == $type) @if ('text_image' == $layout) lg:order-1 @else lg:order-2 @endif @endif">
         @if ($section['subtitle'])
         @if ($section['subtitle_display_as_pill'])
-          <div class="@if($section['purple_text']) text-electric-purple @else text-action @endif bg-light mix-blend-multiply text-sm py-1 px-4 inline-block mb-6 rounded-full">
+          <div class="
+            @if($section['purple_text']) text-electric-purple @else text-action @endif
+            @if ($background['color'] == 'light-gradient') bg-none border border-action @else bg-light mix-blend-multiply @endif
+            text-sm py-1 px-4 inline-block mb-6 rounded-full
+            ">
         @else
           <div class="subtitle mb-6">
         @endif
