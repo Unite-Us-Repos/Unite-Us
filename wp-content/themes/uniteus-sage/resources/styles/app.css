@@ -1397,8 +1397,9 @@ ul.list-box {
 }
 
 .text-gradient-service {
-  background: linear-gradient(0deg, #216CFF, #216CFF),
-    linear-gradient(90deg, rgba(150, 67, 255, 0) 0%, #9643FF 100%);
+  background:
+    linear-gradient(90deg, rgba(150, 67, 255, 0) 0%, #9643FF 100%),
+    linear-gradient(0deg, #216CFF, #216CFF);
 }
 
 .bg-gradient-service,
