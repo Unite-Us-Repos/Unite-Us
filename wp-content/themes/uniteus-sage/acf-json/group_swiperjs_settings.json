@@ -1,0 +1,690 @@
+{
+    "key": "group_swiperjs_settings",
+    "title": "SwiperJS Slider Settings",
+    "fields": [
+        {
+            "key": "field_swiperjs_general_tab",
+            "label": "General Settings",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "no_preference": 0
+        },
+        {
+            "key": "field_swiperjs_enabled",
+            "label": "Enable Slider",
+            "name": "swiperjs_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Turn the slider on or off.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1,
+            "style": ""
+        },
+        {
+            "key": "field_swiperjs_slider_id",
+            "label": "Slider ID",
+            "name": "swiperjs_slider_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Unique identifier for this slider (optional). Will be auto-generated if left empty.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "my-custom-slider",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_swiperjs_autoplay_tab",
+            "label": "Autoplay",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "no_preference": 0
+        },
+        {
+            "key": "field_swiperjs_autoplay",
+            "label": "Enable Autoplay",
+            "name": "swiperjs_autoplay",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Enable automatic slide transitions.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "style": ""
+        },
+        {
+            "key": "field_swiperjs_autoplay_delay",
+            "label": "Autoplay Delay",
+            "name": "swiperjs_autoplay_delay",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Delay between transitions (in ms).",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_autoplay",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3000,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 0,
+            "max": "",
+            "step": 100
+        },
+        {
+            "key": "field_swiperjs_pause_on_hover",
+            "label": "Pause on Hover",
+            "name": "swiperjs_pause_on_hover",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Pause autoplay when cursor hovers over the slider.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_autoplay",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "style": ""
+        },
+        {
+            "key": "field_swiperjs_disable_on_interaction",
+            "label": "Disable on Interaction",
+            "name": "swiperjs_disable_on_interaction",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Disable autoplay after user interaction.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_autoplay",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "style": ""
+        },
+        {
+            "key": "field_swiperjs_navigation_tab",
+            "label": "Navigation",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "no_preference": 0
+        },
+        {
+            "key": "field_swiperjs_navigation",
+            "label": "Show Navigation Arrows",
+            "name": "swiperjs_navigation",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Display navigation arrows.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "style": ""
+        },
+        {
+            "key": "field_swiperjs_pagination",
+            "label": "Show Pagination",
+            "name": "swiperjs_pagination",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Display pagination dots\/bullets.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "style": ""
+        },
+        {
+            "key": "field_swiperjs_pagination_type",
+            "label": "Pagination Type",
+            "name": "swiperjs_pagination_type",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Select the type of pagination to display.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_pagination",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "bullets": "Bullets",
+                "fraction": "Fraction",
+                "progressbar": "Progress Bar"
+            },
+            "default_value": "bullets",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": ""
+        },
+        {
+            "key": "field_swiperjs_scrollbar",
+            "label": "Show Scrollbar",
+            "name": "swiperjs_scrollbar",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Display draggable scrollbar.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "style": ""
+        },
+        {
+            "key": "field_swiperjs_appearance_tab",
+            "label": "Appearance",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "no_preference": 0
+        },
+        {
+            "key": "field_swiperjs_effect",
+            "label": "Transition Effect",
+            "name": "swiperjs_effect",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Select slide transition effect.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "slide": "Slide",
+                "fade": "Fade",
+                "cube": "Cube",
+                "coverflow": "Coverflow",
+                "flip": "Flip",
+                "cards": "Cards"
+            },
+            "default_value": "slide",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": ""
+        },
+        {
+            "key": "field_swiperjs_speed",
+            "label": "Transition Speed",
+            "name": "swiperjs_speed",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Duration of transition between slides (in ms).",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 300,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 0,
+            "max": "",
+            "step": 100
+        },
+        {
+            "key": "field_swiperjs_loop",
+            "label": "Enable Loop",
+            "name": "swiperjs_loop",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Enable continuous loop mode.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "style": ""
+        },
+        {
+            "key": "field_swiperjs_responsive_tab",
+            "label": "Responsive",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "no_preference": 0
+        },
+        {
+            "key": "field_swiperjs_slides_per_view",
+            "label": "Slides Per View",
+            "name": "swiperjs_slides_per_view",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Number of slides visible at the same time on slider container.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "key": "field_swiperjs_space_between",
+            "label": "Space Between Slides",
+            "name": "swiperjs_space_between",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Distance between slides in px.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 30,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 0,
+            "max": "",
+            "step": 1
+        },
+        {
+            "key": "field_swiperjs_breakpoints",
+            "label": "Responsive Breakpoints",
+            "name": "swiperjs_breakpoints",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Configure slider for different screen sizes.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_swiperjs_breakpoint_width",
+            "min": 0,
+            "max": 4,
+            "layout": "block",
+            "button_label": "Add Breakpoint",
+            "rows_per_page": 20,
+            "acfe_repeater_stylised_button": 0,
+            "sub_fields": [
+                {
+                    "key": "field_swiperjs_breakpoint_width",
+                    "label": "Max Width",
+                    "name": "width",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Breakpoint width in px.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 768,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": 0,
+                    "max": "",
+                    "step": 1,
+                    "parent_repeater": "field_swiperjs_breakpoints"
+                },
+                {
+                    "key": "field_swiperjs_breakpoint_slides_per_view",
+                    "label": "Slides Per View",
+                    "name": "slides_per_view",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Number of slides per view at this breakpoint.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": 1,
+                    "max": "",
+                    "step": 1,
+                    "parent_repeater": "field_swiperjs_breakpoints"
+                },
+                {
+                    "key": "field_swiperjs_breakpoint_space_between",
+                    "label": "Space Between",
+                    "name": "space_between",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Space between slides at this breakpoint.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 20,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "min": 0,
+                    "max": "",
+                    "step": 1,
+                    "parent_repeater": "field_swiperjs_breakpoints"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": ""
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Settings for SwiperJS slider configuration.",
+    "show_in_rest": 0,
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1747841282
+}
