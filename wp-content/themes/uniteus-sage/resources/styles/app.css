@@ -245,7 +245,7 @@ ul.list-circle-checkmark li {
   background-position: top 5px left;
   background-repeat: no-repeat;
   display: inline-block;
-  @apply pl-8 pt-0.5 mb-2;
+  @apply pl-8 pt-0.5 !mb-6;
 }
 .bg-dark ul.list-checkmarks li {
   background-image: url("../images/bullet-checkmark-light.svg");
