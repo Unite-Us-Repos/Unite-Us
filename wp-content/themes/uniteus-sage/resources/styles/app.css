@@ -2804,3 +2804,22 @@ blockquote h4 {
     }
   }
 }
+
+/* Firefox specific styles */
+/* This is a workaround for Firefox to ensure the gradient border appears correctly */
+/* The gradient border is not supported in Firefox, so we use a solid border as a fallback */
+@-moz-document url-prefix() {
+  .button-hollow-gradient,
+  .button-hollow-gradient:hover,
+  .testimonials .article-card,
+  .testimonials .article-card:hover {
+    border: 1px solid #2F71F4; /* Fallback border for Firefox */
+    position: relative; /* ensure layout doesn't break */
+    z-index: 1;
+  }
+
+  .button-hollow-gradient:after,
+  .testimonials .article-card::after {
+    display: none; /* Hide the pseudo-element in Firefox */
+  }
+}
