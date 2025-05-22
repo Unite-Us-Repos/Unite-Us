@@ -42,6 +42,10 @@
         @endif
 
         <div class="text-center mb-7">
+            @isset ($section['logo']['sizes'])
+              <img class="mb-8 max-w-xs h-auto mx-auto" src="{{ $section['logo']['sizes']['large'] }}" alt="{{ $section['logo']['alt'] }}"/>
+            @endisset
+
             @if ($section['subtitle'])
                 @if ($section['subtitle_display_as_pill'])
                     <span
@@ -95,10 +99,10 @@
                                     </div>
                                     <div class="text-block relative">
                                         @if ($review_title)
-                                            <h3 class="text-xl font-semibold mb-4">{!! $review_title !!}</h3>
+                                            <h3 class="text-lg font-semibold mb-4">{!! $review_title !!}</h3>
                                         @endif
                                         @if ($review_content)
-                                            <div class="text-lg w-full mb-4">
+                                            <div class="text-base w-full mb-4">
                                                 {!! $review_content !!}
                                             </div>
                                         @endif

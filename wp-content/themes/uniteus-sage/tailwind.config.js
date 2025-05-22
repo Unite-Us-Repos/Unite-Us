@@ -366,5 +366,28 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // Vertical Dividers Plugin
+    // This plugin adds vertical dividers between items in a list or grid layout.
+    require('tailwindcss/plugin')(function({ addComponents, variants }) {
+      const verticalDividers = {
+        '.vertical-dividers': {
+          '& > li:not(:first-child)::before, & > div:not(:first-child)::before': {
+            content: '""',
+            position: 'absolute',
+            left: '0',
+            top: '0',
+            bottom: '0',
+            width: '1px',
+            backgroundColor: 'rgba(44, 64, 90, 0.2)',
+          },
+          '& > li, & > div': {
+            position: 'relative',
+          }
+        }
+      };
+
+      addComponents(verticalDividers, ['responsive']); // Include the 'responsive' variant
+    }),
+  ],
 };

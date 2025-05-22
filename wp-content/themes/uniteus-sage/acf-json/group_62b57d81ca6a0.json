@@ -24,6 +24,25 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
+                    "key": "field_682ce4adaa8a0",
+                    "label": "General",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "top",
+                    "endpoint": 1,
+                    "no_preference": 0,
+                    "selected": 0
+                },
+                {
                     "key": "field_62b57d8ae9bd2",
                     "label": "Background Image",
                     "name": "image",
@@ -236,7 +255,9 @@
                     "placeholder": "",
                     "allow_custom": 0,
                     "search_placeholder": "",
-                    "min": ""
+                    "min": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_6335b24ef2b47",
@@ -281,6 +302,47 @@
                     "style": ""
                 },
                 {
+                    "key": "field_68260052d46eb",
+                    "label": "Seamless Sections",
+                    "name": "seamless_sections",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "The current component will be shifted down and overlap with the below component. If below component has a wavy top divider, the components will blend with the wavy divider.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "Yes, blend current component with below component",
+                    "default_value": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "style": ""
+                },
+                {
+                    "key": "field_682ce3cced4f5",
+                    "label": "Overlays",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "tab",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placement": "left",
+                    "endpoint": 0,
+                    "no_preference": 0,
+                    "selected": 0
+                },
+                {
                     "key": "field_62ce78e68d0d9",
                     "label": "Overlay",
                     "name": "overlay",
@@ -302,26 +364,47 @@
                     "style": ""
                 },
                 {
-                    "key": "field_68260052d46eb",
-                    "label": "Seamless Sections",
-                    "name": "seamless_sections",
+                    "key": "field_682ce40ded4f6",
+                    "label": "Overlay Style",
+                    "name": "overlay_style",
                     "aria-label": "",
-                    "type": "true_false",
-                    "instructions": "The current component will be shifted down and overlap with the below component. If below component has a wavy top divider, the components will blend with the wavy divider.",
+                    "type": "select",
+                    "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_62ce78e68d0d9",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "message": "Yes, blend current component with below component",
-                    "default_value": 0,
+                    "choices": {
+                        "default": "Default (solid opaque)",
+                        "gradient-ltr": "Gradient (LTR)"
+                    },
+                    "default_value": "default",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "max": "",
+                    "prepend": "",
+                    "append": "",
+                    "allow_null": 0,
                     "allow_in_bindings": 0,
                     "ui": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": "",
-                    "style": ""
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "allow_custom": 0,
+                    "search_placeholder": "",
+                    "min": ""
                 }
             ]
         }
@@ -351,5 +434,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747322394
+    "modified": 1747772784
 }

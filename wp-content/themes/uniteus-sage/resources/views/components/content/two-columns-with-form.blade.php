@@ -31,7 +31,7 @@
   @endif
 
   <section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
-  @if ($background['image'])
+    @if ($background['image'])
       <div class="absolute inset-0">
         <img fetchpriority="high" class="w-full h-full object-cover @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif" src="{{ $background['image']['sizes']['medium'] }}"
           srcset="{{ $background['image']['sizes']['medium'] }} 300w, {{ $background['image']['sizes']['2048x2048'] }} 1024w"
@@ -40,9 +40,40 @@
       </div>
     @endif
 
-
     @if ($background['overlay'])
-    <div class="absolute inset-0 bg-brand opacity-90"></div>
+      @if ($background['overlay_style'] == 'gradient-ltr')
+        <div class="absolute inset-0" style="background: linear-gradient(to right, #0B1538 1%, #0B1538 5%, rgba(255, 255, 255, 0.5) 100%);">
+          <div class="absolute inset-0">
+            <svg width="632" height="448" viewBox="0 0 632 448" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_1_1025)">
+              <g filter="url(#filter0_f_1_1025)">
+              <circle cx="175.509" cy="-194.8" r="218.052" transform="rotate(14.5344 175.509 -194.8)" fill="#216CFF"/>
+              </g>
+              <g filter="url(#filter1_f_1_1025)">
+              <circle cx="-35.5079" cy="-111.797" r="218.052" transform="rotate(14.5344 -35.5079 -111.797)" fill="#9643FF"/>
+              </g>
+              </g>
+              <defs>
+              <filter id="filter0_f_1_1025" x="-292.597" y="-662.906" width="936.211" height="936.211" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+              <feGaussianBlur stdDeviation="125" result="effect1_foregroundBlur_1_1025"/>
+              </filter>
+              <filter id="filter1_f_1_1025" x="-503.613" y="-579.902" width="936.211" height="936.211" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+              <feGaussianBlur stdDeviation="125" result="effect1_foregroundBlur_1_1025"/>
+              </filter>
+              <clipPath id="clip0_1_1025">
+              <rect width="632" height="448" fill="white"/>
+              </clipPath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        @else
+        <div class="absolute inset-0 bg-brand opacity-75"></div>
+      @endif
     @endif
     <div class="component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif @if ($background['divider_bottom']) pb-10 @endif">
 
@@ -150,7 +181,7 @@
           @isset ($form_code)
             @if (!empty($form_code))
               <div id="formIframe" class="rounded-md p-6 sm:p-10 bg-light-gradient shadow-md">
-                <div class="flex justify-between items-center mb-4">
+                <div class="flex justify-between items-center mb-2">
                   <h3 class="text-xl mb-0 font-medium capitalize">
                     @if ($form_bolded_title)
                       <span class="font-bold">{{ $form_bolded_title }} </span>

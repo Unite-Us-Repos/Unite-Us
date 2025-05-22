@@ -318,9 +318,9 @@ use Illuminate\Support\Str;
       @endforeach
     </div>
 
-    @if ($helpMenuDataJson)
+    @isset ($helpMenuDataJson)
       @include('components.service-cards.partials.help-menu', [
           'helpMenuDataJson' => $helpMenuDataJson,
       ])
-    @endif
+    @endisset
   </section>
