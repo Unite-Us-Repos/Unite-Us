@@ -43,7 +43,7 @@
                     "taxonomy": "",
                     "allow_archives": 0,
                     "multiple": 0,
-                    "allow_null": 0,
+                    "allow_null": 1,
                     "allow_in_bindings": 0
                 },
                 {
@@ -117,5 +117,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747932232
+    "modified": 1747935782
 }
