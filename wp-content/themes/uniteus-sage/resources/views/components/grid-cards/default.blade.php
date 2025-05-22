@@ -84,7 +84,7 @@
         </div>
 
         @if ($card['key_points'])
-          <div class="relative -mt-7 px- sm:px-0 lg:px-8 z-20">
+          <div class="relative lg:-mt-7 px- sm:px-0 lg:px-8 z-20">
             @include('components.grid-cards.partials.key-points', ['key_points' => $card['key_points']])
           </div>
         @endif
