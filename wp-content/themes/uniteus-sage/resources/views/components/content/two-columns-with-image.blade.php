@@ -45,7 +45,11 @@ $image_overaly = @asset('/images/network-mask-1.png');
       <div class="flex flex-col items-start @if ('accordion' == $type) lg:col-span-4 @else lg:col-span-{{ $columns[0] }} @endif @if ('center' == $vertical_alignment) justify-center @endif @if (('image' == $type) OR ('embed' == $type)) order-2 @endif text-lg @if ('image' == $type) @if ('text_image' == $layout) lg:order-1 @else lg:order-2 @endif @endif">
         @if ($section['subtitle'])
         @if ($section['subtitle_display_as_pill'])
-          <div class="@if($section['purple_text']) text-electric-purple @else text-action @endif bg-light mix-blend-multiply text-sm py-1 px-4 inline-block mb-6 rounded-full">
+          <div class="
+            @if($section['purple_text']) text-electric-purple @else text-action @endif
+            @if ($background['color'] == 'light-gradient') bg-none border border-action @else bg-light mix-blend-multiply @endif
+            text-sm py-1 px-4 inline-block mb-6 rounded-full
+            ">
         @else
           <div class="subtitle mb-6">
         @endif
@@ -54,7 +58,21 @@ $image_overaly = @asset('/images/network-mask-1.png');
         @endif
 
           @isset ($section['logo']['sizes'])
+          @php
+          $logo_link_properties = get_field('image_link_properties', $section['logo']['id']);
+          $logo_link = $logo_link_properties['external_link'] ?? '';
+          $logo_link_internal = $logo_link_properties['internal_link'] ?? '';
+          $logo_link = $logo_link ? $logo_link : $logo_link_internal;
+          $logo_link_target = $logo_link_properties['target_new'] ?? '';
+          $logo_link_target = $logo_link_target ? '_blank' : '_self';
+          @endphp
+          @if ($logo_link)
+            <a href="{{ $logo_link }}" target="{{ $logo_link_target }}">
+          @endif
             <img class="mb-6 max-w-[224px] h-auto" src="{{ $section['logo']['sizes']['medium'] }}" alt="{{ $section['logo']['alt'] }}" />
+          @if ($logo_link)
+            </a>
+          @endif
           @endisset
           @if ($section['title'])
 

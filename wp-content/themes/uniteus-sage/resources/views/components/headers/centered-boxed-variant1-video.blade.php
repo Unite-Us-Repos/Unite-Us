@@ -1,4 +1,14 @@
 @php $section_settings = $acf["components"][$index]['layout_settings']['section_settings']; $video_type = 'vimeo'; @endphp
+
+@php
+$logo_link_properties = get_field('image_link_properties', $section['logo']['id']);
+$logo_link = $logo_link_properties['external_link'] ?? '';
+$logo_link_internal = $logo_link_properties['internal_link'] ?? '';
+$logo_link = $logo_link ? $logo_link : $logo_link_internal;
+$logo_link_target = $logo_link_properties['target_new'] ?? '';
+$logo_link_target = $logo_link_target ? '_blank' : '_self';
+@endphp
+
 <div class="relative" x-data="videoController">
 <section class="relative z-10 max-w-7xl mx-auto component-section @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
     <!-- Overlay -->
@@ -12,9 +22,14 @@
 
       <div class="component-inner-section">
         <div class="relative max-w-4xl mx-auto">
-
           @isset ($section['logo']['sizes'])
+          @if ($logo_link)
+          <a href="{{ $logo_link }}" target="{{ $logo_link_target }}">
+          @endif
             <img class="mb-8 max-w-xs h-auto mx-auto" src="{{ $section['logo']['sizes']['large'] }}" alt="{{ $section['logo']['alt'] }}"/>
+          @if ($logo_link)
+          </a>
+          @endif
           @endisset
 
           @if ($section['subtitle'])

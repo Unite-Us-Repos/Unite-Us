@@ -242,6 +242,8 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
   transition: all 0.5s linear;
   border-radius: 1rem;
 }
+
+.button-hollow-gradient:hover,
 .testimonials .article-card:hover {
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)),
     linear-gradient(0deg, rgba(47, 113, 244, 0.08), rgba(47, 113, 244, 0.08)),

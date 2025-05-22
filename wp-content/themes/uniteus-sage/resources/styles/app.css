@@ -245,7 +245,7 @@ ul.list-circle-checkmark li {
   background-position: top 5px left;
   background-repeat: no-repeat;
   display: inline-block;
-  @apply pl-8 pt-0.5 mb-2;
+  @apply pl-8 pt-0.5 !mb-6;
 }
 .bg-dark ul.list-checkmarks li {
   background-image: url("../images/bullet-checkmark-light.svg");
@@ -1397,8 +1397,9 @@ ul.list-box {
 }
 
 .text-gradient-service {
-  background: linear-gradient(0deg, #216CFF, #216CFF),
-    linear-gradient(90deg, rgba(150, 67, 255, 0) 0%, #9643FF 100%);
+  background:
+    linear-gradient(90deg, rgba(150, 67, 255, 0) 0%, #9643FF 100%),
+    linear-gradient(0deg, #216CFF, #216CFF);
 }
 
 .bg-gradient-service,
@@ -2801,5 +2802,24 @@ blockquote h4 {
     .lg\:horizontal-dividers > *:not(:first-child)::before {
       content: none; /* Clear vertical dividers */
     }
+  }
+}
+
+/* Firefox specific styles */
+/* This is a workaround for Firefox to ensure the gradient border appears correctly */
+/* The gradient border is not supported in Firefox, so we use a solid border as a fallback */
+@-moz-document url-prefix() {
+  .button-hollow-gradient,
+  .button-hollow-gradient:hover,
+  .testimonials .article-card,
+  .testimonials .article-card:hover {
+    border: 1px solid #2F71F4 !important; /* Fallback border for Firefox */
+    position: relative; /* ensure layout doesn't break */
+    z-index: 1;
+  }
+
+  .button-hollow-gradient:after,
+  .testimonials .article-card::after {
+    display: none !important; /* Hide the pseudo-element in Firefox */
   }
 }
