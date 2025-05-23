@@ -4,11 +4,13 @@
         $layout = '';
     }
     $has_podcast_links = false;
+    if (isset($podcast_links)) {
     foreach ($podcast_links as $field_name => $link) {
         if (!empty($link)) {
             $has_podcast_links = true;
         }
     }
+  }
     $author_name = get_field('author_name', $post->ID); // Fetch the author name from ACF
 
     // Function to extract iframe src
