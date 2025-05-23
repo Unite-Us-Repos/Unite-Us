@@ -9,7 +9,17 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
 @if ($background['has_divider'])
   @includeIf('dividers.waves')
 @endif
-<section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="relative @if ($background['color'] == 'dark') text-white @endif icon-carousel component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif" style="padding-right: 0; padding-left: 0;">
+<section
+  @isset ($section['id'])
+  id="{{ $section['id'] }}" @endisset
+  class="relative
+    @if ($background['color'] == 'dark') text-white @endif
+    icon-carousel component-section {{ $section_classes }}
+    @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif
+    @if ($swiperJsSettings['slidesPerView'] == 'auto')
+      !px-0 2xl:!px-4
+    @endif
+  ">
   @if ('center' == $section["alignment"])
     <div class="component-inner-section">
       <div class="text-center mb-7">
@@ -74,28 +84,32 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
     </div>
   @endif
 
-  <div class="relative z-10 component-inner-section">
+  <div class="relative z-10 @if ($swiperJsSettings['slidesPerView'] == 'auto') 2xl:max-w-7xl 2xl:px-8 2xl:mx-auto @else component-inner-section @endif">
     @if (($section['id'] == 'service-card-bg-half') OR ($section['id'] == 'service-cards-privacy'))
       <div class="absolute lg:hidden right-0 left-0 h-3/4 bg-dark z-10 -ml-4 -mr-4 bottom-0"></div>
     @endif
-    @if (($background['color'] != 'light-gradient') && ($section['id'] != 'service-card-bg-half') && ($section['id'] != 'service-cards-privacy'))
+    @if (($background['color'] != 'dark') && ($background['color'] != 'light-gradient') && ($section['id'] != 'service-card-bg-half') && ($section['id'] != 'service-cards-privacy'))
       <div class="absolute h-2/3 bg-white bottom-0 left-0 right-0 -ml-12 -mr-12 lg:hidden"></div>
     @endif
 
       <div id="icon-slider-{{ $component_index }}"
         x-data="{ swiper: null }"
         x-init="
-        const options = JSON.parse($el.dataset.swiperOptions);
-        swiper = new Swiper($refs.swiperContainer, options);
-        swiper.on('resize', () => swiper.update());
-     "
-     data-swiper-options='{!! $swiperJsSettingsJson !!}'>
+          const options = JSON.parse($el.dataset.swiperOptions);
+          swiper = new Swiper($refs.swiperContainer, options);
+          swiper.on('resize', () => swiper.update());
+        "
+        data-swiper-options='{!! $swiperJsSettingsJson !!}'>
 
-
-        <div class="swiper" x-ref="swiperContainer">
-          <div class="swiper-wrapper pb-8">
+        <div class="swiper @if ($swiperJsSettings['slidesPerView'] == 'auto') pl-0 sm:pl-8 xl:pl-[6.5rem] !pr-16 2xl:!px-0 @endif" x-ref="swiperContainer">
+          <div class="swiper-wrapper md:pb-6">
             @foreach ($cards as $index => $card)
-              <div class="swiper-slide !h-auto">
+              <div class="swiper-slide !h-auto
+
+                @if ($swiperJsSettings['slidesPerView'] == 'auto')
+                  max-w-sm
+                @endif
+                ">
                 @include('components.service-cards.partials.icon-card')
               </div>
             @endforeach
@@ -109,21 +123,6 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
       </div>
   </div>
   @if ($background['color'] == 'dark')
-  <div class="absolute h-1/3 lg:h-1/3 bg-white bottom-0 left-0 right-0 hidden lg:block"></div>
+  <div class="absolute h-1/4 bg-white bottom-0 left-0 right-0 hidden md:block"></div>
   @endif
 </section>
-<style>
-.swiper.offset {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end; /* Align Swiper to the right */
-}
-
-.swiper.offset .swiper-wrapper {
-  padding-right: 0; /* Ensure wrapper doesn't add space */
-}
-
-.swiper.offset .swiper-slide {
-  max-width: 356px;
-}
-</style>

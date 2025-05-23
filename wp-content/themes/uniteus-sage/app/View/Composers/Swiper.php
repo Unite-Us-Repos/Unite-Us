@@ -64,6 +64,10 @@ class Swiper extends Composer
 
         // Basic slide behavior settings - group these together
         $result['slidesPerView'] = intval($settings['swiperjs_slides_per_view']) ?? 1;
+        // Set slidesPerView to 'auto' if specified
+        if ($settings['swiperjs_slides_per_view'] == -1) {
+            $result['slidesPerView'] = 'auto';
+        }
         $result['spaceBetween'] = intval($settings['swiperjs_space_between']) ?? 0;
         $result['speed'] = intval($settings['swiperjs_speed']) ?? 300;
         $result['loop'] = $settings['swiperjs_loop'] ? true : false;
@@ -119,7 +123,11 @@ class Swiper extends Composer
         );
 
         // Responsive breakpoints
-        $breakpoints = $settings['swiperjs_breakpoints'] ?? [];
+        if ($settings['swiperjs_slides_per_view'] == -1) {
+            $breakpoints = [];
+        } else {
+           $breakpoints = $settings['swiperjs_breakpoints'] ?? [];
+        }
         if (is_array($breakpoints) && !empty($breakpoints)) {
             $result['breakpoints'] = array();
             foreach ($breakpoints as $breakpoint) {
