@@ -42,7 +42,7 @@
 
     @if ($background['overlay'])
       @if ($background['overlay_style'] == 'gradient-ltr')
-        <div class="absolute inset-0" style="background: linear-gradient(to right, #0B1538 1%, #0B1538 5%, rgba(255, 255, 255, 0.5) 100%);">
+        <div class="absolute inset-0" style="background: linear-gradient(to right, #0B1538 1%, #0B1538 5%, rgba(255, 255, 255, 0) 100%);">
           <div class="absolute inset-0">
             <svg width="632" height="448" viewBox="0 0 632 448" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_1_1025)">
