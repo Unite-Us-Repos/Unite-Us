@@ -57,23 +57,16 @@ $image_overaly = @asset('/images/network-mask-1.png');
           </div>
         @endif
 
-          @isset ($section['logo']['sizes'])
-          @php
-          $logo_link_properties = get_field('image_link_properties', $section['logo']['id']);
-          $logo_link = $logo_link_properties['external_link'] ?? '';
-          $logo_link_internal = $logo_link_properties['internal_link'] ?? '';
-          $logo_link = $logo_link ? $logo_link : $logo_link_internal;
-          $logo_link_target = $logo_link_properties['target_new'] ?? '';
-          $logo_link_target = $logo_link_target ? '_blank' : '_self';
-          @endphp
-          @if ($logo_link)
-            <a href="{{ $logo_link }}" target="{{ $logo_link_target }}">
-          @endif
-            <img class="mb-6 max-w-[224px] h-auto" src="{{ $section['logo']['sizes']['medium'] }}" alt="{{ $section['logo']['alt'] }}" />
-          @if ($logo_link)
-            </a>
-          @endif
+          @isset ($section['logo'])
+            <x-image-link
+              :image="$section['logo']"
+              image-size="medium"
+              :lazy="true"
+              classes="mb-6 max-w-[224px] h-auto"
+              link-classes=""
+            />
           @endisset
+
           @if ($section['title'])
 
           @if ($section['is_header'] === 'h1')
