@@ -180,7 +180,6 @@
                   $testimonials = get_sub_field('testimonial');
               @endphp
               @if ($testimonials)
-             
                   @php
                     $enableLoop = 'false';
                     if (count($testimonials) > 1) {
@@ -285,8 +284,7 @@
   @endif
 </section>
 
-
-
+@if ($enableAboutUniteUs)
 {{-- ABOUT UU --}}
 <section class="about-uu-section">
 
@@ -310,7 +308,7 @@
   </div>
 
 </section>
-
+@endif
 
 {{-- RECOMMENDED FOR YOU --}}
 <section class="component-section -mt-10">
