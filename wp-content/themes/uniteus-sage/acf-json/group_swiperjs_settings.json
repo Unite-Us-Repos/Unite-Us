@@ -79,7 +79,15 @@
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -87,8 +95,8 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "selected": 0,
-            "no_preference": 0
+            "no_preference": 0,
+            "selected": 0
         },
         {
             "key": "field_swiperjs_autoplay",
@@ -215,7 +223,15 @@
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -223,8 +239,8 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "selected": 0,
-            "no_preference": 0
+            "no_preference": 0,
+            "selected": 0
         },
         {
             "key": "field_swiperjs_navigation",
@@ -364,7 +380,15 @@
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -372,8 +396,8 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "selected": 0,
-            "no_preference": 0
+            "no_preference": 0,
+            "selected": 0
         },
         {
             "key": "field_swiperjs_effect",
@@ -488,7 +512,15 @@
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_swiperjs_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -496,15 +528,15 @@
             },
             "placement": "top",
             "endpoint": 0,
-            "selected": 0,
-            "no_preference": 0
+            "no_preference": 0,
+            "selected": 0
         },
         {
             "key": "field_swiperjs_slides_per_view",
             "label": "Slides Per View",
             "name": "swiperjs_slides_per_view",
             "aria-label": "",
-            "type": "number",
+            "type": "select",
             "instructions": "Number of slides visible at the same time on slider container.",
             "required": 0,
             "conditional_logic": [
@@ -521,13 +553,35 @@
                 "class": "",
                 "id": ""
             },
+            "choices": {
+                "-1": "auto",
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5",
+                "6": "6",
+                "7": "7",
+                "8": "8",
+                "9": "9",
+                "10": "10"
+            },
             "default_value": 1,
-            "placeholder": "",
+            "return_format": "value",
+            "multiple": 0,
+            "max": "",
             "prepend": "",
             "append": "",
-            "min": 1,
-            "max": 10,
-            "step": 1
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
+            "allow_custom": 0,
+            "search_placeholder": "",
+            "min": ""
         },
         {
             "key": "field_swiperjs_space_between",
@@ -573,6 +627,11 @@
                         "field": "field_swiperjs_enabled",
                         "operator": "==",
                         "value": "1"
+                    },
+                    {
+                        "field": "field_swiperjs_slides_per_view",
+                        "operator": ">",
+                        "value": "0"
                     }
                 ]
             ],
@@ -581,13 +640,14 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "field_swiperjs_breakpoint_width",
+            "acfe_repeater_stylised_button": 0,
+            "layout": "block",
+            "pagination": 0,
             "min": 0,
             "max": 4,
-            "layout": "block",
+            "collapsed": "field_swiperjs_breakpoint_width",
             "button_label": "Add Breakpoint",
             "rows_per_page": 20,
-            "acfe_repeater_stylised_button": 0,
             "sub_fields": [
                 {
                     "key": "field_swiperjs_breakpoint_width",
@@ -686,5 +746,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747841282
+    "modified": 1747986413
 }

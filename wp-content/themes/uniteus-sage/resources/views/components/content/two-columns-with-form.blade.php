@@ -42,7 +42,7 @@
 
     @if ($background['overlay'])
       @if ($background['overlay_style'] == 'gradient-ltr')
-        <div class="absolute inset-0" style="background: linear-gradient(to right, #0B1538 1%, #0B1538 5%, rgba(255, 255, 255, 0.5) 100%);">
+        <div class="absolute inset-0" style="background: linear-gradient(to right, #0B1538 1%, #0B1538 5%, rgba(255, 255, 255, 0) 100%);">
           <div class="absolute inset-0">
             <svg width="632" height="448" viewBox="0 0 632 448" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#clip0_1_1025)">
@@ -206,7 +206,7 @@
     </div>
   </section>
   @if ($background['divider_bottom'])
-  <div class="-mt-6 md:-mt-10 relative z-10">
+  <div class="-mt-6 md:-mt-10 relative z-10 inline-block w-full">
   <svg class="w-full h-auto" width="1359" height="81" viewBox="0 0 1359 81" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 10.1615L56.625 16.0067C113.25 21.852 226.5 33.5425 339.75 27.6972C453 21.852 566.25 -1.529 679.5 0.419418C792.75 2.36783 906 29.6456 1019.25 35.4909C1132.5 41.3361 1245.75 25.7488 1302.37 17.9552L1359 10.1615V80.3044H1302.37C1245.75 80.3044 1132.5 80.3044 1019.25 80.3044C906 80.3044 792.75 80.3044 679.5 80.3044C566.25 80.3044 453 80.3044 339.75 80.3044C226.5 80.3044 113.25 80.3044 56.625 80.3044H0V10.1615Z" fill="white"/>
   </svg>

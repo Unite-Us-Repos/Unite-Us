@@ -42,8 +42,14 @@
         @endif
 
         <div class="text-center mb-7">
-            @isset ($section['logo']['sizes'])
-              <img class="mb-8 max-w-xs h-auto mx-auto" src="{{ $section['logo']['sizes']['large'] }}" alt="{{ $section['logo']['alt'] }}"/>
+            @isset ($section['logo'])
+              <x-image-link
+                :image="$section['logo']"
+                image-size="medium"
+                :lazy="true"
+                classes="mb-8 max-w-xs h-auto mx-auto"
+                link-classes=""
+              />
             @endisset
 
             @if ($section['subtitle'])
