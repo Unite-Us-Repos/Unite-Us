@@ -352,7 +352,7 @@ class App extends Composer
             'title' => get_the_title(),
         ];
 
-        if ('post' === get_post_type()) {
+        if ('post' === get_post_type() || 'page' === get_post_type()) {
             $breadcrumbs['parents'][] = [
                 'permalink' => '/knowledge-hub/',
                 'title' => 'Knowledge Hub',
