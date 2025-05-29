@@ -33,6 +33,7 @@ class Post extends Composer
             'member' => $this->getMember(),
             'press' => $this->getPress(),
             'aboutUniteUs' => $this->getAboutUniteUs(),
+            'enableAboutUniteUs' => $this->getEnableAboutUniteUs(),
             'type' => $this->getType(),
             'catSlug' => $this->getPostCatSlug(),
             'postSlug' => $this->getPostSlug(),
@@ -931,6 +932,13 @@ class Post extends Composer
         $html = get_field('about_unite_us', 'options');
 
         return $html;
+    }
+
+    public function getEnableAboutUniteUs()
+    {
+        $is_enabled = get_field('enable_about_unite_us', 'options');
+
+        return $is_enabled;
     }
 
     static function queryPosts($args = array())

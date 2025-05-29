@@ -3,9 +3,32 @@
     "title": "KH Footer",
     "fields": [
         {
+            "key": "field_68302d106a5d7",
+            "label": "Enable About Unite Us",
+            "name": "enable_about_unite_us",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1,
+            "style": ""
+        },
+        {
             "key": "field_630fd74b7f1fb",
             "label": "About Unite Us",
             "name": "about_unite_us",
+            "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
             "required": 0,
@@ -62,5 +85,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1664664067
+    "modified": 1747988162
 }

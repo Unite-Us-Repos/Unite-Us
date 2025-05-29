@@ -38,7 +38,7 @@ if ( $query->have_posts() )
 	$i=1;
 	$activeCampaign = true;
     $campaignAd = get_field('campaign_ad', 'options');
-    if(isset($_GET['sf_paged']) OR is_archive()) {
+    if(isset($_GET['sf_paged']) OR is_archive() OR is_page_template('template-studies-data-collection.blade.php')) {
         // don't show campaign past page 1
         $activeCampaign = false;
     }

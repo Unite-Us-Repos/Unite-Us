@@ -4,11 +4,13 @@
         $layout = '';
     }
     $has_podcast_links = false;
+    if (isset($podcast_links)) {
     foreach ($podcast_links as $field_name => $link) {
         if (!empty($link)) {
             $has_podcast_links = true;
         }
     }
+  }
     $author_name = get_field('author_name', $post->ID); // Fetch the author name from ACF
 
     // Function to extract iframe src
@@ -180,7 +182,6 @@
                   $testimonials = get_sub_field('testimonial');
               @endphp
               @if ($testimonials)
-             
                   @php
                     $enableLoop = 'false';
                     if (count($testimonials) > 1) {
@@ -285,8 +286,7 @@
   @endif
 </section>
 
-
-
+@if ($enableAboutUniteUs)
 {{-- ABOUT UU --}}
 <section class="about-uu-section">
 
@@ -310,7 +310,7 @@
   </div>
 
 </section>
-
+@endif
 
 {{-- RECOMMENDED FOR YOU --}}
 <section class="component-section -mt-10">
