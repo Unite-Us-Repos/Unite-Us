@@ -94,7 +94,7 @@
         <div class="pr-4">
           <p class="text-base text-white my-6 lg:my-0 md:order-1">&copy; {{ $currentYear }} Unite Us. All rights reserved.</p>
         </div>
-        
+
           @if (has_nav_menu('footer_legal'))
             {!!
               wp_nav_menu([
@@ -105,7 +105,7 @@
               ])
             !!}
           @endif
-        
+
     </div>
     </div>
   </div>
@@ -118,10 +118,10 @@
     // Run iframeResizer when the DOM is fully loaded
     iFrameResize({ log: false, crossOrigin: false, heightCalculationMethod:'lowestElement' }, '#formIframe iframe');
     setTimeout(function() {
-      iFrameResize({ 
-          log: false, 
-          crossOrigin: false, 
-          heightCalculationMethod: 'lowestElement' 
+      iFrameResize({
+          log: false,
+          crossOrigin: false,
+          heightCalculationMethod: 'lowestElement'
       }, '#formIframe #iframe-container iframe');
     }, 1000); // 1000 milliseconds = 1 second
   });
@@ -130,6 +130,27 @@
 
 @if (!is_page('thank-you'))
 <script>
+  function showProcessingOverlay() {
+      // Create or show your overlay
+      const overlay = document.getElementById('processing-overlay') || createOverlay();
+      overlay.style.display = 'block';
+  }
+
+  function hideProcessingOverlay() {
+      const overlay = document.getElementById('processing-overlay');
+      if (overlay) {
+          overlay.style.display = 'none';
+      }
+  }
+
+  function createOverlay() {
+      const overlay = document.createElement('div');
+      overlay.id = 'processing-overlay';
+      overlay.innerHTML = '<div class="fixed inset-0 z-50 items-center justify-center overflow-auto bg-brand bg-opacity-80 flex"><div class="flex items-center h-screen"><svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle> <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3647z"></path></svg><p class="text-2xl text-white mr-4 mb-0">Please wait...</p></div></div>';
+      document.body.appendChild(overlay);
+      return overlay;
+  }
+
   function hasJsonStructure(str) {
     if (typeof str !== 'string') return false;
     try {
@@ -143,15 +164,22 @@
 }
 window.addEventListener('message', function(event) {
   try {
+    console.log('Received message from iframe:', event);
     if (typeof event === 'object' && hasJsonStructure(event.data)) {
 
       const data = JSON.parse(event.data);
+
       if ('success' == data.pardot) {
+        alert('success');
         const download = data.download;
         const waiting = '<div class="fixed inset-0 z-50 items-center justify-center overflow-auto bg-brand bg-opacity-80 flex"><div class="flex items-center h-screen"><svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle> <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3647z"></path></svg><p class="text-2xl text-white mr-4 mb-0">Please wait...</p></div></div>';
         document.body.classList.add('relative');
         document.body.insertAdjacentHTML('beforeend', waiting);
         window.location.href = '/thank-you/{{ $postSlug }}/?doc=' + download;
+      }
+    } else {
+      if (event.data.type === 'form-complete') {
+        showProcessingOverlay();
       }
     }
   } catch (err) {
@@ -160,4 +188,3 @@ window.addEventListener('message', function(event) {
 });
 </script>
 @endif
-
