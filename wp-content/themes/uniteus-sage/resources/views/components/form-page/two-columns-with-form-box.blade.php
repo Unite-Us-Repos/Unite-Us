@@ -48,16 +48,29 @@ if ($background['color'] == 'light-gradient' && $background['overlay']) {
     <div class="flex flex-col md:relative md:flex-none md:grid md:grid-cols-2 gap-10 lg:gap-28 {{ $text_classes }}" style="@if ($background['color'] == 'custom') color: {{ $background['text_color'] }} @endif">
 
       <div class="text-lg {{ $text_classes }}">
-        @if ($section['subtitle'])
-          <div class="subtitle {{ $text_classes }}">
-            {{ $section['subtitle'] }}
-          </div>
+               @if ($section['subtitle'])
+            <div class="
+                {{ $section['purple_text'] ? 'text-electric-purple' : 'text-action-light-blue' }} 
+                {{ $section['case_type'] == 'Uppercase' ? 'uppercase' : '' }} 
+                {{ $section['case_type'] == 'Lowercase' ? 'lowercase' : '' }} 
+                {{ $section['case_type'] == 'Camelcase' ? 'capitalize' : '' }} 
+                {{ $section['case_type'] == 'Typed' ? 'none' : '' }} 
+                @if ($section['subtitle_display_as_pill']) 
+                    bg-light bg-opacity-10 text-action-light-blue text-sm py-1 px-4 mb-6 rounded-full
+                    {{ $section['gradient_pill'] ? 'gradient-pill' : '' }}
+                @else 
+                    font-semibold text-base mb-3
+                @endif
+                @if ($stack_on_mobile && $mobile_image) mx-auto md:ml-0 block md:inline-block w-fit @else inline-block @endif
+
+            ">
+                {!! $section['subtitle'] !!}
+            </div>
         @endif
         @isset ($section['logo']['sizes'])
           <img class="mb-6 max-w-[224px] h-auto" src="{{ $section['logo']['sizes']['medium'] }}" alt="{{ $section['logo']['alt'] }}" />
         @endisset
-        <{{ $section['is_header'] === 'h1' ? 'h1' : ($section['is_header'] === 'h2' ? 'h2' : 'div') }}
-        class="mb-8 text-4xl tracking-tight {{ $section['small_font'] ? 'text-5xl font-semibold small-font' : 'font-extrabold md:text-5xl lg:text-6xl' }}">
+        <{{ $section['is_header'] === 'h1' ? 'h1' : ($section['is_header'] === 'h2' ? 'h2' : 'div') }} class="mb-8 text-4xl tracking-tight {{ $section['small_font'] ? 'text-5xl font-semibold small-font' : 'font-extrabold md:text-5xl lg:text-6xl' }}">
             {!! $section['title'] !!}
         </{{ $section['is_header'] === 'h1' ? 'h1' : ($section['is_header'] === 'h2' ? 'h2' : 'div') }}>
 
@@ -91,6 +104,13 @@ if ($background['color'] == 'light-gradient' && $background['overlay']) {
                 </div>
               @endif
             @endisset
+            @isset ($gif)
+              @if (!empty($gif))
+                <div id="gif" class="gif-video">
+                  {!! $gif !!}
+                </div>
+              @endif
+            @endisset
           </div>
         </div>
       @else
@@ -103,6 +123,13 @@ if ($background['color'] == 'light-gradient' && $background['overlay']) {
               </div>
             @endif
           @endisset
+          @isset ($gif)
+              @if (!empty($gif))
+                <div id="gif" class="gif-video">
+                  {!! $gif !!}
+                </div>
+              @endif
+            @endisset
         </div>
       @endif
     </div>
