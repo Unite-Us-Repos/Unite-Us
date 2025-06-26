@@ -71,7 +71,7 @@
                     "label": "Network Form Slug",
                     "name": "network_form_slug",
                     "aria-label": "",
-                    "type": "acfe_slug",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -81,10 +81,11 @@
                         "id": ""
                     },
                     "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": "",
                     "parent_repeater": "field_636d277a5c5b3"
                 },
                 {
@@ -373,5 +374,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1720575982
+    "modified": 1750964928
 }
