@@ -77,6 +77,13 @@ if ($background['color'] == 'light-gradient' && $background['overlay']) {
         <div class="text-lg {{ $text_classes }}">
           {!! $section['description'] !!}
         </div>
+         @isset ($left_side_code_editor)
+            @if (!empty($left_side_code_editor))
+              <div id="formIframe" class="leftside-form">
+                {!! $left_side_code_editor !!}
+              </div>
+            @endif
+          @endisset
         @if ($buttons)
           @php
             $data = [
