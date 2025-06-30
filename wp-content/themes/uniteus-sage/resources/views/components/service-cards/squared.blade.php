@@ -81,7 +81,7 @@
               >
               <div @if ($link) x-bind:click.prevent="isDesktop && (window.location.href='{{ $link }}')" @endif class="@if ($card['thumbnail']) products-gradient @else lg:bg-brand @endif shadow-2xl relative flex items-end rounded-lg overflow-hidden group service-card-squared ">
   
-                <div @if ($link) x-bind:click.prevent="isDesktop && (window.location.href='{{ $link }}')" @endif class="card-overlay absolute inset-0  @if ($card['thumbnail']) @else lg:bg-brand opacity-75 group-hover:opacity-0 @endif z-10"></div>
+                <div @if ($link) x-bind:click.prevent="isDesktop && (window.location.href='{{ $link }}')" @endif class="card-overlay absolute inset-0 bg-brand @if ($card['thumbnail']) @else  opacity-75 group-hover:opacity-0 @endif z-10"></div>
                 @if ($card['bg_image'])
                   <div style="z-index: 1;" class="absolute inset-0">
                     @if ($link)

@@ -3,7 +3,7 @@ module.exports = {
   "cache": {
     "name": "bud.production",
     "type": "filesystem",
-    "version": "xbbmjyahbyzogv_svdohb9_tine_",
+    "version": "b7rtrowd_de_1zmu9qmlckeqhas_",
     "cacheDirectory": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/.budfiles/cache/webpack",
     "managedPaths": [
       "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules"
@@ -12,7 +12,6 @@ module.exports = {
       "bud": [
         "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/package.json",
         "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/.editorconfig",
-        "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/.yarnrc.yml",
         "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/bud.config.js",
         "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/composer.json",
         "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/jsconfig.json",
@@ -364,6 +363,14 @@ module.exports = {
       "fileName": "wordpress.json"
     },
     {
+      "plugin": {
+        "name": "MergedManifestPlugin"
+      },
+      "file": "entrypoints.json",
+      "entrypointsName": "entrypoints.json",
+      "wordpressName": "wordpress.json"
+    },
+    {
       "options": {
         "emitHtml": false,
         "publicPath": ""
@@ -373,14 +380,6 @@ module.exports = {
         "stage": null
       },
       "name": "entrypoints.json"
-    },
-    {
-      "plugin": {
-        "name": "MergedManifestPlugin"
-      },
-      "file": "entrypoints.json",
-      "entrypointsName": "entrypoints.json",
-      "wordpressName": "wordpress.json"
     }
   ],
   "entry": {
