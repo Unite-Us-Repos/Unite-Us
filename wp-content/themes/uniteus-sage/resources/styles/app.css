@@ -2823,3 +2823,95 @@ blockquote h4 {
     display: none !important; /* Hide the pseudo-element in Firefox */
   }
 }
+
+.gradient-text {
+  background: linear-gradient(to right, #2563eb, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 1024px) {
+  .webinar .padding-right {
+    padding-right: 10rem;
+  }
+}
+
+.webinar header {
+  background-image: url(../images/webinar-bg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.webinar .entry-title {
+    max-width: 50rem;
+}
+
+.webinar header .subheading {
+  background-color: #e6ebfb;
+}
+
+.webinar .webinar-inner-content .subheading {
+  font-size: 10px;
+}
+
+.webinar .webinar-inner-content h2 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.webinar .webinar-inner-content p {
+  line-height: 2;
+}
+
+.webinar .webinar-inner-content .blockquote { 
+    font-style: normal;
+    font-weight: 400;
+    background-image: url(../images/webinar-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.webinar .webinar-inner-content .blockquote p { 
+    line-height: 1.35;
+    font-size: 16px;
+}
+
+.webinar .webinar-inner-content .blockquote strong { 
+    font-weight: 600;
+}
+
+.webinar .webinar-inner-content .video-content {
+    padding: 46.62% 0 0 0; 
+    position: relative;
+}
+
+.webinar .webinar-inner-content .video-content iframe {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+}
+
+.webinar .webinar-inner-content .transcript-content {
+    background-color: #dfe9fb;
+    margin-bottom: 3rem;
+}
+
+
+.webinar .webinar-inner-content .list li::before {
+    background-image: url(../images/check-icon2.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    color: transparent !important;
+    top: 8px !important;
+}
+
+.webinar .webinar-inner-content .speakers-section h4 {
+  margin-bottom: 0!important;
+}

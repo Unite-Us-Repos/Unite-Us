@@ -261,6 +261,15 @@ module.exports = {
     'lg:vertical-dividers',
     'xl:vertical-dividers',
     '2xl:vertical-dividers',
+    'rounded-2xl',
+    '!rounded-2xl',
+    'lg:w-2/3', 
+    'space-y-6', 
+    'lg:w-1/3',
+    '!text-brand',
+    'aspect-w-16',
+    'aspect-h-9',
+    '!mb-0'
   ],
   variants: {
     extend: {

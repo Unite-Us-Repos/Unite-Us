@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_6787e387d8fd0",
-            "label": "Components",
+            "label": "Blog Components",
             "name": "components",
             "aria-label": "",
             "type": "flexible_content",
@@ -295,5 +295,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1737044940
+    "modified": 1751419538
 }

@@ -33,7 +33,9 @@
             "allow_in_bindings": 0,
             "ui": 1,
             "ajax": 0,
-            "min": ""
+            "min": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_66510e236c5af",
@@ -150,5 +152,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1729102215
+    "modified": 1751418980
 }
