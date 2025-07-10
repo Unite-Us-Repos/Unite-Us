@@ -8,12 +8,12 @@
       <header>
           <section class="pt-12 pb-8 px-4">
               <div class="component-inner-section">
-                <div class="gradient-border w-fit !rounded-2xl mb-2">
-                  <div class="subheading flex gap-1 items-center px-4 py-1 ">
+                <div class="gradient-border w-fit !rounded-2xl mb-4">
+                  <div class="subheading flex gap-1 items-center px-4 py-1">
                     <img src="@asset('images/play-icon.svg')" alt="play icon" /> Webinar
                   </div>
                 </div>
-                  <h1 class="entry-title mb-8 sm:mb-10 text-4xl mr-8 font-semibold">
+                  <h1 class="entry-title mb-8 sm:mb-10 text-4xl mr-8 font-bold">
                     {!! $title !!}
                   </h1>
                 </div>
@@ -34,19 +34,20 @@
           
                         {{-- Check for the "blockquote" layout --}}
                         @if (get_row_layout() == 'blockquote')
-                            <blockquote class="blockquote text-center bg-light !text-brand p-8 rounded-lg relative">
+                            <blockquote class="blockquote text-center bg-light !text-brand py-8 rounded-lg relative">
                                 {!! get_sub_field('text') !!}
                             </blockquote>
                         {{-- Check for the "WYSIWYG" layout --}}
                         @elseif (get_row_layout() == 'wysiwyg')
                             <div class="wysiwyg-content">
-                               <div class="subheading capitalize gradient-text">{!! get_sub_field('subheading') !!}</div>
+                               <div class="mb-2 subheading capitalize gradient-text">{!! get_sub_field('subheading') !!}</div>
                                <div class="">{!! get_sub_field('wysiwyg') !!}</div>
                             </div>
                          {{-- Check for the "list items" layout --}}
                         @elseif (get_row_layout() == 'list_items')
                             <div class="list-content">
-                              <div class="subheading capitalize gradient-text">{!! get_sub_field('subheading') !!}</div>
+                              <hr class="mb-4 mt-8" />
+                              <div class="mb-2 subheading capitalize gradient-text">{!! get_sub_field('subheading') !!}</div>
                               <h2 class="heading">{!! get_sub_field('heading') !!}</h2>
                                <div class="list">
                                 @if (have_rows('list_item'))
@@ -57,12 +58,13 @@
                                   </ul>
                                 @endif
                                </div>
+                               <hr class="mb-4 mt-8" />
                             </div>
                         {{-- Check for the "webinar transcript" layout --}}
                         @elseif (get_row_layout() == 'webinar_transcript')
                           <div 
                           x-data="{ isOpen: false }" 
-                          class="transcript-content border border-gray-300 rounded-lg overflow-hidden mb-6"
+                          class="transcript-content border border-gray-300 rounded-lg overflow-hidden mb-6 !mt-16"
                         >
                           <button 
                             @click="isOpen = !isOpen" 
