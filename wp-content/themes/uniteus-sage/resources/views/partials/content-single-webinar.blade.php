@@ -20,8 +20,12 @@
           </section>
       </header>
       <div class="webinar-inner-content component-section">
-        <div class="component-inner-section flex flex-col lg:flex-row">
-          <div class="w-full lg:w-2/3 space-y-6 padding-right">
+        <div 
+          x-data="stickyAside()" 
+          x-init="init()" 
+          class="component-inner-section flex flex-col lg:flex-row"
+        >
+          <div class="main w-full lg:w-2/3 space-y-6 padding-right">
 
             @php the_content(); @endphp
 
@@ -117,7 +121,7 @@
             $organizations = $webinar_components['organizations'] ?? null;
           @endphp
 
-          <div class="w-full lg:w-1/3 space-y-8">
+          <div :class="isSticky ? 'aside-sticky' : ''" class="aside w-full lg:w-1/3 space-y-8 self-start">
 
             {{-- SPEAKERS --}}
             @if ($speakers)
@@ -258,3 +262,16 @@
 </section>
 
 
+<script>
+  function stickyAside() {
+    return {
+      isSticky: false,
+      init() {
+        window.addEventListener('scroll', () => {
+          const headerHeight = document.querySelector('header').offsetHeight
+          this.isSticky = window.scrollY > headerHeight
+        })
+      }
+    }
+  }
+</script>

@@ -2919,3 +2919,8 @@ blockquote h4 {
 .webinar .webinar-inner-content .speakers-section h4 {
   margin-bottom: 0!important;
 }
+
+.webinar .aside-sticky {
+  position: sticky;
+  top: 100px; /* adjust as needed */
+}
