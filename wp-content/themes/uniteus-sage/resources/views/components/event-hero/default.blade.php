@@ -54,7 +54,7 @@
         $times = $start_time . '&mdash;' . $event_info['end_time'] . ' ' . $abbr;
         $title_date .= '<br />' . 'from ' . $start_time . '&mdash;' . $event_info['end_time'] . ' ' . $abbr;
     } elseif ($event_info['start_time']) {
-        $title_date .= '<br />' . 'starting at ' . $event_info['start_time'];
+        $title_date .= '<br />' . 'Doors open ' . $event_info['start_time'];
         $times = $start_time . ' ' . $abbr;
     }
 
@@ -87,7 +87,7 @@
 
     if ('address-starting-time' == $event_info['title_display']) {
         $dates = $dates = formatDateRange($d1, $d2, 'l, F d');
-        $times = 'Starting at ' . $og_start_time;
+        $times = 'Doors open ' . $og_start_time;
     }
 
 @endphp
@@ -273,6 +273,22 @@
                         {!! $event_info['about_subtitle'] !!}
                       </div>
 
+                        <div class="mt-6 flex">
+                            <div class="mr-4 flex-shrink-0 pt-2">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M3.88251 0.469971C3.34644 0.469971 2.91188 0.904535 2.91188 1.4406V2.41122H1.94125C0.869129 2.41122 0 3.28035 0 4.35248V14.0587C0 15.1309 0.869129 16 1.94125 16H13.5888C14.6609 16 15.53 15.1309 15.53 14.0587V4.35248C15.53 3.28035 14.6609 2.41122 13.5888 2.41122H12.6181V1.4406C12.6181 0.904535 12.1836 0.469971 11.6475 0.469971C11.1115 0.469971 10.6769 0.904535 10.6769 1.4406V2.41122H4.85313V1.4406C4.85313 0.904535 4.41857 0.469971 3.88251 0.469971ZM3.88251 5.3231C3.34644 5.3231 2.91188 5.75767 2.91188 6.29373C2.91188 6.82979 3.34644 7.26436 3.88251 7.26436H11.6475C12.1836 7.26436 12.6181 6.82979 12.6181 6.29373C12.6181 5.75767 12.1836 5.3231 11.6475 5.3231H3.88251Z"
+                                        fill="#216CFF" />
+                                </svg>
+
+                            </div>
+                            <div class="text-brand text-2xl">
+
+                                {!! $dates !!}
+                            </div>
+                        </div>
+
                         @if ($event_info['address'])
                             <div class="mt-6 flex">
                                 <div class="mr-4 flex-shrink-0 pt-2">
@@ -290,21 +306,7 @@
                             </div>
                         @endif
 
-                        <div class="mt-6 flex">
-                            <div class="mr-4 flex-shrink-0 pt-2">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M3.88251 0.469971C3.34644 0.469971 2.91188 0.904535 2.91188 1.4406V2.41122H1.94125C0.869129 2.41122 0 3.28035 0 4.35248V14.0587C0 15.1309 0.869129 16 1.94125 16H13.5888C14.6609 16 15.53 15.1309 15.53 14.0587V4.35248C15.53 3.28035 14.6609 2.41122 13.5888 2.41122H12.6181V1.4406C12.6181 0.904535 12.1836 0.469971 11.6475 0.469971C11.1115 0.469971 10.6769 0.904535 10.6769 1.4406V2.41122H4.85313V1.4406C4.85313 0.904535 4.41857 0.469971 3.88251 0.469971ZM3.88251 5.3231C3.34644 5.3231 2.91188 5.75767 2.91188 6.29373C2.91188 6.82979 3.34644 7.26436 3.88251 7.26436H11.6475C12.1836 7.26436 12.6181 6.82979 12.6181 6.29373C12.6181 5.75767 12.1836 5.3231 11.6475 5.3231H3.88251Z"
-                                        fill="#216CFF" />
-                                </svg>
-
-                            </div>
-                            <div class="text-brand text-2xl">
-
-                                {!! $dates !!}
-                            </div>
-                        </div>
+                      
 
                         <div class="mt-6 flex">
                             <div class="mr-4 flex-shrink-0 pt-2">

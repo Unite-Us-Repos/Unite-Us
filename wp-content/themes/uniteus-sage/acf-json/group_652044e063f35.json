@@ -52,7 +52,8 @@
                     "acfe_permissions": "",
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_652044e07a550",
@@ -91,7 +92,9 @@
                     "auto_close": 0,
                     "allow_null": 0,
                     "acfe_settings": "",
-                    "acfe_validate": ""
+                    "acfe_validate": "",
+                    "prepend": "",
+                    "append": ""
                 },
                 {
                     "key": "field_652044e07a556",
@@ -111,10 +114,8 @@
                     "hide_label": "",
                     "hide_instructions": "",
                     "hide_required": "",
-                    "instruction_placement": "",
-                    "acfe_permissions": "",
-                    "display_format": "g:i a",
-                    "return_format": "g:i a",
+                    "display_format": "g:ia",
+                    "return_format": "g:ia",
                     "placeholder": "",
                     "min_time": "",
                     "max_time": "",
@@ -125,7 +126,10 @@
                     "min_sec": "",
                     "max_sec": "",
                     "acfe_settings": "",
-                    "acfe_validate": ""
+                    "acfe_validate": "",
+                    "instruction_placement": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1
                 },
                 {
                     "key": "field_652044e07a55e",
@@ -145,10 +149,8 @@
                     "hide_label": "",
                     "hide_instructions": "",
                     "hide_required": "",
-                    "instruction_placement": "",
-                    "acfe_permissions": "",
-                    "display_format": "g:i a",
-                    "return_format": "g:i a",
+                    "display_format": "g:ia",
+                    "return_format": "g:ia",
                     "placeholder": "",
                     "min_time": "",
                     "max_time": "",
@@ -159,7 +161,10 @@
                     "min_sec": "",
                     "max_sec": "",
                     "acfe_settings": "",
-                    "acfe_validate": ""
+                    "acfe_validate": "",
+                    "instruction_placement": "",
+                    "acfe_permissions": "",
+                    "allow_in_bindings": 1
                 },
                 {
                     "key": "field_652044e07a565",
@@ -236,7 +241,8 @@
                     "acfe_permissions": "",
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_652044e07a57c",
@@ -276,7 +282,9 @@
                     "placeholder": "",
                     "allow_custom": 0,
                     "search_placeholder": "",
-                    "min": ""
+                    "min": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_652044e07a583",
@@ -325,7 +333,9 @@
                     "placeholder": "",
                     "allow_custom": 0,
                     "search_placeholder": "",
-                    "min": ""
+                    "min": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_652044e07a589",
@@ -575,7 +585,8 @@
                     "acfe_permissions": "",
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_652044e07a5aa",
@@ -888,5 +899,5 @@
     "acfe_permissions": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1713802446
+    "modified": 1752291145
 }
