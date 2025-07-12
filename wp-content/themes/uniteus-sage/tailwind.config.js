@@ -269,7 +269,9 @@ module.exports = {
     '!text-brand',
     'aspect-w-16',
     'aspect-h-9',
-    '!mb-0'
+    '!mb-0',
+    'px-12',
+    '!mt-16'
   ],
   variants: {
     extend: {

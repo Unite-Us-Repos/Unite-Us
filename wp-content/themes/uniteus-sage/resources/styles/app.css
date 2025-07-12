@@ -2872,6 +2872,8 @@ blockquote h4 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    padding-left: 3rem;
+    padding-right: 3rem;
 }
 
 .webinar .webinar-inner-content .blockquote p { 
@@ -2886,6 +2888,8 @@ blockquote h4 {
 .webinar .webinar-inner-content .video-content {
     padding: 46.62% 0 0 0; 
     position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
 }
 
 .webinar .webinar-inner-content .video-content iframe {
@@ -2914,4 +2918,9 @@ blockquote h4 {
 
 .webinar .webinar-inner-content .speakers-section h4 {
   margin-bottom: 0!important;
+}
+
+.webinar .aside-sticky {
+  position: sticky;
+  top: 100px; /* adjust as needed */
 }
