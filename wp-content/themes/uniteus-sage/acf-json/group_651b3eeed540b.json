@@ -26,6 +26,9 @@
             "acfe_settings": "",
             "instruction_placement": "",
             "acfe_permissions": "",
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_651b3eeee894a",
@@ -64,7 +67,9 @@
                     "placeholder": "",
                     "allow_custom": 0,
                     "search_placeholder": "",
-                    "min": ""
+                    "min": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_651b3eeee8954",
@@ -82,7 +87,8 @@
                     },
                     "placement": "top",
                     "endpoint": 0,
-                    "no_preference": 0
+                    "no_preference": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_651b3eeee895b",
@@ -134,7 +140,8 @@
                             "acfe_permissions": "",
                             "placement": "top",
                             "endpoint": 0,
-                            "no_preference": 0
+                            "no_preference": 0,
+                            "selected": 0
                         },
                         {
                             "key": "field_651b3eeeedc91",
@@ -173,7 +180,9 @@
                             "auto_close": 0,
                             "allow_null": 0,
                             "acfe_settings": "",
-                            "acfe_validate": ""
+                            "acfe_validate": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
                             "key": "field_651b3eeeedc9a",
@@ -189,14 +198,14 @@
                                 "class": "",
                                 "id": ""
                             },
+                            "acfe_permissions": "",
+                            "instruction_placement": "",
                             "hide_field": "",
                             "hide_label": "",
                             "hide_instructions": "",
                             "hide_required": "",
-                            "instruction_placement": "",
-                            "acfe_permissions": "",
-                            "display_format": "g:i a",
-                            "return_format": "g:i a",
+                            "display_format": "g:ia",
+                            "return_format": "g:ia",
                             "placeholder": "",
                             "min_time": "",
                             "max_time": "",
@@ -207,7 +216,8 @@
                             "min_sec": "",
                             "max_sec": "",
                             "acfe_settings": "",
-                            "acfe_validate": ""
+                            "acfe_validate": "",
+                            "allow_in_bindings": 1
                         },
                         {
                             "key": "field_651b3eeeedca0",
@@ -223,14 +233,14 @@
                                 "class": "",
                                 "id": ""
                             },
+                            "acfe_permissions": "",
+                            "instruction_placement": "",
                             "hide_field": "",
                             "hide_label": "",
                             "hide_instructions": "",
                             "hide_required": "",
-                            "instruction_placement": "",
-                            "acfe_permissions": "",
-                            "display_format": "g:i a",
-                            "return_format": "g:i a",
+                            "display_format": "g:ia",
+                            "return_format": "g:ia",
                             "placeholder": "",
                             "min_time": "",
                             "max_time": "",
@@ -241,7 +251,8 @@
                             "min_sec": "",
                             "max_sec": "",
                             "acfe_settings": "",
-                            "acfe_validate": ""
+                            "acfe_validate": "",
+                            "allow_in_bindings": 1
                         },
                         {
                             "key": "field_651b3eeeedcc9",
@@ -318,7 +329,8 @@
                             "acfe_permissions": "",
                             "placement": "top",
                             "endpoint": 0,
-                            "no_preference": 0
+                            "no_preference": 0,
+                            "selected": 0
                         },
                         {
                             "key": "field_651b3eeeedd35",
@@ -660,7 +672,8 @@
                             "acfe_permissions": "",
                             "placement": "top",
                             "endpoint": 0,
-                            "no_preference": 0
+                            "no_preference": 0,
+                            "selected": 0
                         },
                         {
                             "key": "field_651b3eeeedcea",
@@ -700,7 +713,9 @@
                             "placeholder": "",
                             "allow_custom": 0,
                             "search_placeholder": "",
-                            "min": ""
+                            "min": "",
+                            "create_options": 0,
+                            "save_options": 0
                         },
                         {
                             "key": "field_651b3eeeedcf7",
@@ -732,8 +747,8 @@
                             "hide_required": "",
                             "choices": {
                                 "dynamic": "Dynamic (auto-generated based on dates)",
-                                "address": "Address\/Date\/Time (address, date, time \"8:30—5:00 pm EDT\")",
-                                "address-starting-time": "Address\/Date\/Time (address, date, time \"Starting at 8:30 am\")",
+                                "address": "Address\/Date\/Time (address, date, time \"8:00—5:00 pm EDT\")",
+                                "address-starting-time": "Address\/Date\/Time (address, date, time \"Doors open 8:00am\")",
                                 "manual": "Manual"
                             },
                             "default_value": false,
@@ -745,9 +760,12 @@
                             "acfe_settings": "",
                             "acfe_validate": "",
                             "allow_null": 0,
+                            "allow_in_bindings": 1,
                             "ui": 0,
                             "ajax": 0,
                             "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0,
                             "allow_custom": 0,
                             "search_placeholder": "",
                             "min": ""
@@ -1001,10 +1019,7 @@
                         }
                     ]
                 }
-            ],
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         }
     ],
     "location": [
@@ -1036,5 +1051,5 @@
     "acfe_permissions": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1713896170
+    "modified": 1752291044
 }
