@@ -2924,3 +2924,6 @@ blockquote h4 {
   position: sticky;
   top: 100px; /* adjust as needed */
 }
+.text-green {
+  color: #25c696;
+}
