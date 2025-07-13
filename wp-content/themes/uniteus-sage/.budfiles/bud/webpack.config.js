@@ -367,19 +367,19 @@ module.exports = {
       "fileName": "wordpress.json"
     },
     {
+      "name": "WordPressExternalsWebpackPlugin",
+      "stage": null,
+      "externals": {
+        "type": "window"
+      }
+    },
+    {
       "plugin": {
         "name": "MergedManifestPlugin"
       },
       "file": "entrypoints.json",
       "entrypointsName": "entrypoints.json",
       "wordpressName": "wordpress.json"
-    },
-    {
-      "name": "WordPressExternalsWebpackPlugin",
-      "stage": null,
-      "externals": {
-        "type": "window"
-      }
     }
   ],
   "entry": {
