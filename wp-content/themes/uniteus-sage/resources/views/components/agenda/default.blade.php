@@ -105,7 +105,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
   </div>
 
     <div class="relative component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif"">
-        <div class="text-center mb-6 @if ($background['image']) text-white @endif">{{ $subtitle }}</div>
+        <div class="text-center mb-6 @if ($background['image']) text-green @endif">{{ $subtitle }}</div>
         <h2 class="text-center mb-6 @if ($background['image']) text-white @else text-brand @endif">{{ $title }}</h2>
 
 
