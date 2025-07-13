@@ -67,10 +67,6 @@
             ];
         }
     }
-    $background = [
-        'has_divider' => true,
-        'color' => 'light',
-    ];
 
     $zones = [
         'PST' => 'America/Los_Angeles',
@@ -86,14 +82,30 @@
     }
     $show_additinal_information = false;
 @endphp
-
+@php
+$s_settings = [
+        'collapse_padding' => false,
+        'fullscreen' => '',
+];
+$section_settings = isset($acf["components"][$index]['layout_settings']['section_settings']) ? $acf["components"][$index]['layout_settings']['section_settings'] : $s_settings;
+@endphp
 @if ($background['has_divider'])
     @includeIf('dividers.waves')
 @endif
+<section class="component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
 
-<section class="component-section bg-light-gradient">
-    <div class="component-inner-section">
+      <div class="absolute inset-0">
+    @if ($background['image'])
+      <img fetchPriority="high" class="w-full h-full @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
+        src="{{ $background['image']['sizes']['medium'] }}"
+        srcset="{{ $background['image']['sizes']['medium'] }} 300w, {{ $background['image']['sizes']['2048x2048'] }} 1024w"
+        sizes="(max-width: 600px) 300px, 1024px"
+        alt="{{ $background['image']['alt'] }}">
+    @endif
+  </div>
 
+    <div class="component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif"">
+        <div class="subtitle text-center mb-6">{{ $subtitle }}</div>
         <h2 class="text-brand text-center mb-6">{{ $title }}</h2>
 
 
@@ -526,3 +538,6 @@
         </div>
     </div>
 </section>
+@if ($background['divider_bottom'])
+  @includeIf('dividers.waves-bottom')
+@endif
