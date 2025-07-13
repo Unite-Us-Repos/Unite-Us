@@ -92,7 +92,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
 @if ($background['has_divider'])
     @includeIf('dividers.waves')
 @endif
-<section class="relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+<section class=" relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
 
       <div class="absolute inset-0">
     @if ($background['image'])
