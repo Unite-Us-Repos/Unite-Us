@@ -2927,3 +2927,48 @@ blockquote h4 {
 .text-green {
   color: #25c696;
 }
+
+.custom-blockquote {
+  background-color: #f1f7ff;
+  padding: 4rem 3rem 3rem;
+  border-radius: 0.75rem;
+  position: relative;
+  text-align: center;
+  font-size: 1.15rem;
+  line-height: 1.5rem;
+  color: #1d2b41;
+  font-style: normal;
+  margin: 3rem auto;
+}
+
+.custom-blockquote::before {
+  content: '';
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rem;
+  height: 2rem;
+  background-image: url('../images/blockquote-icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #216cff;
+  border-radius: 9999px;
+  padding: 1rem;
+  box-sizing: content-box;
+}
+
+.custom-blockquote strong {
+  margin-top: 1.5rem;
+  font-weight: 700;
+  color: #216cff;
+}
+
+.custom-blockquote em {
+  display: block;
+  font-style: normal;
+  margin-top: 0.25rem;
+  color: #1d2b41;
+  font-weight: 400;
+}
