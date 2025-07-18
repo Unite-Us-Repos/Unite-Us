@@ -943,35 +943,6 @@
           }
         }
       },
-      "jsconfig.json": {
-        "name": "jsconfig.json",
-        "path": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/jsconfig.json",
-        "module": {
-          "compilerOptions": {
-            "allowSyntheticDefaultImports": true,
-            "jsx": "preserve",
-            "lib": [
-              "dom",
-              "dom.iterable",
-              "esnext"
-            ],
-            "module": "commonjs",
-            "moduleResolution": "node",
-            "paths": {
-              "@scripts/*": [
-                "./resources/scripts/*"
-              ],
-              "@styles/*": [
-                "./resources/styles/*"
-              ]
-            }
-          },
-          "exclude": [
-            "./public",
-            "./node_modules"
-          ]
-        }
-      },
       "theme.json": {
         "name": "theme.json",
         "path": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/theme.json",
@@ -1183,6 +1154,35 @@
               ]
             }
           }
+        }
+      },
+      "jsconfig.json": {
+        "name": "jsconfig.json",
+        "path": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/jsconfig.json",
+        "module": {
+          "compilerOptions": {
+            "allowSyntheticDefaultImports": true,
+            "jsx": "preserve",
+            "lib": [
+              "dom",
+              "dom.iterable",
+              "esnext"
+            ],
+            "module": "commonjs",
+            "moduleResolution": "node",
+            "paths": {
+              "@scripts/*": [
+                "./resources/scripts/*"
+              ],
+              "@styles/*": [
+                "./resources/styles/*"
+              ]
+            }
+          },
+          "exclude": [
+            "./public",
+            "./node_modules"
+          ]
         }
       },
       "package-lock.json": {
@@ -17875,7 +17875,7 @@
       "npm_package_dependencies_glightbox": "^3.2.0",
       "npm_package_scripts_translate_mo": "wp i18n make-mo ./resources/lang ./resources/lang",
       "npm_execpath": "/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/lib/node_modules/yarn/bin/yarn.js",
-      "PATH": "/var/folders/l5/7qr9nzp92jj32s0c117qnptm0000gp/T/yarn--1752806869152-0.9984224367090375:/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/.bin:/Users/sabrina.matthews/.config/yarn/link/node_modules/.bin:/Users/sabrina.matthews/.yarn/bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin/node_modules/npm/bin/node-gyp-bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin",
+      "PATH": "/var/folders/l5/7qr9nzp92jj32s0c117qnptm0000gp/T/yarn--1752807844642-0.7830219907867555:/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/.bin:/Users/sabrina.matthews/.config/yarn/link/node_modules/.bin:/Users/sabrina.matthews/.yarn/bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin/node_modules/npm/bin/node-gyp-bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin",
       "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"build\"],\"original\":[\"build\"]}",
       "npm_package_dependencies_swiper": "^8.4.5",
       "_": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/.bin/bud",
@@ -18183,6 +18183,27 @@
       "peerDependencies": {},
       "requires": []
     },
+    "@roots/bud-react": {
+      "name": "@roots/bud-react",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-babel"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+      },
+      "requires": [
+        [
+          "@roots/bud-babel",
+          "5.7.7"
+        ]
+      ]
+    },
     "@roots/bud-preset-recommend": {
       "name": "@roots/bud-preset-recommend",
       "version": "5.7.7",
@@ -18207,27 +18228,6 @@
         ],
         [
           "@roots/bud-postcss",
-          "5.7.7"
-        ]
-      ]
-    },
-    "@roots/bud-react": {
-      "name": "@roots/bud-react",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension",
-        "peers": [
-          "@roots/bud-babel"
-        ]
-      },
-      "resolvable": true,
-      "peerDependencies": {
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2"
-      },
-      "requires": [
-        [
-          "@roots/bud-babel",
           "5.7.7"
         ]
       ]

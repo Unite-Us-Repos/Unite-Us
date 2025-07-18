@@ -293,7 +293,7 @@ add_filter(
             array(
                 'title' => 'Blockquote (Testimonial)',
                 'block' => 'blockquote',
-                'classes' => 'custom-blockquote',
+                'classes' => 'custom-blockquote testimonial-quote',
                 'wrapper' => true,
             ),
         );
