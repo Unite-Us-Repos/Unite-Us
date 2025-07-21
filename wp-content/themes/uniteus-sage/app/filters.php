@@ -290,6 +290,12 @@ add_filter(
                 'classes' => 'bg-gradient-clip-v2',
                 'wrapper' => true,
             ),
+            array(
+                'title' => 'Blockquote (Testimonial)',
+                'block' => 'blockquote',
+                'classes' => 'custom-blockquote testimonial-quote',
+                'wrapper' => true,
+            ),
         );
 
         // Insert the array, JSON ENCODED, into 'style_formats'

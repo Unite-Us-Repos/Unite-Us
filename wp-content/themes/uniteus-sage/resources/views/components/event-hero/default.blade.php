@@ -42,7 +42,7 @@
 
     $d1 = new \DateTime($event_info['event_dates']['start']);
     $d2 = new \DateTime($event_info['event_dates']['end']);
-    $dates = formatDateRange($d1, $d2, 'M d, Y');
+    $dates = formatDateRange($d1, $d2, 'M j, Y');
     $title_date = formatDateRange($d1, $d2);
     $og_start_time = '';
 
@@ -87,10 +87,14 @@
 
     if ('address-starting-time' == $event_info['title_display']) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         $dates = $dates = formatDateRange($d1, $d2, 'l, F d');
 =======
         $dates = $dates = formatDateRange($d1, $d2, 'F d, Y');
 >>>>>>> oc
+=======
+        $dates = $dates = formatDateRange($d1, $d2, 'F j, Y');
+>>>>>>> newsroom
         $times = 'Doors open ' . $og_start_time;
     }
 

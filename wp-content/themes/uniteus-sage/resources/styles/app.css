@@ -890,6 +890,11 @@ body .map-wrap {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+   .partnerships .ajax-filters ul ,
+   .company-news .ajax-filters ul {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
   .ajax-filters ul li {
     background: none;
     margin: 0;
@@ -904,7 +909,9 @@ body .map-wrap {
 }
 
 .ajax-filters.greenhouse-filters ul ul,
-.ajax-filters ul ul {
+.ajax-filters ul ul,
+.company-news .ajax-filters ul ul,
+.partnerships .ajax-filters ul ul  {
   display: flex;
   flex-direction: column;
   margin: 5px 0;
@@ -2333,6 +2340,9 @@ blockquote h4 {
   padding: 1px;
   border-radius: 0.5rem; /* Same as your border radius */
 }
+.gradient-background {
+  background: linear-gradient(to right, #216cff, #9643ff);
+}
 
 .gradient-border > * {
   background: white; /* Inner background for content */
@@ -2924,3 +2934,53 @@ blockquote h4 {
   position: sticky;
   top: 100px; /* adjust as needed */
 }
+.text-green {
+  color: #25c696;
+}
+
+.custom-blockquote {
+  background-color: #f1f7ff;
+  padding: 4rem 3rem 3rem;
+  border-radius: 0.75rem;
+  position: relative;
+  text-align: center;
+  font-size: 1.15rem;
+  line-height: 1.5rem;
+  color: #1d2b41;
+  font-style: normal;
+  margin: 3rem auto;
+}
+
+.custom-blockquote::before {
+  content: '';
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rem;
+  height: 2rem;
+  background-image: url('../images/blockquote-icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #216cff;
+  border-radius: 9999px;
+  padding: 1rem;
+  box-sizing: content-box;
+}
+
+.custom-blockquote strong {
+  margin-top: 1.5rem;
+  font-weight: 700;
+  color: #216cff;
+}
+
+.custom-blockquote em {
+  display: block;
+  font-style: normal;
+  margin-top: 0.25rem;
+  color: #1d2b41;
+  font-weight: 400;
+}
+
+.light-blue{ color: #52B4FF;}

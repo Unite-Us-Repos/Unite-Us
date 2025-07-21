@@ -104,9 +104,9 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
     @endif
   </div>
 
-    <div class="component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif"">
-        <div class="subtitle text-center mb-6">{{ $subtitle }}</div>
-        <h2 class="text-brand text-center mb-6">{{ $title }}</h2>
+    <div class="relative component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif"">
+        <div class="text-center mb-6 @if ($background['image']) text-green @endif">{{ $subtitle }}</div>
+        <h2 class="text-center mb-6 @if ($background['image']) text-white @else text-brand @endif">{{ $title }}</h2>
 
 
         <div class="flex items-center justify-center mx-auto">
@@ -140,7 +140,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                 <!-- Tabs Contains -->
                 @foreach ($tabs as $tab_index => $tab)
                     <div x-show="tab === {{ $tab_index }}" class="z-0">
-                        <div class="text-lg text-center max-w-3xl mx-auto">
+                        <div class="text-lg text-center max-w-3xl mx-auto @if ($background['image']) text-white @endif">
                             {!! $tab['summary'] !!}
                         </div>
                         <div class="flex flex-wrap gap-4 accordion accordion-vertical mt-10" x-data="{ selected: {{ $tab_index . '999' }} }">

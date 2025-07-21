@@ -117,7 +117,9 @@
                         "hero-featured": "Hero Featured",
                         "carousel-cards": "Carousel Cards",
                         "event-3-column-cards": "Event Cards",
-                        "network-press": "Network Press (by current state)"
+                        "network-press": "Network Press (by current state)",
+                        "2-column-feature-post": "2-column Feature Post",
+                        "3-column-press-cards": "3-column Press Cards"
                     },
                     "default_value": "",
                     "return_format": "value",
@@ -156,6 +158,11 @@
                                 "field": "field_62c8f0560061b",
                                 "operator": "!=",
                                 "value": "network-press"
+                            },
+                            {
+                                "field": "field_62c8f0560061b",
+                                "operator": "==",
+                                "value": "3-column-press-cards"
                             }
                         ]
                     ],
@@ -210,6 +217,11 @@
                                 "field": "field_6339ce455a037",
                                 "operator": "!=",
                                 "value": "manual"
+                            },
+                            {
+                                "field": "field_62c8f0560061b",
+                                "operator": "==",
+                                "value": "3-column-press-cards"
                             }
                         ]
                     ],
@@ -287,7 +299,8 @@
                         "id": ""
                     },
                     "post_type": [
-                        "post"
+                        "post",
+                        "press"
                     ],
                     "post_status": "",
                     "taxonomy": "",
@@ -384,5 +397,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1730334797
+    "modified": 1753125078
 }

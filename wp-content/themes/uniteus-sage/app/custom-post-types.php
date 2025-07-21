@@ -236,6 +236,7 @@ function register_cpt_network_form()
 
 add_action('init', 'register_cpt_press');
 
+
 function register_cpt_press()
 {
     register_post_type(
@@ -290,6 +291,7 @@ function register_cpt_press()
             'rewrite' => array( 'slug' => 'press_cat' ),
         )
     );
+    
 
     $labels = array(
         'name' => _x('States', 'taxonomy general name'),
@@ -389,7 +391,7 @@ function register_cpt_press()
       );
     // Now register the taxonomy
     register_taxonomy(
-        'topic', array('post'), array(
+        'topic', array('post', 'press'), array(
         'hierarchical' => true,
         'labels' => $labels,
         'show_ui' => true,
@@ -400,6 +402,33 @@ function register_cpt_press()
         )
     );
 }
+function add_category_to_press_cpt() {
+    register_taxonomy_for_object_type('category', 'press');
+}
+add_action('init', 'add_category_to_press_cpt');
+
+function rename_category_to_type_for_press() {
+    global $wp_taxonomies;
+
+    if (isset($wp_taxonomies['category'])) {
+        // Only update labels for the 'press' post type
+        $labels = &$wp_taxonomies['category']->labels;
+
+        $labels->name = 'Types';
+        $labels->singular_name = 'Type';
+        $labels->search_items = 'Search Types';
+        $labels->all_items = 'All Types';
+        $labels->parent_item = 'Parent Type';
+        $labels->parent_item_colon = 'Parent Type:';
+        $labels->edit_item = 'Edit Type';
+        $labels->update_item = 'Update Type';
+        $labels->add_new_item = 'Add New Type';
+        $labels->new_item_name = 'New Type';
+        $labels->menu_name = 'Types';
+    }
+}
+add_action('init', 'rename_category_to_type_for_press');
+
 
 // register Presenters
 add_action('init', 'register_cpt_presenter');
