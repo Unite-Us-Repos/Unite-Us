@@ -303,7 +303,10 @@
                         "press"
                     ],
                     "post_status": "",
-                    "taxonomy": "",
+                    "taxonomy": [
+                        "company-news:award",
+                        "company-news:spotlight"
+                    ],
                     "filters": [
                         "search",
                         "taxonomy"
@@ -397,5 +400,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1753125078
+    "modified": 1753664848
 }

@@ -1,5 +1,5 @@
 {{--
-  Template Name: Press - Partnerships
+  Template Name: Press - In The News
 --}}
 {{--
   Template Post Type: page
@@ -35,7 +35,7 @@
             <div id="kh-top" class="mb-8">
                 <div id="kh-filters" class="ajax-filters kh-filters relative z-20">
                     @php
-                        echo do_shortcode('[searchandfilter slug="studies-data-copy-copy"]');
+                        echo do_shortcode('[searchandfilter slug="studies-data-copy-copy-copy"]');
                     @endphp
                 </div>
             </div>
@@ -43,7 +43,7 @@
 
             <div id="kh-search-results">
 
-                {!! do_shortcode('[searchandfilter slug="studies-data-copy-copy" show="results"]') !!}
+                {!! do_shortcode('[searchandfilter slug="studies-data-copy-copy-copy" show="results"]') !!}
 
             </div>
         </div>
