@@ -24,8 +24,12 @@
           <div class="w-full lg:w-1/2 flex flex-col justify-between">
           <div class="flex bg-light rounded-full p-1 items-center gap-4 w-fit pe-8 mb-8">
             <div class="text-white bg-action text-sm py-1 px-4 inline-block rounded-full uppercase">
-                {{ get_the_terms(get_the_ID(), 'category')[0]->name ?? 'Press Release' }}
-            </div>
+@php
+    $categories = get_the_terms(get_the_ID(), 'category');
+    $categoryName = (!empty($categories) && !is_wp_error($categories)) ? $categories[0]->name : 'Press Release';
+@endphp
+
+{{ $categoryName }}            </div>
             <div class="pr-4 flex items-center gap-2 text-sm text-gray-800">
                 <span>Latest News</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">

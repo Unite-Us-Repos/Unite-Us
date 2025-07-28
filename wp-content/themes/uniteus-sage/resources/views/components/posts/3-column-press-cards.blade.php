@@ -75,30 +75,44 @@
 
                                 <div class="flex-1 flex flex-col justify-between">
                                     <div class="flex-1 pt-7 pb-4">
-                                        @php
-                                            $pressCats = get_the_terms($post['ID'], 'press_cat');
-                                            $states = get_the_terms($post['ID'], 'states');
-                                        @endphp
+                                       @php
+    $postID = $post['ID'];
+    $pressCats = get_the_terms($postID, 'press_cat');
+    $states = get_the_terms($postID, 'states');
+    $companyNews = get_the_terms($postID, 'company-news');
+    $inTheNews = get_the_terms($postID, 'in-the-news');
+@endphp
 
-                                        @if (!empty($pressCats) && !is_wp_error($pressCats))
-                                            @php $firstCat = $pressCats[0]; @endphp
+@if (!empty($pressCats) && !is_wp_error($pressCats))
+    @php $firstCat = $pressCats[0]; @endphp
 
-                                            @if ($firstCat->slug === 'local-news' && !empty($states) && !is_wp_error($states))
-                                                <p class="leading-normal text-sm font-medium text-white my-4">
-                                                    <span
-                                                        class="inline-block bg-action font-medium rounded-full px-[15px] py-1 pill-span">
-                                                        {{ $states[0]->name }}
-                                                    </span>
-                                                </p>
-                                            @else
-                                                <p class="leading-normal text-sm font-medium text-white my-4">
-                                                    <span
-                                                        class="inline-block bg-action font-medium rounded-full px-[15px] py-1 pill-span">
-                                                        {{ $firstCat->name }}
-                                                    </span>
-                                                </p>
-                                            @endif
-                                        @endif
+    @if ($firstCat->slug === 'partnership' && !empty($states) && !is_wp_error($states))
+        <p class="leading-normal text-sm font-medium text-white my-4">
+            <span class="inline-block bg-action font-medium rounded-full px-[15px] py-1 pill-span">
+                {{ $states[0]->name }}
+            </span>
+        </p>
+    @elseif ($firstCat->slug === 'company-news' && !empty($companyNews) && !is_wp_error($companyNews))
+        <p class="leading-normal text-sm font-medium text-white my-4">
+            <span class="inline-block bg-action font-medium rounded-full px-[15px] py-1 pill-span">
+                {{ $companyNews[0]->name }}
+            </span>
+        </p>
+    @elseif ($firstCat->slug === 'in-the-news' && !empty($inTheNews) && !is_wp_error($inTheNews))
+        <p class="leading-normal text-sm font-medium text-white my-4">
+            <span class="inline-block bg-action font-medium rounded-full px-[15px] py-1 pill-span">
+                {{ $inTheNews[0]->name }}
+            </span>
+        </p>
+    @else
+        <p class="leading-normal text-sm font-medium text-white my-4">
+            <span class="inline-block bg-action font-medium rounded-full px-[15px] py-1 pill-span">
+                {{ $firstCat->name }}
+            </span>
+        </p>
+    @endif
+@endif
+
 
                                         <h3 class="mb-4">
                                             @if ($post['permalink'])
@@ -146,30 +160,44 @@
                                 <div class="absolute w-full top-0 p-2 gradient-background rounded-t-lg"></div>
                                 <div class="flex-1 flex flex-col justify-between">
                                     <div class="flex-1 px-6 pt-7 pb-10">
-                                        @php
-                                            $pressCats = get_the_terms($post['ID'], 'press_cat');
-                                            $states = get_the_terms($post['ID'], 'states');
-                                        @endphp
+                                         @php
+    $postID = $post['ID'];
+    $pressCats = get_the_terms($postID, 'press_cat');
+    $states = get_the_terms($postID, 'states');
+    $companyNews = get_the_terms($postID, 'company-news');
+    $inTheNews = get_the_terms($postID, 'in-the-news');
+@endphp
 
-                                        @if (!empty($pressCats) && !is_wp_error($pressCats))
-                                            @php $firstCat = $pressCats[0]; @endphp
+@if (!empty($pressCats) && !is_wp_error($pressCats))
+    @php $firstCat = $pressCats[0]; @endphp
 
-                                            @if ($firstCat->slug === 'local-news' && !empty($states) && !is_wp_error($states))
-                                                <p class="leading-normal text-sm font-medium text-action my-4">
-                                                    <span
-                                                        class="inline-block bg-light font-medium rounded-full px-[15px] py-1 pill-span">
-                                                        {{ $states[0]->name }}
-                                                    </span>
-                                                </p>
-                                            @else
-                                                <p class="leading-normal text-sm font-medium text-action my-4">
-                                                    <span
-                                                        class="inline-block bg-light font-medium rounded-full px-[15px] py-1 pill-span">
-                                                        {{ $firstCat->name }}
-                                                    </span>
-                                                </p>
-                                            @endif
-                                        @endif
+    @if ($firstCat->slug === 'partnership' && !empty($states) && !is_wp_error($states))
+        <p class="leading-normal text-sm font-medium text-white my-4">
+            <span class="inline-block bg-action font-medium rounded-full px-[15px] py-1 pill-span">
+                {{ $states[0]->name }}
+            </span>
+        </p>
+    @elseif ($firstCat->slug === 'company-news' && !empty($companyNews) && !is_wp_error($companyNews))
+        <p class="leading-normal text-sm font-medium text-white my-4">
+            <span class="inline-block bg-action font-medium rounded-full px-[15px] py-1 pill-span">
+                {{ $companyNews[0]->name }}
+            </span>
+        </p>
+    @elseif ($firstCat->slug === 'in-the-news' && !empty($inTheNews) && !is_wp_error($inTheNews))
+        <p class="leading-normal text-sm font-medium text-white my-4">
+            <span class="inline-block bg-action font-medium rounded-full px-[15px] py-1 pill-span">
+                {{ $inTheNews[0]->name }}
+            </span>
+        </p>
+    @else
+        <p class="leading-normal text-sm font-medium text-white my-4">
+            <span class="inline-block bg-action font-medium rounded-full px-[15px] py-1 pill-span">
+                {{ $firstCat->name }}
+            </span>
+        </p>
+    @endif
+@endif
+
 
                                         <h3 class="mb-1">
                                             @if ($post['permalink'])
