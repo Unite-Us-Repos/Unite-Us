@@ -143,8 +143,8 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
         @endphp
         <div class="swiper-slide" style="height: auto;">
           <div class="service-icon-cards h-full group">
-            <div class="bg-white text-brand transition-all hover:shadow-lg relative flex items-start rounded-lg overflow-hidden group h-full
-            @if ($background['color'] != 'light-gradient') shadow-lg @endif
+            <div class="bg-white text-brand transition-all relative flex items-start rounded-lg overflow-hidden group h-full
+            @if ($background['color'] != 'light-gradient') @endif
             @if ($card['bg_image']) group-hover:bg-action-dark
             @else
             group-hover:bg-electric-purple

@@ -11,7 +11,7 @@
 @endphp
 <div class="service-icon-cards h-full group">
   <div class="bg-white text-brand transition-all hover:shadow-lg relative flex items-start rounded-lg overflow-hidden group h-full
-  @if ($background['color'] != 'light-gradient') shadow-lg @endif
+  @if ($background['color'] != 'light-gradient') @endif
   @if ($card['bg_image']) group-hover:bg-action-dark
   @else
   group-hover:bg-electric-purple gradient-purple group-hover:text-white
