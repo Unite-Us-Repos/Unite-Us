@@ -36,12 +36,28 @@ if ( $query->have_posts() )
 	<div class="mx-auto flex flex-col sm:grid gap-y-6 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 	<?php
 	$i=1;
-	$activeCampaign = true;
-    $campaignAd = get_field('campaign_ad', 'options');
-    if(isset($_GET['sf_paged']) OR is_archive() OR is_page_template('template-studies-data-collection.blade.php')) {
-        // don't show campaign past page 1
-        $activeCampaign = false;
+    $activeCampaign = true;
+    $campaignAd     = get_field('campaign_ad', 'options');
+
+    // What page are we actually on?
+    $paged = max( 1,
+      get_query_var('paged'),
+      get_query_var('page'),
+      ( isset($_GET['sf_paged']) ? absint($_GET['sf_paged']) : 1 )
+    );
+
+    // If we’re beyond page 1, or on any of these templates/archives, turn it off:
+    if (
+      $paged > 1
+      || is_archive()
+      || is_page_template('template-studies-data-collection.blade.php')
+      || is_page_template('template-company-news.blade.php')
+      || is_page_template('template-partnerships.blade.php')
+    ) {
+      $activeCampaign = false;
     }
+
+  
 	while ($query->have_posts())
 	{
 		$query->the_post();

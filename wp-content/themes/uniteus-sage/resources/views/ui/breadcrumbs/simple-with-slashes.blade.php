@@ -15,7 +15,11 @@
 
 
     @if ($pageBreadcrumbs['parents'])
-      @foreach ($pageBreadcrumbs['parents'] as $parent)
+  @php
+    // Reverse so that the top‑most ancestor is first
+    $crumbParents = array_reverse( $pageBreadcrumbs['parents'] );
+  @endphp
+      @foreach ( $crumbParents as $parent )
         <li>
           <div class="flex items-center">
             <svg class="flex-shrink-0 h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">

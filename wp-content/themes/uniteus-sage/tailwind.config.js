@@ -271,7 +271,9 @@ module.exports = {
     'aspect-h-9',
     '!mb-0',
     'px-12',
-    '!mt-16'
+    '!mt-16',
+    'lg:flex-row-reverse',
+    '!w-fit'
   ],
   variants: {
     extend: {

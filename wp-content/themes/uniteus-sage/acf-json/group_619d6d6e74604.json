@@ -499,6 +499,23 @@
                     "delay": 0,
                     "acfe_wysiwyg_auto_init": 0,
                     "acfe_wysiwyg_min_height": 300
+                },
+                {
+                    "key": "field_687d8164e8eb2",
+                    "label": "View All Anchor",
+                    "name": "view_all_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0
                 }
             ]
         }
@@ -528,5 +545,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747931671
+    "modified": 1753125139
 }
