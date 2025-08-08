@@ -1,4 +1,12 @@
 <section @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="component-section relative {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+  @if ($background['image'])
+  <div class="absolute inset-0">
+    <img fetchpriority="high" class="w-full h-full object-cover @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif" src="{{ $background['image']['sizes']['medium'] }}"
+      srcset="{{ $background['image']['sizes']['medium'] }} 300w, {{ $background['image']['sizes']['2048x2048'] }} 1024w"
+      sizes="(max-width: 600px) 300px, 1024px"
+      alt="{{ $background['image']['alt'] }}">
+  </div>
+@endif
   <div class="component-inner-section">
     <div class="grid-cards grid-cards-{{ $style }} flex flex-col md:grid md:grid-cols-12 gap-8 w-full">
       @foreach ($cards as $card)

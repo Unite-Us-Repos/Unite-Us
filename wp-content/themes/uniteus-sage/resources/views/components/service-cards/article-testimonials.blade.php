@@ -52,7 +52,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
   </div>
 @endif
 @if ($section['logo'])
-    <img class="" srcset="{{ $section['logo']['url'] }}" alt="{{ $section['logo']['alt'] }}">
+    <div class="logo-image"><img class="" srcset="{{ $section['logo']['url'] }}" alt="{{ $section['logo']['alt'] }}"></div>
  @endif
 @if ('center' == $section["alignment"])
   <div class="component-inner-section relative z-10">
@@ -192,9 +192,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
 
         <div>
           <div class="service-icon-cards h-full group">
-            <div class="bg-transparent text-white relative flex items-start overflow-hidden group h-full
-
-            ">
+            <div class="bg-transparent text-white relative flex items-start overflow-hidden group h-full">
 
 
               <div class="article-card relative z-10 w-full h-full p-9 text-lg lg:text-4xl">
