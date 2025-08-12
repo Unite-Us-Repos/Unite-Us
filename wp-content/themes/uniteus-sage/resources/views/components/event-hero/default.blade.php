@@ -86,15 +86,7 @@
     $show_additinal_information = false;
 
     if ('address-starting-time' == $event_info['title_display']) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        $dates = $dates = formatDateRange($d1, $d2, 'l, F d');
-=======
-        $dates = $dates = formatDateRange($d1, $d2, 'F d, Y');
->>>>>>> oc
-=======
         $dates = $dates = formatDateRange($d1, $d2, 'F j, Y');
->>>>>>> newsroom
         $times = 'Doors open ' . $og_start_time;
     }
 
