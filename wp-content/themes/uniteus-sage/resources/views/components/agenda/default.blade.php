@@ -1,6 +1,19 @@
 @php
     $agendas = [];
-    $info = $acf['event_info'];
+    // Safe replacement for: $info = $acf['event_info'];
+    $infoRaw = $acf['event_info'] ?? null;
+
+    if (is_array($infoRaw)) {
+    $info = $infoRaw;
+    } elseif (is_string($infoRaw)) {
+    $decoded = json_decode($infoRaw, true);
+    $info = is_array($decoded) ? $decoded : [];
+    } else {
+    $info = [];
+    }
+    $info['timezone'] = $info['timezone'] ?? 'America/New_York';
+    $info['event_dates'] = is_array($info['event_dates'] ?? null) ? $info['event_dates'] : ['start' => null, 'end' => null];
+
     $signup = isset($acf['sign_up']) ? $acf['sign_up'] : [];
     $featured_speakers[] =
         isset($acf['featured_speaker']) && !empty($acf['featured_speaker']['first_name'])
