@@ -3,6 +3,28 @@
     "title": "Mega Menu Resources Featured Block",
     "fields": [
         {
+            "key": "field_689ab3c5fa5d4",
+            "label": "Featured Post",
+            "name": "resources_featured_post",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1,
+            "style": ""
+        },
+        {
             "key": "field_6772059644373",
             "label": "Pill Text",
             "name": "resources_featured_pill",
@@ -54,7 +76,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "70",
                 "class": "",
                 "id": ""
             },
@@ -75,28 +97,32 @@
         },
         {
             "key": "field_6772057244372",
-            "label": "Button",
+            "label": "Button Text",
             "name": "resources_featured_button",
             "aria-label": "",
-            "type": "link",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "30",
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "allow_in_bindings": 0
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
         [
             {
-                "param": "options_page",
+                "param": "post_type",
                 "operator": "==",
-                "value": "global-options"
+                "value": "post"
             }
         ]
     ],
@@ -116,5 +142,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1735529936
+    "modified": 1755043655
 }
