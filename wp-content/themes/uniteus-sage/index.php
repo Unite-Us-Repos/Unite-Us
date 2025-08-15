@@ -8,15 +8,6 @@ if (session_id()) {
     $utm_campaign = isset($_SESSION['utm_campaign']) ? $_SESSION['utm_campaign'] : 'Not set';
     $utm_term = isset($_SESSION['utm_term']) ? $_SESSION['utm_term'] : 'Not set';
     $utm_content = isset($_SESSION['utm_content']) ? $_SESSION['utm_content'] : 'Not set';
-    
-    // Output the session variables for debugging
-    // echo '<pre>';
-    // echo 'UTM Source: ' . $utm_source . '<br>';
-    // echo 'UTM Medium: ' . $utm_medium . '<br>';
-    // echo 'UTM Campaign: ' . $utm_campaign . '<br>';
-    // echo 'UTM Term: ' . $utm_term . '<br>';
-    // echo 'UTM Content: ' . $utm_content . '<br>';
-    // echo '</pre>';
 }
 ?>
 <html <?php language_attributes(); ?>>

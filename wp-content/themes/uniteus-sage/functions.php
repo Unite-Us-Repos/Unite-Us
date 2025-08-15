@@ -54,7 +54,7 @@ try {
 |
 */
 
-collect(['setup', 'filters', 'custom-post-types', 'class-bootstrap-nav-walker', 'helpers', 'shortcodes', 'class-my-acf-location-post-layout', 'custom-functions'])
+collect(['setup', 'filters', 'custom-post-types', 'helpers', 'shortcodes', 'class-my-acf-location-post-layout', 'custom-functions'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
