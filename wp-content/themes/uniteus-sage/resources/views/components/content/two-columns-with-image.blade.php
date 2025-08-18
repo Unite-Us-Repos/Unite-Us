@@ -142,7 +142,7 @@
                         @endphp
 
                         <div
-                            class="grid grid-cols-1 sm:grid-cols-2 {{ $count > 4 ? 'lg:grid-cols-3' : 'lg:grid-cols-2' }} gap-3 mt-10">
+                            class="grid grid-cols-1 sm:grid-cols-2 {{ $count > 4 ? 'lg:grid-cols-3' : 'lg:grid-cols-2' }} gap-3 mt-4">
                             @foreach ($mini_cards as $card)
                                 <div
                                     class="relative text-center sm:text-left border border-blue-200 rounded-xl p-6 group overflow-hidden">

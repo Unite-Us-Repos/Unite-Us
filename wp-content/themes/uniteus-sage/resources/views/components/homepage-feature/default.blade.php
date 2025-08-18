@@ -93,7 +93,7 @@
 
             {{-- Gradient CTA link --}}
             @if (!empty($cta) && !empty($cta['url']))
-                <p class="mt-5 text-center">
+                <p class="mt-8 mb-0 text-center">
                     <a href="{{ esc_url($cta['url']) }}" target="{{ $cta['target'] ?: '_self' }}"
                         class="inline-block font-semibold underline underline-offset-4 decoration-white/20 hover:decoration-transparent
                             bg-clip-text text-transparent bg-gradient-to-r from-[#56A2FF] via-[#7E6BFF] to-[#C26CFF]">
@@ -101,7 +101,7 @@
                     </a>
                 </p>
             @endif
-            <div class="relative mx-auto mt-10 md:mt-12 max-w-6xl">
+            <div class="relative mx-auto mt-0 max-w-6xl">
                 {{-- Desktop --}}
                 @if (!empty($featuredDesktop['url']))
                     <figure class="relative mx-auto max-w-6xl hidden lg:block">
