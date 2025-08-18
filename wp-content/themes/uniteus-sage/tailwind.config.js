@@ -273,7 +273,8 @@ module.exports = {
     'px-12',
     '!mt-16',
     'lg:flex-row-reverse',
-    '!w-fit'
+    '!w-fit',
+    'max-w-[30rem]',
   ],
   variants: {
     extend: {
