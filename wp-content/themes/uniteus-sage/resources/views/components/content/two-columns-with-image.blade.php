@@ -50,16 +50,14 @@
                 class="flex flex-col items-start @if ('accordion' == $type) lg:col-span-4 @else lg:col-span-{{ $columns[0] }} @endif @if ('center' == $vertical_alignment) justify-center @endif @if ('image' == $type or 'embed' == $type) order-2 @endif text-lg @if ('image' == $type) @if ('text_image' == $layout) lg:order-1 @else lg:order-2 @endif @endif">
                 @if ($section['subtitle'])
                     @if ($section['subtitle_display_as_pill'])
-                        <div
-                            class="
+                        <div class="
             @if ($section['purple_text']) text-electric-purple @else text-action @endif
             @if ($background['color'] == 'light-gradient') bg-none border border-action @else bg-light mix-blend-multiply @endif
-            text-sm py-1 px-4 inline-block mb-6 rounded-full
-            ">
-                        @else
-                            <div class="subtitle mb-6">
-                    @endif
-                    {{ $section['subtitle'] }}
+            text-sm py-1 px-4 inline-block mb-6 rounded-full">
+            @else
+              <div class="subtitle mb-6">
+            @endif
+              {{ $section['subtitle'] }}
             </div>
             @endif
 
@@ -83,17 +81,6 @@
             @if ($section['description'])
                 <div class="description">
                     {!! $section['description'] !!}
-                </div>
-            @endif
-
-            @if ($buttons && 'title_area' == $button_placement)
-                <div class="mb-6 lg:m-0 w-full">
-                    @php
-                        $data = [
-                            'justify' => 'justify-start',
-                        ];
-                    @endphp
-                    @include('components.action-buttons', $data)
                 </div>
             @endif
 
@@ -280,6 +267,17 @@
 
 
             @endisset
+
+            @if ($buttons && 'title_area' == $button_placement)
+                <div class="mb-6 lg:m-0 w-full">
+                    @php
+                        $data = [
+                            'justify' => 'justify-start',
+                        ];
+                    @endphp
+                    @include('components.action-buttons', $data)
+                </div>
+            @endif
 
         </div>
         <div
