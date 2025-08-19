@@ -64,7 +64,7 @@
         @if ($press)
             <div>
                 <div id="ajax-spotlight"
-                    class="mt-10 max-w-lg mx-auto grid gap-8 lg:grid-cols-2 xl:grid-cols-3 lg:max-w-none">
+                    class="mt-10 max-w-lg mx-auto grid gap-8 lg:grid-cols-3 lg:max-w-none">
                     @foreach ($press as $index => $post)
                         @if (str_contains($section_classes, 'bg-dark'))
                             {{-- DARK CARD --}}
