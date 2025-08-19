@@ -85,7 +85,7 @@
 
     @if (str_contains($section_classes, 'bg-dark'))
         {{-- DARK CARD --}}
-        <div class="relative flex flex-col rounded-lg shadow-lg overflow-hidden bg-transparent">
+        <div class="relative flex flex-col overflow-hidden bg-transparent">
             <div class="flex-1 flex flex-col justify-between">
                 <div class="flex-1 pt-7 pb-4">
                     @if (!empty($pressCats) && !is_wp_error($pressCats) && $firstCat)
@@ -147,8 +147,7 @@
         {{-- LIGHT CARD --}}
         <div class="relative flex flex-col rounded-lg shadow-lg overflow-hidden bg-white">
             <div class="">
-                @unless ($isCompanyNews)
-                    @if (has_post_thumbnail($postID))
+               @if (has_post_thumbnail($postID))
                         <img
                             src="{{ get_the_post_thumbnail_url($postID, 'large') }}"
                             alt="{{ esc_attr($post['post_title']) }}"
@@ -159,7 +158,6 @@
                             alt="Fallback Image"
                             class="lazy aspect-video w-full object-cover entered loaded" />
                     @endif
-                @endunless
             </div>
 
             <div class="absolute w-full top-0 p-1 gradient-background rounded-t-lg"></div>
