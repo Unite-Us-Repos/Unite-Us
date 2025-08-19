@@ -11,12 +11,11 @@ namespace App;
  *
  * @return string
  */
-add_filter(
-    'excerpt_more',
-    function () {
-        return sprintf(' &hellip; <a href="%s">%s</a>', get_permalink(), __('', 'sage'));
-    }
-);
+add_filter('excerpt_more', function () {
+  return sprintf('...');
+}, 99);
+// then in Blade: {!! get_the_excerpt() !!}
+
 
 /* ACF Icon Picker */
 function wp_admin_post_type()
@@ -61,19 +60,6 @@ add_filter(
     'acf_icon_path_suffix',
     function ( $path_suffix ) {
         $dir = 'acf';
-        /*
-        $post_type = wp_admin_post_type();
-        $is_global_options = (isset($_GET["page"]) && $_GET["page"] == 'global-options' ) ? true : false;
-
-        if ($post_type === 'network_team'
-            OR $post_type === 'team'
-            OR $post_type === 'presenter'
-            OR $is_global_options
-            ) {
-            $dir = 'social';
-        }
-        */
-
         return '/icons/' . $dir . '/'; // After assets folder you can define folder structure
     }
 );

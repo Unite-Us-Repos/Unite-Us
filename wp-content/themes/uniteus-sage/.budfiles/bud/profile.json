@@ -872,6 +872,35 @@
           }
         }
       },
+      "jsconfig.json": {
+        "name": "jsconfig.json",
+        "path": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/jsconfig.json",
+        "module": {
+          "compilerOptions": {
+            "allowSyntheticDefaultImports": true,
+            "jsx": "preserve",
+            "lib": [
+              "dom",
+              "dom.iterable",
+              "esnext"
+            ],
+            "module": "commonjs",
+            "moduleResolution": "node",
+            "paths": {
+              "@scripts/*": [
+                "./resources/scripts/*"
+              ],
+              "@styles/*": [
+                "./resources/styles/*"
+              ]
+            }
+          },
+          "exclude": [
+            "./public",
+            "./node_modules"
+          ]
+        }
+      },
       "composer.json": {
         "name": "composer.json",
         "path": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/composer.json",
@@ -947,35 +976,6 @@
               ]
             }
           }
-        }
-      },
-      "jsconfig.json": {
-        "name": "jsconfig.json",
-        "path": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/jsconfig.json",
-        "module": {
-          "compilerOptions": {
-            "allowSyntheticDefaultImports": true,
-            "jsx": "preserve",
-            "lib": [
-              "dom",
-              "dom.iterable",
-              "esnext"
-            ],
-            "module": "commonjs",
-            "moduleResolution": "node",
-            "paths": {
-              "@scripts/*": [
-                "./resources/scripts/*"
-              ],
-              "@styles/*": [
-                "./resources/styles/*"
-              ]
-            }
-          },
-          "exclude": [
-            "./public",
-            "./node_modules"
-          ]
         }
       },
       "theme.json": {
@@ -17860,7 +17860,7 @@
       "TMPDIR": "/var/folders/l5/7qr9nzp92jj32s0c117qnptm0000gp/T/",
       "npm_package_scripts_translate": "yarn translate:pot && yarn translate:update",
       "npm_config_init_license": "MIT",
-      "TERM_PROGRAM_VERSION": "1.103.0",
+      "TERM_PROGRAM_VERSION": "1.103.1",
       "npm_package_dependencies__alpinejs_intersect": "^3.13.2",
       "npm_package_scripts_dev": "bud dev",
       "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
@@ -17881,7 +17881,7 @@
       "npm_package_dependencies_glightbox": "^3.2.0",
       "npm_package_scripts_translate_mo": "wp i18n make-mo ./resources/lang ./resources/lang",
       "npm_execpath": "/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/lib/node_modules/yarn/bin/yarn.js",
-      "PATH": "/var/folders/l5/7qr9nzp92jj32s0c117qnptm0000gp/T/yarn--1755536380463-0.7635586037156366:/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/.bin:/Users/sabrina.matthews/.config/yarn/link/node_modules/.bin:/Users/sabrina.matthews/.yarn/bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin/node_modules/npm/bin/node-gyp-bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin",
+      "PATH": "/var/folders/l5/7qr9nzp92jj32s0c117qnptm0000gp/T/yarn--1755569842231-0.9959346466143462:/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/.bin:/Users/sabrina.matthews/.config/yarn/link/node_modules/.bin:/Users/sabrina.matthews/.yarn/bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin/node_modules/npm/bin/node-gyp-bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/sabrina.matthews/.nvm/versions/node/v20.13.1/bin",
       "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"build\"],\"original\":[\"build\"]}",
       "npm_package_dependencies_swiper": "^8.4.5",
       "_": "/Users/sabrina.matthews/Local Sites/unite-us-tailwind/app/public/wp-content/themes/uniteus-sage/node_modules/.bin/bud",
@@ -18160,85 +18160,18 @@
         ]
       ]
     },
-    "@roots/bud-preset-recommend": {
-      "name": "@roots/bud-preset-recommend",
+    "@roots/bud-entrypoints": {
+      "name": "@roots/bud-entrypoints",
       "version": "5.7.7",
       "bud": {
-        "type": "extension",
-        "peers": [
-          "@roots/bud-babel",
-          "@roots/bud-entrypoints",
-          "@roots/bud-postcss"
-        ]
+        "type": "extension"
       },
       "resolvable": true,
       "peerDependencies": {},
-      "requires": [
-        [
-          "@roots/bud-babel",
-          "5.7.7"
-        ],
-        [
-          "@roots/bud-entrypoints",
-          "5.7.7"
-        ],
-        [
-          "@roots/bud-postcss",
-          "5.7.7"
-        ]
-      ]
+      "requires": []
     },
     "@roots/bud-wordpress-manifests": {
       "name": "@roots/bud-wordpress-manifests",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension"
-      },
-      "resolvable": true,
-      "peerDependencies": {},
-      "requires": []
-    },
-    "@roots/bud-babel": {
-      "name": "@roots/bud-babel",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension"
-      },
-      "resolvable": true,
-      "peerDependencies": {
-        "@babel/core": "^7.16.10",
-        "@babel/plugin-proposal-class-properties": "^7.16.0",
-        "@babel/plugin-proposal-object-rest-spread": "^7.16.0",
-        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-        "@babel/plugin-transform-runtime": "^7.16.4",
-        "@babel/preset-env": "^7.16.4",
-        "babel-loader": "^8.2.3",
-        "babel-plugin-add-module-exports": "^1.0.4"
-      },
-      "requires": []
-    },
-    "@roots/bud-wordpress-dependencies": {
-      "name": "@roots/bud-wordpress-dependencies",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension"
-      },
-      "resolvable": true,
-      "peerDependencies": {},
-      "requires": []
-    },
-    "@roots/bud-wordpress-externals": {
-      "name": "@roots/bud-wordpress-externals",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension"
-      },
-      "resolvable": true,
-      "peerDependencies": {},
-      "requires": []
-    },
-    "@roots/bud-entrypoints": {
-      "name": "@roots/bud-entrypoints",
       "version": "5.7.7",
       "bud": {
         "type": "extension"
@@ -18264,6 +18197,73 @@
       "requires": [
         [
           "@roots/bud-babel",
+          "5.7.7"
+        ]
+      ]
+    },
+    "@roots/bud-babel": {
+      "name": "@roots/bud-babel",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "@babel/core": "^7.16.10",
+        "@babel/plugin-proposal-class-properties": "^7.16.0",
+        "@babel/plugin-proposal-object-rest-spread": "^7.16.0",
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+        "@babel/plugin-transform-runtime": "^7.16.4",
+        "@babel/preset-env": "^7.16.4",
+        "babel-loader": "^8.2.3",
+        "babel-plugin-add-module-exports": "^1.0.4"
+      },
+      "requires": []
+    },
+    "@roots/bud-wordpress-externals": {
+      "name": "@roots/bud-wordpress-externals",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
+    },
+    "@roots/bud-wordpress-dependencies": {
+      "name": "@roots/bud-wordpress-dependencies",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": []
+    },
+    "@roots/bud-preset-recommend": {
+      "name": "@roots/bud-preset-recommend",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-babel",
+          "@roots/bud-entrypoints",
+          "@roots/bud-postcss"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": [
+        [
+          "@roots/bud-babel",
+          "5.7.7"
+        ],
+        [
+          "@roots/bud-entrypoints",
+          "5.7.7"
+        ],
+        [
+          "@roots/bud-postcss",
           "5.7.7"
         ]
       ]
