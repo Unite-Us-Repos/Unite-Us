@@ -40,18 +40,15 @@
                             </div>
                         </div>
 
-                        <h2 class="mb-6 h2">
+                        <h2 class="mb-6 text-3xl">
                             {{ get_the_title() }}
                         </h2>
 
-                        <p class="text-xl text-action mt-2">
+                        <p class="text-xl text-action">
                             {{ get_the_date('F j, Y') }}
                         </p>
 
-                        <p class="text-gray-700 mt-4">
-                            {{ get_the_excerpt() }}
-                        </p>
-                        <a href="{{ get_permalink() }}" class="inline-flex button button-solid mt-6 !w-fit">
+                        <a href="{{ get_permalink() }}" class="inline-flex button button-solid !w-fit">
                             <span class="mr-4 inline-block">Read More</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
                                 viewBox="0 0 24 24" stroke="#FFFFFF" stroke-width="2">
