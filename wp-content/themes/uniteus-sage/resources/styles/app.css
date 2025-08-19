@@ -910,7 +910,8 @@ a.button-hollow-gradient:hover {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
    .partnerships .ajax-filters ul ,
-   .company-news .ajax-filters ul {
+   .company-news .ajax-filters ul,
+   .in-the-news .ajax-filters ul {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
