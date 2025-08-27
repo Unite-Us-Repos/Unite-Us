@@ -385,9 +385,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                                                                                         <div class="mb-4 text-sm">
                                                                                             <span
                                                                                                 class="font-bold">{!! $m['name'] !!}</span>
-                                                                                            @if ($m['title'] && $m['name'])
-                                                                                                ,
-                                                                                            @endif
+                                                                                        
                                                                                             <div class="text-sm">
                                                                                                 {!! $m['title'] !!}
                                                                                             </div>
@@ -483,9 +481,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                                                                                         <div class="mb-4 text-sm">
                                                                                             <span
                                                                                                 class="font-bold">{!! $m['name'] !!}</span>
-                                                                                            @if ($m['title'] && $m['name'])
-                                                                                                ,
-                                                                                            @endif
+                                                                                            
                                                                                             <div class="text-sm">
                                                                                                 {!! $m['title'] !!}
                                                                                             </div>
