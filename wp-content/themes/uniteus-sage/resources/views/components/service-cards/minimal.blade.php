@@ -37,7 +37,16 @@
           <div class="w-12 h-12 mb-6 bg-blue-300/25 border border-blue-300/25 rounded-md flex justify-center items-center">
             <span class="text-redish">
               @isset ($card['icon'])
-                <span class="text-redish">{{ svg('acf.'.$card['icon'])->class('w-5 h-5') }}</span>
+                @php $icon = $card['icon'] ?? null; @endphp
+
+                  @if ($icon)
+                 
+                      <img class="w-5 h-5 text-redish"
+                        loading="lazy"
+                        decoding="async" data-src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $icon }}.svg" alt="" />
+                       
+            
+                  @endif
 
               @endisset
             </span>
