@@ -57,54 +57,54 @@ class GreenHouse extends Composer
      *
      * @return string
      */
-    public function getJsonResponse($type = 'jobs', $job_id = 0)
-    {
-        $url = 'https://boards-api.greenhouse.io/v1/boards/' . $this->boardToken . '/' . $type .'?content=true';
-        if ($job_id) {
-            $url .= '/' . $job_id;
-        }
+    // public function getJsonResponse($type = 'jobs', $job_id = 0)
+    // {
+    //     $url = 'https://boards-api.greenhouse.io/v1/boards/' . $this->boardToken . '/' . $type .'?content=true';
+    //     if ($job_id) {
+    //         $url .= '/' . $job_id;
+    //     }
 
-        $request = wp_remote_get($url);
+    //     $request = wp_remote_get($url);
 
-        if (is_wp_error($request)) {
-            return false; // bail out early
-        }
+    //     if (is_wp_error($request)) {
+    //         return false; // bail out early
+    //     }
 
-        $body = wp_remote_retrieve_body($request);
+    //     $body = wp_remote_retrieve_body($request);
 
-        $data = json_decode($body, true);
+    //     $data = json_decode($body, true);
 
-        return $data;
-    }
+    //     return $data;
+    // }
 
-    public function jobsData()
-    {
-        return $this->getJsonResponse('jobs');
-    }
+    // public function jobsData()
+    // {
+    //     return $this->getJsonResponse('jobs');
+    // }
 
-    public function officesData()
-    {
-        return $this->getJsonResponse('offices');
-    }
+    // public function officesData()
+    // {
+    //     return $this->getJsonResponse('offices');
+    // }
 
-    public function departmentsData()
-    {
-        return $this->getJsonResponse('departments');
-    }
+    // public function departmentsData()
+    // {
+    //     return $this->getJsonResponse('departments');
+    // }
 
-    public static function getJob($job_id = 0) {
-        $url = 'https://boards-api.greenhouse.io/v1/boards/uniteus/jobs/' . $job_id;
+    // public static function getJob($job_id = 0) {
+    //     $url = 'https://boards-api.greenhouse.io/v1/boards/uniteus/jobs/' . $job_id;
 
-        $request = wp_remote_get($url);
+    //     $request = wp_remote_get($url);
 
-        if (is_wp_error($request)) {
-            return false; // bail out early
-        }
+    //     if (is_wp_error($request)) {
+    //         return false; // bail out early
+    //     }
 
-        $body = wp_remote_retrieve_body($request);
+    //     $body = wp_remote_retrieve_body($request);
 
-        $data = json_decode($body, true);
+    //     $data = json_decode($body, true);
 
-        return $data;
-    }
+    //     return $data;
+    // }
 }

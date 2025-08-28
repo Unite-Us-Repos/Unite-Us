@@ -1,4 +1,4 @@
-@php
+{{-- @php
 $ppp = 3;
 $state =  isset($_GET['state']) ? $_GET['state'] : '';
 $section_settings = $acf["components"][$index]['layout_settings']['section_settings'];
@@ -140,4 +140,4 @@ jQuery().ready(function($) {
     });
   });
 });
-</script>
+</script> --}}
