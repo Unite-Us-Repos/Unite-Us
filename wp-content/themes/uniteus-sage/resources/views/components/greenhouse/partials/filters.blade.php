@@ -1,4 +1,4 @@
-{{-- <style>
+<style>
 .gh-hide {
   display: none !important;
 }
@@ -113,4 +113,4 @@
 
 </div>
 </div>
-</section> --}}
+</section>

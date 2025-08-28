@@ -1,4 +1,4 @@
-{{-- @php
+@php
         $jobInfo = App\View\Composers\Greenhouse::getJob($job['id']);
         $office_class = '';
         foreach ($jobInfo['offices'] as $index => $office) {
@@ -67,4 +67,4 @@
             <div>
             </div>
           </div>
-        </div> --}}
+        </div>
