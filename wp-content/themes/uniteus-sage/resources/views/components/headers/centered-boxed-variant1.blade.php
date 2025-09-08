@@ -2,7 +2,7 @@
 $section_settings = $acf["components"][$index]['layout_settings']['section_settings'];
 @endphp
 <div class="max-w-7xl mx-auto">
-<section class="relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+<section @isset($section['id']) id="{{ $section['id'] }}" @endisset class="relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
   <!-- Overlay -->
 
   <div class="absolute inset-0 sm:left-8 sm:right-8 sm:rounded-lg overflow-hidden">
@@ -37,7 +37,11 @@ $section_settings = $acf["components"][$index]['layout_settings']['section_setti
         @endisset
 
         @if ($section['subtitle'])
-          <div class="text-action-light-blue font-semibold text-base mb-3">
+          @if ($section['subtitle_display_as_pill'])
+            <div class="gradient-pill text-sm py-1 px-4 inline-block mb-6 rounded-full">
+          @else
+            <div class="text-action-light-blue uppercase font-semibold text-base mb-3">
+          @endif
             {!! $section['subtitle'] !!}
           </div>
         @endif
