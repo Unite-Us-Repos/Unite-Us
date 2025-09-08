@@ -82,8 +82,8 @@ $section_settings = $acf["components"][$index]['layout_settings']['section_setti
     </div>
   </div>
 
-  <div class="absolute inset-0 z-10 flex items-center align-center">
-      <svg width="987" height="543" viewBox="0 0 987 543" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <div class="absolute inset-0 z-10 w-full">
+      <svg class="w-full h-full" width="987" height="543" viewBox="0 0 987 543" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g filter="url(#filter0_f_26186_37821)">
         <g opacity="0.6" filter="url(#filter1_f_26186_37821)">
         <ellipse cx="463.618" cy="314.842" rx="164.779" ry="143.712" fill="#003DB6"/>
