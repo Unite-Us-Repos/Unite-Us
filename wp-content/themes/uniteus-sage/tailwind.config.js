@@ -280,7 +280,8 @@ module.exports = {
     'from-action/90',
     'from-action/100',
     'via-action/60',
-    'bottom-16'
+    'bottom-16',
+    'lg:pb-0'
   ],
   variants: {
     extend: {
