@@ -275,6 +275,12 @@ module.exports = {
     'lg:flex-row-reverse',
     '!w-fit',
     'max-w-[30rem]',
+    'bottom-8',
+    'bottom-12',
+    'from-action/90',
+    'from-action/100',
+    'via-action/60',
+    'bottom-16'
   ],
   variants: {
     extend: {

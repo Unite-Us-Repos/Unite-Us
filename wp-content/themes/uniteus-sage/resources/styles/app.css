@@ -3158,3 +3158,27 @@ a.group:hover{ transition-property: none; }
 
 }
 
+.slider-prev {
+    top: -3rem;
+    right: 5rem;
+}
+.slider-next {
+    top: -3rem;
+    right: 1rem;
+}
+@media (min-width: 1024px) {
+  .slider-prev {
+      top: -3rem;
+  }
+  .slider-next {
+      top: -3rem;
+  }
+}
+.aspect-video-one-to-one iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.aspect-video-one-to-one {
+    aspect-ratio: 1 / 1;
+}
