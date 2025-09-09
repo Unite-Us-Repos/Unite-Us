@@ -8,7 +8,7 @@
     @endif
 
     <section
-        class="component-section relative {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+        class="component-section relative {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif  @if ($section_settings['fullscreen']) fullscreen @endif"">
         <div class="absolute inset-0 sm:left-8 sm:right-8 sm:rounded-lg overflow-hidden">
             @if ($background['image'])
                 <img fetchpriority="high"
@@ -18,7 +18,7 @@
                     sizes="(max-width: 600px) 300px, 1024px" alt="{{ $background['image']['alt'] }}">
             @endif
         </div>
-        <div class="component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif">
+        <div class="component-inner-section">
 
             {{-- Subtitle --}}
             @if (!empty($section['subtitle']))
