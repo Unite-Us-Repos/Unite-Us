@@ -8,8 +8,8 @@
     @endif
 
     <section
-        class="component-section relative {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif  @if ($section_settings['fullscreen']) fullscreen @endif"">
-        <div class="absolute inset-0 sm:left-8 sm:right-8 sm:rounded-lg overflow-hidden">
+        class="component-section relative {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif  @if ($section_settings['fullscreen']) fullscreen !px-0 @endif">
+        <div class="absolute inset-0 overflow-hidden">
             @if ($background['image'])
                 <img fetchpriority="high"
                     class="w-full h-full object-cover @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
