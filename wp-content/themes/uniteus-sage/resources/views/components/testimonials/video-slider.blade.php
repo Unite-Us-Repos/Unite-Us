@@ -10,7 +10,14 @@
     <section
         class="component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
         <div class="component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif">
-
+  <div class="absolute inset-0 sm:left-8 sm:right-8 sm:rounded-lg overflow-hidden">
+    @if ($background['image'])
+      <img fetchpriority="high" class="w-full h-full object-cover @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif" src="{{ $background['image']['sizes']['medium'] }}"
+        srcset="{{ $background['image']['sizes']['medium'] }} 300w, {{ $background['image']['sizes']['2048x2048'] }} 1024w"
+        sizes="(max-width: 600px) 300px, 1024px"
+        alt="{{ $background['image']['alt'] }}">
+    @endif
+  </div>
             {{-- Subtitle --}}
             @if (!empty($section['subtitle']))
                 @if (!empty($section['subtitle_display_as_pill']))
