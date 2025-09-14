@@ -227,17 +227,20 @@
                                                                     @if ($session['video'])
                                                                         Watch On-Demand
                                                                     @else
-																																		 @if ($session['top_left_label'])
-                                                                        {{ $session['top_left_label'] }}
+																																		@if ($session['top_left_label'])
+                                                                        {{ $session['top_left_label'] }}<br/>
                                                                     @endif
 
                                                                         @if ($session_time)
-                                                                            {!! $session_time !!} {{ $abbr }}
+                                                                            {!! $session_time !!} {{ $abbr }}<br/>
                                                                         @endif
                                                                     @endif
 
                                                                     @if ($session['left_label'])
-                                                                        {{ $session['left_label'] }}
+                                                                        {{ $session['left_label'] }}<br/>
+                                                                    @endif
+																																		@if ($session['bottom_left_label'])
+                                                                        {{ $session['bottom_left_label'] }}
                                                                     @endif
                                                                 </span>
                                                             </div>
@@ -300,18 +303,21 @@
                                                                     @if ($session['video'])
                                                                         Watch On-Demand
                                                                     @else
-																																		
-																																		 @if ($session['top_left_label'])
-                                                                        {{ $session['top_left_label'] }}
+
+																																		@if ($session['top_left_label'])
+                                                                        {{ $session['top_left_label'] }}<br/>
                                                                     @endif
 
                                                                         @if ($session_time)
-                                                                            {!! $session_time !!} {{ $abbr }}
+                                                                            {!! $session_time !!} {{ $abbr }}<br/>
                                                                         @endif
                                                                     @endif
 
                                                                     @if ($session['left_label'])
-                                                                        {{ $session['left_label'] }}
+                                                                        {{ $session['left_label'] }}<br/>
+                                                                    @endif
+																																		@if ($session['bottom_left_label'])
+                                                                        {{ $session['bottom_left_label'] }}
                                                                     @endif
                                                                 </span>
                                                             </div>
