@@ -192,7 +192,7 @@
 
                                                 @if ($session['breakout_session'])
                                                     <div class="breakout flex flex-col gap-8 md:grid lg:grid-cols-12">
-                                                        <div class="lg:col-span-6 order-3 lg:order-1">
+                                                        <div class="lg:col-span-7 order-3 lg:order-1">
                                                             <div class="flex gap-6 items-center">
                                                                 @if ($session['video'])
                                                                     <svg width="26" height="26"
@@ -246,7 +246,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="lg:col-span-6 order-1 lg:order-2">
+                                                        <div class="lg:col-span-5 order-1 lg:order-2">
                                                             <div class="flex flex-col items-start lg:items-end gap-6">
                                                                 <div class="">
                                                                     @if ($session['label'])
