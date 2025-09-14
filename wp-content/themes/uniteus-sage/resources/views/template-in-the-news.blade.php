@@ -49,33 +49,37 @@
         </div>
     </section>
     <section id="" class="component-section relative bg-white  padding-collapse ">
-  <div class="absolute bottom-0 border border-blue-900 -ml-4 w-full h-3/6 -mb-[1px] bg-blue-900"></div>
+        <div class="absolute bottom-0 border border-blue-900 -ml-4 w-full h-3/6 -mb-[1px] bg-blue-900"></div>
 
-  <div class="component-inner-section relative ">
-    <div class="bg-light w-full rounded-2xl flex flex-col md:relative md:flex-none md:grid md:grid-cols-2 lg:gap-20">
+        <div class="component-inner-section relative ">
+            <div
+                class="bg-light w-full rounded-2xl flex flex-col md:relative md:flex-none md:grid md:grid-cols-2 lg:gap-20">
 
-      <div class=" p-9 md:p-20 md:pr-0 flex flex-col  justify-center  text-lg  md:order-1  lg:mb-0">
-                
-                <h1 class="mb-5 lg:text-4xl font-bold h2">
-            Sign up for<br>
-the newsletter
-        </h1>
-            
+                <div class=" p-9 md:p-20 md:pr-0 flex flex-col  justify-center  text-lg  md:order-1  lg:mb-0">
 
-        
-              </div>
+                    <h1 class="mb-5 lg:text-4xl font-bold h2">
+                        Sign up for<br>
+                        the newsletter
+                    </h1>
 
-      <div class="relative p-9 md:p-9  flex flex-col  justify-center   md:order-2 ">
-        
-        
-                              <div class="">
-              <iframe src="https://marketing.uniteus.com/l/1001871/2022-12-15/31f9" width="100%" type="text/html" frameborder="0" allowtransparency="true" style="border: 0" title="Join our Newsletter"></iframe>
-    <p class="text-sm mt-2">We care about the protection of your data. Read our <a href="/privacy-policy">Privacy Policy</a>.</p>
+
+
+                </div>
+
+                <div class="relative p-9 md:p-9  flex flex-col  justify-center   md:order-2 ">
+
+
+                    <div class="">
+                        <iframe src="https://marketing.uniteus.com/l/1001871/2022-12-15/31f9" width="100%"
+                            type="text/html" frameborder="0" allowtransparency="true" style="border: 0"
+                            title="Join our Newsletter"></iframe>
+                        <p class="text-sm mt-2">We care about the protection of your data. Read our <a
+                                href="/privacy-policy">Privacy Policy</a>.</p>
+                    </div>
+                </div>
             </div>
-                        </div>
-    </div>
-  </div>
-</section>
+        </div>
+    </section>
 @endsection
 
 <script>

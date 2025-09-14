@@ -2,6 +2,7 @@ module.exports = {
   content: ['./app/**/*.php', './resources/**/*.{php,vue,js}'],
   safelist: [
     'rounded',
+    '!rounded-none',
     'max-w-xs',
     'sm:max-w-none',
     'sm:justify-start',
@@ -281,7 +282,10 @@ module.exports = {
     'from-action/100',
     'via-action/60',
     'bottom-16',
-    'lg:pb-0'
+    'lg:pb-0',
+    'lg:mt-8',
+    'px-12',
+    'lg:!px-0'
   ],
   variants: {
     extend: {
