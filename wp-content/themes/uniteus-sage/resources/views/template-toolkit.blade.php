@@ -162,10 +162,9 @@
                                       @while (have_rows('list')) @php the_row(); @endphp
                                       
                                         @php 
-                                        $item_raw  = get_sub_field('list_item');          // WYSIWYG HTML
+                                        $item_raw  = get_sub_field('list_item');  
                                         $item_html = is_string($item_raw) ? trim($item_raw) : '';
 
-                                        // If the WYSIWYG wrapped it in a single <p>…</p>, unwrap it
                                         if ($item_html !== '') {
                                           $item_html = preg_replace('/^\s*<p>(.*?)<\/p>\s*$/si', '$1', $item_html);
                                         }
@@ -235,6 +234,13 @@
                                 else { $url = $btn ?: ''; $label = ''; $target = '_self'; }
 
                                 $labelOrHost = $label ?: (parse_url($url, PHP_URL_HOST) ?: 'Learn more');
+
+                                $desc_html = is_string($desc) ? trim($desc) : '';
+
+                                if ($desc_html !== '') {
+                                  $desc_html = preg_replace('/^\s*<p>(.*?)<\/p>\s*$/si', '$1', $desc_html);
+                                }
+                                
                               @endphp
 
                               <article id="tile-{{ $slug }}" class="relative bg-white p-4 pt-0">
@@ -248,9 +254,9 @@
                                   <img src="{{ $icons_uri }}/arrow-top-right.svg" alt="" class="w-4 h-4" loading="lazy" decoding="async" />
 
                                 </div>
-
-                                @if ($desc)
-                                  <p class="mt-3 text-sm leading-6 text-gray-700">{{ $desc }}</p>
+                                
+                                @if ($desc_html)
+                                  <p class="mt-3 text-sm leading-6 text-gray-700">{{ $desc_html }}</p>
                                 @endif
 
                                 @if ($url)
