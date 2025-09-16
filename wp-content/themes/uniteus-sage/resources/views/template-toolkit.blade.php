@@ -98,7 +98,7 @@
               <ul id="reportDynamicMenu" class="space-y-2 list-none">
                 @foreach ($menuItems as $i => $item)
                   <li class="report-menu-item">
-                    <a href="#{{ $item['id'] }}" class="flex no-underline px-8 py-4 hover:bg-gray-50 rounded-lg text-brand">
+                    <a href="#{{ $item['id'] }}" class="flex no-underline px-8 py-4 hover:bg-gray-50 text-brand">
                       <span class="block mr-3 text-gray-500 font-semibold">{{ sprintf('%02d.', $loop->iteration) }}</span>
                       <span class="block text-sm font-semibold leading-tight">{{ $item['title'] }}</span>
                     </a>
@@ -163,7 +163,7 @@
                                         @php $item = get_sub_field('list_item'); @endphp
                                         @if ($item)
                                           <label class="flex items-start gap-3">
-                                            <input type="checkbox" class="mt-1 h-4 w-4 rounded border-gray-300">
+                                            <input type="checkbox" class="mt-1.5 h-4 w-4 shrink-0 rounded border-gray-300 align-top toolkit-checkbox">
                                             <span class="text-sm leading-6">{{ $item }}</span>
                                           </label>
                                         @endif
@@ -220,6 +220,7 @@
                                 $title = trim($tile['title'] ?? '');
                                 $desc  = trim($tile['description'] ?? '');
                                 $btn   = $tile['button'] ?? null;
+                                $slug  = sanitize_title($title) ?: 'tile-'.$loop->index;
 
                                 if (is_array($btn)) { $url = $btn['url'] ?? ''; $label = $btn['title'] ?? ''; $target = $btn['target'] ?? '_self'; }
                                 else { $url = $btn ?: ''; $label = ''; $target = '_self'; }
@@ -227,7 +228,7 @@
                                 $labelOrHost = $label ?: (parse_url($url, PHP_URL_HOST) ?: 'Learn more');
                               @endphp
 
-                              <article class="relative bg-white p-4 pt-0">
+                              <article id="tile-{{ $slug }}" class="relative bg-white p-4 pt-0">
                                 <div class="absolute left-0 right-0 -top-[1px] h-2 gradient-border !rounded-none"></div>
 
                                 <div class="pt-8 flex items-start justify-between gap-3">
@@ -277,12 +278,12 @@
                                 $rawFlag     = $row['button'] ?? false;
                                 // If an old link field named "button" still exists as an array, do NOT show the copy button.
                                 $showButton  = is_array($rawFlag) ? false : (bool) $rawFlag;
-
+                                $slug  = sanitize_title($title) ?: 'tile-'.$loop->index;
                                 $label       = 'Copy to Clipboard';
                                 $copyId      = 'tilev2-copy-' . $computed_id . '-' . $loop->index;
                               @endphp
 
-                              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                              <div id="tile-{{ $slug }}" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                                 {{-- Left column: title + (optional) COPY button --}}
                                 <div class="lg:col-span-3 mt-8">
                                   <div class="flex items-start justify-between gap-3">
@@ -311,7 +312,7 @@
 
                                 {{-- Right column: bordered WYSIWYG box (source for copying) --}}
                                 <div class="lg:col-span-9">
-                                  <div id="{{ $copyId }}" class="rounded-2xl border border-blue-200 bg-white p-6 shadow-sm">
+                                  <div id="{{ $copyId }}" class="rounded-2xl border border-blue-200 bg-white p-6 shadow-sm break-words">
                                       {!! $wys !!}
                                   </div>
                                 </div>
@@ -346,7 +347,7 @@
                             {{-- Right: example card --}}
                             <aside class="lg:col-span-4">
                               <div class="relative rounded-2xl border border-gray-200 bg-white shadow-sm p-8 pt-0">
-                                <div class="absolute left-0 right-0 -top-[1px] h-2 gradient-border"></div>
+                                <div class="absolute left-0 right-0 h-2 gradient-border !rounded-bl-none !rounded-br-none"></div>
 
                                 <div class="pt-8 flex items-start justify-between gap-3">
                                   @if($ptitle)
@@ -712,6 +713,121 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+</script>
+<script>
+(function () {
+  const NAV = 80;
+  const isDesktop = () => window.innerWidth >= 1024;
+
+  function parseHash(h) {
+    const raw = (h || location.hash || '').replace(/^#/, '');
+    if (!raw) return { page:null, sub:null };
+    const [page, sub] = raw.split(/[:|]/); // allow : or |
+    return { page: page || null, sub: sub || null };
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const report    = document.querySelector('article.report');
+    if (!report) return;
+
+    const panel     = report.querySelector('#reportMobileMenu');
+    const pages     = Array.from(report.querySelectorAll('.page'));
+    const menuLinks = Array.from(report.querySelectorAll('#reportDynamicMenu a'));
+    if (!pages.length) return;
+
+    const idxOf = (id) => pages.findIndex(p => p.id === id);
+    const setActiveMenu = (i) => {
+      menuLinks.forEach((a, ix) => a.parentElement.classList.toggle('active', ix === i));
+    };
+    const scrollToEl = (el) => {
+      if (!el) return;
+      const extra = isDesktop() ? 10 : 56;
+      const y = el.getBoundingClientRect().top + window.pageYOffset - NAV - extra;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+
+      // brief highlight
+      el.classList.add('ring-2','ring-action');
+      setTimeout(() => el.classList.remove('ring-2','ring-action'), 1200);
+    };
+
+    let current = 0;
+    const show = (i, { pushHash=true, scroll=true } = {}) => {
+      if (i < 0 || i >= pages.length) return;
+      pages.forEach((p, ix) => { p.style.display = (ix === i) ? '' : 'none'; });
+      current = i;
+      setActiveMenu(i);
+      if (pushHash) history.replaceState(null, '', '#'+pages[i].id);
+      if (scroll)   scrollToEl(pages[i]);
+    };
+
+    // Menu clicks (page only)
+    menuLinks.forEach((a, i) => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        show(i);
+        if (panel && !isDesktop()) panel.classList.add('hidden');
+      });
+    });
+
+    // Pager links (already rendered in each page)
+    report.querySelectorAll('.pager-prev, .pager-next').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const target = a.dataset.target;
+        if (!target) return;
+        e.preventDefault();
+        const i = idxOf(target);
+        if (i >= 0) show(i);
+      });
+    });
+
+    // Delegate ANY in-content link like #page:sub to the slider
+    report.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const { page, sub } = parseHash(a.getAttribute('href'));
+      if (!page) return;
+      const i = idxOf(decodeURIComponent(page));
+      if (i === -1) return;
+      e.preventDefault();
+      show(i);
+      if (sub) {
+        // prefer id="tile-<slug>", fallback to plain id
+        const targetEl =
+          report.querySelector('#tile-' + CSS.escape(sub)) ||
+          report.querySelector('#' + CSS.escape(sub));
+        if (targetEl) setTimeout(() => scrollToEl(targetEl), 200);
+      }
+    });
+
+    // Init from URL (supports #page and #page:sub)
+    const { page, sub } = parseHash();
+    const startIdx = page ? idxOf(decodeURIComponent(page)) : 0;
+    pages.forEach(p => p.style.display = 'none');
+    show(startIdx >= 0 ? startIdx : 0, { pushHash:false, scroll:false });
+    if (sub) {
+      const targetEl =
+        report.querySelector('#tile-' + CSS.escape(sub)) ||
+        report.querySelector('#' + CSS.escape(sub));
+      if (targetEl) setTimeout(() => scrollToEl(targetEl), 200);
+    }
+
+    // Keep behavior if hash is changed manually
+    window.addEventListener('hashchange', () => {
+      const { page:hp, sub:hs } = parseHash();
+      if (!hp) return;
+      const i = idxOf(decodeURIComponent(hp));
+      if (i === -1) return;
+      show(i, { pushHash:false });
+      if (hs) {
+        const el =
+          report.querySelector('#tile-' + CSS.escape(hs)) ||
+          report.querySelector('#' + CSS.escape(hs));
+        if (el) setTimeout(() => scrollToEl(el), 200);
+      }
+    });
+  });
+})();
 </script>
 
 @endsection

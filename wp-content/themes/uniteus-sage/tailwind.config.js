@@ -3,6 +3,8 @@ module.exports = {
   safelist: [
     'rounded',
     '!rounded-none',
+    '!rounded-bl-none',
+    '!rounded-br-none',
     'max-w-xs',
     'sm:max-w-none',
     'sm:justify-start',
@@ -285,7 +287,8 @@ module.exports = {
     'lg:pb-0',
     'lg:mt-8',
     'px-12',
-    'lg:!px-0'
+    'lg:!px-0',
+    'break-words'
   ],
   variants: {
     extend: {
