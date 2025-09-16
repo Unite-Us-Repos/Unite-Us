@@ -160,11 +160,20 @@
 
                                     @if (have_rows('list'))
                                       @while (have_rows('list')) @php the_row(); @endphp
-                                        @php $item = get_sub_field('list_item'); @endphp
+                                      
+                                        @php 
+                                        $item_raw  = get_sub_field('list_item');          // WYSIWYG HTML
+                                        $item_html = is_string($item_raw) ? trim($item_raw) : '';
+
+                                        // If the WYSIWYG wrapped it in a single <p>…</p>, unwrap it
+                                        if ($item_html !== '') {
+                                          $item_html = preg_replace('/^\s*<p>(.*?)<\/p>\s*$/si', '$1', $item_html);
+                                        }
+                                        @endphp
                                         @if ($item)
                                           <label class="flex items-start gap-3">
                                             <input type="checkbox" class="mt-1.5 h-4 w-4 shrink-0 rounded border-gray-300 align-top toolkit-checkbox">
-                                            <span class="text-sm leading-6">{{ $item }}</span>
+                                            <span class="text-sm leading-6">{!! $item_html !!}</span>
                                           </label>
                                         @endif
                                       @endwhile
