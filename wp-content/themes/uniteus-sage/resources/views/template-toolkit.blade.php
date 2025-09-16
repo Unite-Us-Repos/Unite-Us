@@ -234,13 +234,6 @@
                                 else { $url = $btn ?: ''; $label = ''; $target = '_self'; }
 
                                 $labelOrHost = $label ?: (parse_url($url, PHP_URL_HOST) ?: 'Learn more');
-
-                                $desc_html = is_string($desc) ? trim($desc) : '';
-
-                                if ($desc_html !== '') {
-                                  $desc_html = preg_replace('/^\s*<p>(.*?)<\/p>\s*$/si', '$1', $desc_html);
-                                }
-                                
                               @endphp
 
                               <article id="tile-{{ $slug }}" class="relative bg-white p-4 pt-0">
@@ -255,8 +248,8 @@
 
                                 </div>
                                 
-                                @if ($desc_html)
-                                  <p class="mt-3 text-sm leading-6 text-gray-700">{{ $desc_html }}</p>
+                                @if ($desc)
+                                  <div class="mt-3 text-sm leading-6 text-gray-700"> {!! $desc !!}</div>
                                 @endif
 
                                 @if ($url)
@@ -276,9 +269,7 @@
                         </section>
                         @endif
 
-                     {{-- LINKED TILES V2 --}}
                       {{-- LINKED TILES V2 --}}
-{{-- LINKED TILES V2 (Copy-to-clipboard; button shown only if ACF true/false "button" is true) --}}
                       @elseif (get_row_layout() === 'linked_tiles_v2')
                         @php $tiles = get_sub_field('tiles') ?: []; @endphp
                         @if ($tiles)
@@ -408,8 +399,6 @@
                   <section class="px-8">
                     <hr class="my-4 border-gray-200">
                     <nav class="toolkit-pager px-0 py-4 pb-8 flex justify-between items-center">
-                  
-
                       <a
                         href="{{ $prevItem ? '#'.$prevItem['id'] : '#' }}"
                         class="pager-prev flex items-center gap-2 text-sm no-underline {{ $prevItem ? 'text-brand hover:text-action' : 'opacity-50 pointer-events-none text-gray-400' }}"
