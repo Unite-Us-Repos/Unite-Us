@@ -124,7 +124,7 @@
           <div :class="isSticky ? 'aside-sticky' : ''" class="aside w-full lg:w-1/3 space-y-8 self-start">
 
             {{-- SPEAKERS --}}
-            @if ($speakers)
+            @if (!empty($speakers['speaker_heading']) || !empty($speakers['all_speakers']))
               <div class="speakers-section border gradient-border rounded-xl p-4">
                 <div class="p-8">
                 @if (!empty($speakers['speaker_heading']))
@@ -164,7 +164,7 @@
             @endif
 
             {{-- ORGANIZATIONS --}}
-            @if ($organizations)
+            @if (!empty($organizations['organization_heading']) || !empty($organizations['all_organizations']))
               <div class="organizations-section border gradient-border rounded-xl p-4">
                 <div class="p-8">
                 @if (!empty($organizations['organization_heading']))
