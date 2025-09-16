@@ -40,7 +40,7 @@
       @if (!empty($section['title']) || !empty($section['description']))
         <div class="text-left max-w-xl pb-8 lg:pb-0">
           @if (!empty($section['title']))
-            <h2>{!! $section['title'] !!}</h2>
+            <h2 class="mb-4">{!! $section['title'] !!}</h2>
           @endif
           @if (!empty($section['description']))
             {!! $section['description'] !!}
@@ -179,7 +179,7 @@
                   {{-- Keep square cards (swap to `aspect-video` for 16:9) --}}
                   <div class="aspect-video-one-to-one bg-slate-200">
                     @if (!empty($thumbUrl))
-                      <img src="{{ $thumbUrl }}" alt="" class="w-full h-full object-cover" loading="lazy">
+                      <img src="{{ $thumbUrl }}" alt="" class="w-full h-full object-none" loading="lazy">
                     @endif
                   </div>
 

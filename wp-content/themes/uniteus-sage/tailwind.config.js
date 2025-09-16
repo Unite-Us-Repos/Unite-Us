@@ -288,7 +288,8 @@ module.exports = {
     'lg:mt-8',
     'px-12',
     'lg:!px-0',
-    'break-words'
+    'break-words',
+    'object-none'
   ],
   variants: {
     extend: {
