@@ -192,7 +192,7 @@
                   {{-- Keep square cards (swap to `aspect-video` for 16:9) --}}
                   <div class="aspect-video-one-to-one bg-slate-200">
                     @if (!empty($thumbUrl))
-                      <img src="{{ $thumbUrl }}" alt="" class="w-full h-full object-none" loading="lazy">
+                      <img src="{{ $thumbUrl }}" alt="" class="w-full h-full object-cover" loading="lazy">
                     @endif
                   </div>
 
