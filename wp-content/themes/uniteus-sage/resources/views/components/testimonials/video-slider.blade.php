@@ -3,6 +3,16 @@
     $enableLoop = count($testimonials) > 1 ? 'true' : 'false';
   @endphp
 
+{{-- put this near the top where you set $enableLoop --}}
+@php
+  $total           = count($testimonials);
+  $enableLoop      = $total > 1 ? 'true' : 'false';
+  $slidesMobile    = 1;                 // phones stay 1-up
+  $slidesTablet    = min(2, $total);    // 2-up max on tablet
+  $slidesDesktop   = min(4, $total);    // up to 4 on desktop; less if fewer slides
+  $loopAdditional  = max(0, $slidesDesktop - 1); // helps smooth the loop with few slides
+@endphp
+
   @if (!empty($background['has_divider']))
     @includeIf('dividers.waves')
   @endif
@@ -54,7 +64,7 @@
         x-data="{ swiper: null }"
         x-init="swiper = new Swiper($refs.container, {
           loop: {{ $enableLoop }},
-          watchOverflow: true,
+          watchOverflow: false,             // <- allow looping even when slidesPerView == total
           autoHeight: false,
           speed: 500,
           pagination: { el: '.swiper-pagination', clickable: true },
@@ -63,14 +73,17 @@
           preventClicks: false,
           preventClicksPropagation: false,
 
-          // show 1/2/4, move 1 at a time, infinite loop
-          slidesPerView: 1,
+          slidesPerView: {{ $slidesMobile }},
           slidesPerGroup: 1,
           spaceBetween: 0,
+
+          // optional: smoother loops with small counts
+          loopAdditionalSlides: {{ $loopAdditional }},
+
           breakpoints: {
-            640:  { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 0  },
-            768:  { slidesPerView: 2, slidesPerGroup: 1, spaceBetween: 20 },
-            1024: { slidesPerView: 4, slidesPerGroup: 1, spaceBetween: 20 },
+            640:  { slidesPerView: {{ $slidesMobile }},  slidesPerGroup: 1, spaceBetween: 0  },
+            768:  { slidesPerView: {{ $slidesTablet }},  slidesPerGroup: 1, spaceBetween: 20 },
+            1024: { slidesPerView: {{ $slidesDesktop }}, slidesPerGroup: 1, spaceBetween: 20 },
           },
         })"
       >
