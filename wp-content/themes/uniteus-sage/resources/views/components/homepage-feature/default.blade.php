@@ -3,40 +3,71 @@
         'collapse_padding' => false,
         'fullscreen' => '',
     ];
+
+    // ---- Helpers to extract src + intrinsic dimensions (to stabilize layout & allow native lazy) ----
+    $bgImg = $background['image'] ?? null;
+    $bgSrcMedium = $bgImg['sizes']['medium'] ?? ($bgImg['url'] ?? null);
+    $bgSrcLarge  = $bgImg['sizes']['2048x2048'] ?? $bgSrcMedium;
+    $bgW         = $bgImg['width']  ?? null; // full-size dims (good enough for aspect ratio)
+    $bgH         = $bgImg['height'] ?? null;
+
+    // Featured (mobile/tablet)
+    $featured         = $featured_image ?? ($section['featured_image'] ?? null);
+    $featuredSrc      = $featured['sizes']['1536x1536'] ?? ($featured['sizes']['large'] ?? ($featured['url'] ?? null));
+    $featuredW        = $featured['width']  ?? null;
+    $featuredH        = $featured['height'] ?? null;
+
+    // Featured (desktop)
+    $featuredDesktop         = $featured_image_desktop ?? ($section['featured_image_desktop'] ?? null);
+    $featuredDesktopSrc      = $featuredDesktop['sizes']['1536x1536'] ?? ($featuredDesktop['sizes']['large'] ?? ($featuredDesktop['url'] ?? null));
+    $featuredDesktopW        = $featuredDesktop['width']  ?? null;
+    $featuredDesktopH        = $featuredDesktop['height'] ?? null;
+
+    // Below-the-fold icon
+    $icon         = $icon ?? ($section['icon'] ?? null);
+    $iconSrc      = $icon['sizes']['1536x1536'] ?? ($icon['sizes']['large'] ?? ($icon['url'] ?? null));
+    $iconW        = $icon['width']  ?? null;
+    $iconH        = $icon['height'] ?? null;
 @endphp
+
 @if ($background['has_divider'])
     @includeIf('dividers.waves')
 @endif
 
 <section @isset($section['id']) id="{{ $section['id'] }}" @endisset
     class="component-section homepage-feature-section relative {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+
+    {{-- Background image (deferred + intrinsic size). This section is typically *below* the hero; safe to lazy. --}}
     <div class="absolute inset-0">
-        @if ($background['image'])
-            <img fetchPriority="high"
-                class="w-full h-full @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
-                src="{{ $background['image']['sizes']['medium'] }}"
-                srcset="{{ $background['image']['sizes']['medium'] }} 300w, {{ $background['image']['sizes']['2048x2048'] }} 1024w"
-                sizes="(max-width: 600px) 300px, 1024px" alt="{{ $background['image']['alt'] }}">
+        @if ($bgImg)
+            <img loading="lazy" decoding="async"
+                class="w-full h-full object-cover @if ('top' == ($background['position'] ?? '')) object-top @endif @if ('bottom' == ($background['position'] ?? '')) object-bottom @endif"
+                src="{{ $bgSrcMedium }}"
+                srcset="{{ $bgSrcMedium }} 300w, {{ $bgSrcLarge }} 1024w"
+                sizes="(max-width: 600px) 300px, 1024px"
+                @if($bgW) width="{{ $bgW }}" @endif @if($bgH) height="{{ $bgH }}" @endif
+                alt="{{ $bgImg['alt'] ?? '' }}">
         @endif
     </div>
+
     <div class="relative z-10 component-inner-section">
         <div class="text-center mb-7">
             @if (!empty($section['subtitle']))
                 @php
                     $isPill = !empty($section['subtitle_display_as_pill']);
-                    $bg = $background['color'] ?? '';
+                    $bgc = $background['color'] ?? '';
 
                     if ($isPill) {
                         // base pill classes
                         $classes = 'text-sm py-1 px-4 inline-block mb-6 rounded-full ';
 
-                        if ($bg === 'dark') {
+                        if ($bgc === 'dark') {
                             // dark background variant
                             $classes .= 'text-white bg-light/10';
                         } else {
                             // non-dark variants share text color
                             $classes .= 'text-action ';
-                            $classes .= $bg === 'light-gradient' ? 'bg-white' : 'bg-light mix-blend-multiply';
+                            $classes .= $bgc === 'light-gradient' ? 'bg-white' : 'bg-light mix-blend-multiply';
                         }
                     } else {
                         // non-pill style
@@ -54,36 +85,29 @@
             </div>
         </div>
     </div>
+
     <div class="z-10 relative">
         @if ($background['overlay'])
-            <div
-                class="absolute bottom-0 -mb-[1px] w-full h-[88%] border border-blue-900 sm:h-3/4 lg:h-3/6 bg-blue-900">
-            </div>
+            <div class="absolute bottom-0 -mb-[1px] w-full h-[88%] border border-blue-900 sm:h-3/4 lg:h-3/6 bg-blue-900"></div>
         @endif
+
         <div class="component-inner-section">
             @php
                 // Pull from locals or from the ACF group on $section
                 $pillItems = $pills ?? ($section['pills'] ?? []);
                 $cta = $link ?? ($section['link'] ?? null);
-                $featured = $featured_image ?? ($section['featured_image'] ?? null);
-                $featuredDesktop = $featured_image_desktop ?? ($section['featured_image_desktop'] ?? null);
-                $icon = $icon ?? ($section['icon'] ?? null);
+                $icons = $featured_icons ?? ($section['featured_icons'] ?? []);
             @endphp
 
             {{-- Pills row --}}
             @if (!empty($pillItems))
-                <div
-                    class="mx-auto mt-2 flex max-w-3xl flex-wrap items-center justify-center gap-x-3 gap-y-3 sm:justify-center">
+                <div class="mx-auto mt-2 flex max-w-3xl flex-wrap items-center justify-center gap-x-3 gap-y-3 sm:justify-center">
                     @foreach ($pillItems as $pill)
-                        @php
-                            // ACF "Dot Color" field is named bg_image in your JSON (color picker returns hex)
-                            $dot = $pill['bg_image'] ?: '#2F71F4';
-                        @endphp
+                        @php $dot = $pill['bg_image'] ?: '#2F71F4'; @endphp
                         <div>
                             <span
                                 class="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-white/90 ring-1 ring-inset ring-white/15 backdrop-blur-[1px] hover:bg-white/15 transition-colors">
-                                <span class="mr-2 inline-block h-2.5 w-2.5 rounded-full"
-                                    style="background-color: {{ $dot }}"></span>
+                                <span class="mr-2 inline-block h-2.5 w-2.5 rounded-full" style="background-color: {{ $dot }}"></span>
                                 {!! $pill['title'] ?? '' !!}
                             </span>
                         </div>
@@ -101,75 +125,80 @@
                     </a>
                 </p>
             @endif
+
             <div class="relative mx-auto mt-0 max-w-6xl">
-                {{-- Desktop --}}
-                @if (!empty($featuredDesktop['url']))
+                {{-- Desktop (deferred) --}}
+                @if (!empty($featuredDesktopSrc))
                     <figure class="relative mx-auto max-w-6xl hidden lg:block">
-                    <img
-                        class="lazy w-full h-auto object-cover"
-                        data-src="{{ $featuredDesktop['sizes']['1536x1536'] ?? ($featuredDesktop['sizes']['large'] ?? $featuredDesktop['url']) }}"
-                        alt="{{ $featuredDesktop['alt'] ?? ($featured['alt'] ?? strip_tags($section['title'] ?? '')) }}">
+                        <img loading="lazy" decoding="async"
+                            class="w-full h-auto object-cover"
+                            src="{{ $featuredDesktopSrc }}"
+                            @if($featuredDesktopW) width="{{ $featuredDesktopW }}" @endif @if($featuredDesktopH) height="{{ $featuredDesktopH }}" @endif
+                            alt="{{ $featuredDesktop['alt'] ?? ($featured['alt'] ?? strip_tags($section['title'] ?? '')) }}">
                     </figure>
                 @endif
 
-                {{-- Mobile / tablet --}}
-                @if (!empty($featured['url']))
+                {{-- Mobile / tablet (deferred) --}}
+                @if (!empty($featuredSrc))
                     <figure class="relative mx-auto max-w-6xl lg:hidden">
-                    <img
-                        class="lazy w-full h-auto object-cover"
-                        data-src="{{ $featured['sizes']['1536x1536'] ?? ($featured['sizes']['large'] ?? $featured['url']) }}"
-                        alt="{{ $featured['alt'] ?? ($featuredDesktop['alt'] ?? strip_tags($section['title'] ?? '')) }}">
+                        <img loading="lazy" decoding="async"
+                            class="w-full h-auto object-cover"
+                            src="{{ $featuredSrc }}"
+                            @if($featuredW) width="{{ $featuredW }}" @endif @if($featuredH) height="{{ $featuredH }}" @endif
+                            alt="{{ $featured['alt'] ?? ($featuredDesktop['alt'] ?? strip_tags($section['title'] ?? '')) }}">
                     </figure>
                 @endif
 
-                 {{-- Desktop-only: featured icons repeater --}}
-                    @php
-                        $icons = $featured_icons ?? ($section['featured_icons'] ?? []);
-                    @endphp
-                    @if (!empty($icons))
-                        <div class="hidden lg:flex">
+                {{-- Desktop-only: featured icons repeater (deferred + intrinsic dims where possible) --}}
+                @if (!empty($icons))
+                    <div class="hidden lg:flex">
                         @foreach ($icons as $row)
                             @php
-                            // subfield assumed 'icon' (image array or ID)
-                            $iconImg    = $row['icon'] ?? null;
-                            $src     = '';
-                            $altText = '';
+                                $iconImg  = $row['icon'] ?? null; // array or ID
+                                $src      = '';
+                                $altText  = '';
+                                $iw = $ih = null;
 
-                            if (is_array($iconImg) && !empty($iconImg['url'])) {
-                                $src     = $iconImg['sizes']['medium'] ?? $iconImg['url'];
-                                $altText = $iconImg['alt'] ?? '';
-                            } elseif (!empty($iconImg)) { // ID fallback
-                                $src     = wp_get_attachment_image_url($iconImg, 'medium');
-                                $altText = get_post_meta($iconImg, '_wp_attachment_image_alt', true) ?: '';
-                            }
+                                if (is_array($iconImg) && !empty($iconImg['url'])) {
+                                    // Prefer a named size when available
+                                    $src     = $iconImg['sizes']['medium'] ?? $iconImg['url'];
+                                    $altText = $iconImg['alt'] ?? '';
+                                    $iw      = $iconImg['width']  ?? null;
+                                    $ih      = $iconImg['height'] ?? null;
+                                } elseif (!empty($iconImg)) { // ID fallback
+                                    $arr = wp_get_attachment_image_src($iconImg, 'medium');
+                                    if ($arr) { $src = $arr[0]; $iw = $arr[1] ?? null; $ih = $arr[2] ?? null; }
+                                    $altText = get_post_meta($iconImg, '_wp_attachment_image_alt', true) ?: '';
+                                }
                             @endphp
 
                             @if (!empty($src))
-                            <div class="featured-icon-img shrink-0 absolute">
-                                <img class="lazy" data-src="{{ $src }}" alt="{{ esc_attr($altText) }}">
-                            </div>
+                                <div class="featured-icon-img shrink-0 absolute">
+                                    <img loading="lazy" decoding="async" src="{{ $src }}" @if($iw) width="{{ $iw }}" @endif @if($ih) height="{{ $ih }}" @endif alt="{{ esc_attr($altText) }}">
+                                </div>
                             @endif
                         @endforeach
-                        </div>
-                    @endif
-                {{-- Icon below --}}
-                @if (!empty($icon) && !empty($icon['url']))
+                    </div>
+                @endif
+
+                {{-- Icon below (deferred) --}}
+                @if (!empty($iconSrc))
                     <figure class="absolute mx-auto homepage-icon">
-                        <img class="lazy w-full h-auto object-cover"
-                            data-src="{{ $icon['sizes']['1536x1536'] ?? ($icon['sizes']['large'] ?? $icon['url']) }}"
-                            alt="{{ $icon['alt'] ?: strip_tags($section['title'] ?? '') }}">
+                        <img loading="lazy" decoding="async" class="w-full h-auto object-cover"
+                            src="{{ $iconSrc }}"
+                            @if($iconW) width="{{ $iconW }}" @endif @if($iconH) height="{{ $iconH }}" @endif
+                            alt="{{ $icon['alt'] ?? strip_tags($section['title'] ?? '') }}">
                     </figure>
                 @endif
             </div>
+
             <div class="bottom-white-divider">
-                <svg class="w-full h-full" width="1358" height="80" preserveAspectRatio="none" viewBox="0 0 1358 80"
-                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-full h-full" width="1358" height="80" preserveAspectRatio="none" viewBox="0 0 1358 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M0 9.85705L56.625 15.7023C113.25 21.5475 226.5 33.238 339.75 27.3928C453 21.5475 566.25 -1.83344 679.5 0.114975C792.75 2.06339 906 29.3412 1019.25 35.1865C1132.5 41.0317 1245.75 25.4444 1302.37 17.6507L1359 9.85705V80H1302.37C1245.75 80 1132.5 80 1019.25 80C906 80 792.75 80 679.5 80C566.25 80 453 80 339.75 80C226.5 80 113.25 80 56.625 80H0V9.85705Z"
                         fill="#FFFFFF"></path>
                     <defs>
-                        <linearGradient x1="679.5" y1="0" x2="679.5" y2="80"
-                            gradientUnits="userSpaceOnUse">
+                        <linearGradient x1="679.5" y1="0" x2="679.5" y2="80" gradientUnits="userSpaceOnUse">
                             <stop stop-color="#EEF5FC"></stop>
                             <stop offset="1" stop-color="#EEF5FC"></stop>
                         </linearGradient>
@@ -177,8 +206,6 @@
                 </svg>
             </div>
         </div>
-    </div>
-    </div>
     </div>
 </section>
 @if ($background['divider_bottom'])
