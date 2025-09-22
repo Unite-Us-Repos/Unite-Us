@@ -41,7 +41,7 @@
                         </div>
 
                         <h2 class="mb-6 text-3xl">
-                            {{ get_the_title() }}
+                            {!! get_the_title() !!}
                         </h2>
 
                         <p class="text-xl text-action">
