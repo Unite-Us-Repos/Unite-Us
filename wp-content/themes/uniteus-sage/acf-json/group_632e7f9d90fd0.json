@@ -292,6 +292,36 @@
                     "style": ""
                 },
                 {
+                    "key": "field_68d3751fc9c29",
+                    "label": "Slider",
+                    "name": "slider",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_632e7f9d9b1d0",
+                                "operator": "==",
+                                "value": "article-testimonials"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1,
+                    "style": ""
+                },
+                {
                     "key": "field_632e7f9d9b1ff",
                     "label": "Cards",
                     "name": "cards",
@@ -1021,5 +1051,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1755452228
+    "modified": 1758688989
 }

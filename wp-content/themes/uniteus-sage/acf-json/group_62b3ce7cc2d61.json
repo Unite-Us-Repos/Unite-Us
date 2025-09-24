@@ -106,7 +106,9 @@
                     "placeholder": "",
                     "allow_custom": 0,
                     "search_placeholder": "",
-                    "min": ""
+                    "min": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_64ae648ebe31f",
@@ -324,6 +326,28 @@
                     "endpoint": 0,
                     "no_preference": 0,
                     "selected": 0
+                },
+                {
+                    "key": "field_68d3501e19c80",
+                    "label": "Enable Smile",
+                    "name": "enable_smile",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1,
+                    "style": ""
                 },
                 {
                     "key": "field_62b57e6256371",
@@ -630,6 +654,9 @@
                     "layout": "block",
                     "acfe_seamless_style": 0,
                     "acfe_group_modal": 0,
+                    "acfe_group_modal_close": 0,
+                    "acfe_group_modal_button": "",
+                    "acfe_group_modal_size": "large",
                     "sub_fields": [
                         {
                             "key": "field_680fae8cca40b",
@@ -670,10 +697,7 @@
                             "height": "",
                             "allow_in_bindings": 0
                         }
-                    ],
-                    "acfe_group_modal_close": 0,
-                    "acfe_group_modal_button": "",
-                    "acfe_group_modal_size": "large"
+                    ]
                 },
                 {
                     "key": "field_682558b58689e",
@@ -955,5 +979,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747342563
+    "modified": 1758688393
 }

@@ -359,11 +359,12 @@ module.exports = {
     },
     {
       "plugin": {
-        "name": "MergedManifestPlugin"
+        "name": "WordPressDependenciesWebpackPlugin",
+        "stage": null
       },
-      "file": "entrypoints.json",
-      "entrypointsName": "entrypoints.json",
-      "wordpressName": "wordpress.json"
+      "manifest": {},
+      "usedDependencies": {},
+      "fileName": "wordpress.json"
     },
     {
       "name": "WordPressExternalsWebpackPlugin",
@@ -374,12 +375,11 @@ module.exports = {
     },
     {
       "plugin": {
-        "name": "WordPressDependenciesWebpackPlugin",
-        "stage": null
+        "name": "MergedManifestPlugin"
       },
-      "manifest": {},
-      "usedDependencies": {},
-      "fileName": "wordpress.json"
+      "file": "entrypoints.json",
+      "entrypointsName": "entrypoints.json",
+      "wordpressName": "wordpress.json"
     }
   ],
   "entry": {

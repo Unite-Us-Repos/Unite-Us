@@ -289,7 +289,8 @@ module.exports = {
     'px-12',
     'lg:!px-0',
     'break-words',
-    'object-none'
+    'object-none',
+    'h-[120px]', 'md:h-[140px]', 'lg:h-[160px]',
   ],
   variants: {
     extend: {
