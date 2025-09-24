@@ -510,6 +510,9 @@ body .map-wrap {
   @apply text-white bg-action border-action
   hover:border-action-hover hover:bg-action-hover hover:text-white;
 }
+.button-solid img {
+    opacity: 0.25;
+}
 .button-solid-purple {
   @apply text-white bg-electric-purple border-electric-purple
   hover:bg-electric-purple-hover hover:border-electric-purple-hover hover:text-white;
