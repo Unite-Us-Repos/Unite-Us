@@ -168,7 +168,7 @@
             window.addEventListener('resize', onResize);
           "
         >
-          <div class="testimonial-slider relative">
+          <div class="article-slider relative">
             <div class="swiper testimonials" x-ref="container">
               <div class="swiper-wrapper pb-10">
                 @foreach ($cards as $i => $card)
@@ -218,7 +218,7 @@
             </div>
           </div>
 
-          <div class="swiper-pagination testimonial-pagination mt-8 flex justify-center" x-ref="pagination"></div>
+          <div class="swiper-pagination article-pagination mt-8 flex justify-center" x-ref="pagination"></div>
         </div>
 
       @else
@@ -294,14 +294,14 @@
 @endif
 
 <style>
-  .testimonial-slider .swiper { overflow: visible; } /* allow off-right peek */
+  .article-slider .swiper { overflow: visible; } /* allow off-right peek */
 
   /* Equal-height for slides (only inside testimonial slider) */
-  .testimonial-slider .swiper-wrapper {
+  .article-slider .swiper-wrapper {
     height: auto !important;
     align-items: stretch !important;
   }
-  .testimonial-slider .swiper-slide {
+  .article-slider .swiper-slide {
     display: flex !important;
     height: auto !important;
   }
@@ -339,14 +339,14 @@
     transition: all 0.5s linear;
     pointer-events: none;
   }
-  
-  .testimonial-slider .service-icon-cards,
-  .testimonial-slider .service-icon-cards > .bg-transparent {
+
+  .article-slider .service-icon-cards,
+  .article-slider .service-icon-cards > .bg-transparent {
     height: 100%;
   }
 
   /* Hover fill */
-  .testimonial-slider .article-card:hover {
+  .article-slider .article-card:hover {
     background:
       linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)),
       linear-gradient(0deg, rgba(47, 113, 244, 0.08), rgba(47, 113, 244, 0.08)),
@@ -354,7 +354,7 @@
   }
 
   /* Stack content, keep baseline tidy */
-  .testimonial-slider .article-card .relative {
+  .article-slider .article-card .relative {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
@@ -363,13 +363,17 @@
   }
 
   /* Pagination dots (native Swiper), scoped */
-  .testimonial-slider .swiper-pagination-bullets.swiper-pagination-horizontal {
+  .article-pagination.swiper-pagination {
+    display: flex;
+    align-items: center;
+  }
+  .article-pagination .swiper-pagination-bullets.swiper-pagination-horizontal {
     position: static;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .testimonial-slider .swiper-pagination-bullet {
+  .article-pagination .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
     margin: 0 10px !important;
@@ -380,7 +384,7 @@
     box-shadow: none;
     cursor: pointer;
   }
-  .testimonial-slider .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  .article-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
     width: 20px;
     height: 20px;
     background: transparent;
@@ -388,7 +392,7 @@
     position: relative;
     opacity: 1;
   }
-  .testimonial-slider .swiper-pagination-bullet.swiper-pagination-bullet-active::after {
+  .article-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active::after {
     content: "";
     position: absolute;
     inset: 1px;
@@ -396,11 +400,11 @@
     background: rgba(157, 180, 197, 0.8);
     opacity: 1;
   }
-  .testimonial-slider .swiper-pagination-bullet:focus-visible {
+  .article-pagination .swiper-pagination-bullet:focus-visible {
     outline: 2px solid rgba(157, 180, 197, 0.9);
     outline-offset: 2px;
   }
-  .testimonial-slider .swiper-pagination-bullet:hover {
+  .article-pagination .swiper-pagination-bullet:hover {
     background: rgba(157, 180, 197, 0.45);
   }
 
