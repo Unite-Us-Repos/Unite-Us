@@ -626,6 +626,9 @@ a.button-hollow-gradient:hover {
   fill: #fff;
   opacity: 0.25;
 }
+.button-hollow-gradient img {
+  opacity: 1;
+}
 .button-text {
   text-underline-offset: 3px;
 

@@ -727,9 +727,8 @@ if ($components) {
     </div>
 </section>
 
-@push('scripts')
-<script>
 
+<script>
 
 document.addEventListener('DOMContentLoaded', function () {
   const desktopMenuWrapperOuter = document.querySelector('.report-menu-wrapper-outer');
@@ -1116,5 +1115,5 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 });
+
 </script>
-@endpush
