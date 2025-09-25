@@ -55,7 +55,7 @@
             @if ($background['color'] == 'light-gradient') bg-none border border-action @else bg-light mix-blend-multiply @endif
             text-sm py-1 px-4 inline-block mb-6 rounded-full">
             @else
-              <div class="subtitle mb-6">
+              <div class="subtitle mb-6 @if ($background['color'] == 'dark') text-white @endif">
             @endif
               {{ $section['subtitle'] }}
             </div>
@@ -69,17 +69,17 @@
             @if ($section['title'])
 
                 @if ($section['is_header'] === 'h1')
-                    <h1 class="mb-6 h2">{!! $section['title'] !!}</h1>
+                    <h1 class="mb-6 h2 @if ($background['color'] == 'dark') text-white @endif">{!! $section['title'] !!}</h1>
                 @elseif ($section['is_header'] === 'h2')
-                    <h2 class="mb-6 h2">{!! $section['title'] !!}</h2>
+                    <h2 class="mb-6 h2 @if ($background['color'] == 'dark') text-white @endif">{!! $section['title'] !!}</h2>
                 @else
-                    <div class="mb-6 h2">{!! $section['title'] !!}</div>
+                    <div class="mb-6 h @if ($background['color'] == 'dark') text-white @endif">{!! $section['title'] !!}</div>
                 @endif
 
             @endif
 
             @if ($section['description'])
-                <div class="description">
+                <div class="description @if ($background['color'] == 'dark') text-white @endif">
                     {!! $section['description'] !!}
                 </div>
             @endif
