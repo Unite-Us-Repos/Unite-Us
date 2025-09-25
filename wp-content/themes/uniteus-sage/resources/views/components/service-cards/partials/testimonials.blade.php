@@ -3,7 +3,7 @@
   x-data="{swiper: null}"
   x-init="swiper = new Swiper($refs.container, {
     loop: false,
-    autoHeight: false,
+    autoHeight: true,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
