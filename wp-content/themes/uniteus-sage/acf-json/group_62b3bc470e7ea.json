@@ -62,7 +62,8 @@
                         "grid-grayscale": "Grid with grayscale icons",
                         "grid-hero": "Grid with hero",
                         "carousel": "Carousel",
-                        "network-carousel": "Network Carousel"
+                        "network-carousel": "Network Carousel",
+                        "stacked-row": "Stacked Row"
                     },
                     "default_value": "default",
                     "return_format": "value",
@@ -71,9 +72,12 @@
                     "prepend": "",
                     "append": "",
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
                     "allow_custom": 0,
                     "search_placeholder": "",
                     "min": ""
@@ -113,7 +117,9 @@
                     "placeholder": "",
                     "allow_custom": 0,
                     "search_placeholder": "",
-                    "min": ""
+                    "min": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_62b3bc5f482b3",
@@ -273,7 +279,9 @@
                             "allow_custom": 0,
                             "search_placeholder": "",
                             "min": "",
-                            "parent_repeater": "field_62b3d8b1ef684"
+                            "parent_repeater": "field_62b3d8b1ef684",
+                            "create_options": 0,
+                            "save_options": 0
                         },
                         {
                             "key": "field_62b3d929ef686",
@@ -369,5 +377,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1730758948
+    "modified": 1758777524
 }
