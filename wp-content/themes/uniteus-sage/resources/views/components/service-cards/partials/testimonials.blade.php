@@ -17,7 +17,7 @@
       <div class="swiper-slide relative">
         <blockquote class="testimonial-quote">
           <div class="flex flex-col lg:grid lg:grid-cols-12">
-            <div class="col-span-7">
+            <div class="col-span-8">
               <div class="text-2xl md:text-3xl md:leading-normal">
                 <div class="quotes">{!! $testimonial['quote'] !!}</div>
               </div>
@@ -39,13 +39,13 @@
                 </div>
               </footer>
             </div>
-            <div class="col-span-5 flex justify-end">
+            <div class="col-span-4 flex justify-end">
               @if ($testimonial['company_logo'])
-                <div class="mt-8">
-                    <img class="w-full h-auto max-w-xs max-h-16"
+          
+                    <img class="w-full h-auto max-w-xs"
                       src="{{ $testimonial['company_logo']['sizes']['medium'] }}"
                       alt="" />
-                </div>
+       
               @endif
             </div>
           </div>
