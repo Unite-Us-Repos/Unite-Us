@@ -16,7 +16,7 @@
       @foreach ($testimonials as $index => $testimonial)
       <div class="swiper-slide relative">
         <blockquote class="testimonial-quote">
-          <div class="flex flex-col lg:grid lg:grid-cols-12">
+          <div class="flex flex-col items-start lg:grid lg:grid-cols-12">
             <div class="col-span-8">
               <div class="text-2xl md:text-3xl md:leading-normal">
                 <div class="quotes">{!! $testimonial['quote'] !!}</div>

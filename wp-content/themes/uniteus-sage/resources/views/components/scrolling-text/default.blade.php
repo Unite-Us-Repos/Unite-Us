@@ -6,21 +6,16 @@
     @foreach ($scrolling_items as $item)
       <li
         class="relative inline-flex items-center gap-4
-               [&>p]:m-0 [&>figure]:m-0
-               [&_p]:inline-block [&_figure]:inline-block [&_img]:inline-block
-               [&>*]:shrink-0"
+              [&>p]:m-0 [&>figure]:m-0
+              [&_p]:inline-flex [&_p]:items-center [&_p]:gap-3
+              [&_img]:inline-block [&_img]:h-[1.25em] [&_img]:w-auto [&_img]:align-middle
+              [&>*]:shrink-0"
       >
-        {{-- Render WYSIWYG exactly as entered --}}
         {!! $item['title'] !!}
-
         @if (!empty($item['link']))
-          {{-- If you want the whole item clickable WITHOUT breaking inner links: --}}
-          <button
-            type="button"
-            class="absolute inset-0 z-10"
-            aria-label="Open item"
-            @click="if(!$event.target.closest('a')) window.open('{{ $item['link'] }}','_blank')"
-          ></button>
+          <button type="button" class="absolute inset-0 z-10"
+                  @click="if(!$event.target.closest('a')) window.open('{{ $item['link'] }}','_blank')"
+                  aria-label="Open item"></button>
         @endif
       </li>
     @endforeach
