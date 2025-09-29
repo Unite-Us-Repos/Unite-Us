@@ -239,10 +239,40 @@
                             "allow_in_bindings": 0,
                             "tabs": "all",
                             "toolbar": "full",
-                            "media_upload": 1,
+                            "media_upload": 0,
                             "delay": 0,
                             "acfe_wysiwyg_auto_init": 0,
                             "acfe_wysiwyg_height": 300,
+                            "parent_repeater": "field_66d098b76e877"
+                        },
+                        {
+                            "key": "field_68db0b09fca17",
+                            "label": "Image",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "uploader": "",
+                            "return_format": "array",
+                            "library": "all",
+                            "upload_folder": "",
+                            "acfe_thumbnail": 0,
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0,
+                            "preview_size": "medium",
                             "parent_repeater": "field_66d098b76e877"
                         },
                         {
@@ -340,5 +370,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1759180830
+    "modified": 1759185690
 }
