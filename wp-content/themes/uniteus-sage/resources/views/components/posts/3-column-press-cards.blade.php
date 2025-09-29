@@ -151,12 +151,12 @@
                         <img
                             src="{{ get_the_post_thumbnail_url($postID, 'large') }}"
                             alt="{{ esc_attr($post['post_title']) }}"
-                            class="lazy aspect-video w-full object-cover entered loaded" />
+                            class="lazy aspect-video w-full object-contain entered loaded" />
                     @else
                         <img
                             src="{{ asset('images/Press-thumb.png') }}"
                             alt="Fallback Image"
-                            class="lazy aspect-video w-full object-cover entered loaded" />
+                            class="lazy aspect-video w-full object-contain entered loaded" />
                     @endif
             </div>
 
