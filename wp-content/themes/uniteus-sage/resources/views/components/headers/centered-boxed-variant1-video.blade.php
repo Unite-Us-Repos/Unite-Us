@@ -85,7 +85,7 @@
 
     @if ($background['video'])
       <div class="absolute inset-0 sm:left-8 sm:right-8 sm:rounded-lg overflow-hidden">
-        <div class="absolute inset-0 hero-radial-bg"></div>
+        {{-- <div class="absolute inset-0 hero-radial-bg"></div> --}}
         <video id="bgVideo" autoplay loop muted playsinline class="lazy w-full h-full object-cover max-w-none">
           <source data-src="{{ $background['video'] }}" type="video/mp4" />Your browser does not support the video tag.
         </video>
