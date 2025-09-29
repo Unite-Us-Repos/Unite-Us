@@ -291,41 +291,54 @@ add_filter(
     }
 );
 
-add_action(
-    'pre_get_posts',
-    function ($query) {
-        $pagename = (get_query_var('pagename')) ? get_query_var('pagename') : 0;
-        if (!is_admin() && 'knowledge-hub' == $pagename) {
-            // keep going with filters
-        } else {
-            return;
-        }
-        $current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
-        $current_page = max(1, $current_page);
+// Keep Knowledge Hub at 20 results per page. No campaign logic. No offset tweaks.
+add_action('pre_get_posts', function ($q) {
+  if (is_admin()) return;
 
-        $campaignAd = get_field('campaign_ad', 'options');
-        if (!$campaignAd) {
-            return;
-        }
+  // Only when rendering the Knowledge Hub page
+  $pagename = get_query_var('pagename') ?: '';
+  if ($pagename !== 'knowledge-hub') return;
 
-        $offset_start = -2;
-        //Apply adjust page offset
-        if ($current_page === 1) {
-            if ($campaignAd) {
-                $per_page = 18;
-            } else {
-                $per_page = 20;
-            }
-            $offset = 0;
-        } else {
-            $per_page = 20;
-            $offset = ( $current_page - 1 ) * $per_page + $offset_start;
+  // Enforce 20 per page; let S&F handle paged/offets
+  $q->set('posts_per_page', 20);
+}, 9999);
 
-        }
-        $query->set('posts_per_page', $per_page);
-        $query->set('offset', $offset);
-    }, 1
-);
+
+// add_action(
+//     'pre_get_posts',
+//     function ($query) {
+//         $pagename = (get_query_var('pagename')) ? get_query_var('pagename') : 0;
+//         if (!is_admin() && 'knowledge-hub' == $pagename) {
+//             // keep going with filters
+//         } else {
+//             return;
+//         }
+//         $current_page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+//         $current_page = max(1, $current_page);
+
+//         $campaignAd = get_field('campaign_ad', 'options');
+//         if (!$campaignAd) {
+//             return;
+//         }
+
+//         $offset_start = -2;
+//         //Apply adjust page offset
+//         if ($current_page === 1) {
+//             if ($campaignAd) {
+//                 $per_page = 18;
+//             } else {
+//                 $per_page = 20;
+//             }
+//             $offset = 0;
+//         } else {
+//             $per_page = 20;
+//             $offset = ( $current_page - 1 ) * $per_page + $offset_start;
+
+//         }
+//         $query->set('posts_per_page', $per_page);
+//         $query->set('offset', $offset);
+//     }, 1
+// );
 
 /* Remove password form message */
 add_filter(
