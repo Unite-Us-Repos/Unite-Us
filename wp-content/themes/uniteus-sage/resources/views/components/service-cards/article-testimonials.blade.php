@@ -346,13 +346,15 @@
   }
 
   /* Hover fill */
-  .article-slider .article-card:hover {
-    background:
-      linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)),
-      linear-gradient(0deg, rgba(47, 113, 244, 0.08), rgba(47, 113, 244, 0.08)),
-      linear-gradient(117.36deg, rgba(150, 67, 255, 0) 36.69%, rgba(150, 67, 255, 0.08) 100%);
-  }
-
+/* Hover/focus fill — works in slider AND grid */
+.service-icon-cards:hover .article-card,
+.article-card:hover,
+.article-card:focus-within {
+  background:
+    linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)),
+    linear-gradient(0deg, rgba(47, 113, 244, 0.08), rgba(47, 113, 244, 0.08)),
+    linear-gradient(117.36deg, rgba(150, 67, 255, 0) 36.69%, rgba(150, 67, 255, 0.08) 100%);
+}
   /* Stack content, keep baseline tidy */
   .article-slider .article-card .relative {
     display: flex;
