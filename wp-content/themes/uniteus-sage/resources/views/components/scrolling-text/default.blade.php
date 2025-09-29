@@ -23,7 +23,7 @@
         @else
           <span class="inline-flex items-center gap-3">
             @if ($img_url)
-              <div class="w-32">
+              <div class="w-24">
                 <img src="{{ $img_url }}" alt="{{ $img_alt }}" class="inline-block align-middle" />
               </div>
             @endif
