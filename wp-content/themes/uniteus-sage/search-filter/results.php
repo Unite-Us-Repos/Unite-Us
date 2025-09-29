@@ -30,13 +30,25 @@ if (!defined('ABSPATH')) {
 if ($query->have_posts()) {
 	?>
 
-
-
 	<div class="mx-auto flex flex-col sm:grid gap-y-6 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 		<?php
 		$i = 1;
-		$activeCampaign = true;
+
+		/**
+		 * Campaign card config
+		 * Only enable if ALL required ACF fields exist and are non-empty.
+		 */
 		$campaignAd = get_field('campaign_ad', 'options');
+
+		$activeCampaign = (
+			is_array($campaignAd)
+			&& !empty($campaignAd['title'])
+			&& !empty($campaignAd['description'])
+			&& !empty($campaignAd['button_link'])
+			&& !empty($campaignAd['button_text'])
+			&& !empty($campaignAd['image'])
+			&& !empty($campaignAd['image']['sizes']['medium_large'])
+		);
 
 		// What page are we actually on?
 		$paged = max(
@@ -58,12 +70,9 @@ if ($query->have_posts()) {
 			$activeCampaign = false;
 		}
 
-
 		while ($query->have_posts()) {
 			$query->the_post();
 
-			?>
-			<?php
 			$category = get_the_category(get_the_ID());
 			foreach ($category as $cat) {
 				$category = $cat->cat_name;
@@ -79,29 +88,38 @@ if ($query->have_posts()) {
 			}
 			$img_id = get_post_thumbnail_id(get_the_ID());
 			$alt_text = get_post_meta($img_id, '_wp_attachment_image_alt', true);
-			?>
 
-			<?php if ($activeCampaign && ($i == 11)): ?>
-				<div
-					class="bg-brand col-span-2 relative w-full sm:mb-0 mx-auto p-10 flex flex-col rounded-lg shadow-lg overflow-hidden">
+			// Insert the campaign card before the 11th item, but only if it's enabled & complete.
+			if ($activeCampaign && ($i == 11)): ?>
+				<div class="bg-brand col-span-2 relative w-full sm:mb-0 mx-auto p-10 flex flex-col rounded-lg shadow-lg overflow-hidden">
 					<div class="h-full flex flex-col sm:grid sm:grid-cols-2 gap-8">
 						<div class="flex flex-col justify-center order-2 sm:order-1">
-							<div class="text-3xl mb-0 font-extrabold text-white"><?php echo $campaignAd['title']; ?></div>
+							<div class="text-3xl mb-0 font-extrabold text-white">
+								<?php echo esc_html($campaignAd['title']); ?>
+							</div>
 							<div class="campaign-description my-6 text-white text-lg">
-								<?php echo $campaignAd['description']; ?>
+								<?php
+								// Allow WYSIWYG HTML from ACF description
+								echo $campaignAd['description'];
+								?>
 							</div>
 							<p>
-								<a href="<?php echo $campaignAd['button_link']; ?>"
-									class="w-full align-middle justify-center sm:w-auto inline-flex bg-action text-white hover:bg-action-dark hover:text-white text-lg font-semibold no-underline line-none px-4 py-2 rounded-full"><?php echo $campaignAd['button_text']; ?></a>
+								<a href="<?php echo esc_url($campaignAd['button_link']); ?>"
+								   class="w-full align-middle justify-center sm:w-auto inline-flex bg-action text-white hover:bg-action-dark hover:text-white text-lg font-semibold no-underline line-none px-4 py-2 rounded-full">
+									<?php echo esc_html($campaignAd['button_text']); ?>
+								</a>
 							</p>
 						</div>
 						<div class="h-full flex flex-col justify-center">
-							<img class="lazy w-full h-auto" data-src="<?php echo $campaignAd['image']['sizes']['medium_large']; ?>"
-								alt="<?php echo $alt_text; ?>" />
+							<img
+								class="lazy w-full h-auto"
+								data-src="<?php echo esc_url($campaignAd['image']['sizes']['medium_large']); ?>"
+								alt="<?php echo esc_attr($campaignAd['image']['alt'] ?? $campaignAd['title']); ?>" />
 						</div>
 					</div>
 				</div>
 			<?php endif; ?>
+
 			<div class="relative max-w-md w-full sm:mb-0 mx-auto flex flex-col rounded-lg shadow-lg overflow-hidden">
 				<?php
 				$img_url = '';
@@ -109,9 +127,8 @@ if ($query->have_posts()) {
 
 				if (has_post_thumbnail()) {
 					$img_url = get_the_post_thumbnail_url(get_the_ID(), 'medium_large');
-				} 
-				elseif (get_post_type(get_the_ID()) === 'press') {
-				
+				} elseif (get_post_type(get_the_ID()) === 'press') {
+
 					if (function_exists('\Roots\asset')) {
 						$img_url = \Roots\asset('images/Press-thumb.png')->uri();
 					} else {
@@ -121,34 +138,33 @@ if ($query->have_posts()) {
 						$alt_text = 'Press article';
 					}
 				}
-				  $img_fit_class = $inTheNews ? 'object-contain' : 'object-cover';
+				$img_fit_class = $inTheNews ? 'object-contain' : 'object-cover';
 				?>
 
 				<?php if ($img_url) : ?>
-				<div class="flex-shrink-0 bg-white border-b-2 border-light">
-					<a href="<?php echo esc_url($link); ?>" title="<?php the_title_attribute(); ?>"<?php echo $target; ?>>
-					<img class="<?php echo esc_attr('lazy aspect-video w-full ' . $img_fit_class); ?>"
-						data-src="<?php echo esc_url($img_url); ?>"
-						alt="<?php echo esc_attr($alt_text); ?>">
-					</a>
-				</div>
+					<div class="flex-shrink-0 bg-white border-b-2 border-light">
+						<a href="<?php echo esc_url($link); ?>" title="<?php the_title_attribute(); ?>"<?php echo $target; ?>>
+							<img class="<?php echo esc_attr('lazy aspect-video w-full ' . $img_fit_class); ?>"
+								 data-src="<?php echo esc_url($img_url); ?>"
+								 alt="<?php echo esc_attr($alt_text); ?>">
+						</a>
+					</div>
 				<?php endif; ?>
 
 				<div class="flex-1 bg-white flex flex-col justify-between">
 					<div class="flex-1 px-6 pt-7 mb-6">
 						<?php if ($category): ?>
 							<p class="leading-normal text-sm font-medium text-action mb-2">
-								<a href="/<?php echo $catSlug ?>/">
+								<a href="/<?php echo esc_attr($catSlug); ?>/">
 									<span class="inline-block bg-light font-medium rounded-full px-[15px] py-1 pill-span">
-										<?php echo $category; ?>
+										<?php echo esc_html($category); ?>
 									</span>
 								</a>
 							</p>
 						<?php endif; ?>
 
 						<h3 class="mb-1">
-							<a class="no-underline text-brand" href="<?php echo $link; ?>" <?php echo $target; ?>>
-
+							<a class="no-underline text-brand" href="<?php echo esc_url($link); ?>" <?php echo $target; ?>>
 								<?php the_title(); ?>
 							</a>
 						</h3>
@@ -157,27 +173,20 @@ if ($query->have_posts()) {
 
 					<div class="bg-light hover:bg-blue-200">
 						<a class="no-underline text-action font-semibold p-6 block"
-							aria-label="Read More - <?php echo htmlentities(get_the_title()); ?>" href="<?php echo $link; ?>"
-							<?php echo $target; ?>>Read More<span class="sr-only"> - <?php echo get_the_title(); ?></span><span
-								aria-hidden="true" class="ml-1"> &rarr;</span></a>
+						   aria-label="Read More - <?php echo htmlentities(get_the_title()); ?>"
+						   href="<?php echo esc_url($link); ?>"
+							<?php echo $target; ?>>
+							Read More<span class="sr-only"> - <?php echo get_the_title(); ?></span><span aria-hidden="true" class="ml-1"> &rarr;</span>
+						</a>
 					</div>
 				</div>
 			</div>
-
-
-
 
 			<?php
 			$i++;
 		}
 		?>
 	</div>
-
-
-
-
-
-
 
 	<div class="pagination relative">
 		<?php
