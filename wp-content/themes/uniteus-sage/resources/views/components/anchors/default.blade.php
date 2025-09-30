@@ -169,9 +169,9 @@
 
                             <div
                                 class="flex flex-col items-start gap-12 mt-10
-                @if ($card['stats'] && $card['articles']) md:grid md:grid-cols-12 
-                @elseif ($card['stats'] && ($card['partners'] || $card['feature_box']['content'])) 
-                    gap-4 md:flex-row @endif">
+                                @if ($card['stats'] && $card['articles']) md:grid md:grid-cols-12 
+                                @elseif ($card['stats'] && ($card['partners'] || $card['feature_box']['content'])) 
+                                    gap-4 md:flex-row @endif">
                                 @php
                                     $keyStatsClass = 'key-stats col-span-6 md:basis-1/2';
                                     // Add flex class ONLY if "Stats" exist, but "Partners" and "Articles" do NOT exist
@@ -194,7 +194,7 @@
                                                     <div
                                                         class="@if ($card['stats'] && $card['articles']) col-span-6 @else col-span-6 md:col-span-3 @endif relative border border-blue-200 rounded-xl p-3 lg:p-6 group">
                                                         <div class="relative z-10 text-action group-hover:text-white">
-                                                            <h2 class="font-extrabold text-3xl mb-4 leading-tight">
+                                                            <h2 class="font-extrabold text-gradient text-3xl mb-4 leading-tight">
                                                                 {!! $stat['label'] !!}</h2>
                                                             <div class="text-sm text-brand group-hover:text-white">
                                                                 {!! $stat['description'] !!}</div>
