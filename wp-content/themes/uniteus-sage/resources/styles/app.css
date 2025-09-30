@@ -2533,7 +2533,7 @@ blockquote h4 {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0;
-    height: 20rem;
+    height: 23rem;
     padding: 0;
   }
 
@@ -2601,7 +2601,7 @@ blockquote h4 {
     .solutions-menu-item:nth-child(2)
     .sub-sub-menu
     .menu_click {
-    flex-basis: 34%;
+    flex-basis: 30%;
   }
   .solutions
     .menu-wrapper
@@ -2695,8 +2695,8 @@ blockquote h4 {
     .solutions-menu-item:nth-child(2)
     .sub-sub-menu
     .menu_click {
-    flex-basis: 34%;
-    padding: 1rem;
+    flex-basis: 31%;
+    padding: 0;
   }
 }
 
