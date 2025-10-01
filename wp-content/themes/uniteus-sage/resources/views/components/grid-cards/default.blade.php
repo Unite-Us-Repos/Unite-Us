@@ -26,7 +26,7 @@
           ">
 
           @if (str_contains($card['card_layout'], 'two-col'))
-          <div class="flex flex-col lg:grid grid-cols-2 gap-16 p-8 lg:p-16">
+          <div class="flex flex-col items-center lg:grid grid-cols-2 gap-16 p-8 lg:p-16">
             <div class="relative z-20
               @if (str_contains($card['card_layout'], 'text-image')) lg:order-2 @endif
               ">
