@@ -2762,6 +2762,13 @@ blockquote h4 {
   right: 0;
   height: 2px;
   background: linear-gradient(90deg, #216CFF 0%, #9643FF 100%);
+  width: calc(100% - 4rem);
+  margin: auto;
+}
+@media (min-width: 1024px) {
+.top-gradient-line::before {
+  width: 100%;
+}
 }
 
 @layer utilities {
