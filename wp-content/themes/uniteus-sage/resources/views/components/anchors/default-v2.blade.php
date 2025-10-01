@@ -174,7 +174,7 @@
                       $keyStatsClass = 'col-span-6';
                       $keyStatClass  = 'col-span-6';
                     } elseif (!$hasPartners && !$hasFeature){
-                      $keyStatsClass .= ' md:flex md:flex-wrap';
+                      $keyStatsClass .= '';
                       $keyStatClass   = $numStats % 2 === 0 ? 'md:basis-1/2' : 'md:basis-1/3';
                     }
                   @endphp
