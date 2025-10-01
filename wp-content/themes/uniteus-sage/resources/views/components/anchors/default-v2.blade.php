@@ -160,7 +160,7 @@
                 $hasFeature   = !empty($card['feature_box']) && !empty($card['feature_box']['content']);
               @endphp
 
-              <div class="flex flex-col items-start gap-12 mt-10
+              <div class="flex flex-col items-stretch gap-12 mt-10
                   @if ($hasStats && ($hasArticles || $hasManual)) md:grid md:grid-cols-12
                   @elseif ($hasStats && ($hasPartners || $hasFeature)) gap-4 md:flex-row @endif">
 
@@ -203,7 +203,7 @@
                             @endisset
                             </div>
                         @endforeach
-                        </div>
+                      </div>
                     @else
                       {{-- Flexible wrap when alone --}}
                       <div class="flex flex-wrap gap-4">
