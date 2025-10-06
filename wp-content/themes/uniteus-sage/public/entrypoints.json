@@ -1,29 +1,25 @@
 {
   "app": {
     "js": [
-      "runtime.f6be58.js",
-      "vendor/app.23a5b5.js",
-      "app.c68622.js"
+      "runtime.9e569a.js",
+      "vendor/app.ed7bc9.js",
+      "app.075dc7.js"
     ],
     "css": [
-<<<<<<< HEAD
-      "app.9b0905.css"
-=======
-      "app.b6e2bc.css"
->>>>>>> staging
+      "app.ae96e1.css"
     ],
     "dependencies": []
   },
   "time": {
     "js": [
-      "runtime.f6be58.js",
+      "runtime.9e569a.js",
       "time.9e5fde.js"
     ],
     "dependencies": []
   },
   "editor": {
     "js": [
-      "runtime.f6be58.js",
+      "runtime.9e569a.js",
       "editor.ecc938.js"
     ],
     "css": [

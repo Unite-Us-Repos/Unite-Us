@@ -19,6 +19,15 @@
   ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
 </script>
 <!-- End of Schema.org Validation -->
+<style>
+    /* existing tweaks */
+    .menu-wrapper .solutions-menu-item:first-child .sub-sub-sub-menu { padding-left: 2.25rem; }
+    .menu-wrapper .solutions-menu-item:first-child .sub-sub-sub-menu .caret { filter: brightness(0) invert(1); }
+    .menu-wrapper .solutions-menu-item:nth-child(2) .sub-sub-sub-menu { padding-left: 4rem; }
+
+    /* hover-intent: when parent has this class, keep panel open (overrides .hidden) */
+    .hover-intent .menu-wrapper { display: block; }
+</style>
 
 <div class="z-50" x-data="{ showSearchModal: false, showMobileMenu: false, isSticky: false, alertHeight: 0 }" x-init="alertHeight = $refs.alert ? $refs.alert.offsetHeight : 0;
 window.addEventListener('scroll', () => {
@@ -61,7 +70,6 @@ $watch('isSticky', value => {
         </div>
     @endif
 
-
     <!-- Placeholder to prevent content shift -->
     <div x-ref="placeholder" style="height: 0;"></div>
 
@@ -95,12 +103,21 @@ $watch('isSticky', value => {
                         </svg>
                     </button>
                 </div>
+
                 <!-- Desktop Menu -->
                 <nav class="hidden lg:flex items-center space-x-5 xl:space-x-10 desktop-nav">
                     @foreach ($mainMenuItems as $menu)
                         @if ($menu['children'])
+                            {{-- TOP-LEVEL WRAPPER: add hover-intent with 500ms close delay --}}
                             <div
-                                class="relative group flex {{ isset($menu['classes']) ? implode(' ', $menu['classes']) : '' }} ">
+                                class="relative group flex {{ isset($menu['classes']) ? implode(' ', $menu['classes']) : '' }}"
+                                x-data="{ hi:false, to:null,
+                                  enter(){ clearTimeout(this.to); this.hi = true },
+                                  leave(){ clearTimeout(this.to); this.to = setTimeout(() => { this.hi = false }, 100) }
+                                }"
+                                @mouseenter="enter" @mouseleave="leave"
+                                :class="{ 'hover-intent': hi }"
+                            >
                                 <a href="{{ $menu['url'] }}"
                                     class="group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-brand focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-action text-brand menu_click">
                                     <span>{{ $menu['title'] }}</span>
@@ -111,11 +128,18 @@ $watch('isSticky', value => {
                                             d="M6.2177 7.29289C6.60822 6.90237 7.24139 6.90237 7.63191 7.29289L10.9248 10.5858L14.2177 7.29289C14.6082 6.90237 15.2414 6.90237 15.6319 7.29289C16.0224 7.68342 16.0224 8.31658 15.6319 8.70711L11.6319 12.7071C11.2414 13.0976 10.6082 13.0976 10.2177 12.7071L6.2177 8.70711C5.82717 8.31658 5.82717 7.68342 6.2177 7.29289Z" />
                                     </svg>
                                 </a>
-                                <div class="menu-wrapper absolute hidden group-focus:block group-hover:block z-50 left-1/2 transform -translate-x-1/2 mt-0 w-screen px-0 bg-white">
+
+                                <div
+                                    class="menu-wrapper absolute hidden group-focus:block group-hover:block z-50 left-1/2 transform -translate-x-1/2 mt-0 w-screen px-0 bg-white"
+                                    @mouseenter="enter" @mouseleave="leave"
+                                >
                                     <div class="menu-wrapper-inner overflow-hidden">
-                                        <div class="menu-item-wrapper relative grid gap-8 p-12 @if (isset($menu['classes']) && in_array('solutions', $menu['classes'])) solutions-menu-item-wrapper @endif">
+                                        <div
+                                            class="menu-item-wrapper relative grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 p-12 @if (isset($menu['classes']) && in_array('solutions', $menu['classes'])) solutions-menu-item-wrapper @endif">
+
                                             @foreach ($menu['children'] as $child)
-                                                <div class="menu-item relative group @if (isset($menu['classes']) && in_array('solutions', $menu['classes'])) solutions-menu-item @endif">
+                                                <div class="menu-item relative group min-w-0 @if (isset($menu['classes']) && in_array('solutions', $menu['classes'])) solutions-menu-item @endif">
+
                                                     <a href="{{ $child['url'] }}"
                                                         class="flex -m-3 p-3 menu_click {{ isset($child['classes']) ? implode(' ', $child['classes']) : '' }}">
                                                         @if (!empty($child['icon']))
@@ -128,30 +152,44 @@ $watch('isSticky', value => {
                                                             </div>
                                                         @endif
                                                     </a>
+
                                                     @if (!empty($child['children']))
                                                         <div class="sub-sub-menu-wrapper absolute hidden group-focus:block group-hover:block z-50 left-0 top-8 mt-0 sm:px-0">
                                                             <div class="overflow-hidden">
                                                                 <div class="sub-sub-menu relative flex flex-col gap-6 pr-8 pb-8 pt-4">
                                                                     @foreach ($child['children'] as $subChild)
-                                                                        <a href="{{ $subChild['url'] }}"
-                                                                            class="-m-3 p-3 flex items-start menu_click {{ isset($subChild['classes']) ? implode(' ', $subChild['classes']) : '' }}">
+                                                                        <div class="menu_click flex flex-col">
+                                                                            <a href="{{ $subChild['url'] }}"
+                                                                                class="-m-3 p-3 flex items-start {{ isset($subChild['classes']) ? implode(' ', $subChild['classes']) : '' }}">
 
-                                                                            @if (!empty($subChild['icon']))
-                                                                                <div class="sub-sub-icon mr-2">
-                                                                                  <img src="{{ $subChild['icon'] }}" alt="{{ $subChild['title'] }} icon"
-                                                                                    class="w-5 h-5 mr-2" />
+                                                                                @if (!empty($subChild['icon']))
+                                                                                    <div class="sub-sub-icon mr-2">
+                                                                                    <img src="{{ $subChild['icon'] }}" alt="{{ $subChild['title'] }} icon"
+                                                                                        class="w-5 h-5 mr-2" />
+                                                                                    </div>
+                                                                                @endif
+                                                                                <div class="sub-sub-item">
+                                                                                <span class="text-base font-semibold text-brand hover:text-action">{{ $subChild['title'] }}</span>
+                                                                                @if (!empty($subChild['description']))
+                                                                                <div class="description text-xs text-gray-500 mt-2">
+                                                                                    {{ $subChild['description'] }}
+                                                                                </div>
+                                                                                @endif
+                                                                                </div>
+                                                                            </a>
+                                                                            @if (!empty($subChild['children']))
+                                                                                <div class="sub-sub-sub-menu pt-2 space-y-2 min-w-0">
+                                                                                    @foreach ($subChild['children'] as $leaf)
+                                                                                        <div>
+                                                                                            <a href="{{ $leaf['url'] }}" class="flex items-center gap-2 no-underline group">
+                                                                                            <img class="caret" src="@asset('/images/icon-chevron-right.svg')" alt="" />
+                                                                                            <span class="text-sm text-brand hover:text-action">{!! $leaf['title'] !!}</span>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    @endforeach
                                                                                 </div>
                                                                             @endif
-                                                                            <div class="sub-sub-item">
-                                                                            <span class="text-base font-bold text-brand hover:text-action">{{ $subChild['title'] }}</span>
-                                                                            @if (!empty($subChild['description']))
-                                                                              <div class="description text-xs text-gray-500 mt-2">
-                                                                                  {{ $subChild['description'] }}
-                                                                              </div>
-                                                                            @endif
-                                                                            </div>
-                                                                        </a>
-
+                                                                        </div>
                                                                     @endforeach
                                                                 </div>
                                                             </div>
@@ -198,6 +236,7 @@ $watch('isSticky', value => {
                         @endif
                     @endforeach
                 </nav>
+
                 <div class="hidden lg:flex items-center justify-end lg:flex-1 lg:w-0">
                     <a href="https://app.uniteus.io/"
                         class="whitespace-nowrap text-base font-medium text-brand hover:text-brand"> Log In </a>
@@ -256,13 +295,40 @@ $watch('isSticky', value => {
                                                         <div
                                                             class="relative grid gap-6 rounded-lg bg-light mb-2 mt-6 px-5 py-6 sm:gap-8 sm:p-8">
                                                             @foreach ($menu['children'] as $child)
-                                                                <a href="{{ $child['url'] }}"
-                                                                    class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click {{ isset($child['class']) ? implode(' ', $child['class']) : '' }}">
-                                                                    <span
-                                                                        class="text-base font-medium text-brand">{{ $child['title'] }}</span>
-                                                                </a>
+                                                                <div class="rounded-lg">
+                                                                    {{-- Parent row (no caret here) --}}
+                                                                    <a href="{{ $child['url'] }}"
+                                                                        class="-m-3 p-3 flex items-start rounded-lg hover:bg-light menu_click {{ isset($child['classes']) ? implode(' ', $child['classes']) : '' }}">
+                                                                        <span class="text-base font-medium text-brand">{{ $child['title'] }}</span>
+                                                                    </a>
+
+                                                                    {{-- Always show descendants when the top-level is open --}}
+                                                                    @php $grandkids = $child['children'] ?? []; @endphp
+                                                                    @if (!empty($grandkids))
+                                                                        <div class="mt-2 pl-5 space-y-2">
+                                                                            @foreach ($grandkids as $subChild)
+                                                                                @if (!empty($subChild['children']))
+                                                                                    {{-- Flatten leaves under this parent --}}
+                                                                                    @foreach ($subChild['children'] as $leaf)
+                                                                                        <div class="flex items-center gap-2">
+                                                                                            <img class="w-4 h-4" src="@asset('/images/icon-chevron-right.svg')" alt="">
+                                                                                            <a href="{{ $leaf['url'] }}" class=" text-brand no-underline">{!! $leaf['title'] !!}</a>
+                                                                                        </div>
+                                                                                    @endforeach
+                                                                                @else
+                                                                                    {{-- No deeper level: show the subChild itself --}}
+                                                                                    <div class="flex items-center gap-2">
+                                                                                        <img class="w-4 h-4" src="@asset('/images/icon-chevron-right.svg')" alt="">
+                                                                                        <a href="{{ $subChild['url'] }}" class=" text-brand no-underline">{{ $subChild['title'] }}</a>
+                                                                                    </div>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </div>
+                                                                    @endif
+                                                                </div>
                                                             @endforeach
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </li>

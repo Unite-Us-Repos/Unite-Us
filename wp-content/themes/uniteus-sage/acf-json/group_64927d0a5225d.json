@@ -16,7 +16,6 @@
                 "class": "",
                 "id": ""
             },
-            "acfe_save_meta": 0,
             "return_format": "array",
             "library": "all",
             "min": "",
@@ -47,7 +46,7 @@
     "label_placement": "left",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": false,
     "description": "",
     "show_in_rest": 0,
     "acfe_autosync": [
@@ -57,5 +56,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1687322131
+    "modified": 1759172267
 }

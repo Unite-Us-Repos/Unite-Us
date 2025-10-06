@@ -139,7 +139,8 @@
                         "article-carousel": "Article Cards (carousel, video optional)",
                         "squared": "Squared",
                         "video-carousel": "Video Carousel",
-                        "article-testimonials": "Article Cards (w\/ Testimonials)"
+                        "article-testimonials": "Article Cards (w\/ Testimonials)",
+                        "homepage": "HP Service Cards"
                     },
                     "default_value": "default",
                     "return_format": "value",
@@ -274,6 +275,36 @@
                                 "field": "field_632e7f9d9b1d0",
                                 "operator": "==",
                                 "value": "icon"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1,
+                    "style": ""
+                },
+                {
+                    "key": "field_68d3751fc9c29",
+                    "label": "Slider",
+                    "name": "slider",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_632e7f9d9b1d0",
+                                "operator": "==",
+                                "value": "article-testimonials"
                             }
                         ]
                     ],
@@ -476,13 +507,6 @@
                                         "operator": "==",
                                         "value": "squared"
                                     }
-                                ],
-                                [
-                                    {
-                                        "field": "field_632e7f9d9b1d0",
-                                        "operator": "==",
-                                        "value": "article-carousel"
-                                    }
                                 ]
                             ],
                             "wrapper": {
@@ -492,7 +516,6 @@
                             },
                             "uploader": "",
                             "return_format": "array",
-                            "library": "all",
                             "upload_folder": "",
                             "acfe_thumbnail": 0,
                             "min_width": "",
@@ -502,8 +525,8 @@
                             "max_height": "",
                             "max_size": "",
                             "mime_types": "",
-                            "allow_in_bindings": 1,
                             "preview_size": "medium",
+                            "library": "all",
                             "parent_repeater": "field_632e7f9d9b1ff"
                         },
                         {
@@ -967,6 +990,9 @@
                     "layout": "block",
                     "acfe_seamless_style": 0,
                     "acfe_group_modal": 0,
+                    "acfe_group_modal_close": 0,
+                    "acfe_group_modal_button": "",
+                    "acfe_group_modal_size": "large",
                     "sub_fields": [
                         {
                             "key": "field_682be7fac1983",
@@ -995,10 +1021,7 @@
                             "acfe_clone_modal_button": "",
                             "acfe_clone_modal_size": "large"
                         }
-                    ],
-                    "acfe_group_modal_close": 0,
-                    "acfe_group_modal_button": "",
-                    "acfe_group_modal_size": "large"
+                    ]
                 }
             ]
         }
@@ -1028,5 +1051,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1747785774
+    "modified": 1758688989
 }

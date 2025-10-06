@@ -2,6 +2,9 @@ module.exports = {
   content: ['./app/**/*.php', './resources/**/*.{php,vue,js}'],
   safelist: [
     'rounded',
+    '!rounded-none',
+    '!rounded-bl-none',
+    '!rounded-br-none',
     'max-w-xs',
     'sm:max-w-none',
     'sm:justify-start',
@@ -273,7 +276,21 @@ module.exports = {
     'px-12',
     '!mt-16',
     'lg:flex-row-reverse',
-    '!w-fit'
+    '!w-fit',
+    'max-w-[30rem]',
+    'bottom-8',
+    'bottom-12',
+    'from-action/90',
+    'from-action/100',
+    'via-action/60',
+    'bottom-16',
+    'lg:pb-0',
+    'lg:mt-8',
+    'px-12',
+    'lg:!px-0',
+    'break-words',
+    'object-none',
+    'h-[120px]', 'md:h-[140px]', 'lg:h-[160px]', 'pl-16', 'lg:flex-wrap', 'mt-8' , 'lg:mt-0',
   ],
   variants: {
     extend: {

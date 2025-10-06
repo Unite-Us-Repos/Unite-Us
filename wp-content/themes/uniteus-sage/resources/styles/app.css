@@ -151,9 +151,13 @@ h3.doc-subheading {
 }
 
 a {
-  @apply text-action underline hover:text-action-dark hover:transition-all;
+  @apply text-action underline hover:text-action-dark;
 }
-
+a:hover:not(.button-gradient) {
+  transition-duration: .15s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+}
 p {
   @apply mb-6;
 }
@@ -506,6 +510,9 @@ body .map-wrap {
   @apply text-white bg-action border-action
   hover:border-action-hover hover:bg-action-hover hover:text-white;
 }
+/* .button-solid img {
+    opacity: 0.25;
+} */
 .button-solid-purple {
   @apply text-white bg-electric-purple border-electric-purple
   hover:bg-electric-purple-hover hover:border-electric-purple-hover hover:text-white;
@@ -537,53 +544,68 @@ body .map-wrap {
   @apply text-redish bg-transparent border-redish;
 }
 
+/* 1) Register a typed custom property so it can animate */
+@property --ang {
+  syntax: '<angle>';
+  initial-value: 90deg;
+  inherits: false;
+}
+
 .button-gradient {
-    color: white;
-    background: linear-gradient(to right, #216CFF, #9643FF);
-    transition: all;
-    border: none;
+  color: white;
+  border: none;
+  background: linear-gradient(var(--ang), #216CFF, #9643FF);
+  transition: --ang .45s ease; /* put transition on the base state */
 }
 
 .button-gradient:hover {
-  color: white;
-  background: linear-gradient(to right,  #9643FF, #216CFF);
-  transition: all;
+   color: white;
+  --ang: 270deg; /* rotates the gradient smoothly */
 }
 
 .button-hollow-gradient {
-    position: relative;
-    border: 1px solid transparent;
-    @apply px-7 py-3
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  @apply px-7 py-3;
+  isolation: isolate;           /* keeps ::after under content */
 }
-.button-hollow-gradient img {
-  opacity: 0.9 !important;
-}
+
 .button-hollow-gradient::after {
   content: '';
-  display: block;
-  padding-top: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-  border-radius: 6px;
+  inset: 0;
+  padding: 2px;                 /* border thickness */
+  border-radius: inherit;
 
-  /* Create gradient border with transparent center */
-  padding: 2px; /* Border thickness */
-  background: linear-gradient(113.78deg, #2F71F4 0%, #2F71F4 48.34%, #9643FF 100%);
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
+  /* moving gradient border */
+  background: linear-gradient(90deg, #2F71F4, #9643FF);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+
+  /* hollow center */
   -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
+          mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+          mask-composite: exclude;
 
-  transition: all 0.5s linear;
+  pointer-events: none;
+  transition: background-position .6s ease;
 }
+
+.button-hollow-gradient:hover::after {
+  background-position: 100% 50%;
+}
+
+/* optional: if a global a:hover sets transitions, neutralize it for this button */
+a.button-hollow-gradient:hover {
+  transition-property: none;
+}
+
 
 .bg-light-gradient .button-hollow,
 .bg-light .button-hollow {
@@ -602,7 +624,10 @@ body .map-wrap {
 .button svg path,
 .button img {
   fill: #fff;
-  /* opacity: 0.25; */
+  opacity: 0.25;
+}
+.button-hollow-gradient img {
+  opacity: 1;
 }
 .button-text {
   text-underline-offset: 3px;
@@ -891,7 +916,8 @@ body .map-wrap {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
    .partnerships .ajax-filters ul ,
-   .company-news .ajax-filters ul {
+   .company-news .ajax-filters ul,
+   .in-the-news .ajax-filters ul {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2507,14 +2533,14 @@ blockquote h4 {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0;
-    height: 20rem;
+    height: 23rem;
     padding: 0;
   }
 
   .solutions .menu-wrapper .solutions-menu-item {
     padding: 1rem;
   }
-  .solutions .menu-wrapper .solutions-menu-item:first-child .menu_click:hover {
+  .solutions .menu-wrapper .solutions-menu-item:first-child .menu_click a:hover {
     opacity: 0.8;
   }
   .solutions .menu-wrapper .menu-item-wrapper .industries {
@@ -2575,7 +2601,7 @@ blockquote h4 {
     .solutions-menu-item:nth-child(2)
     .sub-sub-menu
     .menu_click {
-    flex-basis: 34%;
+    flex-basis: 30%;
   }
   .solutions
     .menu-wrapper
@@ -2669,8 +2695,8 @@ blockquote h4 {
     .solutions-menu-item:nth-child(2)
     .sub-sub-menu
     .menu_click {
-    flex-basis: 34%;
-    padding: 1rem;
+    flex-basis: 31%;
+    padding: 0;
   }
 }
 
@@ -2736,6 +2762,13 @@ blockquote h4 {
   right: 0;
   height: 2px;
   background: linear-gradient(90deg, #216CFF 0%, #9643FF 100%);
+  width: calc(100% - 4rem);
+  margin: auto;
+}
+@media (min-width: 1024px) {
+.top-gradient-line::before {
+  width: 100%;
+}
 }
 
 @layer utilities {
@@ -2896,7 +2929,7 @@ blockquote h4 {
 }
 
 .webinar .webinar-inner-content .video-content {
-    padding: 46.62% 0 0 0; 
+    padding: 56% 0 0 0; 
     position: relative;
     border-radius: 1rem;
     overflow: hidden;
@@ -2990,3 +3023,175 @@ blockquote h4 {
   max-width: 20rem;
 }
 .light-blue{ color: #52B4FF;}
+
+
+/* Dark blue overlay (sits under the sliding bar) */
+.card-dark-overlay{
+  border-radius: inherit;
+  background: linear-gradient(
+    to top,
+    rgba(9,26,55,.90) 0%,
+    rgba(9,26,55,.82) 60%,
+    rgba(9,26,55,.65) 100%
+  );
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.group:hover .card-dark-overlay{ opacity: 1; }
+
+/* Sliding bar: starts as ~12px, grows to 33%, fades to transparent at top */
+.card-accent-wedge{
+  --wedge-max: 33%;
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: var(--wedge-max);
+  background: var(--accent);
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+
+  /* show only ~12px at rest */
+  clip-path: inset(calc(100% - 12px) 0 0 0);
+
+  /* fade the top edge to transparent so it blends into the dark overlay */
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+          mask-image: linear-gradient(to top, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+
+  transition: clip-path .45s ease;
+}
+.group:hover .card-accent-wedge{ clip-path: inset(0 0 0 0); }
+
+/* If a global link hover sets transitions, keep it from interfering here */
+a.group:hover{ transition-property: none; }
+
+.homepage-feature-section {
+    padding-top: 15rem;
+    margin-top: -15rem;
+}
+.homepage-icon {
+    bottom: -0.5rem;
+    left: calc(50% - 6vw);
+    width: 12vw;
+    z-index: 2;
+}
+
+.bottom-white-divider {
+    position: absolute;
+    bottom: -16px;
+    width: 100vw;
+    height: 30px;
+    left: -16px;
+    z-index: 1;
+}
+
+@media (min-width: 640px) {
+  .homepage-icon {
+    bottom: -2rem;
+  }
+  .bottom-white-divider {
+    height: 50px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .homepage-icon {
+    bottom: -3rem;
+  }
+  .featured-icon-img img {
+    width: 8vw;
+    height: 8vw;;
+  }
+  .featured-icon-img:first-child {
+    top: 19vw;
+    left: 10vw;
+  }
+  .featured-icon-img:nth-child(2) {
+    top: 27vw;
+    left: 27vw;
+  }
+  .featured-icon-img:nth-child(3) {
+    top: 14vw;
+    left: 41.5vw;
+  }
+  .featured-icon-img:nth-child(4) {
+    top: 33vw;
+    left: 60vw;
+  }
+  .featured-icon-img:nth-child(5) {
+    top: 18vw;
+    left: 65vw;
+  }
+}
+
+@media (min-width: 1250px) {
+  .homepage-icon {
+        bottom: -3rem;
+        left: calc(50% - 5rem);
+        width: 10rem;
+  }
+ /* position wrappers so left/top take effect */
+.featured-icon-img{
+  position: absolute;
+}
+
+.featured-icon-img img{
+  width: 6rem;
+  height: 6rem;
+  display: block;
+  will-change: transform;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float{
+  0%   { transform: translate(0, 0) rotate(-0.5deg); }
+  25%  { transform: translate(-6px, -6px) rotate(0.3deg); }
+  50%  { transform: translate(0, -10px) rotate(0.6deg); }   /* not the origin */
+  75%  { transform: translate(6px, -6px) rotate(0.3deg); }
+  100% { transform: translate(0, 0) rotate(-0.5deg); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .featured-icon-img img{ animation: none; }
+}
+
+/* individual positions + staggered delays (target the img) */
+.featured-icon-img:first-child { left: 8rem;  top: 16rem; }
+.featured-icon-img:first-child img { animation-delay: -1s; }
+
+.featured-icon-img:nth-child(2) { left: 22rem; top: 22rem; }
+.featured-icon-img:nth-child(2) img { animation-delay: .1.5s; }
+
+.featured-icon-img:nth-child(3) { left: 33.25rem; top: 12rem; }
+.featured-icon-img:nth-child(3) img { animation-delay: 1s; }
+
+.featured-icon-img:nth-child(4) { left: 47rem; top: 26rem; }
+.featured-icon-img:nth-child(4) img { animation-delay: -0.5s; }
+
+.featured-icon-img:nth-child(5) { left: 51rem; top: 15rem; }
+.featured-icon-img:nth-child(5) img { animation-delay: -1.5s; }
+
+}
+
+.slider-prev {
+    top: -3rem;
+    right: 5rem;
+}
+.slider-next {
+    top: -3rem;
+    right: 1rem;
+}
+@media (min-width: 1024px) {
+  .slider-prev {
+      top: -5rem;
+  }
+  .slider-next {
+      top: -5rem;
+  }
+}
+.aspect-video-one-to-one iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.aspect-video-one-to-one {
+    aspect-ratio: 1 / 1;
+}

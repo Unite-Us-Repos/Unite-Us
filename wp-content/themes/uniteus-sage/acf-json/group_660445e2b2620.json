@@ -90,8 +90,8 @@
                 },
                 {
                     "key": "field_6604470770841",
-                    "label": "Type",
-                    "name": "type",
+                    "label": "Style",
+                    "name": "style",
                     "aria-label": "",
                     "type": "select",
                     "instructions": "",
@@ -104,7 +104,7 @@
                     },
                     "choices": {
                         "default": "Anchors",
-                        "tabs": "Tabs (inactive)"
+                        "default-v2": "Anchors V2"
                     },
                     "default_value": false,
                     "return_format": "value",
@@ -113,9 +113,12 @@
                     "prepend": "",
                     "append": "",
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
                     "allow_custom": 0,
                     "search_placeholder": "",
                     "min": ""
@@ -356,6 +359,7 @@
                             "collapsed": "",
                             "button_label": "Add Stat",
                             "rows_per_page": 20,
+                            "parent_repeater": "field_66045a6a289a8",
                             "sub_fields": [
                                 {
                                     "key": "field_66045b31289ac",
@@ -446,8 +450,7 @@
                                     "preview_size": "thumbnail",
                                     "parent_repeater": "field_66045abe289ab"
                                 }
-                            ],
-                            "parent_repeater": "field_66045a6a289a8"
+                            ]
                         },
                         {
                             "key": "field_67930c6394728",
@@ -457,15 +460,7 @@
                             "type": "tab",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_67453ac6c6ef7",
-                                        "operator": "!=",
-                                        "value": "1"
-                                    }
-                                ]
-                            ],
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -485,15 +480,7 @@
                             "type": "relationship",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_67453ac6c6ef7",
-                                        "operator": "!=",
-                                        "value": "1"
-                                    }
-                                ]
-                            ],
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -522,6 +509,72 @@
                             "elements": "",
                             "bidirectional": 0,
                             "bidirectional_target": [],
+                            "parent_repeater": "field_66045a6a289a8"
+                        },
+                        {
+                            "key": "field_68db3ccc1ea17",
+                            "label": "Manual Articles",
+                            "name": "manual_articles",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "acfe_repeater_stylised_button": 1,
+                            "layout": "table",
+                            "pagination": 0,
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "",
+                            "button_label": "Add Article",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_68db3d0f1ea1a",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_68db3ccc1ea17"
+                                },
+                                {
+                                    "key": "field_68db3d151ea1b",
+                                    "label": "Link",
+                                    "name": "link",
+                                    "aria-label": "",
+                                    "type": "link",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "allow_in_bindings": 0,
+                                    "parent_repeater": "field_68db3ccc1ea17"
+                                }
+                            ],
                             "parent_repeater": "field_66045a6a289a8"
                         },
                         {
@@ -835,6 +888,7 @@
                             "collapsed": "",
                             "button_label": "Add Logo",
                             "rows_per_page": 20,
+                            "parent_repeater": "field_66045a6a289a8",
                             "sub_fields": [
                                 {
                                     "key": "field_678efbb66a509",
@@ -866,8 +920,7 @@
                                     "preview_size": "medium",
                                     "parent_repeater": "field_678efba86a508"
                                 }
-                            ],
-                            "parent_repeater": "field_66045a6a289a8"
+                            ]
                         },
                         {
                             "key": "field_67930c8a9472b",
@@ -1148,5 +1201,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1737690345
+    "modified": 1759199184
 }

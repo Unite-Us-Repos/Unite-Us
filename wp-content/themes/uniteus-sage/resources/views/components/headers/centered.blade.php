@@ -1,9 +1,7 @@
 @php
 $section_settings = $acf["components"][$index]['layout_settings']['section_settings'];
 @endphp
-<section class="header-hero relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
-  <!-- Overlay -->
-
+<section @isset($section['id']) id="{{ $section['id'] }}" @endisset class="header-hero relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
 
   @if ($background['image'])
     <div class="absolute inset-0">

@@ -4,15 +4,17 @@
     $infoRaw = $acf['event_info'] ?? null;
 
     if (is_array($infoRaw)) {
-    $info = $infoRaw;
+        $info = $infoRaw;
     } elseif (is_string($infoRaw)) {
-    $decoded = json_decode($infoRaw, true);
-    $info = is_array($decoded) ? $decoded : [];
+        $decoded = json_decode($infoRaw, true);
+        $info = is_array($decoded) ? $decoded : [];
     } else {
-    $info = [];
+        $info = [];
     }
     $info['timezone'] = $info['timezone'] ?? 'America/New_York';
-    $info['event_dates'] = is_array($info['event_dates'] ?? null) ? $info['event_dates'] : ['start' => null, 'end' => null];
+    $info['event_dates'] = is_array($info['event_dates'] ?? null)
+        ? $info['event_dates']
+        : ['start' => null, 'end' => null];
 
     $signup = isset($acf['sign_up']) ? $acf['sign_up'] : [];
     $featured_speakers[] =
@@ -96,30 +98,34 @@
     $show_additinal_information = false;
 @endphp
 @php
-$s_settings = [
+    $s_settings = [
         'collapse_padding' => false,
         'fullscreen' => '',
-];
-$section_settings = isset($acf["components"][$index]['layout_settings']['section_settings']) ? $acf["components"][$index]['layout_settings']['section_settings'] : $s_settings;
+    ];
+    $section_settings = isset($acf['components'][$index]['layout_settings']['section_settings'])
+        ? $acf['components'][$index]['layout_settings']['section_settings']
+        : $s_settings;
 @endphp
 @if ($background['has_divider'])
     @includeIf('dividers.waves')
 @endif
-<section class="relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
+<section id="{{ $id }}"
+    class="relative component-section {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif">
 
-      <div class="absolute inset-0">
-    @if ($background['image'])
-      <img fetchPriority="high" class="w-full h-full @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
-        src="{{ $background['image']['sizes']['medium'] }}"
-        srcset="{{ $background['image']['sizes']['medium'] }} 300w, {{ $background['image']['sizes']['2048x2048'] }} 1024w"
-        sizes="(max-width: 600px) 300px, 1024px"
-        alt="{{ $background['image']['alt'] }}">
-    @endif
-  </div>
+    <div class="absolute inset-0">
+        @if ($background['image'])
+            <img fetchPriority="high"
+                class="w-full h-full @if ('top' == $background['position']) object-top @endif @if ('bottom' == $background['position']) object-bottom @endif"
+                src="{{ $background['image']['sizes']['medium'] }}"
+                srcset="{{ $background['image']['sizes']['medium'] }} 300w, {{ $background['image']['sizes']['2048x2048'] }} 1024w"
+                sizes="(max-width: 600px) 300px, 1024px" alt="{{ $background['image']['alt'] }}">
+        @endif
+    </div>
 
     <div class="relative component-inner-section @if ($section_settings['fullscreen']) fullscreen @endif"">
         <div class="text-center mb-6 @if ($background['image']) text-green @endif">{{ $subtitle }}</div>
-        <h2 class="text-center mb-6 @if ($background['image']) text-white @else text-brand @endif">{{ $title }}</h2>
+        <h2 class="text-center mb-6 @if ($background['image']) text-white @else text-brand @endif">
+            {{ $title }}</h2>
 
 
         <div class="flex items-center justify-center mx-auto">
@@ -153,7 +159,8 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                 <!-- Tabs Contains -->
                 @foreach ($tabs as $tab_index => $tab)
                     <div x-show="tab === {{ $tab_index }}" class="z-0">
-                        <div class="text-lg text-center max-w-3xl mx-auto @if ($background['image']) text-white @endif">
+                        <div
+                            class="text-lg text-center max-w-3xl mx-auto @if ($background['image']) text-white @endif">
                             {!! $tab['summary'] !!}
                         </div>
                         <div class="flex flex-wrap gap-4 accordion accordion-vertical mt-10" x-data="{ selected: {{ $tab_index . '999' }} }">
@@ -185,48 +192,61 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
 
                                                 @if ($session['breakout_session'])
                                                     <div class="breakout flex flex-col gap-8 md:grid lg:grid-cols-12">
-                                                        <div class="lg:col-span-6 order-3 lg:order-1">
+                                                        <div class="lg:col-span-7 order-3 lg:order-1">
                                                             <div class="flex gap-6 items-center">
                                                                 @if ($session['video'])
-                                                                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M12.8808 23.1899C18.573 23.1899 23.1875 18.5755 23.1875 12.8833C23.1875 7.19108 18.573 2.57664 12.8808 2.57664C7.18865 2.57664 2.57422 7.19108 2.57422 12.8833C2.57422 18.5755 7.18865 23.1899 12.8808 23.1899ZM12.3072 9.23467C11.9118 8.97111 11.4035 8.94654 10.9846 9.17073C10.5657 9.39493 10.3042 9.83149 10.3042 10.3066V15.4599C10.3042 15.9351 10.5657 16.3716 10.9846 16.5958C11.4035 16.82 11.9118 16.7954 12.3072 16.5319L16.1721 13.9552C16.5306 13.7163 16.7458 13.314 16.7458 12.8833C16.7458 12.4525 16.5306 12.0503 16.1721 11.8113L12.3072 9.23467Z"
-                                                                    fill="#216CFF" />
-                                                                </svg>
-                                                                @else
-                                                                @if ($session_time)
-                                                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M12.8832 8.70556V13L16.104 16.2208M22.5456 13C22.5456 18.3364 18.2196 22.6625 12.8832 22.6625C7.54674 22.6625 3.2207 18.3364 3.2207 13C3.2207 7.66356 7.54674 3.33752 12.8832 3.33752C18.2196 3.33752 22.5456 7.66356 22.5456 13Z"
-                                                                        stroke="#216cff" stroke-width="2.14721" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    <svg width="26" height="26"
+                                                                        viewBox="0 0 26 26" fill="none"
+                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                            d="M12.8808 23.1899C18.573 23.1899 23.1875 18.5755 23.1875 12.8833C23.1875 7.19108 18.573 2.57664 12.8808 2.57664C7.18865 2.57664 2.57422 7.19108 2.57422 12.8833C2.57422 18.5755 7.18865 23.1899 12.8808 23.1899ZM12.3072 9.23467C11.9118 8.97111 11.4035 8.94654 10.9846 9.17073C10.5657 9.39493 10.3042 9.83149 10.3042 10.3066V15.4599C10.3042 15.9351 10.5657 16.3716 10.9846 16.5958C11.4035 16.82 11.9118 16.7954 12.3072 16.5319L16.1721 13.9552C16.5306 13.7163 16.7458 13.314 16.7458 12.8833C16.7458 12.4525 16.5306 12.0503 16.1721 11.8113L12.3072 9.23467Z"
+                                                                            fill="#216CFF" />
                                                                     </svg>
-                                                                @endif
-
-                                                                @if (($session['icon']))
-                                                                    <img 
-                                                                        class="lazy  w-6 h-6 acf-icon-action" 
-                                                                        src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $session['icon'] }}.svg" 
-                                                                        alt="Icon" 
-                                                                    />
-                                                                @endif
-                                                                @endif
-
-                                                                <span class="text-medium-gray text-base font-semibold flex items-center gap-2">
-                                                                @if ($session['video'])
-                                                                    Watch On-Demand
                                                                 @else
                                                                     @if ($session_time)
-                                                                    {!! $session_time !!} {{ $abbr }}
+                                                                        <svg width="26" height="26"
+                                                                            viewBox="0 0 26 26" fill="none"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <path
+                                                                                d="M12.8832 8.70556V13L16.104 16.2208M22.5456 13C22.5456 18.3364 18.2196 22.6625 12.8832 22.6625C7.54674 22.6625 3.2207 18.3364 3.2207 13C3.2207 7.66356 7.54674 3.33752 12.8832 3.33752C18.2196 3.33752 22.5456 7.66356 22.5456 13Z"
+                                                                                stroke="#216cff" stroke-width="2.14721"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round" />
+                                                                        </svg>
+                                                                    @endif
+
+                                                                    @if ($session['icon'])
+                                                                        <img class="lazy  w-6 h-6 acf-icon-action"
+                                                                            src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $session['icon'] }}.svg"
+                                                                            alt="Icon" />
                                                                     @endif
                                                                 @endif
 
-                                                                @if (($session['left_label']))
-                                                                    {{ $session['left_label'] }}
-                                                                @endif
+                                                                <span
+                                                                    class="text-medium-gray text-base font-semibold flex items-center gap-2">
+                                                                    @if ($session['video'])
+                                                                        Watch On-Demand
+                                                                    @else
+																																		@if ($session['top_left_label'])
+                                                                        {{ $session['top_left_label'] }}<br/>
+                                                                    @endif
+
+                                                                        @if ($session_time)
+                                                                            {!! $session_time !!} {{ $abbr }}<br/>
+                                                                        @endif
+                                                                    @endif
+
+                                                                    @if ($session['left_label'])
+                                                                        {{ $session['left_label'] }}<br/>
+                                                                    @endif
+																																		@if ($session['bottom_left_label'])
+                                                                        {{ $session['bottom_left_label'] }}
+                                                                    @endif
                                                                 </span>
                                                             </div>
                                                         </div>
 
-                                                        <div class="lg:col-span-6 order-1 lg:order-2">
+                                                        <div class="lg:col-span-5 order-1 lg:order-2">
                                                             <div class="flex flex-col items-start lg:items-end gap-6">
                                                                 <div class="">
                                                                     @if ($session['label'])
@@ -274,24 +294,30 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                                                                         </svg>
                                                                     @endif
                                                                 @endif
-                                                                 @if (($session['icon']))
-                                                                    <img 
-    class="lazy  w-6 h-6 acf-icon-action" 
-    src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $session['icon'] }}.svg" 
-    alt="Icon" 
-  />
+                                                                @if ($session['icon'])
+                                                                    <img class="lazy  w-6 h-6 acf-icon-action"
+                                                                        src="/wp-content/themes/uniteus-sage/resources/icons/acf/{{ $session['icon'] }}.svg"
+                                                                        alt="Icon" />
                                                                 @endif
                                                                 <span class="text-medium-gray text-base font-semibold">
                                                                     @if ($session['video'])
                                                                         Watch On-Demand
                                                                     @else
+
+																																		@if ($session['top_left_label'])
+                                                                        {{ $session['top_left_label'] }}<br/>
+                                                                    @endif
+
                                                                         @if ($session_time)
-                                                                            {!! $session_time !!} {{ $abbr }}
+                                                                            {!! $session_time !!} {{ $abbr }}<br/>
                                                                         @endif
                                                                     @endif
 
-                                                                     @if (($session['left_label']))
-                                                                        {{ $session['left_label'] }}
+                                                                    @if ($session['left_label'])
+                                                                        {{ $session['left_label'] }}<br/>
+                                                                    @endif
+																																		@if ($session['bottom_left_label'])
+                                                                        {{ $session['bottom_left_label'] }}
                                                                     @endif
                                                                 </span>
                                                             </div>
@@ -385,9 +411,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                                                                                         <div class="mb-4 text-sm">
                                                                                             <span
                                                                                                 class="font-bold">{!! $m['name'] !!}</span>
-                                                                                            @if ($m['title'] && $m['name'])
-                                                                                                ,
-                                                                                            @endif
+
                                                                                             <div class="text-sm">
                                                                                                 {!! $m['title'] !!}
                                                                                             </div>
@@ -483,9 +507,7 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                                                                                         <div class="mb-4 text-sm">
                                                                                             <span
                                                                                                 class="font-bold">{!! $m['name'] !!}</span>
-                                                                                            @if ($m['title'] && $m['name'])
-                                                                                                ,
-                                                                                            @endif
+
                                                                                             <div class="text-sm">
                                                                                                 {!! $m['title'] !!}
                                                                                             </div>
@@ -511,9 +533,6 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
                                                                                                     @endforeach
                                                                                                 </div>
                                                                                             @endif
-
-
-
                                                                                         </div>
                                                                                     </div>
                                                                                 @endforeach
@@ -552,5 +571,5 @@ $section_settings = isset($acf["components"][$index]['layout_settings']['section
     </div>
 </section>
 @if ($background['divider_bottom'])
-  @includeIf('dividers.waves-bottom')
+    @includeIf('dividers.waves-bottom')
 @endif

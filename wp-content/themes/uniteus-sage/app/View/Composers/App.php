@@ -62,82 +62,51 @@ class App extends Composer
         return date('Y');
     }
 
-    function getMenuItems($current_menu = 'Main Menu') {
-        $array_menu = wp_get_nav_menu_items($current_menu);
-        $menu = array();
-        if (!is_array($array_menu)) {
-            return [];
-        }
-        foreach ($array_menu as $m) {
-            if (empty($m->menu_item_parent)) {
-                $menu[$m->ID] = array();
-                $anchor = get_field('anchor', $m->ID);
-                $menu[$m->ID]['anchor']     = '';
-                $menu[$m->ID]['ID']         = $m->ID;
-                $menu[$m->ID]['title']      = $m->title;
-                $menu[$m->ID]['url']        = $m->url;
-                $menu[$m->ID]['classes']    = $m->classes;
-                $menu[$m->ID]['description'] = $m->description;
-                $menu[$m->ID]['children']   = false;
+public function getMenuItems($menu_name = 'Main Menu')
+{
+    $items = wp_get_nav_menu_items($menu_name) ?: [];
+    if (!$items) return [];
 
-                if ($anchor) {
-                    $menu[$m->ID]['anchor'] = $anchor;
-                    $menu[$m->ID]['url'] = $menu[$m->ID]['url']
-                        . '#'
-                        . $anchor;
-                }
-            }
-        }
-        $submenu = array();
-        foreach ($array_menu as $m) {
-            if ($m->menu_item_parent) {
-                $submenu[$m->ID] = array();
-                $anchor = get_field('anchor', $m->ID);
-                $icon = get_field('menu_icon', $m->ID); // Retrieve icon field from ACF
-                $submenu[$m->ID]['anchor'] = '';
-                $submenu[$m->ID]['ID'] = $m->ID;
-                $submenu[$m->ID]['title'] = $m->title;
-                $submenu[$m->ID]['url'] = $m->url;
-                $submenu[$m->ID]['classes'] = $m->classes;
-                $submenu[$m->ID]['icon'] = $icon; // Add the icon field here
-                $submenu[$m->ID]['description'] = $m->description;
+    // Ensure proper order
+    usort($items, fn($a,$b) => (int)$a->menu_order <=> (int)$b->menu_order);
 
-                if (isset($menu[$m->menu_item_parent])) {
-                    $menu[$m->menu_item_parent]['children'][$m->ID] = $submenu[$m->ID];
-                }
-
-                if ($anchor) {
-                    $submenu[$m->ID]['anchor'] = $anchor;
-                    $submenu[$m->ID]['url'] = $submenu[$m->ID]['url'] . '#' . $anchor;
-                }
-
-                $sub_submenu = array();
-                foreach ($array_menu as $mm) {
-                    if ($mm->menu_item_parent == $m->ID) {
-                        $sub_submenu[$mm->ID] = array();
-                        $anchor = get_field('anchor', $mm->ID);
-                        $icon = get_field('menu_icon', $mm->ID); // Retrieve icon field from ACF
-                        $sub_submenu[$mm->ID]['ID'] = $mm->ID;
-                        $sub_submenu[$mm->ID]['title'] = $mm->title;
-                        $sub_submenu[$mm->ID]['url'] = $mm->url;
-                        $sub_submenu[$mm->ID]['classes'] = $mm->classes;
-                        $sub_submenu[$mm->ID]['parent'] = $mm->menu_item_parent;
-                        $sub_submenu[$mm->ID]['icon'] = $icon; // Add the icon field here
-                        $sub_submenu[$mm->ID]['description'] = $mm->description;
-
-                        if ($anchor) {
-                            $sub_submenu[$mm->ID]['anchor'] = $anchor;
-                            $sub_submenu[$mm->ID]['url'] = $sub_submenu[$mm->ID]['url'] . '#' . $anchor;
-                        }
-
-                        $menu[$m->menu_item_parent]['children'][$m->ID]['children'][$mm->ID] = $sub_submenu[$mm->ID];
-                    }
-                }
-            }
-        }
-
-        return $menu;
+    // Group items by parent id
+    $by_parent = [];
+    foreach ($items as $it) {
+        $by_parent[(int)$it->menu_item_parent][] = $it;
     }
+
+    $makeNode = function($it) {
+        $anchor = get_field('anchor', $it->ID);
+        $icon   = get_field('menu_icon', $it->ID);
+
+        $url = $it->url;
+        if ($anchor) $url .= '#' . $anchor;
+
+        return [
+            'anchor'      => $anchor ?: '',
+            'ID'          => (int)$it->ID,
+            'title'       => $it->title,
+            'url'         => $url,
+            'classes'     => is_array($it->classes) ? $it->classes : [],
+            'description' => $it->description,
+            'icon'        => $icon,
+            'children'    => [], // filled recursively
+        ];
+    };
+
+    $build = function(int $parent_id) use (&$build, $by_parent, $makeNode) {
+        $branch = [];
+        foreach ($by_parent[$parent_id] ?? [] as $it) {
+            $node = $makeNode($it);
+            $node['children'] = $build((int)$it->ID);
+            $branch[$it->ID] = $node; // keep keys stable like your old structure
+        }
+        return $branch;
+    };
+
+    return $build(0);
+}
 
     /**
      * Returns selected menu.
