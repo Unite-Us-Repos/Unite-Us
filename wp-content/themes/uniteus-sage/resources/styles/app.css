@@ -2540,7 +2540,7 @@ blockquote h4 {
   .solutions .menu-wrapper .solutions-menu-item {
     padding: 1rem;
   }
-  .solutions .menu-wrapper .solutions-menu-item:first-child .menu_click:hover {
+  .solutions .menu-wrapper .solutions-menu-item:first-child .menu_click a:hover {
     opacity: 0.8;
   }
   .solutions .menu-wrapper .menu-item-wrapper .industries {

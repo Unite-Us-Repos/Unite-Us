@@ -193,7 +193,7 @@ $watch('isSticky', value => {
                                                                                                     src="@asset('/images/icon-chevron-right.svg')"
                                                                                                     alt="" />
                                                                                                 <span
-                                                                                                    class="text-sm text-brand">{!! $leaf['title'] !!}</span>
+                                                                                                    class="text-sm text-brand hover:text-action">{!! $leaf['title'] !!}</span>
                                                                                             </a>
                                                                                         </div>
                                                                                     @endforeach
