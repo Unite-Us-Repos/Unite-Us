@@ -290,7 +290,7 @@ module.exports = {
     'lg:!px-0',
     'break-words',
     'object-none',
-    'h-[120px]', 'md:h-[140px]', 'lg:h-[160px]', 'pl-16', 'lg:flex-wrap',
+    'h-[120px]', 'md:h-[140px]', 'lg:h-[160px]', 'pl-16', 'lg:flex-wrap', 'mt-8' , 'lg:mt-0',
   ],
   variants: {
     extend: {

@@ -39,7 +39,7 @@
                 </div>
               </footer>
             </div>
-            <div class="col-span-4 flex justify-end">
+            <div class="col-span-4 mt-8 lg:mt-0 flex justify-end">
               @if ($testimonial['company_logo'])
           
                     <img class="w-full h-auto max-w-xs"
