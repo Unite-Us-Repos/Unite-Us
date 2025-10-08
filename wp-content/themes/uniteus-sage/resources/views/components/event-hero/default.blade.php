@@ -166,7 +166,7 @@
                     </div>
                 </div>
 
-                @if ($registration_open)
+     
                     @php
                         $data = [
                             'buttons' => $event_info['buttons'],
@@ -175,7 +175,7 @@
                         ];
                     @endphp
                     @include('components.action-buttons', $data)
-                @endif
+       
 
             </div>
 
@@ -263,15 +263,15 @@
             <div class="flex flex-col gap-10 lg:grid lg:grid-cols-12">
                 <div class="lg:col-span-5">
                     @if ('dynamic' == $event_info['title_display'])
-                      <div class="uppercase font-semibold mb-3" style="color: #216CFF;">
-                        {!! $event_info['about_subtitle'] !!}
-                      </div>
+                        <div class="uppercase font-semibold mb-3" style="color: #216CFF;">
+                            {!! $event_info['about_subtitle'] !!}
+                        </div>
                     @endif
                     @if ('address' == $event_info['title_display'] or 'address-starting-time' == $event_info['title_display'])
 
-                      <div class="uppercase font-semibold mb-3" style="color: #216CFF;">
-                        {!! $event_info['about_subtitle'] !!}
-                      </div>
+                        <div class="uppercase font-semibold mb-3" style="color: #216CFF;">
+                            {!! $event_info['about_subtitle'] !!}
+                        </div>
 
                         <div class="mt-6 flex">
                             <div class="mr-4 flex-shrink-0 pt-2">
@@ -306,7 +306,7 @@
                             </div>
                         @endif
 
-                      
+
 
                         <div class="mt-6 flex">
                             <div class="mr-4 flex-shrink-0 pt-2">
