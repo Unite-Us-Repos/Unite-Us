@@ -102,30 +102,23 @@
 
 <section class="relative component-section padding-collapse text-white" style="background: #0B1538;">
 
-
     <div class="component-inner-section relative z-10 md:!pr-0">
 
         <div class="flex flex-col md:gap-10 md:grid md:grid-cols-12">
 
-            <div
-                class="md:col-span-6 md:mb-0 flex flex-col items-start py-10 md:py-20 justify-center order-2 md:order-1">
-
+            <div class="md:col-span-6 md:mb-0 flex flex-col items-start py-10 md:py-20 justify-center order-2 md:order-1">
 
                 @if ($event_info['logo'])
-                    <img class="w-48 h-auto mb-6" src="{{ $event_info['logo']['sizes']['medium_large'] }}"
-                        alt="" />
+                    <img class="w-48 h-auto mb-6" src="{{ $event_info['logo']['sizes']['medium_large'] }}" alt="" />
                 @endif
 
                 @if ($event_info['secondary_logo'])
-                    <img class="w-full h-auto mx-auto md:mx-0 mb-" style="max-width: 396px"
-                        src="{{ $event_info['secondary_logo']['sizes']['large'] }}" alt="" />
+                    <img class="w-full h-auto mx-auto md:mx-0 mb-" style="max-width: 396px" src="{{ $event_info['secondary_logo']['sizes']['large'] }}" alt="" />
                 @endif
-
 
                 <h1 class="text-[42px] md:text-5xl font-extrabold mb-6">
                     {!! $event_info['title'] !!}
                 </h1>
-
 
                 <div class="max-w-lg">
                     @if ($event_info['title'])
@@ -154,28 +147,25 @@
                                                 d="M12.5615 24.5C19.1889 24.5 24.5615 19.1274 24.5615 12.5C24.5615 5.87259 19.1889 0.5 12.5615 0.5C5.9341 0.5 0.561523 5.87259 0.561523 12.5C0.561523 19.1274 5.9341 24.5 12.5615 24.5ZM14.0615 6.50001C14.0615 5.67158 13.3899 5.00001 12.5615 5.00001C11.7331 5.00001 11.0615 5.67158 11.0615 6.50001V12.5C11.0615 12.8978 11.2196 13.2794 11.5009 13.5607L15.7435 17.8033C16.3293 18.3891 17.279 18.3891 17.8648 17.8033C18.4506 17.2175 18.4506 16.2678 17.8648 15.682L14.0615 11.8787V6.50001Z"
                                                 fill="currentColor"></path>
                                         </svg>
-                                    </span>{!! $times !!}</span>
+                                    </span>{!! $times !!}
+                                </span>
+                            </span>
                         </div>
                     @endif
-
-
-
 
                     <div class="text-xl">
                         {!! $event_info['description'] !!}
                     </div>
                 </div>
 
-     
-                    @php
-                        $data = [
-                            'buttons' => $event_info['buttons'],
-                            'justify' => 'justify-start',
-                            'classes' => '!py-2 !px-6',
-                        ];
-                    @endphp
-                    @include('components.action-buttons', $data)
-       
+                @php
+                    $data = [
+                        'buttons' => $event_info['buttons'],
+                        'justify' => 'justify-start',
+                        'classes' => '!py-2 !px-6',
+                    ];
+                @endphp
+                @include('components.action-buttons', $data)
 
             </div>
 
@@ -197,29 +187,25 @@
                         @endif
                     </div>
                 @else
-                    <img class="w-full h-full object-contain" src="/wp-content/uploads/2023/09/1c-collage-2023.png"
-                        alt="">
+                    <img class="w-full h-full object-contain" src="/wp-content/uploads/2023/09/1c-collage-2023.png" alt="">
                 @endif
             </div>
 
         </div>
     </div>
 </section>
+
 @if ($registration_open)
     <div style="background: #216CFF;"
         class="relative w-full z-20 countdown-container-2 mx-auto md:mx-0 md:mb-0 text-center flex flex-col md:flex-row items-center justify-between overflow-hidden">
 
-
-        <div id="countdown"
-            class="countdown component-inner-section w-full md:h-full flex flex-col gap-2 flex-wrap md:flex-row md:flex-nowrap md:items-center p-5 justify-between"
-            data-date="{{ $countdown }}" data-timezone="{{ $event_info['timezone'] }}">
+        <div id="countdown" class="countdown component-inner-section w-full md:h-full flex flex-col gap-2 flex-wrap md:flex-row md:flex-nowrap md:items-center p-5 justify-between" data-date="{{ $countdown }}" data-timezone="{{ $event_info['timezone'] }}">
 
             <div class="counter text-2xl md:text-xl lg:text-2xl col-span-2 text-white flex-shrink-0">
                 Time Left to RSVP
             </div>
 
-            <div
-                class="grid grid-cols-2 gap-6 md:flex bg-white md:bg-[#216CFF] md:text-white md:justify-evenly w-full max-w-sm mx-auto md:max-w-none rounded-xl p-2">
+            <div class="grid grid-cols-2 gap-6 md:flex bg-white md:bg-[#216CFF] md:text-white md:justify-evenly w-full max-w-sm mx-auto md:max-w-none rounded-xl p-2">
                 <div class="counter flex flex-col md:gap-2 md:flex-row">
                     <span id="days" class="value block text-2xl font-extrabold" data-days="">00</span>
                     <span class="suffix block uppercase text-[#2F71F4] md:text-white text-sm md:text-lg">Days</span>
@@ -243,18 +229,6 @@
         </div>
     </div>
 @endif
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @if ($event_info['about_layout'] == 'default')
@@ -389,4 +363,6 @@
 
         </div>
     </section>
+@endif
+@if ($event_info['about_layout'] == 'none')
 @endif
