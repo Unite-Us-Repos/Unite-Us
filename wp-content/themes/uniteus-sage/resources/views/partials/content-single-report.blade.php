@@ -729,6 +729,14 @@ if ($components) {
 
 
 <script>
+// GLOBAL smooth scroll helper (available to all blocks)
+(function () {
+  const getOffset = () => (window.innerWidth >= 1024 ? 100 : 160); // desktop vs mobile
+  window.smoothScrollToSection = (el) => {
+    const y = el.getBoundingClientRect().top + window.pageYOffset - getOffset();
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  };
+})();
 
 document.addEventListener('DOMContentLoaded', function () {
   const desktopMenuWrapperOuter = document.querySelector('.report-menu-wrapper-outer');
@@ -1015,28 +1023,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-document.addEventListener('DOMContentLoaded', function () {
-  let offset = 100; // Offset for fixed navigation (80px)
-
-  // Function to scroll smoothly to a section
-  const smoothScrollToSection = (element) => {
-      if (window.innerWidth <= 1024) {
-          offset = 160; // Offset for desktop (80px + 100px for the menu)
-      } else {
-        offset = 100; // Offset for mobile (80px)
-      }
-
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth',
-      });
-  };
-
-});
-
   // reports image lightbox
 document.addEventListener('DOMContentLoaded', function () {
   const lightbox = document.getElementById('reportlightbox');
@@ -1100,20 +1086,26 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Attach event listeners to all internal links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href').substring(1); // Get the ID without the #
-          const targetElement = document.getElementById(targetId);
+  const menuCloseBtn = document.getElementById('reportMenuCloseBtn'); // ✅ correct handle
 
-          // Scroll to the section if the target exists
-          if (targetElement) {
-              smoothScrollToSection(targetElement);
-              reportMenuCloseBtn.click(); // Close the mobile menu after scrolling
-          }
-      });
+  // Handle both "#id" and same-page full-URL-with-hash links
+  document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const url = new URL(this.href, location.href);
+
+      // Only intercept same-page anchors
+      if (url.pathname !== location.pathname || !url.hash) return;
+
+      const targetId = url.hash.slice(1);
+      const targetEl = document.getElementById(targetId);
+      if (!targetEl) return; // let browser handle if no match
+
+      e.preventDefault();
+      window.smoothScrollToSection(targetEl); // ✅ global helper
+      if (menuCloseBtn) menuCloseBtn.click(); // close mobile menu if present
+    });
   });
 });
+
 
 </script>

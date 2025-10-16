@@ -20,7 +20,7 @@ if (isset($features)) {
   }
 }
 
-$current_state = do_shortcode('[current_state]');
+// $current_state = do_shortcode('[current_state]');
 @endphp
 
 @if ($background['has_divider'])
@@ -92,7 +92,7 @@ $current_state = do_shortcode('[current_state]');
                     @endif
 
                     @if ($link)
-                      <a class="no-underline text-action font-semibold block" href="{{ $link }}" @if ($card['is_blank']) target=="_blank" @endif>
+                      <a class="no-underline text-action font-semibold block" href="{{ $link }}" @if ($card['is_blank']) target="_blank" @endif>
                         @if ($card['button_text']) {{ $card['button_text'] }} @else Learn More @endif<span aria-hidden="true" class="ml-1">
                             →</span></a>
                     @endif
