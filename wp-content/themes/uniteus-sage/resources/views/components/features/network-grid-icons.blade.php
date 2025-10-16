@@ -53,9 +53,9 @@ $current_state = do_shortcode('[current_state]');
                 $link = $card['page_link'];
               }
 
-              if ($current_state) {
-              $link = str_replace('[current_state]', $current_state, $link);
-              }
+              // if ($current_state) {
+              // $link = str_replace('[current_state]', $current_state, $link);
+              // }
             @endphp
             <div class=" md:basis-6/12 @if ($columns) lg:basis-{{ $columns }} @else sm:basis-2/6 @endif pt-6">
 
