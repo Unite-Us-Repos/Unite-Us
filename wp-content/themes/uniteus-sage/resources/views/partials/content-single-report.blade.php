@@ -323,7 +323,7 @@ if ($components) {
                             @endphp
 
 
-                            <div class="flex flex-wrap flex-col w-full sm:flex-row gap-6 pb-4 @if ('text' == $button_layout) mt-5 @elseif ('simple-justified' == $style && !$mt) mt-9 sm:mt-10 @elseif ($mt) {{ $mt }} @else mt-9 sm:mt-10 @endif button-layout-{{ $button_layout }} {{ $layout }} md:{{ $justify }}">
+                            <div class="anchor-buttons flex flex-wrap flex-col w-full sm:flex-row gap-6 pb-4 @if ('text' == $button_layout) mt-5 @elseif ('simple-justified' == $style && !$mt) mt-9 sm:mt-10 @elseif ($mt) {{ $mt }} @else mt-9 sm:mt-10 @endif button-layout-{{ $button_layout }} {{ $layout }} md:{{ $justify }}">
                               @foreach ($buttons as $index => $button)
                                 @php
                                   if ('internal' == $button['link_type']) {
@@ -792,6 +792,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const menu = document.getElementById('reportDynamicMenu');
   const sections = []; // Store sections and their corresponding menu links
   const offset = 80; // Main nav (80px)
+const scrollToSectionWithOffset = (el) => window.smoothScrollToSection(el);
 
   if (mobileMenu) {
     const scrollToSectionWithOffset = (element, offset) => {
@@ -1086,10 +1087,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  const menuCloseBtn = document.getElementById('reportMenuCloseBtn'); // ✅ correct handle
-
-  // Handle both "#id" and same-page full-URL-with-hash links
-  document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+  // Smooth-scroll only for anchors inside .anchor-buttons
+  document.querySelectorAll('.anchor-buttons a[href*="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const url = new URL(this.href, location.href);
 
@@ -1101,8 +1100,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!targetEl) return; // let browser handle if no match
 
       e.preventDefault();
-      window.smoothScrollToSection(targetEl); // ✅ global helper
-      if (menuCloseBtn) menuCloseBtn.click(); // close mobile menu if present
+      window.smoothScrollToSection(targetEl); // uses the global helper at the top
     });
   });
 });
