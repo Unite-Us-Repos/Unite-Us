@@ -23,7 +23,6 @@
     }
  }
 
-
 /**
  * Document Manager role limited to WP Document Revisions (no mu-plugin).
  * Paste at the end of app/custom-functions.php in your uniteus-sage theme.
@@ -62,6 +61,11 @@ add_action('init', function () {
 
     // Allow uploads for adding/updating document files.
     $role->add_cap('upload_files');
+
+    // Let Document Managers manage (create/edit/delete) categories, so the submenu shows.
+    // NOTE: This also grants management of *post* categories, but your menu trim + redirect
+    // keep them inside Documents-only screens.
+    $role->add_cap('manage_categories');
 
     // Marker cap to identify this role when trimming the admin UI.
     $role->add_cap('document_manager_only_guard');
@@ -104,6 +108,7 @@ add_action('admin_menu', function () {
 
 /**
  * Soft-redirect this role back to Documents if they hit a disallowed admin screen.
+ * Allow the Document Categories terms screen explicitly.
  */
 add_action('admin_init', function () {
     if (!current_user_can('document_manager_only_guard')) return;
@@ -120,11 +125,12 @@ add_action('admin_init', function () {
     $screen = function_exists('get_current_screen') ? get_current_screen() : null;
     if (!$screen) return;
 
-    $is_doc_screen = ($screen->post_type === 'document');
-    $is_profile    = in_array($screen->base, ['profile', 'user-edit'], true);
-    $is_dashboard  = ($screen->base === 'dashboard');
+    $is_doc_screen     = ($screen->post_type === 'document');
+    $is_profile        = in_array($screen->base, ['profile', 'user-edit'], true);
+    $is_dashboard      = ($screen->base === 'dashboard');
+    $is_doc_cat_screen = ($screen->base === 'edit-tags' && !empty($screen->taxonomy) && $screen->taxonomy === 'document_category');
 
-    if ($is_doc_screen || $is_profile || $is_dashboard) {
+    if ($is_doc_screen || $is_profile || $is_dashboard || $is_doc_cat_screen) {
         return;
     }
 
@@ -135,17 +141,10 @@ add_action('admin_init', function () {
 
 /**
  * Document Categories taxonomy for WP Document Revisions (CPT: document)
- * Place this at the end of app/custom-functions.php
- */
-
-if (!defined('ABSPATH')) exit;
-
-/**
- * 1) Register a custom hierarchical taxonomy attached to the 'document' CPT.
- *    We set custom capabilities so we can grant precise rights to the Document Manager role.
+ * No custom caps — uses WordPress' defaults so Admins/Editors (and DMs with manage_categories) can manage.
  */
 add_action('init', function () {
-    if ( ! post_type_exists('document') ) {
+    if (!post_type_exists('document')) {
         return; // Ensure WP Document Revisions is active
     }
 
@@ -168,42 +167,25 @@ add_action('init', function () {
     ];
 
     register_taxonomy($taxonomy, ['document'], [
-        // Keep this internal (no public archives); flip to true if you want front-end category pages.
         'public'            => false,
         'show_ui'           => true,
         'show_admin_column' => true,
-        'show_in_rest'      => true,   // Block editor & REST API
-        'hierarchical'      => true,   // acts like normal WP categories
+        'show_in_rest'      => true,     // Block editor & REST API
+        'hierarchical'      => true,     // acts like normal WP categories
         'labels'            => $labels,
-        'rewrite'           => false,  // no public rewrite since 'public' is false
+        'rewrite'           => false,    // no public rewrite since 'public' is false
 
-        // Custom caps so we don't have to give broad 'manage_categories'
+        // Built-in caps:
+        // - Users with manage_categories can create/edit/delete.
+        // - Anyone who can edit Documents can assign categories to them.
         'capabilities' => [
-            'manage_terms' => 'manage_document_categories',
-            'edit_terms'   => 'edit_document_categories',
-            'delete_terms' => 'delete_document_categories',
-            'assign_terms' => 'assign_document_categories',
+            'manage_terms' => 'manage_categories',
+            'edit_terms'   => 'manage_categories',
+            'delete_terms' => 'manage_categories',
+            'assign_terms' => 'edit_documents',
         ],
     ]);
 }, 12);
-
-/**
- * 2) Grant taxonomy caps to the "Document Manager" role.
- *    Note: your role creation runs at priority 20; we run at 21 so it already exists.
- */
-add_action('init', function () {
-    $role = get_role('document_manager');
-    if ( ! $role ) return;
-
-    foreach ([
-        'manage_document_categories',
-        'edit_document_categories',
-        'delete_document_categories',
-        'assign_document_categories',
-    ] as $cap) {
-        $role->add_cap($cap);
-    }
-}, 21);
 
 
 /**
@@ -213,14 +195,10 @@ add_action('init', function () {
 
 // 1) Render the dropdown on the Documents list screen.
 add_action('restrict_manage_posts', function ($post_type) {
-    if ($post_type !== 'document') {
-        return;
-    }
+    if ($post_type !== 'document') return;
 
     $tax = 'document_category';
-    if (!taxonomy_exists($tax)) {
-        return; // Our custom taxonomy must be registered first
-    }
+    if (!taxonomy_exists($tax)) return; // Our custom taxonomy must be registered first
 
     // Current selection (slug)
     $selected = isset($_GET[$tax]) ? sanitize_text_field(wp_unslash($_GET[$tax])) : '';
@@ -240,19 +218,13 @@ add_action('restrict_manage_posts', function ($post_type) {
 // 2) Make the selection actually filter the query (robust even if query_var were off).
 add_action('pre_get_posts', function ($query) {
     // Only affect the admin main list query for Documents
-    if (!is_admin() || !$query->is_main_query()) {
-        return;
-    }
+    if (!is_admin() || !$query->is_main_query()) return;
 
     $screen = function_exists('get_current_screen') ? get_current_screen() : null;
-    if (!$screen || $screen->id !== 'edit-document') {
-        return;
-    }
+    if (!$screen || $screen->id !== 'edit-document') return;
 
     $tax = 'document_category';
-    if (!taxonomy_exists($tax)) {
-        return;
-    }
+    if (!taxonomy_exists($tax)) return;
 
     if (!empty($_GET[$tax])) {
         $slug = sanitize_title(wp_unslash($_GET[$tax]));
@@ -268,28 +240,20 @@ add_action('pre_get_posts', function ($query) {
 
 // Extra spacing so the filter row doesn't crash into pagination on Documents list.
 add_action('admin_head', function () {
-    if ( ! function_exists('get_current_screen') ) return;
+    if (!function_exists('get_current_screen')) return;
     $screen = get_current_screen();
-    if ( ! $screen || $screen->id !== 'edit-document' ) return; // only on Documents list
+    if (!$screen || $screen->id !== 'edit-document') return; // only on Documents list
 
     ?>
     <style>
       /* Add vertical breathing room under the filter dropdowns */
-      body.post-type-document .tablenav .actions {
-        margin-bottom: 10px; /* tweak to taste */
-      }
-
+      body.post-type-document .tablenav .actions { margin-bottom: 10px; }
       /* Optional: add a touch more horizontal spacing between controls */
       body.post-type-document .tablenav .actions select,
-      body.post-type-document .tablenav .actions .button {
-        margin-right: 6px;
-      }
-
+      body.post-type-document .tablenav .actions .button { margin-right: 6px; }
       /* When pagination wraps below on narrower screens, give it a little top gap */
       @media (max-width: 1280px) {
-        body.post-type-document .tablenav .tablenav-pages {
-          margin-top: 6px;
-        }
+        body.post-type-document .tablenav .tablenav-pages { margin-top: 6px; }
       }
     </style>
     <?php
