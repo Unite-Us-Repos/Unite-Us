@@ -56,22 +56,57 @@
                 @endisset
 
                 @if (!empty($section['subtitle']))
-                    <div
-                        class="
-            {{ !empty($section['purple_text']) ? 'text-electric-purple' : 'text-action-light-blue' }}
-            {{ ($section['case_type'] ?? '') === 'Uppercase' ? 'uppercase' : '' }}
-            {{ ($section['case_type'] ?? '') === 'Lowercase' ? 'lowercase' : '' }}
-            {{ ($section['case_type'] ?? '') === 'Camelcase' ? 'capitalize' : '' }}
-            {{ ($section['case_type'] ?? '') === 'Typed' ? 'none' : '' }}
-            @if (!empty($section['subtitle_display_as_pill'])) bg-light bg-opacity-10 text-action-light-blue text-sm py-1 px-4 mb-6 rounded-full
-              {{ !empty($section['gradient_pill']) ? 'gradient-pill' : '' }}
-            @else
-              font-semibold text-base mb-3 @endif
-            @if ($stack_on_mobile && $mobile_image) mx-auto md:ml-0 block md:inline-block w-fit @else inline-block @endif
-          ">
-                        {!! $section['subtitle'] !!}
-                    </div>
-                @endif
+  @php
+    $isPill   = !empty($section['subtitle_display_as_pill']);
+    $pillIcon = $section['pill_icon']['url'] ?? '';
+    $wrap     = ($stack_on_mobile && $mobile_image)
+                ? 'mx-auto md:ml-0 block md:inline-block w-fit'
+                : 'inline-block';
+
+    // Optional text casing support (keeps your existing behavior)
+    $case = match ($section['case_type'] ?? '') {
+      'Uppercase' => 'uppercase',
+      'Lowercase' => 'lowercase',
+      'Camelcase' => 'capitalize',
+      default     => '',
+    };
+  @endphp
+
+  @if ($isPill)
+    <div class="{{ $wrap }} mb-6">
+      @if (!empty($section['gradient_hollow_pill']))
+        {{-- Gradient hollow pill with icon (purple gradient border + light inner) --}}
+        <span class="inline-flex items-center !rounded-full gradient-border bg-transparent">
+          <span class="inline-flex items-center gap-2 !rounded-full bg-transparent px-4 py-1">
+            @if ($pillIcon)
+              <img src="{{ esc_url($pillIcon) }}" alt="" aria-hidden="true" class="h-5 w-5">
+            @endif
+            <span class="text-slate-700 text-sm font-medium {{ $case }}">
+              {!! $section['subtitle'] !!}
+            </span>
+          </span>
+        </span>
+      @else
+        {{-- Regular filled pill (previous style) --}}
+        <span class="inline-flex items-center gap-2 rounded-full bg-light bg-opacity-10 text-action-light-blue text-sm py-1 px-4 {{ $case }}">
+          @if ($pillIcon)
+            <img src="{{ esc_url($pillIcon) }}" alt="" aria-hidden="true" class="h-5 w-5">
+          @endif
+          {!! $section['subtitle'] !!}
+        </span>
+      @endif
+    </div>
+  @else
+    {{-- Non-pill subtitle with optional icon --}}
+    <div class="{{ $wrap }} font-semibold text-base mb-3 {{ !empty($section['purple_text']) ? 'text-electric-purple' : 'text-action-light-blue' }} {{ $case }}">
+      @if ($pillIcon)
+        <img src="{{ esc_url($pillIcon) }}" alt="" aria-hidden="true" class="h-5 w-5 inline align-[-2px] mr-2">
+      @endif
+      {!! $section['subtitle'] !!}
+    </div>
+  @endif
+@endif
+
 
                 @if (($section['is_header'] ?? '') === 'h1')
                     <h1

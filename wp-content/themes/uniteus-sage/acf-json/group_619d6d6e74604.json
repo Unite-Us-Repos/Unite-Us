@@ -244,6 +244,43 @@
                     "save_options": 0
                 },
                 {
+                    "key": "field_6904358279d12",
+                    "label": "Pill Icon",
+                    "name": "pill_icon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_659446b12a2a1",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "uploader": "",
+                    "return_format": "array",
+                    "library": "all",
+                    "upload_folder": "",
+                    "acfe_thumbnail": 0,
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium"
+                },
+                {
                     "key": "field_62b4019a639a9",
                     "label": "Subtitle",
                     "name": "subtitle",
@@ -347,6 +384,36 @@
                     "key": "field_6743b41fcdece",
                     "label": "Gradient Pill",
                     "name": "gradient_pill",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_659446b12a2a1",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1,
+                    "style": ""
+                },
+                {
+                    "key": "field_690435ab79d13",
+                    "label": "Gradient Hollow Pill",
+                    "name": "gradient_hollow_pill",
                     "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
@@ -538,6 +605,7 @@
     "active": true,
     "description": "",
     "show_in_rest": 1,
+    "display_title": "",
     "acfe_autosync": [
         "json"
     ],
@@ -545,5 +613,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1753125139
+    "modified": 1761883617
 }
