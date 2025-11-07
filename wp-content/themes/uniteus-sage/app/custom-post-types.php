@@ -3,8 +3,9 @@
  * Post Types
  */
 
- // register team
-add_action('init', 'register_cpt_team');
+
+// register OC
+add_action('init', 'register_cpt_1c');
 
 function register_cpt_1c()
 {
@@ -66,7 +67,8 @@ function register_cpt_1c()
         );
 }
 
-add_action('init', 'register_cpt_1c');
+// register team
+add_action('init', 'register_cpt_team');
 
 function register_cpt_team()
 {
@@ -113,7 +115,7 @@ function register_cpt_team()
         'menu_name' => __('Categories'),
       );
 
-    // Now register the taxonomy
+    // Now register team category taxonomy
     register_taxonomy(
         'team_category', array('team'), array(
         'hierarchical' => true,
@@ -125,8 +127,37 @@ function register_cpt_team()
         'rewrite' => array( 'slug' => 'team-category' ),
         )
     );
+
+
+    $labels = array(
+        'name' => _x('Team Groups', 'taxonomy general name'),
+        'singular_name' => _x('Group', 'taxonomy singular name'),
+        'search_items' =>  __('Search Groups'),
+        'all_items' => __('All Groups'),
+        'parent_item' => __('Parent Group'),
+        'parent_item_colon' => __('Parent Group:'),
+        'edit_item' => __('Edit Group'),
+        'update_item' => __('Update Group'),
+        'add_new_item' => __('Add New Group'),
+        'new_item_name' => __('New Group'),
+        'menu_name' => __('Groups'),
+      );
+
+    // Now register team groups taxonomy
+    register_taxonomy(
+        'team_groups', array('team'), array(
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_in_rest' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => array( 'slug' => 'group' ),
+        )
+    );
 }
 
+// register Network 
 add_action('init', 'register_cpt_network');
 
 function register_cpt_network()
@@ -234,8 +265,8 @@ function register_cpt_network_form()
     );
 }
 
+// register Press
 add_action('init', 'register_cpt_press');
-
 
 function register_cpt_press()
 {
@@ -268,22 +299,22 @@ function register_cpt_press()
         )
     );
 
-    // now let's add categories (these act like categories)
+    // now register category taxonomy
     register_taxonomy(
         'press_cat',
-        array('press'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
-        array('hierarchical' => true,     /* if this is true, it acts like categories */
+        array('press'), 
+        array('hierarchical' => true,     
             'labels' => array(
-                'name' => __('Categories', 'sage'), /* name of the taxonomy */
-                'singular_name' => __('Category', 'sage'), /* single taxonomy name */
-                'search_items' =>  __('Search Categories', 'sage'), /* search title for taxomony */
-                'all_items' => __('All Categories', 'sage'), /* all title for taxonomies */
-                'parent_item' => __('Parent Category', 'sage'), /* parent title for taxonomy */
-                'parent_item_colon' => __('Parent Category:', 'sage'), /* parent taxonomy title */
-                'edit_item' => __('Edit Category', 'sage'), /* edit taxonomy title */
-                'update_item' => __('Update Category', 'sage'), /* update title for taxonomy */
-                'add_new_item' => __('Add New Category', 'sage'), /* add new title for taxonomy */
-                'new_item_name' => __('New Category Name', 'sage') /* name title for taxonomy */
+                'name' => __('Categories', 'sage'), 
+                'singular_name' => __('Category', 'sage'), 
+                'search_items' =>  __('Search Categories', 'sage'), 
+                'all_items' => __('All Categories', 'sage'), 
+                'parent_item' => __('Parent Category', 'sage'), 
+                'parent_item_colon' => __('Parent Category:', 'sage'), 
+                'edit_item' => __('Edit Category', 'sage'), 
+                'update_item' => __('Update Category', 'sage'), 
+                'add_new_item' => __('Add New Category', 'sage'), 
+                'new_item_name' => __('New Category Name', 'sage') 
             ),
             'show_admin_column' => true,
             'show_ui' => true,
@@ -292,60 +323,6 @@ function register_cpt_press()
         )
     );
     
-    // Post custom taxonomy
-    $labels = array(
-        'name' => _x('Company News', 'taxonomy general name'),
-        'singular_name' => _x('Company News', 'taxonomy singular name'),
-        'search_items' =>  __('Search Company News'),
-        'all_items' => __('All Company News'),
-        'parent_item' => __('Parent Company News'),
-        'parent_item_colon' => __('Parent Company News:'),
-        'edit_item' => __('Edit Company News'),
-        'update_item' => __('Update Company News'),
-        'add_new_item' => __('Add New Company News'),
-        'new_item_name' => __('New Company News'),
-        'menu_name' => __('Company News'),
-      );
-    // Now register the taxonomy
-    register_taxonomy(
-        'company-news', array('press'), array(
-        'hierarchical' => true,
-        'labels' => $labels,
-        'show_ui' => true,
-        'show_in_rest' => true,
-        'show_admin_column' => true,
-        'query_var' => true,
-        'rewrite' => array( 'slug' => 'company-news' ),
-        )
-    );
-
-     // Post custom taxonomy
-    $labels = array(
-        'name' => _x('In the News', 'taxonomy general name'),
-        'singular_name' => _x('In the News', 'taxonomy singular name'),
-        'search_items' =>  __('Search In the News'),
-        'all_items' => __('All In the News'),
-        'parent_item' => __('Parent In the News'),
-        'parent_item_colon' => __('Parent In the News:'),
-        'edit_item' => __('Edit In the News'),
-        'update_item' => __('Update In the News'),
-        'add_new_item' => __('Add New In the News'),
-        'new_item_name' => __('New In the News'),
-        'menu_name' => __('In the News'),
-      );
-    // Now register the taxonomy
-    register_taxonomy(
-        'in-the-news', array('press'), array(
-        'hierarchical' => true,
-        'labels' => $labels,
-        'show_ui' => true,
-        'show_in_rest' => true,
-        'show_admin_column' => true,
-        'query_var' => true,
-        'rewrite' => array( 'slug' => 'in-the-news' ),
-        )
-    );
-
 
     $labels = array(
         'name' => _x('States', 'taxonomy general name'),
@@ -361,7 +338,7 @@ function register_cpt_press()
         'menu_name' => __('States'),
       );
 
-    // Now register the taxonomy
+    // Now register state taxonomy
     register_taxonomy(
         'states', array('network_form', 'network_team', 'post', 'press'), array(
         'hierarchical' => true,
@@ -374,7 +351,7 @@ function register_cpt_press()
         )
     );
 
-    // Post custom taxonomy
+
     $labels = array(
         'name' => _x('Topic', 'taxonomy general name'),
         'singular_name' => _x('Topic', 'taxonomy singular name'),
@@ -388,7 +365,7 @@ function register_cpt_press()
         'new_item_name' => __('New Topic'),
         'menu_name' => __('Topics'),
       );
-    // Now register the taxonomy
+    // Now register topic taxonomy 
     register_taxonomy(
         'topic', array('post', 'press'), array(
         'hierarchical' => true,
@@ -401,7 +378,7 @@ function register_cpt_press()
         )
     );
 
-    // Post custom taxonomy
+
     $labels = array(
         'name' => _x('Industry', 'taxonomy general name'),
         'singular_name' => _x('Industry', 'taxonomy singular name'),
@@ -415,7 +392,7 @@ function register_cpt_press()
         'new_item_name' => __('New Industry'),
         'menu_name' => __('Industries'),
       );
-    // Now register the taxonomy
+    // Now register industry taxonomy
     register_taxonomy(
         'industry', array('post'), array(
         'hierarchical' => true,
@@ -428,38 +405,17 @@ function register_cpt_press()
         )
     );
 
-    $labels = array(
-        'name' => _x('Team Groups', 'taxonomy general name'),
-        'singular_name' => _x('Group', 'taxonomy singular name'),
-        'search_items' =>  __('Search Groups'),
-        'all_items' => __('All Groups'),
-        'parent_item' => __('Parent Group'),
-        'parent_item_colon' => __('Parent Group:'),
-        'edit_item' => __('Edit Group'),
-        'update_item' => __('Update Group'),
-        'add_new_item' => __('Add New Group'),
-        'new_item_name' => __('New Group'),
-        'menu_name' => __('Groups'),
-      );
-
-    // Now register the taxonomy
-    register_taxonomy(
-        'team_groups', array('team'), array(
-        'hierarchical' => true,
-        'labels' => $labels,
-        'show_ui' => true,
-        'show_in_rest' => true,
-        'show_admin_column' => true,
-        'query_var' => true,
-        'rewrite' => array( 'slug' => 'group' ),
-        )
-    );
 }
+
+// register add category to press cpt
+add_action('init', 'add_category_to_press_cpt');
 
 function add_category_to_press_cpt() {
     register_taxonomy_for_object_type('category', 'press');
 }
-add_action('init', 'add_category_to_press_cpt');
+
+// register rename category to type for press cpt
+add_action('init', 'rename_category_to_type_for_press');
 
 function rename_category_to_type_for_press() {
     global $wp_taxonomies;
@@ -481,8 +437,6 @@ function rename_category_to_type_for_press() {
         $labels->menu_name = 'Types';
     }
 }
-add_action('init', 'rename_category_to_type_for_press');
-
 
 // register Presenters
 add_action('init', 'register_cpt_presenter');
@@ -533,7 +487,7 @@ function register_cpt_presenter()
         'menu_name' => __('Categories'),
       );
 
-    // Now register the taxonomy
+    // Now register presenter category taxonomy
     register_taxonomy(
         'presenter_category', array('presenter'), array(
         'hierarchical' => true,
@@ -545,6 +499,7 @@ function register_cpt_presenter()
         'rewrite' => array( 'slug' => 'presenter-category' ),
         )
     );
+
     $labels = array(
         'name' => _x('Presenters Groups', 'taxonomy general name'),
         'singular_name' => _x('Group', 'taxonomy singular name'),
@@ -559,7 +514,7 @@ function register_cpt_presenter()
         'menu_name' => __('Groups'),
       );
 
-    // Now register the taxonomy
+    // Now register presenter group taxonomy
     register_taxonomy(
         'presenter_groups', array('presenter'), array(
         'hierarchical' => true,
@@ -611,12 +566,12 @@ function register_cpt_author()
 }
 
 
-add_action( 'init', 'cameronjonesweb_unregister_tags' );
+add_action( 'init', 'unregister_tags' );
 
 /**
  * Removes tags from blog posts
  */
-function cameronjonesweb_unregister_tags() {
+function unregister_tags() {
     unregister_taxonomy_for_object_type( 'post_tag', 'post' );
 }
 
@@ -680,54 +635,58 @@ if (has_term('', 'category')) {
     echo '</div>';
 }
 
+// Render taxonomy dropdowns on list tables
 add_action('restrict_manage_posts', function () {
     global $typenow;
 
-    if ($typenow !== 'press') return;
+    // Order = left → right in the UI
+    $tax_map = [
+        // Press: State, Press Categories, Topics (NO core Category/“Types”)
+        'press' => ['states', 'press_cat', 'topic'],
 
-    $taxonomies = ['company-news', 'in-the-news', 'states']; 
+        // Posts: core Categories/“Types” shows automatically; add the rest here
+        'post'  => ['topic', 'states', 'industry'],
+    ];
 
-    foreach ($taxonomies as $taxonomy) {
-        $taxonomy_obj = get_taxonomy($taxonomy);
-        if (!$taxonomy_obj) continue;
+    if (empty($tax_map[$typenow])) return;
 
-        $terms = get_terms([
-            'taxonomy' => $taxonomy,
-            'hide_empty' => false,
+    foreach ($tax_map[$typenow] as $taxonomy) {
+        $tax_obj = get_taxonomy($taxonomy);
+        if (!$tax_obj) continue;
+
+        wp_dropdown_categories([
+            'taxonomy'        => $taxonomy,
+            'name'            => $taxonomy,
+            'orderby'         => 'name',
+            'hierarchical'    => true,
+            'hide_empty'      => false,
+            'value_field'     => 'slug',
+            'selected'        => isset($_GET[$taxonomy]) ? sanitize_text_field($_GET[$taxonomy]) : '',
+            'show_option_all' => $tax_obj->labels->all_items ?: sprintf(__('All %s'), $tax_obj->label),
         ]);
-
-        $selected = $_GET[$taxonomy] ?? '';
-
-        echo '<select name="' . esc_attr($taxonomy) . '" class="postform">';
-        echo '<option value="">' . esc_html($taxonomy_obj->labels->all_items) . '</option>';
-
-        foreach ($terms as $term) {
-            printf(
-                '<option value="%s"%s>%s</option>',
-                esc_attr($term->slug),
-                selected($selected, $term->slug, false),
-                esc_html($term->name)
-            );
-        }
-
-        echo '</select>';
     }
-});
+}, 10);
 
+// Make those dropdowns filter the query
 add_filter('parse_query', function ($query) {
     global $pagenow;
 
-    if (
-        $pagenow === 'edit.php' &&
-        isset($query->query['post_type']) &&
-        $query->query['post_type'] === 'press'
-    ) {
-        $taxonomies = ['company-news', 'in-the-news', 'states']; // Match your dropdown list
+    if ($pagenow !== 'edit.php' || !is_admin() || empty($query->query['post_type'])) return $query;
 
-        foreach ($taxonomies as $taxonomy) {
-            if (!empty($_GET[$taxonomy])) {
-                $query->query_vars[$taxonomy] = $_GET[$taxonomy];
-            }
+    $post_type = $query->query['post_type'];
+
+    $tax_map = [
+        'press' => ['states', 'press_cat', 'topic'],
+        'post'  => ['topic', 'states', 'industry'],
+    ];
+
+    if (empty($tax_map[$post_type])) return $query;
+
+    foreach ($tax_map[$post_type] as $taxonomy) {
+        if (!empty($_GET[$taxonomy])) {
+            $query->query_vars[$taxonomy] = sanitize_text_field($_GET[$taxonomy]);
         }
     }
-});
+
+    return $query;
+}, 10);
