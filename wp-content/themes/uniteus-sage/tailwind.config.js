@@ -292,7 +292,8 @@ module.exports = {
     'object-none',
     'h-[120px]', 'md:h-[140px]', 'lg:h-[160px]', 'pl-16', 'lg:flex-wrap', 'mt-8' , 'lg:mt-0',
     'sm:flex-row', 'sm:items-center', 'lg:flex-col', 'lg:w-40', 'disabled:opacity-50', 'disabled:pointer-events-none', 
-    '!rounded-full', 'bg-transparent'
+    '!rounded-full', 'bg-transparent',
+    'border-dashed', 'border-action',
   ],
   variants: {
     extend: {

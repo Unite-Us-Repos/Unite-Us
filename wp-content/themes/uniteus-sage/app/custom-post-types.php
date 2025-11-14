@@ -193,42 +193,6 @@ function register_cpt_network()
     );
 }
 
-// register Network Team
-add_action('init', 'register_cpt_network_team');
-
-function register_cpt_network_team()
-{
-    register_post_type(
-        'network_team',
-        array(
-            'labels' => array(
-                'name'               => 'Network Team',
-                'singular_name'      => 'Network Team',
-                'menu_name'          => 'Network Team',
-                'name_admin_bar'     => 'Network Team',
-                'add_new'            => 'Add New',
-                'add_new_item'       => 'Add New Member',
-                'edit_item'          => 'Edit Member',
-                'new_item'           => 'New Member',
-                'view_item'          => 'View Member',
-                'search_items'       => 'Search Network Team',
-                'not_found'          => 'No Network Team found',
-                'not_found_in_trash' => 'No Network Team found in trash',
-                'all_items'          => 'Network Team',
-            ),
-
-            'public'        => true,
-            'menu_position' => 14,
-            'supports'      => array('title', 'editor', 'thumbnail'),
-            'show_in_rest'  => false,
-            'show_in_menu'         => 'edit.php?post_type=network',
-            'taxonomies'    => array(''),
-            'menu_icon'     => 'dashicons-groups',
-            'has_archive'   => false
-        )
-    );
-}
-
 // register Network Form
 add_action('init', 'register_cpt_network_form');
 

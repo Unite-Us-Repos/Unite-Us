@@ -140,7 +140,8 @@
                         "squared": "Squared",
                         "video-carousel": "Video Carousel",
                         "article-testimonials": "Article Cards (w\/ Testimonials)",
-                        "homepage": "HP Service Cards"
+                        "homepage": "HP Service Cards",
+                        "network-articles": "Network Article Cards"
                     },
                     "default_value": "default",
                     "return_format": "value",
@@ -306,6 +307,13 @@
                                 "operator": "==",
                                 "value": "article-testimonials"
                             }
+                        ],
+                        [
+                            {
+                                "field": "field_632e7f9d9b1d0",
+                                "operator": "==",
+                                "value": "network-articles"
+                            }
                         ]
                     ],
                     "wrapper": {
@@ -322,6 +330,53 @@
                     "style": ""
                 },
                 {
+                    "key": "field_69153d76f0568",
+                    "label": "State to pull articles from:",
+                    "name": "pick_a_state",
+                    "aria-label": "",
+                    "type": "acfe_taxonomy_terms",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_632e7f9d9b1d0",
+                                "operator": "==",
+                                "value": "network-articles"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": [
+                        "states"
+                    ],
+                    "allow_terms": "",
+                    "allow_level": "",
+                    "field_type": "select",
+                    "min": "",
+                    "max": "",
+                    "default_value": [],
+                    "return_format": "id",
+                    "ui": 1,
+                    "allow_null": 0,
+                    "placeholder": "",
+                    "multiple": 1,
+                    "ajax": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "allow_in_bindings": 0,
+                    "choices": [],
+                    "search_placeholder": "",
+                    "layout": "",
+                    "toggle": 0,
+                    "allow_custom": 0,
+                    "other_choice": 0
+                },
+                {
                     "key": "field_632e7f9d9b1ff",
                     "label": "Cards",
                     "name": "cards",
@@ -336,10 +391,11 @@
                         "id": ""
                     },
                     "acfe_repeater_stylised_button": 1,
-                    "collapsed": "field_619bf6ce7a81f",
+                    "layout": "block",
+                    "pagination": 0,
                     "min": 0,
                     "max": 0,
-                    "layout": "block",
+                    "collapsed": "field_619bf6ce7a81f",
                     "button_label": "Add Feature",
                     "rows_per_page": 20,
                     "sub_fields": [
@@ -1044,6 +1100,7 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "display_title": "",
     "acfe_autosync": [
         "json"
     ],
@@ -1051,5 +1108,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1758688989
+    "modified": 1763000541
 }

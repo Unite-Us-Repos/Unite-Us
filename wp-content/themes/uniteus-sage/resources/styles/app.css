@@ -423,7 +423,7 @@ body .map-wrap {
 }
 
 .component-section.seamless-section {
-  @apply pb-28 -mb-14 sm:pb-40 sm:-mb-20;
+  @apply pb-28 -mb-14 sm:pb-40 sm:-mb-16;
 }
 
 .component-section.alert {
