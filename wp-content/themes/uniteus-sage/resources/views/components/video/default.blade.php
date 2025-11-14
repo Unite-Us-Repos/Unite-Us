@@ -196,6 +196,7 @@
   .video-default .video-clickthrough video {
     pointer-events: none !important;
     height: auto;
+    width: 100%;
   }
 
   /* Full-card overlay anchor */
