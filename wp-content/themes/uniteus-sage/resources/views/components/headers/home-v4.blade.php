@@ -116,23 +116,23 @@
                 </div>
 
                 <div class="relative order-1 md:order-2 -mx-12">
-                    <img class="absolute md:hidden lazy" data-src="@asset('/images/herov3-food.png')" alt=""
+                    <img class="absolute md:hidden" fetchpriority="high" data-src="@asset('/images/herov3-food.png')" alt=""
                         style="
             transform: scaleX(-1);
             right: 2rem;
             width: 190px;
             top: 0" />
-                    <img class="absolute md:hidden lazy" data-src="@asset('/images/herov3-blue-bar.png')" alt=""
+                    <img class="absolute md:hidden" fetchpriority="high" data-src="@asset('/images/herov3-blue-bar.png')" alt=""
                         style="
             left: 3rem;
             width: 112px;
             top: 2rem" />
-                    <img class="absolute md:hidden lazy" data-src="@asset('/images/herov3-profile-chart.png')" alt=""
+                    <img class="absolute md:hidden" fetchpriority="high" data-src="@asset('/images/herov3-profile-chart.png')" alt=""
                         style="
             bottom: 13rem;
             width: 117px;
             right: 3rem" />
-                    <img class="absolute md:hidden lazy" data-src="@asset('/images/herov3-heart-home.png')" alt=""
+                    <img class="absolute md:hidden" fetchpriority="high" data-src="@asset('/images/herov3-heart-home.png')" alt=""
                         style="
             transform: scaleX(-1);
             left: 1rem;
