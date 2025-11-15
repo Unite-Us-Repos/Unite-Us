@@ -1240,3 +1240,52 @@ add_filter('style_loader_tag', function ($html, $handle, $href) {
 
     return $html;
 }, 10, 3);
+
+// Move core jQuery to FOOTER on the front end (keeps order for dependents)
+add_action('wp_default_scripts', function ($scripts) {
+  if (is_admin()) return;
+  foreach (['jquery','jquery-core','jquery-migrate'] as $h) {
+    if (isset($scripts->registered[$h])) {
+      $scripts->registered[$h]->extra['group'] = 1; // footer
+    }
+  }
+});
+
+// Force Search & Filter JS to footer + defer
+add_action('wp_enqueue_scripts', function () {
+  if (is_admin()) return;
+  $h = 'search-filter-build'; // plugin handle
+  $wp_scripts = wp_scripts();
+  if (isset($wp_scripts->registered[$h])) {
+    $src = $wp_scripts->registered[$h]->src;
+    // re-register in footer
+    wp_deregister_script($h);
+    wp_register_script($h, $src, ['jquery'], null, true); // true => footer
+    wp_enqueue_script($h);
+    // add defer
+    wp_script_add_data($h, 'defer', true);
+  }
+}, 100);
+
+
+// Defer CookieYes script
+add_filter('script_loader_tag', function ($tag, $handle, $src) {
+  if (is_admin()) return $tag;
+  if (strpos($src, 'cdn-cookieyes.com') !== false && strpos($tag, ' defer') === false) {
+    $tag = str_replace('<script ', '<script defer ', $tag);
+  }
+  return $tag;
+}, 10, 3);
+
+
+// Make style-front.css non-blocking on the homepage
+add_filter('style_loader_tag', function ($html, $handle, $href) {
+  if (is_admin() || !is_front_page()) return $html;
+
+  if (strpos($href, 'style-front.css') !== false || strpos($href, '/public/app') !== false) {
+    $preload  = "<link rel='preload' as='style' href='{$href}' onload=\"this.onload=null;this.rel='stylesheet'\">";
+    $fallback = "<noscript><link rel='stylesheet' href='{$href}'></noscript>";
+    return $preload . $fallback;
+  }
+  return $html;
+}, 10, 3);
