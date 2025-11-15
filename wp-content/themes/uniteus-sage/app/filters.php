@@ -1144,26 +1144,40 @@ add_action(
 //         return str_replace(' src', ' defer src', $url);
 //     }, 10
 // );
-// 2a) Put core jQuery in the footer on the front end
+// 1a) Put core jQuery in the footer on the front end (do NOT defer it)
 add_action('wp_default_scripts', function ($scripts) {
     if (is_admin()) { return; }
     foreach (['jquery','jquery-core','jquery-migrate'] as $h) {
         if (isset($scripts->registered[$h])) {
-            $scripts->registered[$h]->extra['group'] = 1; // group=1 => footer
+            $scripts->registered[$h]->extra['group'] = 1; // footer
         }
     }
 });
 
-// 2b) Defer all frontend scripts (keeps JSON-LD and module scripts as-is)
+// 1b) Defer only safe scripts: theme bundle and consent. Leave everything else alone.
 add_filter('script_loader_tag', function ($tag, $handle, $src) {
     if (is_admin()) { return $tag; }
+
+    // Never touch JSON-LD or ES modules
     if (strpos($tag, 'type="application/ld+json"') !== false) { return $tag; }
     if (strpos($tag, ' type="module"') !== false) { return $tag; }
-    if (strpos($tag, ' defer') === false) {
-        $tag = str_replace('<script ', '<script defer ', $tag);
+
+    // Do not defer jQuery
+    if (in_array($handle, ['jquery','jquery-core','jquery-migrate'], true)) { return $tag; }
+
+    // Only defer known-safe assets:
+    //  - Your theme bundle in /public/app*.js
+    //  - CookieYes consent loader
+    if (strpos($src, '/public/app') !== false || strpos($src, 'cdn-cookieyes.com') !== false) {
+        if (strpos($tag, ' defer') === false) {
+            $tag = str_replace('<script ', '<script defer ', $tag);
+        }
     }
+
     return $tag;
 }, 10, 3);
+
+
 
 add_filter(
     'oembed_fetch_url',
@@ -1207,21 +1221,22 @@ add_filter(
 );
 
 /**
- * Convert render-blocking styles to preload+swap (homepage only).
- * Keeps critical hero/header CSS inline (your templates already do).
+ * Convert render-blocking styles to preload+swap (homepage only) – target only the big app.css.
  */
 add_filter('style_loader_tag', function ($html, $handle, $href) {
-    if (is_admin() || !is_front_page()) {
-        return $html;
-    }
+    if (is_admin() || !is_front_page()) { return $html; }
 
-    // Don’t touch admin/dashicons
+    // Skip admin/dashicons
     if (strpos($handle, 'admin-bar') !== false || strpos($handle, 'dashicons') !== false) {
         return $html;
     }
 
-    // Turn blocking CSS into non-blocking
-    $preload  = "<link rel='preload' as='style' href='{$href}' onload=\"this.onload=null;this.rel='stylesheet'\">";
-    $fallback = "<noscript><link rel='stylesheet' href='{$href}'></noscript>";
-    return $preload . $fallback;
+    // Target only your compiled app.css in /public (avoid touching smaller, critical sheets)
+    if (strpos($href, '/public/app') !== false) {
+        $preload  = "<link rel='preload' as='style' href='{$href}' onload=\"this.onload=null;this.rel='stylesheet'\">";
+        $fallback = "<noscript><link rel='stylesheet' href='{$href}'></noscript>";
+        return $preload . $fallback;
+    }
+
+    return $html;
 }, 10, 3);
