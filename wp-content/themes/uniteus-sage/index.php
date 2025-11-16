@@ -14,10 +14,20 @@ if (session_id()) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+<!-- Preconnects (DNS+TLS warmup for slowest external hosts) -->
+<link rel="preconnect" href="https://marketing.uniteus.com" crossorigin>
+<link rel="dns-prefetch" href="//marketing.uniteus.com">
+<link rel="preconnect" href="https://cdn-cookieyes.com" crossorigin>
+<link rel="dns-prefetch" href="//cdn-cookieyes.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+
+<!-- Mobile hero LCP preload -->
 <link rel="preload" as="image"
       href="<?= esc_url( get_stylesheet_directory_uri() . '/resources/images/Mobile-412.webp' ) ?>"
       imagesizes="100vw"
       media="(max-width: 767px)">
+
     <?php wp_head(); ?>
 </head>
 

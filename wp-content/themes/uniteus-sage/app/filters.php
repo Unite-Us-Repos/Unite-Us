@@ -449,6 +449,7 @@ add_filter(
 );
 
 // get head code from options
+// get head code from options (defer non-critical marketing scripts)
 add_action(
     'wp_head',
     function () {
@@ -459,9 +460,20 @@ add_action(
                 $html .= $code['header_code'];
             }
         }
+
+        // Add 'defer' to external <script src="..."> from marketing.uniteus.com / pi.pardot.com
+        // Leaves inline scripts and other domains untouched.
+        $html = preg_replace(
+            '#<script\s+([^>]*?)src=("|\')(https://(?:marketing\.uniteus\.com|pi\.pardot\.com)[^"\']+)("|\')([^>]*)>\s*</script>#i',
+            '<script $1 src="$3" defer $5></script>',
+            $html
+        );
+
         echo $html;
-    }
+    },
+    20 // run after default head output
 );
+
 
 // get footer code from options
 add_action(
@@ -1206,47 +1218,57 @@ add_filter(
     }, 20, 2
 );
 
-// 1) Move WP core jQuery + migrate to the FOOTER (don’t defer)
+// 1) Move core jQuery + migrate to FOOTER (safe for dependencies)
 add_action('wp_default_scripts', function ($scripts) {
   if (is_admin()) return;
   foreach (['jquery','jquery-core','jquery-migrate'] as $h) {
     if (isset($scripts->registered[$h])) {
-      $scripts->registered[$h]->extra['group'] = 1; // 1=footer
+      $scripts->registered[$h]->extra['group'] = 1; // footer
     }
   }
 }, 1);
 
-// 2) Defer only what PSI flagged: Search&Filter build, CookieYes and theme bundle
+// In case any plugin re-registers them in <head>, force them to footer last:
+add_action('wp_enqueue_scripts', function () {
+  if (is_admin()) return;
+  $ws = wp_scripts();
+  foreach (['jquery','jquery-core','jquery-migrate'] as $h) {
+    if (isset($ws->registered[$h])) {
+      $r = $ws->registered[$h];
+      wp_deregister_script($h);
+      wp_register_script($h, $r->src, $r->deps, $r->ver, true); // true => footer
+      wp_enqueue_script($h);
+    }
+  }
+}, 9999);
+
+// 2) Defer the exact offenders Lighthouse lists (NOT jQuery)
 add_filter('script_loader_tag', function ($tag, $handle, $src) {
   if (is_admin()) return $tag;
 
-  // Leave JSON-LD / ES modules alone
+  // leave JSON-LD / modules alone
   if (strpos($tag, 'type="application/ld+json"') !== false) return $tag;
   if (strpos($tag, ' type="module"') !== false) return $tag;
 
-  // Never defer jQuery core/migrate
+  // never defer jQuery core/migrate
   if (in_array($handle, ['jquery','jquery-core','jquery-migrate'], true)) return $tag;
 
-  $is_search_filter = (strpos($src, 'search-filter-build.min.js') !== false);
-  $is_cookieyes     = (strpos($src, 'cdn-cookieyes.com') !== false);
+  $is_search_filter = strpos($src, 'search-filter-build.min.js') !== false;
+  $is_cookieyes     = strpos($src, 'cdn-cookieyes.com') !== false;
+  $is_iframe_resizer= strpos($src, 'iframeResizer') !== false;
   $is_theme_bundle  = (strpos($src, '/wp-content/themes/') !== false && strpos($src, '/public/') !== false && substr($src, -3) === '.js');
 
-  if ($is_search_filter || $is_cookieyes || $is_theme_bundle) {
-    if (strpos($tag, ' defer') === false) {
-      $tag = str_replace('<script ', '<script defer ', $tag);
-    }
+  if ($is_search_filter || $is_cookieyes || $is_iframe_resizer || $is_theme_bundle) {
+    if (strpos($tag, ' defer') === false) $tag = str_replace('<script ', '<script defer ', $tag);
   }
   return $tag;
 }, 999, 3);
 
-// 3) Make only the big CSS non-blocking on the homepage
+// 3) Non-blocking CSS for the big styles on the homepage
 add_filter('style_loader_tag', function ($html, $handle, $href) {
   if (is_admin() || !is_front_page()) return $html;
-
-  // Skip admin/dashicons
   if (strpos($handle, 'admin-bar') !== false || strpos($handle, 'dashicons') !== false) return $html;
 
-  // Target the ones PSI named (style-front.css) and your compiled app*.css
   if (strpos($href, 'style-front.css') !== false || strpos($href, '/public/app') !== false) {
     $preload  = "<link rel='preload' as='style' href='{$href}' onload=\"this.onload=null;this.rel='stylesheet'\">";
     $fallback = "<noscript><link rel='stylesheet' href='{$href}'></noscript>";
