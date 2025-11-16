@@ -15,16 +15,6 @@
         $bgH = $bg['sizes']['2048x2048-height'] ?? ($bg['height'] ?? null);
     }
 
-    // --- Mobile composite files (new) ---
-    $mobileUrl  = asset('images/Mobile.png');
-    $heroBgUrl  = asset('images/hero-bg.webp');
-    $mobilePath = function_exists('get_theme_file_path') ? get_theme_file_path('resources/images/Mobile.png') : null;
-    [$mW,$mH] = [1170, 1460]; // safe defaults; overridden if we can read the file
-    if ($mobilePath && file_exists($mobilePath)) {
-        $info = @getimagesize($mobilePath);
-        if ($info) { [$mW,$mH] = [$info[0], $info[1]]; }
-    }
-
     // preserve existing (unused now) mobile logo vars for compatibility
     $mobSrc = $mobW = $mobH = null;
     if (!empty($section['logo']['sizes'])) {
@@ -33,12 +23,12 @@
         $mobH = $section['logo']['sizes']['medium-height'] ?? ($section['logo']['height'] ?? null);
     }
 @endphp
-
-{{-- Optional: ideally move this preload into <head>. Kept here for convenience. --}}
 @if (!empty($bgSrc))
-    <link rel="preload" as="image" href="{{ $bgSrc }}" imagesizes="100vw">
+  <link rel="preload" as="image"
+        href="{{ $bgSrc }}"
+        imagesizes="100vw"
+        media="(min-width: 768px)">
 @endif
-
 <style>
     /* Reserve desktop hero height (kept from your original) */
     .hero-v3 { min-height: clamp(520px, 70vh, 820px); }
@@ -48,10 +38,11 @@
     }
 
     /* NEW: mobile text block uses your provided blue background image */
-    .mobile-copy-bg {
+    .mobile-copy-bg{
+        background-image: url("@asset('/images/hero-bg.png')");
         background-image: image-set(
-            url('@asset('/images/hero-bg.webp')') type('image/webp'),
-            url('@asset('/images/hero-bg.png')') type('image/png')
+            url("@asset('/images/hero-bg.webp')") type('image/webp'),
+            url("@asset('/images/hero-bg.png')") type('image/png')
         );
         background-size: cover;
         background-position: center;
