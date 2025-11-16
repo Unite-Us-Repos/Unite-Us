@@ -1133,7 +1133,7 @@ add_action(
     }, 10, 1
 );
 
-// /* defer parsing js */
+/* OLD defer parsing js */
 // add_filter('script_loader_tag',
 //     function ($url) {
 //         if (is_user_logged_in()) return $url; //don't break WP Admin
@@ -1144,41 +1144,27 @@ add_action(
 //         return str_replace(' src', ' defer src', $url);
 //     }, 10
 // );
-// 1a) Put core jQuery in the footer on the front end (do NOT defer it)
-add_action('wp_default_scripts', function ($scripts) {
-    if (is_admin()) { return; }
-    foreach (['jquery','jquery-core','jquery-migrate'] as $h) {
-        if (isset($scripts->registered[$h])) {
-            $scripts->registered[$h]->extra['group'] = 1; // footer
-        }
-    }
-});
 
-// 1b) Defer only safe scripts: theme bundle and consent. Leave everything else alone.
-add_filter('script_loader_tag', function ($tag, $handle, $src) {
-    if (is_admin()) { return $tag; }
+// add_filter(
+//     'oembed_fetch_url',
+//     function ($provider, $url, $args) {
+//         if (!strstr($url, 'vimeo.com')) {
+//             return $html;
+//         }
 
-    // Never touch JSON-LD or ES modules
-    if (strpos($tag, 'type="application/ld+json"') !== false) { return $tag; }
-    if (strpos($tag, ' type="module"') !== false) { return $tag; }
+//         if (strpos($url, 'background')) {
+//             $provider = add_query_arg('background', 1, $provider);
+//         }
+//         /*
+//         $provider = add_query_arg('title', 0, $provider);
+//         $provider = add_query_arg('byline', 0, $provider);
+//         $provider = add_query_arg('badge', 0, $provider);
+//         $provider = add_query_arg('controls', 1, $provider);
+//         */
 
-    // Do not defer jQuery
-    if (in_array($handle, ['jquery','jquery-core','jquery-migrate'], true)) { return $tag; }
-
-    // Only defer known-safe assets:
-    //  - Your theme bundle in /public/app*.js
-    //  - CookieYes consent loader
-    if (strpos($src, '/public/app') !== false || strpos($src, 'cdn-cookieyes.com') !== false) {
-        if (strpos($tag, ' defer') === false) {
-            $tag = str_replace('<script ', '<script defer ', $tag);
-        }
-    }
-
-    return $tag;
-}, 10, 3);
-
-
-
+//         return $provider;
+//     }, 10, 3
+// );
 add_filter(
     'oembed_fetch_url',
     function ($provider, $url, $args) {
@@ -1220,72 +1206,51 @@ add_filter(
     }, 20, 2
 );
 
-/**
- * Convert render-blocking styles to preload+swap (homepage only) – target only the big app.css.
- */
-add_filter('style_loader_tag', function ($html, $handle, $href) {
-    if (is_admin() || !is_front_page()) { return $html; }
-
-    // Skip admin/dashicons
-    if (strpos($handle, 'admin-bar') !== false || strpos($handle, 'dashicons') !== false) {
-        return $html;
-    }
-
-    // Target only your compiled app.css in /public (avoid touching smaller, critical sheets)
-    if (strpos($href, '/public/app') !== false) {
-        $preload  = "<link rel='preload' as='style' href='{$href}' onload=\"this.onload=null;this.rel='stylesheet'\">";
-        $fallback = "<noscript><link rel='stylesheet' href='{$href}'></noscript>";
-        return $preload . $fallback;
-    }
-
-    return $html;
-}, 10, 3);
-
-// Move core jQuery to FOOTER on the front end (keeps order for dependents)
+// 1) Move WP core jQuery + migrate to the FOOTER (don’t defer)
 add_action('wp_default_scripts', function ($scripts) {
   if (is_admin()) return;
   foreach (['jquery','jquery-core','jquery-migrate'] as $h) {
     if (isset($scripts->registered[$h])) {
-      $scripts->registered[$h]->extra['group'] = 1; // footer
+      $scripts->registered[$h]->extra['group'] = 1; // 1=footer
     }
   }
-});
+}, 1);
 
-// Force Search & Filter JS to footer + defer
-add_action('wp_enqueue_scripts', function () {
-  if (is_admin()) return;
-  $h = 'search-filter-build'; // plugin handle
-  $wp_scripts = wp_scripts();
-  if (isset($wp_scripts->registered[$h])) {
-    $src = $wp_scripts->registered[$h]->src;
-    // re-register in footer
-    wp_deregister_script($h);
-    wp_register_script($h, $src, ['jquery'], null, true); // true => footer
-    wp_enqueue_script($h);
-    // add defer
-    wp_script_add_data($h, 'defer', true);
-  }
-}, 100);
-
-
-// Defer CookieYes script
+// 2) Defer only what PSI flagged: Search&Filter build, CookieYes and theme bundle
 add_filter('script_loader_tag', function ($tag, $handle, $src) {
   if (is_admin()) return $tag;
-  if (strpos($src, 'cdn-cookieyes.com') !== false && strpos($tag, ' defer') === false) {
-    $tag = str_replace('<script ', '<script defer ', $tag);
+
+  // Leave JSON-LD / ES modules alone
+  if (strpos($tag, 'type="application/ld+json"') !== false) return $tag;
+  if (strpos($tag, ' type="module"') !== false) return $tag;
+
+  // Never defer jQuery core/migrate
+  if (in_array($handle, ['jquery','jquery-core','jquery-migrate'], true)) return $tag;
+
+  $is_search_filter = (strpos($src, 'search-filter-build.min.js') !== false);
+  $is_cookieyes     = (strpos($src, 'cdn-cookieyes.com') !== false);
+  $is_theme_bundle  = (strpos($src, '/wp-content/themes/') !== false && strpos($src, '/public/') !== false && substr($src, -3) === '.js');
+
+  if ($is_search_filter || $is_cookieyes || $is_theme_bundle) {
+    if (strpos($tag, ' defer') === false) {
+      $tag = str_replace('<script ', '<script defer ', $tag);
+    }
   }
   return $tag;
-}, 10, 3);
+}, 999, 3);
 
-
-// Make style-front.css non-blocking on the homepage
+// 3) Make only the big CSS non-blocking on the homepage
 add_filter('style_loader_tag', function ($html, $handle, $href) {
   if (is_admin() || !is_front_page()) return $html;
 
+  // Skip admin/dashicons
+  if (strpos($handle, 'admin-bar') !== false || strpos($handle, 'dashicons') !== false) return $html;
+
+  // Target the ones PSI named (style-front.css) and your compiled app*.css
   if (strpos($href, 'style-front.css') !== false || strpos($href, '/public/app') !== false) {
     $preload  = "<link rel='preload' as='style' href='{$href}' onload=\"this.onload=null;this.rel='stylesheet'\">";
     $fallback = "<noscript><link rel='stylesheet' href='{$href}'></noscript>";
     return $preload . $fallback;
   }
   return $html;
-}, 10, 3);
+}, 999, 3);

@@ -17,7 +17,7 @@
 
     // --- Mobile composite files (new) ---
     $mobileUrl  = asset('images/Mobile.png');
-    $heroBgUrl  = asset('images/hero-bg.png');
+    $heroBgUrl  = asset('images/hero-bg.webp');
     $mobilePath = function_exists('get_theme_file_path') ? get_theme_file_path('resources/images/Mobile.png') : null;
     [$mW,$mH] = [1170, 1460]; // safe defaults; overridden if we can read the file
     if ($mobilePath && file_exists($mobilePath)) {
@@ -49,7 +49,10 @@
 
     /* NEW: mobile text block uses your provided blue background image */
     .mobile-copy-bg {
-        background-image: url('{{ $heroBgUrl }}');
+        background-image: image-set(
+            url('@asset('/images/hero-bg.webp')') type('image/webp'),
+            url('@asset('/images/hero-bg.png')') type('image/png')
+        );
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -108,12 +111,27 @@
 
             <!-- ********** MOBILE-ONLY BLOCKS (CLS-safe) ********** -->
 
-            <!-- Top mobile composite image -->
-            <div class="md:hidden w-full">
-                <img fetchpriority="high" loading="eager" decoding="async"
-                     src="{{ $mobileUrl }}" width="{{ $mW }}" height="{{ $mH }}"
-                     class="w-full h-auto block" alt="">
-            </div>
+            {{-- ********** MOBILE-ONLY LCP IMAGE (responsive WebP) ********** --}}
+            @php
+            // Try to read intrinsic size of Mobile-412.webp for correct aspect ratio reservation
+            $m412Url  = asset('images/Mobile-412.webp');
+            $m412Path = function_exists('get_theme_file_path') ? get_theme_file_path('resources/images/Mobile-412.webp') : null;
+            [$m412W, $m412H] = [412, 445]; // safe fallback (matches PSI’s displayed ~412x445)
+            if ($m412Path && file_exists($m412Path)) {
+                $info = @getimagesize($m412Path);
+                if ($info) { [$m412W, $m412H] = [$info[0], $info[1]]; }
+            }
+            @endphp
+
+            <picture class="block md:hidden">
+            <source type="image/webp"
+                    srcset="{{ $m412Url }} 412w"
+                    sizes="100vw">
+            <img fetchpriority="high" loading="eager" decoding="async"
+                src="{{ $m412Url }}" width="{{ $m412W }}" height="{{ $m412H }}"
+                class="w-full h-auto block" alt="">
+            </picture>
+
 
             <!-- Mobile text/CTAs on blue background image -->
             <div class="md:hidden mobile-copy-bg text-white px-6 sm:px-8 py-10">

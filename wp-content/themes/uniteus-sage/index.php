@@ -14,6 +14,7 @@ if (session_id()) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+    <link rel="preload" as="image" href="<?= esc_url( get_stylesheet_directory_uri() . '/resources/images/Mobile-412.webp' ) ?>" imagesizes="100vw">
     <?php wp_head(); ?>
 </head>
 
