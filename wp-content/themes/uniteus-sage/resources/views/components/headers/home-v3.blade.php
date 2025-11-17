@@ -118,7 +118,7 @@
             <source type="image/webp"
                     srcset="{{ $m412Url }} 412w"
                     sizes="100vw">
-            <img fetchpriority="high" loading="eager" decoding="async"
+            <img fetchpriority="high" loading="eager"
                 src="{{ $m412Url }}" width="{{ $m412W }}" height="{{ $m412H }}"
                 class="w-full h-auto block" alt="">
             </picture>

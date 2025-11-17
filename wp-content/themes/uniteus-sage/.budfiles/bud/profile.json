@@ -893,49 +893,6 @@
           }
         }
       },
-      "package.json": {
-        "name": "package.json",
-        "path": "/Users/sabrina.matthews/Documents/REPOS/Unite-Us/app/public/wp-content/themes/uniteus-sage/package.json",
-        "module": {
-          "name": "sage",
-          "private": true,
-          "browserslist": [
-            "extends @wordpress/browserslist-config"
-          ],
-          "engines": {
-            "node": ">=16.0.0"
-          },
-          "scripts": {
-            "dev": "bud dev",
-            "build": "bud build",
-            "translate": "yarn translate:pot && yarn translate:update",
-            "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"app,resources\"",
-            "translate:update": "for filename in ./resources/lang/*.po; do msgmerge -U $filename ./resources/lang/sage.pot; done; rm -f ./resources/lang/*.po~",
-            "translate:compile": "yarn translate:mo && yarn translate:js",
-            "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
-            "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
-          },
-          "devDependencies": {
-            "@roots/bud": "5.7.7",
-            "@roots/bud-tailwindcss": "5.7.7",
-            "@roots/sage": "5.7.7"
-          },
-          "dependencies": {
-            "@alpinejs/collapse": "^3.12.2",
-            "@alpinejs/intersect": "^3.13.2",
-            "alpinejs": "^3.10.2",
-            "dayjs": "^1.11.9",
-            "glightbox": "^3.2.0",
-            "iframe-resizer": "^4.3.2",
-            "moment": "^2.29.4",
-            "simple-parallax-js": "^5.6.2",
-            "swiper": "^8.4.5",
-            "tippy.js": "4.0.4",
-            "tocbot": "^4.18.2",
-            "vanilla-lazyload": "^17.8.3"
-          }
-        }
-      },
       "composer.json": {
         "name": "composer.json",
         "path": "/Users/sabrina.matthews/Documents/REPOS/Unite-Us/app/public/wp-content/themes/uniteus-sage/composer.json",
@@ -1040,6 +997,49 @@
             "./public",
             "./node_modules"
           ]
+        }
+      },
+      "package.json": {
+        "name": "package.json",
+        "path": "/Users/sabrina.matthews/Documents/REPOS/Unite-Us/app/public/wp-content/themes/uniteus-sage/package.json",
+        "module": {
+          "name": "sage",
+          "private": true,
+          "browserslist": [
+            "extends @wordpress/browserslist-config"
+          ],
+          "engines": {
+            "node": ">=16.0.0"
+          },
+          "scripts": {
+            "dev": "bud dev",
+            "build": "bud build",
+            "translate": "yarn translate:pot && yarn translate:update",
+            "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"app,resources\"",
+            "translate:update": "for filename in ./resources/lang/*.po; do msgmerge -U $filename ./resources/lang/sage.pot; done; rm -f ./resources/lang/*.po~",
+            "translate:compile": "yarn translate:mo && yarn translate:js",
+            "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
+            "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
+          },
+          "devDependencies": {
+            "@roots/bud": "5.7.7",
+            "@roots/bud-tailwindcss": "5.7.7",
+            "@roots/sage": "5.7.7"
+          },
+          "dependencies": {
+            "@alpinejs/collapse": "^3.12.2",
+            "@alpinejs/intersect": "^3.13.2",
+            "alpinejs": "^3.10.2",
+            "dayjs": "^1.11.9",
+            "glightbox": "^3.2.0",
+            "iframe-resizer": "^4.3.2",
+            "moment": "^2.29.4",
+            "simple-parallax-js": "^5.6.2",
+            "swiper": "^8.4.5",
+            "tippy.js": "4.0.4",
+            "tocbot": "^4.18.2",
+            "vanilla-lazyload": "^17.8.3"
+          }
         }
       },
       "theme.json": {
@@ -17947,7 +17947,7 @@
       "npm_package_dependencies_glightbox": "^3.2.0",
       "npm_package_scripts_translate_mo": "wp i18n make-mo ./resources/lang ./resources/lang",
       "npm_execpath": "/opt/homebrew/Cellar/yarn/1.22.22/libexec/bin/yarn.js",
-      "PATH": "/var/folders/dp/p1sxdwnn753bw7z25jp95v2r0000gp/T/yarn--1763256472937-0.8304312454967603:/Users/sabrina.matthews/Documents/REPOS/Unite-Us/app/public/wp-content/themes/uniteus-sage/node_modules/.bin:/Users/sabrina.matthews/.config/yarn/link/node_modules/.bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/bin/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/bin:/Users/sabrina.matthews/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand",
+      "PATH": "/var/folders/dp/p1sxdwnn753bw7z25jp95v2r0000gp/T/yarn--1763346325119-0.16923365319608974:/Users/sabrina.matthews/Documents/REPOS/Unite-Us/app/public/wp-content/themes/uniteus-sage/node_modules/.bin:/Users/sabrina.matthews/.config/yarn/link/node_modules/.bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/bin/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/bin:/Users/sabrina.matthews/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand",
       "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"build\"],\"original\":[\"build\"]}",
       "npm_package_dependencies_swiper": "^8.4.5",
       "_": "/Users/sabrina.matthews/Documents/REPOS/Unite-Us/app/public/wp-content/themes/uniteus-sage/node_modules/.bin/bud",
@@ -18121,24 +18121,6 @@
         ]
       ]
     },
-    "@roots/sage": {
-      "name": "@roots/sage",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension",
-        "peers": [
-          "@roots/bud-preset-wordpress"
-        ]
-      },
-      "resolvable": true,
-      "peerDependencies": {},
-      "requires": [
-        [
-          "@roots/bud-preset-wordpress",
-          "5.7.7"
-        ]
-      ]
-    },
     "@roots/bud-tailwindcss": {
       "name": "@roots/bud-tailwindcss",
       "version": "5.7.7",
@@ -18158,6 +18140,39 @@
           "5.7.7"
         ]
       ]
+    },
+    "@roots/sage": {
+      "name": "@roots/sage",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension",
+        "peers": [
+          "@roots/bud-preset-wordpress"
+        ]
+      },
+      "resolvable": true,
+      "peerDependencies": {},
+      "requires": [
+        [
+          "@roots/bud-preset-wordpress",
+          "5.7.7"
+        ]
+      ]
+    },
+    "@roots/bud-postcss": {
+      "name": "@roots/bud-postcss",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {
+        "postcss": "^8.4.5",
+        "postcss-import": "^14.0.2",
+        "postcss-nested": "^5.0.6",
+        "postcss-preset-env": "^7.1.0"
+      },
+      "requires": []
     },
     "@roots/bud-preset-wordpress": {
       "name": "@roots/bud-preset-wordpress",
@@ -18214,21 +18229,6 @@
         ]
       ]
     },
-    "@roots/bud-postcss": {
-      "name": "@roots/bud-postcss",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension"
-      },
-      "resolvable": true,
-      "peerDependencies": {
-        "postcss": "^8.4.5",
-        "postcss-import": "^14.0.2",
-        "postcss-nested": "^5.0.6",
-        "postcss-preset-env": "^7.1.0"
-      },
-      "requires": []
-    },
     "@roots/bud-babel": {
       "name": "@roots/bud-babel",
       "version": "5.7.7",
@@ -18246,6 +18246,16 @@
         "babel-loader": "^8.2.3",
         "babel-plugin-add-module-exports": "^1.0.4"
       },
+      "requires": []
+    },
+    "@roots/bud-entrypoints": {
+      "name": "@roots/bud-entrypoints",
+      "version": "5.7.7",
+      "bud": {
+        "type": "extension"
+      },
+      "resolvable": true,
+      "peerDependencies": {},
       "requires": []
     },
     "@roots/bud-preset-recommend": {
@@ -18276,18 +18286,8 @@
         ]
       ]
     },
-    "@roots/bud-wordpress-externals": {
-      "name": "@roots/bud-wordpress-externals",
-      "version": "5.7.7",
-      "bud": {
-        "type": "extension"
-      },
-      "resolvable": true,
-      "peerDependencies": {},
-      "requires": []
-    },
-    "@roots/bud-entrypoints": {
-      "name": "@roots/bud-entrypoints",
+    "@roots/bud-wordpress-dependencies": {
+      "name": "@roots/bud-wordpress-dependencies",
       "version": "5.7.7",
       "bud": {
         "type": "extension"
@@ -18317,8 +18317,8 @@
         ]
       ]
     },
-    "@roots/bud-wordpress-dependencies": {
-      "name": "@roots/bud-wordpress-dependencies",
+    "@roots/bud-wordpress-externals": {
+      "name": "@roots/bud-wordpress-externals",
       "version": "5.7.7",
       "bud": {
         "type": "extension"

@@ -27,6 +27,13 @@ if (session_id()) {
       href="<?= esc_url( get_stylesheet_directory_uri() . '/resources/images/Mobile-412.webp' ) ?>"
       imagesizes="100vw"
       media="(max-width: 767px)">
+<style>
+  @media (max-width:767px){
+    .hero-v3{min-height:560px}
+    .mobile-copy-bg{background-size:cover;background-position:center;background-repeat:no-repeat}
+    .h1{font-weight:800;line-height:1.1}
+  }
+</style>
 
     <?php wp_head(); ?>
 </head>

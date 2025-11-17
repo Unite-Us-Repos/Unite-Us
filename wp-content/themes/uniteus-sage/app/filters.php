@@ -474,6 +474,24 @@ add_action(
     20 // run after default head output
 );
 
+// Defer the raw CookieYes script that prints in <head>.
+add_action('template_redirect', function () {
+  if (is_admin() || is_feed() || is_customize_preview()) return;
+
+  ob_start(function ($html) {
+    // Add defer to CookieYes (cdn-cookieyes.com) tag in <head>
+    $html = preg_replace(
+      '#<script\s+([^>]*?)src=(["\'])(https://cdn-cookieyes\.com[^"\']+)\2([^>]*)>\s*</script>#i',
+      '<script $1 src=$2$3$2 defer$4></script>',
+      $html
+    );
+    return $html;
+  });
+}, 0);
+
+add_action('shutdown', function () {
+  while (ob_get_level() > 0) { @ob_end_flush(); }
+}, 0);
 
 // get footer code from options
 add_action(
@@ -1264,15 +1282,15 @@ add_filter('script_loader_tag', function ($tag, $handle, $src) {
   return $tag;
 }, 999, 3);
 
-// 3) Non-blocking CSS for the big styles on the homepage
-add_filter('style_loader_tag', function ($html, $handle, $href) {
-  if (is_admin() || !is_front_page()) return $html;
-  if (strpos($handle, 'admin-bar') !== false || strpos($handle, 'dashicons') !== false) return $html;
+// If some plugin still forces jQuery in <head>, make it non-blocking on the homepage.
+add_filter('script_loader_tag', function ($tag, $handle, $src) {
+  if (is_admin() || !is_front_page()) return $tag;
 
-  if (strpos($href, 'style-front.css') !== false || strpos($href, '/public/app') !== false) {
-    $preload  = "<link rel='preload' as='style' href='{$href}' onload=\"this.onload=null;this.rel='stylesheet'\">";
-    $fallback = "<noscript><link rel='stylesheet' href='{$href}'></noscript>";
-    return $preload . $fallback;
+  if (in_array($handle, ['jquery','jquery-core','jquery-migrate'], true)) {
+    if (strpos($tag, ' defer') === false) {
+      $tag = str_replace('<script ', '<script defer ', $tag);
+    }
   }
-  return $html;
-}, 999, 3);
+  return $tag;
+}, 1000, 3);
+
