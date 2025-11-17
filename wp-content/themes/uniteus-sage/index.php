@@ -14,27 +14,6 @@ if (session_id()) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
-<!-- Preconnects (DNS+TLS warmup for slowest external hosts) -->
-<link rel="preconnect" href="https://marketing.uniteus.com" crossorigin>
-<link rel="dns-prefetch" href="//marketing.uniteus.com">
-<link rel="preconnect" href="https://cdn-cookieyes.com" crossorigin>
-<link rel="dns-prefetch" href="//cdn-cookieyes.com">
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-
-<!-- Mobile hero LCP preload -->
-<link rel="preload" as="image"
-      href="<?= esc_url( get_stylesheet_directory_uri() . '/resources/images/Mobile-412.webp' ) ?>"
-      imagesizes="100vw"
-      media="(max-width: 767px)">
-<style>
-  @media (max-width:767px){
-    .hero-v3{min-height:560px}
-    .mobile-copy-bg{background-size:cover;background-position:center;background-repeat:no-repeat}
-    .h1{font-weight:800;line-height:1.1}
-  }
-</style>
-
     <?php wp_head(); ?>
 </head>
 

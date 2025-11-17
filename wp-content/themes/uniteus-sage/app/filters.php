@@ -449,7 +449,6 @@ add_filter(
 );
 
 // get head code from options
-// get head code from options (defer non-critical marketing scripts)
 add_action(
     'wp_head',
     function () {
@@ -460,38 +459,9 @@ add_action(
                 $html .= $code['header_code'];
             }
         }
-
-        // Add 'defer' to external <script src="..."> from marketing.uniteus.com / pi.pardot.com
-        // Leaves inline scripts and other domains untouched.
-        $html = preg_replace(
-            '#<script\s+([^>]*?)src=("|\')(https://(?:marketing\.uniteus\.com|pi\.pardot\.com)[^"\']+)("|\')([^>]*)>\s*</script>#i',
-            '<script $1 src="$3" defer $5></script>',
-            $html
-        );
-
         echo $html;
-    },
-    20 // run after default head output
+    }
 );
-
-// Defer the raw CookieYes script that prints in <head>.
-add_action('template_redirect', function () {
-  if (is_admin() || is_feed() || is_customize_preview()) return;
-
-  ob_start(function ($html) {
-    // Add defer to CookieYes (cdn-cookieyes.com) tag in <head>
-    $html = preg_replace(
-      '#<script\s+([^>]*?)src=(["\'])(https://cdn-cookieyes\.com[^"\']+)\2([^>]*)>\s*</script>#i',
-      '<script $1 src=$2$3$2 defer$4></script>',
-      $html
-    );
-    return $html;
-  });
-}, 0);
-
-add_action('shutdown', function () {
-  while (ob_get_level() > 0) { @ob_end_flush(); }
-}, 0);
 
 // get footer code from options
 add_action(
@@ -1163,17 +1133,17 @@ add_action(
     }, 10, 1
 );
 
-/* OLD defer parsing js */
-// add_filter('script_loader_tag',
-//     function ($url) {
-//         if (is_user_logged_in()) return $url; //don't break WP Admin
-//         if (FALSE === strpos( $url, '.js')) return $url;
-//         if (strpos($url, 'jquery.js')) return $url;
-//         if (strpos($url, 'jquery.min.js')) return $url;
-//         if (strpos($url, 'iframeResizer')) return $url;
-//         return str_replace(' src', ' defer src', $url);
-//     }, 10
-// );
+/* defer parsing js */
+add_filter('script_loader_tag',
+    function ($url) {
+        if (is_user_logged_in()) return $url; //don't break WP Admin
+        if (FALSE === strpos( $url, '.js')) return $url;
+        if (strpos($url, 'jquery.js')) return $url;
+        if (strpos($url, 'jquery.min.js')) return $url;
+        if (strpos($url, 'iframeResizer')) return $url;
+        return str_replace(' src', ' defer src', $url);
+    }, 10
+);
 
 // add_filter(
 //     'oembed_fetch_url',
@@ -1235,62 +1205,3 @@ add_filter(
         return array_merge( $wp_classes, (array) $extra_classes );
     }, 20, 2
 );
-
-// 1) Move core jQuery + migrate to FOOTER (safe for dependencies)
-add_action('wp_default_scripts', function ($scripts) {
-  if (is_admin()) return;
-  foreach (['jquery','jquery-core','jquery-migrate'] as $h) {
-    if (isset($scripts->registered[$h])) {
-      $scripts->registered[$h]->extra['group'] = 1; // footer
-    }
-  }
-}, 1);
-
-// In case any plugin re-registers them in <head>, force them to footer last:
-add_action('wp_enqueue_scripts', function () {
-  if (is_admin()) return;
-  $ws = wp_scripts();
-  foreach (['jquery','jquery-core','jquery-migrate'] as $h) {
-    if (isset($ws->registered[$h])) {
-      $r = $ws->registered[$h];
-      wp_deregister_script($h);
-      wp_register_script($h, $r->src, $r->deps, $r->ver, true); // true => footer
-      wp_enqueue_script($h);
-    }
-  }
-}, 9999);
-
-// 2) Defer the exact offenders Lighthouse lists (NOT jQuery)
-add_filter('script_loader_tag', function ($tag, $handle, $src) {
-  if (is_admin()) return $tag;
-
-  // leave JSON-LD / modules alone
-  if (strpos($tag, 'type="application/ld+json"') !== false) return $tag;
-  if (strpos($tag, ' type="module"') !== false) return $tag;
-
-  // never defer jQuery core/migrate
-  if (in_array($handle, ['jquery','jquery-core','jquery-migrate'], true)) return $tag;
-
-  $is_search_filter = strpos($src, 'search-filter-build.min.js') !== false;
-  $is_cookieyes     = strpos($src, 'cdn-cookieyes.com') !== false;
-  $is_iframe_resizer= strpos($src, 'iframeResizer') !== false;
-  $is_theme_bundle  = (strpos($src, '/wp-content/themes/') !== false && strpos($src, '/public/') !== false && substr($src, -3) === '.js');
-
-  if ($is_search_filter || $is_cookieyes || $is_iframe_resizer || $is_theme_bundle) {
-    if (strpos($tag, ' defer') === false) $tag = str_replace('<script ', '<script defer ', $tag);
-  }
-  return $tag;
-}, 999, 3);
-
-// If some plugin still forces jQuery in <head>, make it non-blocking on the homepage.
-add_filter('script_loader_tag', function ($tag, $handle, $src) {
-  if (is_admin() || !is_front_page()) return $tag;
-
-  if (in_array($handle, ['jquery','jquery-core','jquery-migrate'], true)) {
-    if (strpos($tag, ' defer') === false) {
-      $tag = str_replace('<script ', '<script defer ', $tag);
-    }
-  }
-  return $tag;
-}, 1000, 3);
-
