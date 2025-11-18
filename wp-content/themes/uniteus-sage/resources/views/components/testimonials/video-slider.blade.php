@@ -17,7 +17,7 @@
     @includeIf('dividers.waves')
   @endif
 
-  <section class="component-section relative {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif @if ($section_settings['fullscreen']) fullscreen !px-0 @endif">
+  <section  @isset ($section['id']) id="{{ $section['id'] }}" @endisset class="component-section relative {{ $section_classes }} @if ($section_settings['collapse_padding']) {{ $section_settings['padding_class'] }} @endif @if ($section_settings['fullscreen']) fullscreen !px-0 @endif">
     {{-- Background image --}}
     @if (!empty($background['image']))
       <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
