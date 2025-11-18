@@ -81,15 +81,20 @@
           <x-image-link :image="$section['logo']" image-size="medium" :lazy="true" classes="mb-6 max-w-[224px] h-auto" link-classes="" />
         @endisset
 
-        @if (!empty($section['title']))
-          @if (($section['is_header'] ?? '') === 'h1')
-            <h1 class="mb-6 h2 @if (($background['color'] ?? '') === 'dark') text-white @endif">{!! $section['title'] !!}</h1>
-          @elseif (($section['is_header'] ?? '') === 'h2')
-            <h2 class="mb-6 h2 @if (($background['color'] ?? '') === 'dark') text-white @endif">{!! $section['title'] !!}</h2>
-          @else
-            <div class="mb-6 h @if (($background['color'] ?? '') === 'dark') text-white @endif">{!! $section['title'] !!}</div>
-          @endif
-        @endif
+      @if (!empty($section['title']))
+  @php
+    // Whitelist the dropdown value and default to h2
+    $choice = $section['is_header'] ?? null;
+    $tag = in_array($choice, ['h1', 'h2', 'div'], true) ? $choice : 'h2';
+
+    // Use 'h2' sizing for h1/h2, and the existing 'h' sizing when it's a div
+    $sizeClass = $tag === 'div' ? 'h' : 'h2';
+    $titleClass = 'mb-6 ' . $sizeClass . ((($background['color'] ?? '') === 'dark') ? ' text-white' : '');
+  @endphp
+
+  <{{ $tag }} class="{{ $titleClass }}">{!! $section['title'] !!}</{{ $tag }}>
+@endif
+
 
         @if (!empty($section['description']))
           <div class="description @if (($background['color'] ?? '') === 'dark') text-white @endif">
