@@ -66,7 +66,7 @@ if ($terms_topic) {
 
 $base = '/';
 
-$acf['description'] = '<a id="docDownload" class="button button-solid mt-2" href="' . $doc . '" download target="_blank">Download the ' . $type . '</a>';
+$acf['description'] = '<a id="docDownload" class="button button-solid mt-2" href="' . $doc . '" target="_blank">Access the ' . $type . '</a>';
 $acf['title'] = isset($acf['title']) ? $acf['title'] : $post->post_title;
 
 @endphp
