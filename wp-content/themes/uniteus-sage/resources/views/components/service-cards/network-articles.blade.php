@@ -68,10 +68,31 @@
 @if (!empty($background['has_divider']))
   @includeIf('dividers.waves')
 @endif
-
+<style>
+    .network-articles .pill-outline-gradient{
+    background:transparent;
+    color:currentColor;
+    border-radius:9999px;
+    padding:.25rem .9rem;
+    position:relative;
+    display:inline-block;
+  }
+  .network-articles .pill-outline-gradient::before{
+    content:'';
+    position:absolute; inset:0;
+    border-radius:9999px;
+    padding:1.5px;
+    background:linear-gradient(90deg,#2F71F4 0%,#9643FF 100%);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+            mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite:exclude;
+    pointer-events:none;
+  }
+</style>
 <section
   @isset($section['id']) id="{{ $section['id'] }}" @endisset
-  class="relative @if (($background['color'] ?? '') === 'dark') text-white @endif component-section {{ $section_classes ?? '' }} @if (!empty($section_settings['collapse_padding'])) {{ $section_settings['padding_class'] }} @endif">
+  class="network-articles relative @if (($background['color'] ?? '') === 'dark') text-white @endif component-section {{ $section_classes ?? '' }} @if (!empty($section_settings['collapse_padding'])) {{ $section_settings['padding_class'] }} @endif">
 
   {{-- Optional background image --}}
   @if (!empty($background['image']))
@@ -97,15 +118,31 @@
   @if (($section['alignment'] ?? '') === 'center')
     <div class="component-inner-section relative z-10">
       <div class="text-center mb-7">
-        @if (!empty($section['subtitle']))
-          @if (!empty($section['subtitle_display_as_pill']))
-            <span class="@if (($background['color'] ?? '') === 'dark') bg-brand text-action-light-blue @else text-action @if (($background['color'] ?? '') === 'light-gradient') bg-white @else bg-light mix-blend-multiply @endif @endif text-sm py-1 px-4 inline-block mb-6 rounded-full">
-          @else
-            <span class="block text-base mb-8 font-semibold uppercase tracking-wider text-action">
-          @endif
-              {{ $section['subtitle'] }}
-            </span>
-        @endif
+               @if (!empty($section['subtitle']))
+                    @php
+                        $isPill = !empty($section['subtitle_display_as_pill']);
+                        $isHollow = !empty($section['gradient_hollow_pill']);
+                        $onDark = ($background['color'] ?? '') === 'dark';
+                        $onLightG = ($background['color'] ?? '') === 'light-gradient';
+                    @endphp
+
+                    @if ($isPill)
+                        <span
+                            class="{{ $isHollow
+                                ? 'pill-outline-gradient'
+                                : ($onDark
+                                    ? 'bg-brand text-action-light-blue'
+                                    : 'text-action ' . ($onLightG ? 'bg-white' : 'bg-light mix-blend-multiply')) }}
+             text-sm py-1 px-4 inline-block mb-6 rounded-full">
+                            {{ $section['subtitle'] }}
+                        </span>
+                    @else
+                        <span class="block text-base mb-8 font-semibold uppercase tracking-wider text-action">
+                            {{ $section['subtitle'] }}
+                        </span>
+                    @endif
+                @endif
+
 
         @if (!empty($section['title']))
           <h2 class="mb-6">{!! $section['title'] !!}</h2>
