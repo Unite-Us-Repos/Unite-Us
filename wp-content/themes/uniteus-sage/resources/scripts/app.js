@@ -442,3 +442,44 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+/**
+ * Smooth scroll with fixed header offset
+ * Offsets anchor navigation by 80px (header height) and uses smooth scroll.
+ */
+(() => {
+  const HEADER_OFFSET = 80;
+
+  function scrollToId(id, replaceHistory = false) {
+    const target = document.getElementById(id);
+    if (!target) return;
+    const y = target.getBoundingClientRect().top + window.pageYOffset - HEADER_OFFSET;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    const hash = `#${id}`;
+    if (replaceHistory) {
+      history.replaceState(null, '', hash);
+    } else {
+      history.pushState(null, '', hash);
+    }
+  }
+
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href^="#"]:not([href="#"])');
+    if (!link) return;
+    const url = new URL(link.href, window.location.href);
+    if (url.pathname.replace(/\/$/, '') !== window.location.pathname.replace(/\/$/, '')) return;
+    const id = url.hash.replace('#', '');
+    if (!id) return;
+    e.preventDefault();
+    scrollToId(id);
+  });
+
+  function handleHashOnLoad() {
+    if (window.location.hash && window.location.hash.length > 1) {
+      const id = decodeURIComponent(window.location.hash.substring(1));
+      setTimeout(() => scrollToId(id, true), 0);
+    }
+  }
+
+  window.addEventListener('hashchange', handleHashOnLoad);
+  window.addEventListener('load', handleHashOnLoad);
+})();

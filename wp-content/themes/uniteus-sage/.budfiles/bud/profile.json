@@ -1013,6 +1013,35 @@
           }
         }
       },
+      "jsconfig.json": {
+        "name": "jsconfig.json",
+        "path": "/Users/sabrina.matthews/Documents/REPOS/Unite-Us/app/public/wp-content/themes/uniteus-sage/jsconfig.json",
+        "module": {
+          "compilerOptions": {
+            "allowSyntheticDefaultImports": true,
+            "jsx": "preserve",
+            "lib": [
+              "dom",
+              "dom.iterable",
+              "esnext"
+            ],
+            "module": "commonjs",
+            "moduleResolution": "node",
+            "paths": {
+              "@scripts/*": [
+                "./resources/scripts/*"
+              ],
+              "@styles/*": [
+                "./resources/styles/*"
+              ]
+            }
+          },
+          "exclude": [
+            "./public",
+            "./node_modules"
+          ]
+        }
+      },
       "theme.json": {
         "name": "theme.json",
         "path": "/Users/sabrina.matthews/Documents/REPOS/Unite-Us/app/public/wp-content/themes/uniteus-sage/theme.json",
@@ -1224,35 +1253,6 @@
               ]
             }
           }
-        }
-      },
-      "jsconfig.json": {
-        "name": "jsconfig.json",
-        "path": "/Users/sabrina.matthews/Documents/REPOS/Unite-Us/app/public/wp-content/themes/uniteus-sage/jsconfig.json",
-        "module": {
-          "compilerOptions": {
-            "allowSyntheticDefaultImports": true,
-            "jsx": "preserve",
-            "lib": [
-              "dom",
-              "dom.iterable",
-              "esnext"
-            ],
-            "module": "commonjs",
-            "moduleResolution": "node",
-            "paths": {
-              "@scripts/*": [
-                "./resources/scripts/*"
-              ],
-              "@styles/*": [
-                "./resources/styles/*"
-              ]
-            }
-          },
-          "exclude": [
-            "./public",
-            "./node_modules"
-          ]
         }
       },
       "package-lock.json": {
@@ -17947,7 +17947,7 @@
       "npm_package_dependencies_glightbox": "^3.2.0",
       "npm_package_scripts_translate_mo": "wp i18n make-mo ./resources/lang ./resources/lang",
       "npm_execpath": "/opt/homebrew/Cellar/yarn/1.22.22/libexec/bin/yarn.js",
-      "PATH": "/var/folders/dp/p1sxdwnn753bw7z25jp95v2r0000gp/T/yarn--1763519477220-0.44112174082511046:/Users/sabrina.matthews/Documents/REPOS/Unite-Us/app/public/wp-content/themes/uniteus-sage/node_modules/.bin:/Users/sabrina.matthews/.config/yarn/link/node_modules/.bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/bin/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/bin:/Users/sabrina.matthews/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand:/Users/sabrina.matthews/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/sabrina.matthews/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand:/Users/sabrina.matthews/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/bin",
+      "PATH": "/var/folders/dp/p1sxdwnn753bw7z25jp95v2r0000gp/T/yarn--1763564161713-0.32513431499340617:/Users/sabrina.matthews/Documents/REPOS/Unite-Us/app/public/wp-content/themes/uniteus-sage/node_modules/.bin:/Users/sabrina.matthews/.config/yarn/link/node_modules/.bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/bin/node_modules/npm/bin/node-gyp-bin:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/bin:/Users/sabrina.matthews/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand:/Users/sabrina.matthews/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/sabrina.matthews/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand:/Users/sabrina.matthews/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli:/Users/sabrina.matthews/.nvm/versions/node/v24.11.0/bin",
       "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"build\"],\"original\":[\"build\"]}",
       "npm_package_dependencies_swiper": "^8.4.5",
       "_": "/Users/sabrina.matthews/Documents/REPOS/Unite-Us/app/public/wp-content/themes/uniteus-sage/node_modules/.bin/bud",
