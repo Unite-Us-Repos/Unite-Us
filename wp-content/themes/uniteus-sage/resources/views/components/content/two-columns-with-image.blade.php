@@ -11,7 +11,8 @@
   $acf = $acf ?? [];
   $index = $index ?? 0;
   $type = $type ?? '';
-  $layout = $layout ?? ''; // 'text_image' | 'image_text'
+  $layout = $layout ?? ''; // 'text_image' | 'image_text' (desktop)
+  $mobile_layout = $mobile_layout ?? ''; // 'text_image' | 'image_text' (mobile)
   $vertical_alignment = $vertical_alignment ?? '';
   $button_placement = $button_placement ?? '';
   $extra_content = $extra_content ?? '';
@@ -27,7 +28,11 @@
   $columns_pair = array_pad($columns_pair, 2, '6');
   [$colA, $colB] = $columns_pair;
 
-  // Determine lg: order by layout (uniform for all types)
+  // Determine BASE (mobile) order by mobile_layout
+  $textOrderBase  = ($mobile_layout === 'text_image') ? 'order-1' : (($mobile_layout === 'image_text') ? 'order-2' : '');
+  $mediaOrderBase = ($mobile_layout === 'text_image') ? 'order-2' : (($mobile_layout === 'image_text') ? 'order-1' : '');
+
+  // Determine DESKTOP (lg:) order by layout (uniform for all types)
   $textOrderLg  = ($layout === 'text_image') ? 'lg:order-1' : 'lg:order-2';
   $mediaOrderLg = ($layout === 'text_image') ? 'lg:order-2' : 'lg:order-1';
 
@@ -59,6 +64,7 @@
 
       {{-- Left / Text column --}}
       <div class="flex flex-col items-start
+                  {{ $textOrderBase }}
                   lg:col-span-{{ $colA }}
                   {{ $textOrderLg }}
                   @if ($vertical_alignment === 'center') justify-center @endif
@@ -240,6 +246,7 @@
 
       {{-- Right / Media column --}}
       <div class="flex flex-col lg:max-h-[600px]
+                  {{ $mediaOrderBase }}
                   lg:col-span-{{ $colB }}
                   {{ $mediaOrderLg }}
                   @if ($vertical_alignment === 'center') justify-center @endif

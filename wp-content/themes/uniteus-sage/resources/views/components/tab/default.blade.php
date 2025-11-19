@@ -280,7 +280,7 @@
   .tab-default .tabs-nav .pill-rail{
     display:flex; gap:28px; align-items:center; justify-content:center;
     padding:12px 18px; border-radius:9999px;
-    background:#EAF0F7; border:1px solid #D7E2EF;
+    background:#7A889B; border:1px solid #D7E2EF;
     box-shadow:
       inset 0 1px 0 rgba(255,255,255,.65),
       inset 0 -6px 14px rgba(35,48,74,.06),

@@ -1,3 +1,10 @@
+@php
+  // Ensure a stable, unique component scope id
+  if (!isset($component_index)) {
+    $component_index = isset($index) ? $index : (function_exists('wp_unique_id') ? wp_unique_id('cmp_') : uniqid('cmp_'));
+  }
+@endphp
+
 <div x-data="{
       locations: {{ $helpMenuDataJson }},
       selectedIndex: 1,

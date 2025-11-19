@@ -1,10 +1,17 @@
+@php
+  // Ensure a stable, unique component scope id
+  if (!isset($component_index)) {
+    $component_index = isset($index) ? $index : (function_exists('wp_unique_id') ? wp_unique_id('cmp_') : uniqid('cmp_'));
+  }
+@endphp
 
 @php
 $s_settings = [
         'collapse_padding' => false,
         'fullscreen' => '',
 ];
-$section_settings = isset($acf["components"][$index]['layout_settings']['section_settings']) ? $acf["components"][$index]['layout_settings']['section_settings'] : $s_settings;
+$section_settings = $section_settings
+  ?? ($acf['components'][$component_index]['layout_settings']['section_settings'] ?? $s_settings);
 @endphp
 @if ($background['has_divider'])
   @includeIf('dividers.waves')

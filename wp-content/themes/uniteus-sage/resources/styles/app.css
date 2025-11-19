@@ -626,6 +626,10 @@ a.button-hollow-gradient:hover {
   fill: #fff;
   opacity: 0.25;
 }
+.button-solid-white img,
+.button-solid-white svg path {
+  opacity: 1;
+}
 .button-hollow-gradient img {
   opacity: 1;
 }

@@ -125,7 +125,9 @@
                     "placeholder": "",
                     "allow_custom": 0,
                     "search_placeholder": "",
-                    "min": ""
+                    "min": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_6584800e3d156",
@@ -161,7 +163,7 @@
                 },
                 {
                     "key": "field_632ceabb074d1",
-                    "label": "Order",
+                    "label": "Desktop Order",
                     "name": "layout",
                     "aria-label": "",
                     "type": "radio",
@@ -181,6 +183,33 @@
                     "return_format": "value",
                     "allow_null": 1,
                     "other_choice": 0,
+                    "allow_in_bindings": 1,
+                    "layout": "vertical",
+                    "save_other_choice": 0
+                },
+                {
+                    "key": "field_691d0cf125f79",
+                    "label": "Mobile Order",
+                    "name": "mobile_layout",
+                    "aria-label": "",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "text_image": "Text\/Image",
+                        "image_text": "Image\/Text"
+                    },
+                    "default_value": "text_image",
+                    "return_format": "value",
+                    "allow_null": 1,
+                    "other_choice": 0,
+                    "allow_in_bindings": 1,
                     "layout": "vertical",
                     "save_other_choice": 0
                 },
@@ -445,7 +474,9 @@
                     "placeholder": "",
                     "allow_custom": 0,
                     "search_placeholder": "",
-                    "min": ""
+                    "min": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_65a869c53f851",
@@ -964,7 +995,9 @@
                     "placeholder": "",
                     "allow_custom": 0,
                     "search_placeholder": "",
-                    "min": ""
+                    "min": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_62b588d2938fe",
@@ -1168,7 +1201,9 @@
                     "placeholder": "",
                     "allow_custom": 0,
                     "search_placeholder": "",
-                    "min": ""
+                    "min": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_659476b94d2be",
@@ -1208,7 +1243,9 @@
                     "placeholder": "",
                     "allow_custom": 0,
                     "search_placeholder": "",
-                    "min": ""
+                    "min": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_642b831eb9c69",
@@ -1269,7 +1306,9 @@
                             "placeholder": "",
                             "allow_custom": 0,
                             "search_placeholder": "",
-                            "min": ""
+                            "min": "",
+                            "create_options": 0,
+                            "save_options": 0
                         },
                         {
                             "key": "field_642b833bb9c6a",
@@ -1428,7 +1467,9 @@
                             "placeholder": "",
                             "allow_custom": 0,
                             "search_placeholder": "",
-                            "min": ""
+                            "min": "",
+                            "create_options": 0,
+                            "save_options": 0
                         },
                         {
                             "key": "field_659588aabc7bd",
@@ -1895,6 +1936,7 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+    "display_title": "",
     "acfe_autosync": [
         "json"
     ],
@@ -1902,5 +1944,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1729191051
+    "modified": 1763511570
 }

@@ -1,3 +1,9 @@
+@php
+  // Ensure a stable, unique component scope id
+  if (!isset($component_index)) {
+    $component_index = isset($index) ? $index : (function_exists('wp_unique_id') ? wp_unique_id('cmp_') : uniqid('cmp_'));
+  }
+@endphp
 @if ($buttons)
 @php
     $layout = 'flex';
@@ -29,6 +35,7 @@
     }
 
 @endphp
+
   <div class="flex flex-wrap flex-col w-full sm:flex-row gap-6 @if ('text' == $button_layout) mt-5 @elseif ('simple-justified' == $style && !$mt) mt-9 sm:mt-10 @elseif ($mt) {{ $mt }} @else mt-9 sm:mt-10 @endif button-layout-{{ $button_layout }} {{ $layout }} md:{{ $justify }}">
     @foreach ($buttons as $index => $button)
       @php

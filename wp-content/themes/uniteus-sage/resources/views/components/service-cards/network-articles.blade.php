@@ -169,7 +169,16 @@
     <div>
       @if ($is_swiper && $item_count)
         <div
-          x-data="{ swiper: null }"
+          x-data="{
+            swiper: null,
+            dragging: false,
+            pointerDown: false,
+            startX: 0,
+            startY: 0,
+            onDown(e){ this.pointerDown = true; this.dragging = false; this.startX = e.clientX ?? (e.touches?.[0]?.clientX || 0); this.startY = e.clientY ?? (e.touches?.[0]?.clientY || 0); },
+            onMove(e){ if(!this.pointerDown) return; const x = e.clientX ?? (e.touches?.[0]?.clientX || 0); const y = e.clientY ?? (e.touches?.[0]?.clientY || 0); if(Math.abs(x-this.startX) > 5 || Math.abs(y-this.startY) > 5){ this.dragging = true; } },
+            onUp(){ this.pointerDown = false; setTimeout(()=>{ this.dragging = false; }, 0); },
+          }"
           x-init="
             const root = $el;
             const getPad = () => {
@@ -205,6 +214,9 @@
               },
             });
 
+            // Prevent native link/image drag on desktop which hijacks the swipe
+            $refs.container.addEventListener('dragstart', (e)=>{ e.preventDefault(); }, { passive:false });
+
             const onResize = () => {
               const p = getPad();
               swiper.params.slidesOffsetBefore = p;
@@ -216,6 +228,8 @@
             };
             window.addEventListener('resize', onResize);
           "
+          @mousedown="onDown($event)" @mousemove="onMove($event)" @mouseup="onUp()" @mouseleave="onUp()"
+          @touchstart.passive="onDown($event)" @touchmove.passive="onMove($event)" @touchend.passive="onUp()"
         >
           <div class="article-slider relative">
             <div class="swiper testimonials" x-ref="container">
@@ -233,9 +247,13 @@
                     <div class="service-icon-cards h-full group">
                       <div class="bg-transparent text-white relative overflow-hidden h-full">
                         <div class="article-card relative z-10 w-full text-lg lg:text-4xl">
+                          {{-- NOTE: prevent native drag + only navigate if not dragging --}}
                           <a aria-label="{{ esc_html(strip_tags($title)) }}"
                              aria-describedby="article-card-{{ $i }}"
                              class="absolute inset-0 z-20 no-underline"
+                             :draggable="false"
+                             @dragstart.prevent
+                             @click.prevent="if(!dragging){ window.location.href='{{ $link }}' }"
                              href="{{ $link }}">
                             <span class="sr-only">{{ $title }}</span>
                           </a>
@@ -244,6 +262,7 @@
                             <div class="mb-6 rounded-lg overflow-hidden">
                               <img class="lazy w-full h-full aspect-video object-cover"
                                    decoding="async"
+                                   :draggable="false"
                                    data-src="{{ $thumb }}"
                                    alt="{{ esc_attr($title) }}" />
                             </div>
@@ -295,6 +314,8 @@
                         <a aria-label="{{ esc_html(strip_tags($title)) }}"
                            aria-describedby="article-card-{{ $i }}"
                            class="absolute inset-0 z-20 no-underline"
+                           :draggable="false"
+                           @dragstart.prevent
                            href="{{ $link }}">
                           <span class="sr-only">{{ $title }}</span>
                         </a>
@@ -303,6 +324,7 @@
                           <div class="mb-6 rounded-lg overflow-hidden">
                             <img class="lazy w-full h-full aspect-video object-cover"
                                  decoding="async"
+                                 :draggable="false"
                                  data-src="{{ $thumb }}"
                                  alt="{{ esc_attr($title) }}" />
                           </div>
@@ -380,8 +402,14 @@
     width:20px; height:20px; background:transparent; border:4px solid rgba(157,180,197,.25); position:relative; opacity:1;
   }
   .article-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active::after{
-    content:""; position:absolute; inset:1px; border-radius:9999px; background:rgba(157,180,197,.8); opacity:1;
+    content:\"\"; position:absolute; inset:1px; border-radius:9999px; background:rgba(157,180,197,.8); opacity:1;
   }
   .article-pagination .swiper-pagination-bullet:focus-visible{ outline:2px solid rgba(157,180,197,.9); outline-offset:2px; }
   .article-pagination .swiper-pagination-bullet:hover{ background:rgba(157,180,197,.45); }
+
+  /* Disable desktop link/image dragging inside slides so swipe works cleanly */
+  .article-slider .swiper-slide a,
+  .article-slider .swiper-slide img{
+    -webkit-user-drag: none; user-drag: none; user-select: none; -webkit-user-select: none;
+  }
 </style>

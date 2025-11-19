@@ -122,7 +122,7 @@
     @endif
 
     {{-- Video + Side Text (expects $embed, $code_editor, $side_text, $video_link passed in) --}}
-    <div class="component-inner-section relative z-10">
+    <div class="component-inner-section relative z-10 mt-12">
         <div class="grid lg:grid-cols-12 lg:gap-10 items-start">
             {{-- Video card --}}
             <div class="lg:col-span-8  order-2 lg:order-1">
